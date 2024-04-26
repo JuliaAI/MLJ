@@ -11,6 +11,17 @@ declare global {
 	interface Element {
 		style: CSSStyleDeclaration
 	}
+
+	interface DataItem {
+		image: string;
+		title: string;
+		description: string;
+		link: string;
+		github_link: string;
+		categories: string;
+		skills: string[];
+		special: string;
+	  }
 }
 
 export {};

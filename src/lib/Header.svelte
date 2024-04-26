@@ -46,13 +46,13 @@
         <ul class="nav-list" style="{navOpen ? 'display: block;' : 'display: none;'}">
           <!-- Setting the links to #! will ensure that no action takes place on click. -->
           <li><a href="./">Home</a></li>
-          <li><a href="./Models">Models</a></li>
-          <li><a href="/Ecosystem">Ecosystem</a></li>
-          <li><a href="/Tutorials">Tutorials</a></li>
-          <li><a href="/Documentation">Documentation</a></li>
-          <li><a href="/Cheatsheet">Cheat Sheet</a></li>
-          <li><a href="/Contributing">Contributing</a></li>
-          <li><a href="/About">About</a></li>
+          <li><a href="./models">Models</a></li>
+          <li><a href="/ecosystem">Ecosystem</a></li>
+          <li><a href="/tutorials">Tutorials</a></li>
+          <li><a href="/documentation">Documentation</a></li>
+          <li><a href="/cheatsheet">Cheat Sheet</a></li>
+          <li><a href="/contributing">Contributing</a></li>
+          <li><a href="/about">About</a></li>
         </ul>
       </nav>
     </div>
