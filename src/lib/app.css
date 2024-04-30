@@ -1,10 +1,29 @@
-/* CSS Reset */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+    scrollbar-color: #5D3561 #ffffff00;
 
-  body {
+}
+
+body {
     background-color: #FAF9F6;
-  }
+    font-family: 'Open Sans', sans-serif; /* Set Libre Franklin as default font */
+}
+
+a {
+    text-decoration: none; /* Remove default anchor styles */
+    color: inherit; /* Inherit text color from parent */
+}
+
+button {
+    /* Resetting default styles */
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}

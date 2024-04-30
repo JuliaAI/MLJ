@@ -34,4 +34,16 @@ export function markdownToJSON(markdown: string): ModelMap {
     return modelMap;
 }
 
-
+interface JsonObject {
+    [key: string]: any[];
+  }
+  
+  export function flattenJSON(json: JsonObject): any[] {
+    const result: any[] = [];
+  
+    for (const key in json) {
+      result.push(...json[key]);
+    }
+  
+    return result;
+  }

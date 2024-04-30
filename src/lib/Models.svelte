@@ -1,60 +1,98 @@
 <script lang="ts">
+	import MarkdownIt from 'markdown-it';
+	import modelBrowser from '$lib/data/model_browser.md?raw';
+	import { markdownToJSON, flattenJSON } from './utilts'; // Make sure customSort function is exported from "utils.ts"
+	import Modal from './Modal.svelte';
+	import Search from './Search.svelte';
 
-import MarkdownIt from "markdown-it";
-import modelBrowser from "$lib/data/model_browser.md?raw";
-import { markdownToJSON, } from "./utilts"; // Make sure customSort function is exported from "utils.ts"
+	const md = new MarkdownIt();
+	const modelBrowserJson = markdownToJSON(modelBrowser);
+	const flatModelBrowser = flattenJSON(modelBrowserJson);
+	console.log(flatModelBrowser)
 
-const md = new MarkdownIt();
-const modelBrowserJson = markdownToJSON(modelBrowser);
+	const problems = [
+		'Classification',
+		'Regression',
+		'Clustering',
+		'Dimension Reduction',
+		'Outlier Detection',
+		'Class Imbalance',
+		'Missing Value Imputation',
+		'Text Analysis',
+		'Image Processing'
+	];
+	const descriptions = [
+		'Predicting which category an observation belongs to',
+		'Predicting continuous outcomes',
+		'Grouping similar data points together.',
+		'Reducing dimensionality while preserving information',
+		'Identifying anomalies or outliers in the data',
+		'Handling imbalance in dataset labels with resampling',
+		'Filling in missing data points in a dataset',
+		'Extracting insights or patterns from textual data',
+		'Analyzing and manipulating visual data'
+	];
+	const images = [
+		'https://i.imgur.com/pS2oOkb.png',
+		'https://i.imgur.com/QNYMwLd.png',
+		'https://i.imgur.com/9XDZko6.png',
+		'https://i.imgur.com/4Hkvs72.png',
+		'https://i.imgur.com/MZCYV8y.png',
+		'https://i.imgur.com/n5ftY1Y.png',
+		'https://i.imgur.com/S56AK2C.png',
+		'https://i.imgur.com/M3cTtCF.png',
+		'https://i.imgur.com/nAGEXBS.png'
+	];
 
-console.log(modelBrowserJson);
+	const modelGenres = Object.keys(modelBrowserJson).filter((key) => !problems.includes(key));
+	console.log(modelGenres);
 
-const problems = ["Classification", "Regression", "Clustering", "Dimension Reduction", "Outlier Detection", "Class Imbalance", "Missing Value Imputation", "Text Analysis", "Image Processing"]
-const descriptions = [
-    "Predicting which category an observation belongs to.",
-    "Predicting continuous outcomes.",
-    "Grouping similar data points together.",
-    "Reducing the number of variables while preserving important information.",
-    "Identifying anomalies or outliers in the data.",
-    "Handling datasets where one class is significantly more prevalent than others.",
-    "Filling in missing data points in a dataset.",
-    "Extracting insights or patterns from textual data.",
-    "Analyzing and manipulating visual data."
-];
-const images = [
-    "https://miro.medium.com/v2/resize:fit:1400/0*0l9nrArESsW1Ew0O.gif",
-    "https://miro.medium.com/v2/resize:fit:1280/1*eeIvlwkMNG1wSmj3FR6M2g.gif",
-    "https://media.licdn.com/dms/image/C5612AQH8kEizAouznA/article-cover_image-shrink_600_2000/0/1626424726069?e=2147483647&v=beta&t=deUL_yPDFPXK8dkspX2oJZWX1qqyx3XBokl02TN8x9k",
-    "https://miro.medium.com/v2/resize:fit:920/1*ik3r8uZgzGVGA-bgQVIyaw.gif",
-    "https://datascientest.com/wp-content/uploads/2021/08/python_anomaly_detection_isolation_forest.gif",
-    "https://miro.medium.com/v2/resize:fit:1198/1*b_f1ylxNvkD8F7Z5aajqTw.gif",
-    "https://www.scaler.com/topics/images/knn-imputation.webp",
-    "https://miro.medium.com/v2/resize:fit:1400/1*RHlKwsmF7MtdXCejJ3eL2A.gif",
-    "https://sgu.ac.id/wp-content/uploads/2020/12/1_QHxBLzMK7rp_5ysw77uK3A.gif"
-]
+	let showModal = false;
+	let modalContent = '';
+	let models: any[] = [];
 
-const modelGenres = Object.keys(modelBrowserJson).filter(key => !problems.includes(key));
+	function openModal(content: string, modelList: any[]) {
+		showModal = true;
+		modalContent = content;
+		models = modelList;
+	}
 
+	function closeModal() {
+		showModal = false;
+		modalContent = '';
+		models = [];
+	}
 </script>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-<div class="modern-grid">
-	{#each problems as problem}
-		<div class="grid-item">
-				<img src={images[problems.indexOf(problem)]} alt="" />
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; ">	
+	<h1 style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:70%">Over <span style="color:darkmagenta;">180 Machine Learning Models</span>...At Your <span style="color:darkmagenta;">Fingertips</span></h1>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
+<Search items={flatModelBrowser}/>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; margin-top:3rem;">
+	<div class="modern-grid">
+		{#each problems as problem, i}
+			<div class="grid-item">
+				<div class="img-container">
+					<img src={images[i]} alt="" />
+				</div>
 				<div class="item-title">
 					<b>{problem}</b>
-					<p>{descriptions[problems.indexOf(problem)]}</p>
+					<p>{descriptions[i]}</p>
+					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
+						>View Models</button
+					>
+					<button class="view-button">View Tutorials</button>
 				</div>
-		</div>
-	{/each}
-</div>
+			</div>
+		{/each}
+	</div>
 </div>
 
-
+<Modal {showModal} content={modalContent} models={models} on:closeModal={closeModal} />
 
 <style lang="scss">
-
 	.modern-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(calc((100% - 40px) / 3), 1fr));
@@ -70,36 +108,72 @@ const modelGenres = Object.keys(modelBrowserJson).filter(key => !problems.includ
 			overflow: hidden;
 			border-radius: 15px;
 			transition: transform 0.3s ease;
-			cursor: pointer;
-			height: 300px;
+			height: 400px;
 
-            border: 1px solid #bbbbbb;
+			border: 1px solid #e1e1e1;
 
 			&:hover {
-				transform: scale(1.05);
+				// border: 1px solid #5D3561 ;
+				// outline-color: #5D3561 ;
+				// outline-width: 2px;
+				// outline-style: solid;
+				// .item-title {
+				// 	background: #5D3561 !important;
+				// 	color: #fff;
+				// }
+				img {
+					transform: scale(1.05);
+				}
 			}
 
-			img {
-				width: 100%;
+			.img-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				img {
+				transition: transform .8s;
 				height: 100%;
+				max-width: 100%;
 				object-fit: cover;
-				display: block;
 			}
+			}
+
+
 
 			.item-title {
 				position: absolute;
+				font-family: 'Open Sans';
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				background: rgb(93, 53, 97);
-				color: #fff;
-				padding: 8px 15px;
-				font-size: 16px;
+				background: #eaeaea;
+				color: #1d1d1d;
+				padding: 20px 0px;
+				font-size: 20px;
+				min-height: 70px;
+				text-align: center;
+
+				.view-button {
+					border-radius: 1rem;
+					font-weight: 400;
+					font-family: 'Poppins';
+					padding: 10px 15px;
+					margin-top: 1rem;
+					outline: none;
+					border: 2px solid #acacac;
+					&:hover {
+						background: #5d3561;
+						border: 2px solid #5d3561;
+						color: white;
+					}
+				}
 
 				p {
-					font-size: 0.9rem;
-					opacity: 0.7;
+					font-size: 0.8rem;
+					opacity: 0.9;
 					font-weight: normal !important;
+					text-align: center;
+					margin-top: 4px;
 					// display: none;
 				}
 				span {
@@ -108,20 +182,6 @@ const modelGenres = Object.keys(modelBrowserJson).filter(key => !problems.includ
 					display: none;
 				}
 			}
-
-			// &:hover {
-			// 	p {
-			// 		display: block;
-			// 		animation: fade_in_show 0.5s;
-			// 	}
-			// 	span {
-			// 		display: block;
-			// 	}
-
-			// 	.special {
-			// 		display: none;
-			// 	}
-			// }
 
 			@keyframes fade_in_show {
 				0% {
