@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-  
+	import { base } from '$app/paths';
+
     let navOpen = false;
   
     function toggleNav() {
@@ -45,14 +46,14 @@
         </div>
         <ul class="nav-list" style="{navOpen ? 'display: block;' : 'display: none;'}">
           <!-- Setting the links to #! will ensure that no action takes place on click. -->
-          <li><a href="./">Home</a></li>
-          <li><a href="./models">Models</a></li>
-          <li><a href="/ecosystem">Ecosystem</a></li>
-          <li><a href="/tutorials">Tutorials</a></li>
-          <li><a href="/documentation">Documentation</a></li>
-          <li><a href="/cheatsheet">Cheat Sheet</a></li>
-          <li><a href="/contributing">Contributing</a></li>
-          <li><a href="/about">About</a></li>
+          <li><a href="{base}/">Home</a></li>
+          <li><a href="{base}/models">Models</a></li>
+          <li><a href="{base}/ecosystem">Ecosystem</a></li>
+          <li><a href="{base}/tutorials">Tutorials</a></li>
+          <li><a href="{base}/documentation">Documentation</a></li>
+          <li><a href="{base}/cheatsheet">Cheat Sheet</a></li>
+          <li><a href="{base}/contributing">Contributing</a></li>
+          <li><a href="{base}/about">About</a></li>
         </ul>
       </nav>
     </div>
