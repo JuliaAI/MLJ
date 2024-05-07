@@ -48,7 +48,7 @@
   </script>
   
   <div class="search-bar">
-    <input type="text" placeholder="Search for models..." class="search-input" on:input={handleInput} />
+    <input type="text" placeholder="Search over all models..." class="search-input" on:input={handleInput} />
     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <FaSearch />
     </svg>

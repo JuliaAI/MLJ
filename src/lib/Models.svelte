@@ -8,9 +8,9 @@
 	const md = new MarkdownIt();
 	const modelBrowserJson = markdownToJSON(modelBrowser);
 	const flatModelBrowser = flattenJSON(modelBrowserJson);
-	console.log(flatModelBrowser)
+	console.log(flatModelBrowser);
 
-	const problems = [
+	const learningProblems = [
 		'Classification',
 		'Regression',
 		'Clustering',
@@ -21,7 +21,7 @@
 		'Text Analysis',
 		'Image Processing'
 	];
-	const descriptions = [
+	const learningDescriptions = [
 		'Predicting which category an observation belongs to',
 		'Predicting continuous outcomes',
 		'Grouping similar data points together.',
@@ -32,7 +32,7 @@
 		'Extracting insights or patterns from textual data',
 		'Analyzing and manipulating visual data'
 	];
-	const images = [
+	const learningImages = [
 		'https://i.imgur.com/pS2oOkb.png',
 		'https://i.imgur.com/QNYMwLd.png',
 		'https://i.imgur.com/9XDZko6.png',
@@ -44,8 +44,39 @@
 		'https://i.imgur.com/nAGEXBS.png'
 	];
 
-	const modelGenres = Object.keys(modelBrowserJson).filter((key) => !problems.includes(key));
-	console.log(modelGenres);
+	const modelGenres = Object.keys(modelBrowserJson).filter(
+		(key) => !learningProblems.includes(key)
+	);
+
+	const modelingProblems = [
+		'Iterative Models',
+		'Ensemble Models',
+		'Bayesian Models',
+		'Encoders',
+		'Distribution Fitter',
+		'Neural Networks',
+		'Static Models'
+	];
+
+	const modelingDescriptions = [
+		'Models that are trained iteratively to improve performance',
+		'Models that combine the predictions of multiple models for better predictions',
+		'Models that are based on Bayesian statistics',
+		'Models that encode input data into a new form',
+		'Models that fit a probability distribution to the data',
+		'Models that use neural networks to learn complex patterns in the data',
+		'Models that require no training'
+	];
+
+	const modelingImages = [
+		'https://i.imgur.com/V6HWp7j.png',
+		'https://i.imgur.com/u13WwDA.png',
+		'https://i.imgur.com/4Py5yfh.png',
+		'https://i.imgur.com/BnwjXUD.png',
+		'https://i.imgur.com/SFD1ftY.png',
+		'https://i.imgur.com/9KPyDWa.png',
+		'https://i.imgur.com/yjlQEGL.png'
+	];
 
 	let showModal = false;
 	let modalContent = '';
@@ -62,24 +93,79 @@
 		modalContent = '';
 		models = [];
 	}
+
+	let learningMode: boolean = true;
+
+	// Function to set learning mode
+	const setLearningMode = (): void => {
+		learningMode = true;
+		// After setting the mode, save it to local storage
+		localStorage.setItem('learningMode', 'true');
+	};
+
+	// Function to set modeling mode
+	const setModelingMode = (): void => {
+		learningMode = false;
+		// After setting the mode, save it to local storage
+		localStorage.setItem('learningMode', 'false');
+	};
+
+	// Function to load state from local storage
+	const loadStateFromLocalStorage = (): void => {
+		const savedLearningMode: string | null = localStorage.getItem('learningMode');
+		// If there's a saved learning mode in local storage
+		if (savedLearningMode !== null) {
+			// Parse the string to boolean and set the learning mode
+			learningMode = savedLearningMode === 'true';
+		}
+	};
+
+	// Call this function when your application starts or wherever appropriate
+	loadStateFromLocalStorage();
 </script>
 
-<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; ">	
-	<h1 style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:70%">Over <span style="color:darkmagenta;">180 Machine Learning Models</span>...At Your <span style="color:darkmagenta;">Fingertips</span></h1>
+<div
+	style="display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; "
+>
+	<h1
+		style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:70%"
+	>
+		Over <span style="color:darkmagenta;">180 Machine Learning Models</span>...At Your
+		<span style="color:darkmagenta;">Fingertips</span>
+	</h1>
 </div>
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
-<Search items={flatModelBrowser}/>
+	<Search items={flatModelBrowser} />
 </div>
-<div style="display: flex; justify-content: center; align-items: center; margin-top:3rem;">
+<div
+	style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; gap: 0rem;"
+>
+	<button
+		on:click={setLearningMode}
+		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
+			? 'white'
+			: 'black'}; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
+		>View Models by Learning Objective</button
+	>
+	<button
+		on:click={setModelingMode}
+		style="background-color: {!learningMode ? '#6E4582' : 'transparent'}; color: {!learningMode
+			? 'white'
+			: 'black'}; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
+	>
+		View Models by Modeling Approach
+	</button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; margin-top:2rem;">
 	<div class="modern-grid">
-		{#each problems as problem, i}
+		{#each learningMode ? learningProblems : modelingProblems as problem, i}
 			<div class="grid-item">
 				<div class="img-container">
-					<img src={images[i]} alt="" />
+					<img src={learningMode ? learningImages[i] : modelingImages[i]} alt="" />
 				</div>
 				<div class="item-title">
 					<b>{problem}</b>
-					<p>{descriptions[i]}</p>
+					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
 					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
 						>View Models</button
 					>
@@ -90,7 +176,7 @@
 	</div>
 </div>
 
-<Modal {showModal} content={modalContent} models={models} on:closeModal={closeModal} />
+<Modal {showModal} content={modalContent} {models} on:closeModal={closeModal} />
 
 <style lang="scss">
 	.modern-grid {
@@ -131,14 +217,12 @@
 				justify-content: center;
 				align-items: center;
 				img {
-				transition: transform .8s;
-				height: 100%;
-				max-width: 100%;
-				object-fit: cover;
+					transition: transform 0.8s;
+					height: 100%;
+					max-width: 100%;
+					object-fit: cover;
+				}
 			}
-			}
-
-
 
 			.item-title {
 				position: absolute;

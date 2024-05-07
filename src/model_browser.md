@@ -622,6 +622,14 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [UnivariateTimeTypeToContinuous (MLJModels.jl)](@ref UnivariateTimeTypeToContinuous_MLJModels)
 
+
+## Neural Networks
+- [AutoEncoder (BetaML.jl)](@ref AutoEncoder_BetaML)
+
+- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
+
+
+
 ##  Static Models
 - [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
 
