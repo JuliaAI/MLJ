@@ -7,9 +7,9 @@
 
 	let md;
 	let highlighter;
-	let cheatsheetHTML: string | undefined;
 	let isLoading = true;
-
+	let cheatsheetHTML: string | undefined;
+	let cheatsheetHTMLArr: string[];
 	onMount(async () => {
 		highlighter = await getHighlighterCore({
 			themes: [import('shiki/themes/min-light.mjs')],
@@ -18,55 +18,71 @@
 		});
 		md = new MarkdownIt();
 		md.use(fromHighlighter(highlighter, { themes: { light: 'min-light' } }));
-		cheatsheetHTML = md.render(cheatSheet)
+		cheatsheetHTML = md.render(cheatSheet.replace('@repl', 'julia'));
 		let pattern = /<h2>(.*?)<\/h2>([\s\S]*?)(?=<h2>|$)/g;
 		cheatsheetHTML = cheatsheetHTML.replace(pattern, '<div>$&</div>');
-		isLoading = false; // Set loading state to false once content is loaded
+		cheatsheetHTML = cheatsheetHTML.replace(/<pre/g, '<p class="pre"').replace(/<\/pre>/g, '</p>');
+		cheatsheetHTMLArr = cheatsheetHTML
+			.split('<div>')
+			.filter((section) => section.trim() !== '')
+			.map((section) => `<div>${section}</div>`);
+		isLoading = false;
 	});
 
 	function downloadAsPDF() {
 		window.print();
 	}
-</script>
+	let fractions = [[0, 1.3/6], [1.3/6, 3.8/6], [3.8/6, 6/6],]
 
-<!-- <button on:click={downloadAsPDF}>Download as PDF</button> -->
+</script>
 
 {#if isLoading}
 	<div>Loading...</div>
 {:else}
-	<div class="intents-container" id="print-this">
-		{@html cheatsheetHTML}
+<div style="display: flex; flex-direction: column; gap: 0rem;">
+	<button style=" font-family:Poppins; background-color: #6e4582; width:300px; margin: auto; margin-top: 1rem; color: white; border-radius: 3rem; padding: 0.5rem;" on:click={downloadAsPDF} >Print the Cheat Sheet</button>
+	<div class="intents-container row" id="print-this">
+		{#each fractions as fraction, frac_ind}
+			<div class="column">
+				{#each cheatsheetHTMLArr.filter((_, index) =>  index < fraction[1] * cheatsheetHTMLArr.length && index >= fraction[0] * cheatsheetHTMLArr.length)  as section}
+					{@html section}
+				{/each}
+			</div>
+		{/each}
 	</div>
+</div>
 {/if}
 
 <style lang="scss">
-	.intents-container {
-		column-count: 3;
-        @media print {
-            column-count: 4;
-        }
-		/* height: auto; */
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		margin: auto;
+		@media only screen and (max-width: 600px) {
+			padding: 1rem !important;
+		}
+	}
+
+	.column {
+		flex: 33%;
+		max-width: 33%;
+		padding: 0 !important;
 		@media only screen and (max-width: 1200px) {
-			column-count: 2;
+			flex: 50%;
+			max-width: 50%;
 		}
 		@media only screen and (max-width: 600px) {
-			gap: 0.3rem;
-			column-count: 1;
-			padding: 2rem 0.5rem 2rem;
+			flex: 100%;
+			max-width: 100%;
 		}
+	}
+	.intents-container {
 		gap: 0rem;
-		padding: 3rem 3rem 1rem;
+		padding: 1rem 3rem 1rem;
 
 		:global(div) {
-			border: 1px solid #6e4582;
+			border: 0.5px solid #6e4582;
 			break-inside: avoid-column;
-			@media print {
-                break-inside: auto;
-                overflow: auto;
-                display: inline-block;
-
-                
-			}
 			padding: 1rem;
 			padding-bottom: 2rem;
 			background-color: #f1f1f1;
@@ -93,7 +109,7 @@
 		:global(h1) {
 			font-family: 'Poppins';
 			text-align: center;
-			border: 1px solid #8b7099;
+			//border: 1px solid #8b7099;
 			padding: 0.9rem;
 			color: #462c53;
 			background-color: #f1f1f1;
@@ -127,7 +143,8 @@
 			margin: 0.3rem;
 			font-size: 0.75rem;
 		}
-		:global(pre) {
+		:global(pre),
+		:global(.pre) {
 			display: inline-block;
 			padding: 0.5rem;
 			border-radius: 10px;
@@ -175,12 +192,13 @@
 			left: 0;
 			top: 0;
 			// width: 320mm;
-            overflow: visible;
+			overflow: visible;
 		}
 	}
 
 	@page {
-        size: A3 landscape;
+		size: A3 portrait;
 		margin: 0mm;
+		padding: 0mm;
 	}
 </style>

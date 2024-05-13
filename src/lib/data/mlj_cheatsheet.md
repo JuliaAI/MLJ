@@ -3,9 +3,9 @@
 
 ## Starting an interactive MLJ session
 
-```julia
+```@repl cheat
 using MLJ
-MLJ_VERSION # version of MLJ
+MLJ_VERSION # version of MLJ for this cheatsheet
 ```
 
 ## Model search and code loading
@@ -34,14 +34,15 @@ With additional conditions:
 models() do model
     matching(model, X, y) &&
     model.prediction_type == :probabilistic &&
-        model.is_pure_julia
+    model.is_pure_julia
 end
 ```
 
-`Tree = @load DecisionTreeClassifier pkg=DecisionTree` imports "DecisionTreeClassifier" type and binds it to `Tree`
-`tree = Tree()` to instantiate a `Tree`. 
+`Tree = @load DecisionTreeClassifier pkg=DecisionTree` imports "DecisionTreeClassifier" type and binds it to `Tree`.
 
-`tree2  = Tree(max_depth=2)` instantiates a tree with different hyperparameter
+`tree = Tree()` to instantiate a `Tree`.
+
+`tree2 = Tree(max_depth=2)` instantiates a tree with different hyperparameter
 
 `Ridge = @load RidgeRegressor pkg=MultivariateStats` imports a type for a model provided by multiple packages
 
@@ -96,37 +97,53 @@ y, X =  unpack(channing,
 
 Splitting row indices into train/validation/test, with seeded shuffling:
 
-`train, valid, test = partition(eachindex(y), 0.7, 0.2, rng=1234)` for 70:20:10 ratio
+```julia
+train, valid, test = partition(eachindex(y), 0.7, 0.2, rng=1234) # for 70:20:10 ratio
+```
 
 For a stratified split:
 
-`train, test = partition(eachindex(y), 0.8, stratify=y)`
+```julia
+train, test = partition(eachindex(y), 0.8, stratify=y)
+```
 
 Split a table or matrix `X`, instead of indices:
 
-`Xtrain, Xvalid, Xtest = partition(X, 0.5, 0.3, rng=123)` 
+```julia
+Xtrain, Xvalid, Xtest = partition(X, 0.5, 0.3, rng=123)
+```
 
 Getting data from [OpenML](https://www.openml.org):
-
-`table = OpenML.load(91)`
-
+```julia
+table = OpenML.load(91)
+```
 Creating synthetic classification data:
 
-`X, y = make_blobs(100, 2)` (also: `make_moons`, `make_circles`)
+```julia
+X, y = make_blobs(100, 2)
+```
+(also: `make_moons`, `make_circles`)
 
 Creating synthetic regression data:
 
-`X, y = make_regression(100, 2)`
+```julia
+X, y = make_regression(100, 2)
+```
 
 ## Machine construction
 
 Supervised case:
-
-`model = KNNRegressor(K=1)` and `mach = machine(model, X, y)`
+```julia
+model = KNNRegressor(K=1)
+mach = machine(model, X, y)
+```
 
 Unsupervised case:
 
-`model = OneHotEncoder()` and `mach = machine(model, X)`
+```julia
+model = OneHotEncoder()
+mach = machine(model, X)
+```
 
 ## Fitting
 
@@ -191,13 +208,12 @@ or a list of pairs of row indices:
 
 `[(train1, eval1), (train2, eval2), ... (traink, evalk)]`
 
-## Tuning
 
-### Tuning model wrapper
+## Tuning model wrapper
 
 `tuned_model = TunedModel(model=…, tuning=RandomSearch(), resampling=Holdout(), measure=…, operation=predict, range=…)`
 
-### Ranges for tuning (`range=...`)
+## Ranges for tuning (`range=...`)
 
 If `r = range(KNNRegressor(), :K, lower=1, upper = 20, scale=:log)`
 
@@ -212,7 +228,7 @@ Nested ranges: Use dot syntax, as in `r = range(EnsembleModel(atom=tree), :(atom
 Can specify multiple ranges, as in `range=[r1, r2, r3]`. For more range options do `?Grid` or `?RandomSearch`
 
 
-### Tuning strategies
+## Tuning strategies
 
 `RandomSearch(rng=1234)` for basic random search
 
@@ -283,7 +299,7 @@ Externals include: `PCA` (in MultivariateStats), `KMeans`, `KMedoids` (in Cluste
 
 ## Pipelines
 
-`pipe = (X -> coerce(X, :height=>Continuous)) |> OneHotEncoder |> KNNRegressor(K=3)` 
+`pipe = (X -> coerce(X, :height=>Continuous)) |> OneHotEncoder |> KNNRegressor(K=3)`
 
 Unsupervised:
 
