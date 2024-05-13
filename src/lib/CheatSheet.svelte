@@ -18,7 +18,7 @@
 		});
 		md = new MarkdownIt();
 		md.use(fromHighlighter(highlighter, { themes: { light: 'min-light' } }));
-		cheatsheetHTML = md.render(cheatSheet); // replace(/`([^`]+)` /g, "\n```julia\n$1\n```\n")
+		cheatsheetHTML = md.render(cheatSheet)
 		let pattern = /<h2>(.*?)<\/h2>([\s\S]*?)(?=<h2>|$)/g;
 		cheatsheetHTML = cheatsheetHTML.replace(pattern, '<div>$&</div>');
 		isLoading = false; // Set loading state to false once content is loaded

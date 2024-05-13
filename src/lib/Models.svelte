@@ -8,7 +8,6 @@
 	const md = new MarkdownIt();
 	const modelBrowserJson = markdownToJSON(modelBrowser);
 	const flatModelBrowser = flattenJSON(modelBrowserJson);
-	console.log(flatModelBrowser);
 
 	const learningProblems = [
 		'Classification',
@@ -34,14 +33,14 @@
 	];
 	const learningImages = [
 		'https://i.imgur.com/pS2oOkb.png',
-		'https://i.imgur.com/QNYMwLd.png',
-		'https://i.imgur.com/9XDZko6.png',
-		'https://i.imgur.com/4Hkvs72.png',
-		'https://i.imgur.com/MZCYV8y.png',
-		'https://i.imgur.com/n5ftY1Y.png',
-		'https://i.imgur.com/S56AK2C.png',
-		'https://i.imgur.com/M3cTtCF.png',
-		'https://i.imgur.com/nAGEXBS.png'
+		'/reg.gif',
+		'/cluster.gif',
+		'https://i.imgur.com/3azIgiG.png',
+		'https://i.imgur.com/57vvJBK.png',
+		'/imbalance.gif',
+		'https://i.imgur.com/n6CVxmj.png',
+		'https://i.imgur.com/x5IrImv.png',
+		'https://i.imgur.com/iDgQ4QP.png'
 	];
 
 	const modelGenres = Object.keys(modelBrowserJson).filter(
@@ -60,22 +59,22 @@
 
 	const modelingDescriptions = [
 		'Models that are trained iteratively to improve performance',
-		'Models that combine the predictions of multiple models for better predictions',
+		'Models that combine the predictions of multiple models',
 		'Models that are based on Bayesian statistics',
 		'Models that encode input data into a new form',
 		'Models that fit a probability distribution to the data',
 		'Models that use neural networks to learn complex patterns in the data',
-		'Models that require no training'
+		'Models that do not generalize to new observations'
 	];
 
 	const modelingImages = [
 		'https://i.imgur.com/V6HWp7j.png',
 		'https://i.imgur.com/u13WwDA.png',
 		'https://i.imgur.com/4Py5yfh.png',
-		'https://i.imgur.com/BnwjXUD.png',
+		'https://i.imgur.com/BrNfbhK.png',
 		'https://i.imgur.com/SFD1ftY.png',
 		'https://i.imgur.com/9KPyDWa.png',
-		'https://i.imgur.com/yjlQEGL.png'
+		'/cluster.gif',
 	];
 
 	let showModal = false;
@@ -125,6 +124,7 @@
 </script>
 
 <div
+	class="headline"
 	style="display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; "
 >
 	<h1
@@ -138,7 +138,7 @@
 	<Search items={flatModelBrowser} />
 </div>
 <div
-	style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; gap: 0rem;"
+	style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; gap: 0rem; max-width: 70%; margin-left: auto; margin-right: auto;"
 >
 	<button
 		on:click={setLearningMode}
@@ -179,11 +179,24 @@
 <Modal {showModal} content={modalContent} {models} on:closeModal={closeModal} />
 
 <style lang="scss">
+	.headline {
+		h1 {
+			@media only screen and (max-width: 900px) {
+				display: none;
+			}
+			@media only screen and (max-width: 1500px) {
+				width: 90% !important;
+			}
+		}
+	}
 	.modern-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(calc((100% - 40px) / 3), 1fr));
 		@media only screen and (max-width: 767px) {
 			grid-template-columns: repeat(auto-fit, minmax(calc((100% - 40px) / 2), 1fr));
+		}
+		@media only screen and (max-width: 600px) {
+			grid-template-columns: repeat(auto-fit, minmax(calc((100% - 40px) / 1), 1fr));
 		}
 		gap: 20px;
 		max-width: 1200px;
@@ -208,7 +221,7 @@
 				// 	color: #fff;
 				// }
 				img {
-					transform: scale(1.05);
+					transform: scale(1.08) !important;
 				}
 			}
 
@@ -221,6 +234,7 @@
 					height: 100%;
 					max-width: 100%;
 					object-fit: cover;
+					transform: scale(1.04);
 				}
 			}
 

@@ -66,10 +66,13 @@
     {/if}
   </div>
   
-  <style>
+  <style lang="scss">
     .search-bar {
       position: relative;
-      width: 60%; /* Adjust width as needed */
+      width: 60%; 
+			@media only screen and (max-width: 1300px) {
+        width: 90%;
+      }
     }
   
     .search-input {

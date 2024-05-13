@@ -17,7 +17,6 @@
 		}
 	}
 
-	console.log(models);
 </script>
 
 {#if showModal}
