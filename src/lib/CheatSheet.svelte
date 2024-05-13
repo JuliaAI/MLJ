@@ -39,7 +39,7 @@
 {#if isLoading}
 	<div>Loading...</div>
 {:else}
-<div style="display: flex; flex-direction: column; gap: 0rem;">
+<div style="display: flex; flex-direction: column; gap: 0rem; width: 100%">
 	<button style=" font-family:Poppins; background-color: #6e4582; width:300px; margin: auto; margin-top: 1rem; color: white; border-radius: 3rem; padding: 0.5rem;" on:click={downloadAsPDF} >Print the Cheat Sheet</button>
 	<div class="intents-container row" id="print-this">
 		{#each fractions as fraction, frac_ind}
@@ -68,12 +68,12 @@
 		max-width: 33%;
 		padding: 0 !important;
 		@media only screen and (max-width: 1200px) {
-			flex: 50%;
-			max-width: 50%;
+			flex: 50% !important;
+			max-width: 50% !important;
 		}
 		@media only screen and (max-width: 600px) {
-			flex: 100%;
-			max-width: 100%;
+			flex: 100% !important;
+			max-width: 100% !important;
 		}
 	}
 	.intents-container {
