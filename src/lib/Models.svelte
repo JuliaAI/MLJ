@@ -1,4 +1,10 @@
-<script lang="ts">
+<script>
+import MarkdownIt from 'markdown-it';
+console.log("hello")
+</script>
+Hi
+
+<!-- <script lang="ts">
 	import MarkdownIt from 'markdown-it';
 	import modelBrowser from '$lib/data/model_browser.md?raw';
 	import { markdownToJSON, flattenJSON } from './utilts'; // Make sure customSort function is exported from "utils.ts"
@@ -297,4 +303,4 @@
 			}
 		}
 	}
-</style>
+</style> -->

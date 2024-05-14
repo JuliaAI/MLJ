@@ -95,7 +95,6 @@ const attributeMapping = {
   href: "link"
 };
     flatTutorialsByTag = renameAttributes(flatTutorialsByTag, attributeMapping);
-    console.log(flatTutorialsByTag)
 </script>
 
 <div class="container">
