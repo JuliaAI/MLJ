@@ -1,6 +1,7 @@
 <script>
-    import Models from "$lib/Models.svelte"
+    // import Models from "$lib/Models.svelte"
 </script>
 
-<Models/>
+<!-- <Models/> -->
+Hello
 <!-- Other components will go here as well! -->
