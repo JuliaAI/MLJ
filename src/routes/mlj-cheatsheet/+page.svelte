@@ -4,4 +4,3 @@
 
 <CheatSheet/>
 <!-- Other components will go here as well! -->
-Why

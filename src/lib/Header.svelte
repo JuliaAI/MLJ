@@ -47,10 +47,10 @@
         <ul class="nav-list" style="{navOpen ? 'display: block;' : 'display: none;'}">
           <!-- Setting the links to #! will ensure that no action takes place on click. -->
           <li><a href="{base}/">Home</a></li>
-          <li><a href="{base}/models">Models</a></li>
+          <li><a href="{base}/machines">Models</a></li>
 		  <li><a href="{base}/tutorials">Tutorials</a></li>
           <li><a href="https://juliaai.github.io/MLJ.jl/stable/">Documentation</a></li>
-          <li><a href="{base}/cheatsheet">Cheat Sheet</a></li>
+          <li><a href="{base}/mlj-cheatsheet">Cheat Sheet</a></li>
 		  <li><a href="{base}/ecosystem">Ecosystem</a></li>
           <li><a href="{base}/contributing">Contributing</a></li>
           <li><a href="{base}/about">About</a></li>
