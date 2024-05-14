@@ -1,5 +1,5 @@
 <script>
-        // import CheatSheet from "$lib/CheatSheet.svelte";
+        // import CheatSheet from "$lib/CheatSheetComp.svelte";
 </script>
 
 <!-- <CheatSheet/> -->
