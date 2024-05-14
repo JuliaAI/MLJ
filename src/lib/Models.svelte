@@ -4,6 +4,7 @@
 	import { markdownToJSON, flattenJSON } from './utilts'; // Make sure customSort function is exported from "utils.ts"
 	import Modal from './Modal.svelte';
 	import Search from './Search.svelte';
+	import { onMount } from 'svelte';
 
 	const md = new MarkdownIt();
 	const modelBrowserJson = markdownToJSON(modelBrowser);
@@ -119,8 +120,10 @@
 		}
 	};
 
-	// Call this function when your application starts or wherever appropriate
-	loadStateFromLocalStorage();
+	onMount(() => {
+		loadStateFromLocalStorage();
+
+	})
 </script>
 
 <div
