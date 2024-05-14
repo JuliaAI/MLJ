@@ -4,7 +4,7 @@
     import FaSearch from 'svelte-icons/fa/FaSearch.svelte'
 
     export let items: { modelName: string; link: string }[] = [];
-
+    export let placeholder: string = "Search over all models";
     let searchString = '';
     let results: { modelName: string; link: string }[] = [];
     let isOpen = false;
@@ -48,7 +48,7 @@
   </script>
   
   <div class="search-bar">
-    <input type="text" placeholder="Search over all models..." class="search-input" on:input={handleInput} />
+    <input type="text" placeholder={placeholder} class="search-input" on:input={handleInput} />
     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <FaSearch />
     </svg>
@@ -58,7 +58,7 @@
         {#each results as result}
             <a href={`https://alan-turing-institute.github.io/MLJ.jl/dev/models/${result.link}`}>
                 <div class="search-result-item" on:click={() => handleSelect(result)}>
-                {result.modelName} ({result.packageName})
+                {result.modelName} {(result.packageName) ? "(" + result.packageName + ")" : ""}
             </div>
             </a>
         {/each}

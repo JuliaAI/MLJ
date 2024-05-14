@@ -1,0 +1,166 @@
+<script lang="ts">
+	import headString from '$lib/data/head.js?raw';
+	import { flattenJSON } from './utilts'; 
+	import Search from './Search.svelte';
+
+	const pattern = /const navItems = (\[.*?\]);/s;
+	const match = headString.match(pattern);
+	const navItemsJson = match ? match[1] : '';
+	const navItems = eval(navItemsJson);
+
+	type Tutorial = {
+		name: string;
+		href: string;
+	};
+
+	type Section = {
+		name: string;
+		href: string;
+		tags?: string[];
+	};
+
+	type NavigationItem = {
+		name: string;
+		href: string;
+		sections: Section[];
+		sectionItemWidth?: string;
+		id: string;
+	};
+
+	function getTutorialsByTag(navItems: NavigationItem[]): Record<string, Tutorial[]> {
+		const tutorialsByTag: Record<string, Tutorial[]> = {};
+
+		navItems.forEach((navigationItem) => {
+			navigationItem.sections.forEach((section) => {
+				if (section.tags) {
+					section.tags.forEach((tag) => {
+						if (!tutorialsByTag[tag]) {
+							tutorialsByTag[tag] = [];
+						}
+						tutorialsByTag[tag].push({ name: section.name, href: section.href });
+					});
+				}
+			});
+		});
+
+		return tutorialsByTag;
+	}
+
+	const tutorialsByTag = getTutorialsByTag(navItems);
+
+	const tags = [
+		'Data Processing',
+		'Classification',
+		'Regression',
+		'Clustering',
+		'Dimensionality Reduction',
+		'Neural Networks',
+		'Class Imbalance',
+		'Missing Value Imputation',
+		'Encoders',
+		'Feature Selection',
+		'Hyperparameter Tuning',
+		'Pipelines',
+		'Iterative Models',
+		'Ensemble Models',
+		'Bayesian Models'
+	];
+    function removeDuplicatesByKey(arr, key) {
+  const seen = new Set();
+  return arr.filter(obj => {
+    const value = obj[key];
+    if (seen.has(value)) {
+      return false;
+    }
+    seen.add(value);
+    return true;
+  });
+}
+    let flatTutorialsByTag = removeDuplicatesByKey(flattenJSON(tutorialsByTag), "href");
+    function renameAttributes(list:any, mapping:any) {
+  return list.map((obj:any) => {
+    const newObj = {};
+    Object.keys(obj).forEach(key => {
+      if (mapping[key]) {
+        newObj[mapping[key]] = obj[key];
+      } else {
+        newObj[key] = obj[key];
+      }
+    });
+    return newObj;
+  });
+}
+const attributeMapping = {
+  name: "modelName",
+  href: "link"
+};
+    flatTutorialsByTag = renameAttributes(flatTutorialsByTag, attributeMapping);
+    console.log(flatTutorialsByTag)
+</script>
+
+<div class="container">
+	<h1>Work in Progress/h1>
+    <div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
+    <Search items={flatTutorialsByTag} placeholder="Search over all tutorials"/>
+</div>
+	{#each tags as tag}
+		<div class="tag-container">
+			<h2 class="tag">{tag}</h2>
+			<div class="tutorial-list">
+				{#each tutorialsByTag[tag] as tutorial}
+					<a
+						href={'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
+						class="tutorial-link"
+					>
+						<div class="tutorial-item">
+							{tutorial.name}
+						</div>
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/each}
+</div>
+
+<style lang="scss">
+	.tag-container {
+		margin: 1.5rem 1rem;
+		h2 {
+			font-family: Poppins;
+			background-color: #6e4582ee;
+			color: white;
+			padding: 0.5rem;
+			border-radius: 1rem;
+		}
+
+        .tutorial-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+
+            .tutorial-item {
+                width: 150px;
+                height: 150px;
+                background-color:rgb(50, 50, 50);
+                color: white;
+                border-radius: 0.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.0rem;
+                font-family: Poppins;
+                text-align: center;
+                font-weight: 500;
+        
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    
+                }
+            }
+        }
+
+	
+	}
+</style>

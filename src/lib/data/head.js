@@ -243,7 +243,7 @@ const navItems = [
       {
         name: "Stacking",
         href: "/advanced/stacking/",
-        tags: ["Ensemble Models", "Learning Networks", "Hyperparamter Tuning"],
+        tags: ["Ensemble Models", "Learning Networks", "Hyperparameter Tuning"],
       },
     ],
     sectionItemWidth: "medium-item",
