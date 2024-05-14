@@ -1,5 +1,5 @@
 <script>
-import MarkdownIt from 'markdown-it';
+// import MarkdownIt from 'markdown-it';
 console.log("hello")
 </script>
 Hi
