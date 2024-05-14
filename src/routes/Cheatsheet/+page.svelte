@@ -1,7 +1,7 @@
-<!-- <script>
-        import CheatSheet from "$lib/CheatSheet.svelte";
+<script>
+        // import CheatSheet from "$lib/CheatSheet.svelte";
 </script>
 
-<CheatSheet/> -->
+<!-- <CheatSheet/> -->
 <!-- Other components will go here as well! -->
 Why
