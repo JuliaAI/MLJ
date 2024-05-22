@@ -101,7 +101,7 @@
 				background: color-mix(in srgb, $tertiary-color 25.5%, $theme);
 				color: #fff;
 				padding: 8px 15px;
-				font-size: 16px;
+				font-size: 1rem;
 
 				p {
 					font-size: 0.9rem;
@@ -114,6 +114,7 @@
 					font-size: 0.9rem;
 					display: none;
 				}
+			
 			}
 
 			&:hover {

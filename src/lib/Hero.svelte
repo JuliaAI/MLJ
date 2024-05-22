@@ -6,8 +6,7 @@
 
 <!-- HTML Goes Here -->
 
-<h1>Welcome to MLJ!</h1>
-<img src="{img}" width={500} alt="logo"/>
+<img src="https://i.imgur.com/vpO7J9C.png" style="width: 100%" alt="logo"/>
 
 
 <!-- Styles Go Here -->

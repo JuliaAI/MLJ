@@ -105,6 +105,9 @@
 				font-size: 1.1rem;
 			}
 		}
+		:global(li) {
+			margin-left: 2rem;
+		}
 
 		:global(h1) {
 			font-family: 'Poppins';

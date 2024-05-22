@@ -41,7 +41,7 @@
 			{/each}
     </div>
     <div style="display: flex; justify-content: center; align-items:center; padding: 1rem; margin-top:1rem;">
-			<button style="background-color: white; padding: 0.5rem 2rem; border-radius:1rem; font-family: Poppins" on:click={closeModal}>Go Back</button>
+			<button style="background-color: white; padding: 0.5rem 2rem; border-radius:1rem; font-family: Poppins; font-size:0.9rem" on:click={closeModal}>Go Back</button>
     </div>
 		</div>
 	</div>
@@ -84,6 +84,7 @@
     .list-button {
       padding: 0.6rem 0rem; 
       border-bottom: 1px solid #f1f1f177;
+	  font-size: 0.9rem;
       text-align:left;
       display: flex;
       align-items: center;
@@ -101,7 +102,7 @@
 		position: absolute;
 		right: 15px;
 		top: 3px;
-		font-size: 20px;
+		font-size: 1.3rem;
 		font-weight: bold;
 	}
 

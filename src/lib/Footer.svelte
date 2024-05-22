@@ -81,7 +81,7 @@
 
 			line-height: 28px;
 
-			font-size: 14px;
+			font-size: 0.95rem;
 			padding: 0.5rem;
 
 			color: #cacdd2;

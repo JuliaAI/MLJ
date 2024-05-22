@@ -80,7 +80,7 @@
       padding: 10px 40px 10px 30px;
       border: 1px solid #ccc;
       border-radius: 25px;
-      font-size: 16px;
+      font-size: 1rem;
       outline: none;
       font-family: 'Open Sans';
     }

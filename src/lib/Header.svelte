@@ -49,7 +49,7 @@
           <li><a href="{base}/">Home</a></li>
           <li><a href="{base}/machines">Models</a></li>
 		  <li><a href="{base}/tutorials">Tutorials</a></li>
-          <li><a href="https://juliaai.github.io/MLJ.jl/stable/">Documentation</a></li>
+          <li><a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a></li>
           <li><a href="{base}/mlj-cheatsheet">Cheat Sheet</a></li>
 		  <li><a href="{base}/ecosystem">Ecosystem</a></li>
           <li><a href="{base}/contributing">Contributing</a></li>

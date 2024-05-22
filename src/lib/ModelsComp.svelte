@@ -148,14 +148,14 @@
 		on:click={setLearningMode}
 		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
 			? 'white'
-			: 'black'}; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
+			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
 		>View Models by Learning Objective</button
 	>
 	<button
 		on:click={setModelingMode}
 		style="background-color: {!learningMode ? '#6E4582' : 'transparent'}; color: {!learningMode
 			? 'white'
-			: 'black'}; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
+			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
 	>
 		View Models by Modeling Approach
 	</button>
@@ -251,7 +251,7 @@
 				background: #eaeaea;
 				color: #1d1d1d;
 				padding: 20px 0px;
-				font-size: 20px;
+				font-size: 1.3rem;
 				min-height: 70px;
 				text-align: center;
 
@@ -261,6 +261,7 @@
 					font-family: 'Poppins';
 					padding: 10px 15px;
 					margin-top: 1rem;
+					font-size: 0.8rem;
 					outline: none;
 					border: 2px solid #acacac;
 					&:hover {
