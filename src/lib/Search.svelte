@@ -5,6 +5,7 @@
 
     export let items: { modelName: string; link: string }[] = [];
     export let placeholder: string = "Search over all models";
+    export let tutorialsMode: boolean = false;
     let searchString = '';
     let results: { modelName: string; link: string }[] = [];
     let isOpen = false;
@@ -56,7 +57,7 @@
     {#if isOpen && results.length > 0}
       <div class="search-results">
         {#each results as result}
-            <a href={`https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}>
+            <a href={(tutorialsMode) ?`https://juliaai.github.io/DataScienceTutorials.jl/${result.link}` :`https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}>
                 <div class="search-result-item" on:click={() => handleSelect(result)}>
                 {result.modelName} {(result.packageName) ? "(" + result.packageName + ")" : ""}
             </div>
