@@ -56,7 +56,7 @@
     {#if isOpen && results.length > 0}
       <div class="search-results">
         {#each results as result}
-            <a href={`https://alan-turing-institute.github.io/MLJ.jl/dev/models/${result.link}`}>
+            <a href={`https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}>
                 <div class="search-result-item" on:click={() => handleSelect(result)}>
                 {result.modelName} {(result.packageName) ? "(" + result.packageName + ")" : ""}
             </div>

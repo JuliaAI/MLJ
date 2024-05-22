@@ -1,4 +1,5 @@
 # # METHODS TO WRITE A MODEL DOCSTRING TO A FILE
+using MLJBase
 
 const PATH_TO_MODEL_DOCS = joinpath(@__DIR__, "src", "models")
 

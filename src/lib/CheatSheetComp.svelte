@@ -40,7 +40,7 @@
 	<div>Loading...</div>
 {:else}
 <div style="display: flex; flex-direction: column; gap: 0rem; width: 100%">
-	<button style=" font-family:Poppins; background-color: #6e4582; width:300px; margin: auto; margin-top: 1rem; color: white; border-radius: 3rem; padding: 0.5rem;" on:click={downloadAsPDF} >Print the Cheat Sheet</button>
+	<button style=" font-family:Poppins; font-size: 1rem; background-color: #6e4582; width:300px; margin: auto; margin-top: 1rem; color: white; border-radius: 3rem; padding: 0.5rem;" on:click={downloadAsPDF} >Download the Cheat Sheet</button>
 	<div class="intents-container row" id="print-this">
 		{#each fractions as fraction, frac_ind}
 			<div class="column">

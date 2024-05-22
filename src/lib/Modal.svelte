@@ -31,7 +31,7 @@
       <div class="list-container">
       {#each models as model, i}
 				<button class="list-button">
-          <a href={`https://alan-turing-institute.github.io/MLJ.jl/dev/models/${model.link}`} style="color: white; font-family: Poppins;">
+          <a href={`https://juliaai.github.io/MLJ.jl/dev/models/${model.link}`} style="color: white; font-family: Poppins;">
             <div style="padding-left:1rem; display: flex; flex-direction: row; gap: 8rem;">
 					    <div style="width:100px">{model.modelName}</div>
               <div style="width:100px">({model.packageName})</div>
