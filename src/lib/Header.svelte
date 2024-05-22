@@ -9,7 +9,7 @@
     }
   
     onMount(() => {
-      // If a link has a dropdown, add sub menu toggle.
+    //   If a link has a dropdown, add sub menu toggle.
       document.querySelectorAll('nav ul li a:not(:only-child)').forEach(item => {
         item.addEventListener('click', (e) => {
           const sibling =  item.nextElementSibling;
@@ -48,7 +48,13 @@
           <!-- Setting the links to #! will ensure that no action takes place on click. -->
           <li><a href="{base}/">Home</a></li>
           <li><a href="{base}/machines">Models</a></li>
-		  <li><a href="{base}/tutorials">Tutorials</a></li>
+		  <li id="item-with-dropdown">
+			<a href="{base}/tutorials" >Tutorials</a>
+			<ul style="display:flex; flex-direction: column;" id="item-dropdown">
+				<li><a href="{base}/tutorials">By Learning Task</a></li>
+				<li><a href="https://juliaai.github.io/DataScienceTutorials.jl/">By Natural Sequence</a></li>
+			</ul>
+		</li>
           <li><a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a></li>
           <li><a href="{base}/mlj-cheatsheet">Cheat Sheet</a></li>
 		  <li><a href="{base}/ecosystem">Ecosystem</a></li>
@@ -88,6 +94,16 @@
   The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
   */
 	}
+
+	#item-dropdown {
+		display: none !important;
+	}
+	#item-with-dropdown:hover {
+		#item-dropdown {
+			display: block !important;
+		}
+	}
+
 	nav ul li a:hover {
 		background: rgb(84, 41, 84);
 		color: #ffffff;
@@ -99,6 +115,12 @@
 	nav ul li ul li {
 		min-width: 190px;
 	}
+	nav ul li ul {
+		background: rgb(119, 60, 119);
+		position: absolute;
+		left: 0;
+		top: 100%;
+	}
 	nav ul li ul li a {
 		padding: 15px;
 		line-height: 20px;
@@ -106,7 +128,7 @@
 
 	.nav-dropdown {
 		position: absolute;
-		z-index: 1;
+		z-index: 5;
 		/* Guarantees that the dropdown will display on top of any content. */
 		box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 		display: none;

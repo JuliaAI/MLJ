@@ -99,20 +99,33 @@
 
 <div class="container">
 	<div
-	class="headline"
-	style="display: flex; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; "
->
-	<h1
-		style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:80%"
+		class="headline"
+		style="display: flex; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; "
 	>
-		Looking for a <span style="color:darkmagenta;">Ph.D. in ML?</span> We've Got All
-		<span style="color:darkmagenta;"> Needed Tutorials</span>
-	</h1>
-</div>
-		<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
-			<Search tutorialsMode={true} items={flatTutorialsByTag} placeholder="Search over all tutorials" />
-		</div>
-		<div class="tag-containers-wrapper">
+		<h1
+			style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:80%"
+		>
+			Looking for a <span style="color:darkmagenta;">Ph.D. in ML?</span> We've Got All
+			<span style="color:darkmagenta;"> Needed Tutorials</span>
+		</h1>
+	</div>
+
+	<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
+		<Search
+			tutorialsMode={true}
+			items={flatTutorialsByTag}
+			placeholder="Search over all tutorials"
+		/>
+	</div>
+	<div style="display: flex; justify-content: center; align-items:center; margin-top:1rem; font-family: Poppins;">
+		<p>
+			Looking for an intuitive sequential progression of tutorials? See <a
+				style="color: darkmagenta; "
+				href="https://juliaai.github.io/DataScienceTutorials.jl/">DataScienceTutorials.jl</a
+			>
+		</p>
+	</div>
+	<div class="tag-containers-wrapper">
 		{#each tags as tag}
 			<div class="tag-container">
 				<h3 class="tag">{tag}</h3>
@@ -130,14 +143,33 @@
 				</div>
 			</div>
 		{/each}
-		</div>
+	</div>
 </div>
 
 <style lang="scss">
+	.headline {
+		h1 {
+			@media only screen and (max-width: 900px) {
+				display: none;
+			}
+			@media only screen and (max-width: 1500px) {
+				width: 90% !important;
+			}
+		}
+	}
 	.tag-containers-wrapper {
 		column-count: 3;
+		// handle smaller screen
+		@media screen and (max-width: 1000px) {
+			column-count: 2;
+		}
+		// handle mobile
+		@media screen and (max-width: 600px) {
+			column-count: 1;
+		}
 		margin: 2rem 3rem;
 	}
+
 	.tag-container {
 		margin-bottom: 2rem;
 		break-inside: avoid-column;
@@ -160,7 +192,6 @@
 			border: 1px solid #6e458299;
 			border-bottom-left-radius: 1rem;
 			border-bottom-right-radius: 1rem;
-
 
 			.tutorial-item {
 				// width: 150px;
