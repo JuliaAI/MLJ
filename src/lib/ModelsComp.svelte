@@ -1,4 +1,3 @@
-
 <script lang="ts">
 	import MarkdownIt from 'markdown-it';
 	import modelBrowser from '$lib/data/model_browser.md?raw';
@@ -6,6 +5,7 @@
 	import Modal from './Modal.svelte';
 	import Search from './Search.svelte';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	const md = new MarkdownIt();
 	const modelBrowserJson = markdownToJSON(modelBrowser);
@@ -15,7 +15,7 @@
 		'Classification',
 		'Regression',
 		'Clustering',
-		'Dimension Reduction',
+		'Dimensionality Reduction',
 		'Outlier Detection',
 		'Class Imbalance',
 		'Missing Value Imputation',
@@ -37,7 +37,7 @@
 		'https://i.imgur.com/pS2oOkb.png',
 		'/reg.gif',
 		'/cluster.gif',
-		'https://i.imgur.com/3azIgiG.png',
+		'https://i.imgur.com/Cuc1dce.png',
 		'https://i.imgur.com/57vvJBK.png',
 		'/imbalance.gif',
 		'https://i.imgur.com/n6CVxmj.png',
@@ -76,7 +76,7 @@
 		'https://i.imgur.com/BrNfbhK.png',
 		'https://i.imgur.com/SFD1ftY.png',
 		'https://i.imgur.com/9KPyDWa.png',
-		'/cluster.gif',
+		'/cluster.gif'
 	];
 
 	let showModal = false;
@@ -123,8 +123,16 @@
 
 	onMount(() => {
 		loadStateFromLocalStorage();
+		// const button = document.querySelector('.view-button');
+		// if (button) {
+		// 	button.addEventListener('click', (event: Event) => {
+		// 		// Prevent the default behavior of following the link
+		// 		event.preventDefault();
 
-	})
+		// 		// Additional code if needed
+		// 	});
+		// }
+	});
 </script>
 
 <div
@@ -173,7 +181,16 @@
 					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
 						>View Models</button
 					>
-					<button class="view-button">View Tutorials</button>
+					<button class="view-button"
+					on:click={()=>{
+						// goto(`/tutorials`)
+						// goto()
+						}}
+					>
+					<a href="/tutorials/{problem}">
+					View Tutorials
+				</a>
+				</button>
 				</div>
 			</div>
 		{/each}
