@@ -50,10 +50,6 @@
           <li><a href="{base}/machines">Models</a></li>
 		  <li id="item-with-dropdown">
 			<a href="{base}/tutorials" >Tutorials</a>
-			<ul style="display:flex; flex-direction: column;" id="item-dropdown">
-				<li><a href="{base}/tutorials">By Learning Task</a></li>
-				<li><a href="https://juliaai.github.io/DataScienceTutorials.jl/">By Natural Sequence</a></li>
-			</ul>
 		</li>
           <li><a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a></li>
           <li><a href="{base}/mlj-cheatsheet">Cheat Sheet</a></li>
