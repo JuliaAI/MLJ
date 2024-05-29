@@ -25,6 +25,7 @@
 			console.error('Error fetching JSON:', error);
 		}
 	}
+	console.log("check")
 
 	// Call the async function
 	fetchJson();
