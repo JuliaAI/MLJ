@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Create directory if it does not exist
+        run: mkdir -p src/lib/Data
+
       - name: Download file
         run: |
           curl -o src/lib/Data/mlj_cheatsheet.md https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/docs/src/mlj_cheatsheet.md
@@ -20,6 +23,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@users.noreply.github.com"
-          git add mlj_cheatsheet.md
+          git add src/lib/Data/mlj_cheatsheet.md
           git commit -m "⬆️ Update MLJ cheatsheet from MLJ.jl"
           git push
