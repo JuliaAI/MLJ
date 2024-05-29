@@ -1,6 +1,5 @@
 <!-- JS Goes here -->
 <script lang="ts">
-    import img from '$lib/images/MLJ.png';
     
 </script>
 

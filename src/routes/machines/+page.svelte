@@ -1,5 +1,5 @@
 <script>
-    import Models from "$lib/ModelsComp.svelte";
+    import Models from "$lib/ModelsPage/ModelsComp.svelte";
 </script>
 
 <Models/>

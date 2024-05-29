@@ -1,5 +1,5 @@
 <script>
-    import Hero from "$lib/Hero.svelte";
+    import Hero from "$lib/HomePage/Hero.svelte";
 </script>
 
 <Hero/>

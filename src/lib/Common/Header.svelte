@@ -86,9 +86,7 @@
 		text-decoration: none;
         font-family: 'Lato';
         font-weight: 500;
-		/*
-  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
-  */
+
 	}
 
 	#item-dropdown {

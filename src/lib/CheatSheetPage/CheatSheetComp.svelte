@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MarkdownIt from 'markdown-it';
-	import cheatSheet from '$lib/data/mlj_cheatsheet.md?raw';
+	import cheatSheet from '$lib/Data/mlj_cheatsheet.md?raw';
 	import { fromHighlighter } from '@shikijs/markdown-it/core';
 	import { getHighlighterCore } from 'shiki/core';
 	import { onMount } from 'svelte';
@@ -10,6 +10,8 @@
 	let isLoading = true;
 	let cheatsheetHTML: string | undefined;
 	let cheatsheetHTMLArr: string[];
+
+	// Upon load modify the cheatsheet markdown to HTML after introducing syntax highlighting
 	onMount(async () => {
 		highlighter = await getHighlighterCore({
 			themes: [import('shiki/themes/min-light.mjs')],
@@ -32,28 +34,42 @@
 	function downloadAsPDF() {
 		window.print();
 	}
-	let fractions = [[0, 1.3/6], [1.3/6, 3.8/6], [3.8/6, 6/6],]
-
+	let fractions = [
+		[0, 1.3 / 6],
+		[1.3 / 6, 3.8 / 6],
+		[3.8 / 6, 6 / 6]
+	];
 </script>
 
 {#if isLoading}
 	<div>Loading...</div>
 {:else}
-<div style="display: flex; flex-direction: column; gap: 0rem; width: 100%">
-	<button style=" font-family:Poppins; font-size: 1rem; background-color: #6e4582; width:300px; margin: auto; margin-top: 1rem; color: white; border-radius: 3rem; padding: 0.5rem;" on:click={downloadAsPDF} >Download the Cheat Sheet</button>
-	<div class="intents-container row" id="print-this">
-		{#each fractions as fraction, frac_ind}
-			<div class="column">
-				{#each cheatsheetHTMLArr.filter((_, index) =>  index < fraction[1] * cheatsheetHTMLArr.length && index >= fraction[0] * cheatsheetHTMLArr.length)  as section}
-					{@html section}
-				{/each}
-			</div>
-		{/each}
+	<div style="display: flex; flex-direction: column; gap: 0rem; width: 100%">
+		<button class="download" on:click={downloadAsPDF}>Download the Cheat Sheet</button>
+		<div class="intents-container row" id="print-this">
+			{#each fractions as fraction, frac_ind}
+				<div class="column">
+					{#each cheatsheetHTMLArr.filter((_, index) => index < fraction[1] * cheatsheetHTMLArr.length && index >= fraction[0] * cheatsheetHTMLArr.length) as section}
+						{@html section}
+					{/each}
+				</div>
+			{/each}
+		</div>
 	</div>
-</div>
 {/if}
 
 <style lang="scss">
+	.download {
+		font-family: 'Poppins';
+		font-size: 1rem;
+		background-color: #6e4582;
+		width: 300px;
+		margin: auto;
+		margin-top: 1rem;
+		color: white;
+		border-radius: 3rem;
+		padding: 0.5rem;
+	}
 	.row {
 		display: flex;
 		flex-wrap: wrap;
@@ -194,7 +210,6 @@
 			position: absolute;
 			left: 0;
 			top: 0;
-			// width: 320mm;
 			overflow: visible;
 		}
 	}

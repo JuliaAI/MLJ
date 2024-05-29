@@ -1,5 +1,5 @@
 <script>
-    import Tutorials from "$lib/Tutorials.svelte"
+    import Tutorials from "$lib/TutorialsPage/Tutorials.svelte"
 </script>
 
 <Tutorials/>

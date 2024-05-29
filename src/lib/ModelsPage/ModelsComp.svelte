@@ -1,13 +1,13 @@
 <script lang="ts">
 	import MarkdownIt from 'markdown-it';
-	import modelBrowser from '$lib/data/model_browser.md?raw';
-	import { markdownToJSON, flattenJSON } from './utilts'; // Make sure customSort function is exported from "utils.ts"
+	import modelBrowser from '$lib/Data/model_browser.md?raw';
+	import {flattenJSON } from '../Common/helpers';
+	import { markdownToJSON, } from "./helpers";
 	import Modal from './Modal.svelte';
-	import Search from './Search.svelte';
+	import Search from '../Common/Search.svelte';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import Title from '../Common/Title.svelte';
 
-	const md = new MarkdownIt();
 	const modelBrowserJson = markdownToJSON(modelBrowser);
 	const flatModelBrowser = flattenJSON(modelBrowserJson);
 
@@ -123,29 +123,11 @@
 
 	onMount(() => {
 		loadStateFromLocalStorage();
-		// const button = document.querySelector('.view-button');
-		// if (button) {
-		// 	button.addEventListener('click', (event: Event) => {
-		// 		// Prevent the default behavior of following the link
-		// 		event.preventDefault();
-
-		// 		// Additional code if needed
-		// 	});
-		// }
 	});
 </script>
 
-<div
-	class="headline"
-	style="display: flex; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; border-radius:3rem; margin-top: 1.5rem; padding: 1rem; width:100%; "
->
-	<h1
-		style="margin: 1rem; font-family: 'Lato'; font-weight: 700; font-style: italic;  font-size: 2.4rem; text-align:center; width:70%"
-	>
-		Over <span style="color:darkmagenta;">180 Machine Learning Models</span>...At Your
-		<span style="color:darkmagenta;">Fingertips</span>
-	</h1>
-</div>
+
+<Title text="Over [180 Machine Learning Models]...At your [Fingertips]" />
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
 	<Search items={flatModelBrowser} />
 </div>
@@ -181,12 +163,7 @@
 					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
 						>View Models</button
 					>
-					<button class="view-button"
-					on:click={()=>{
-						// goto(`/tutorials`)
-						// goto()
-						}}
-					>
+					<button class="view-button">
 					<a href="/tutorials/{problem}">
 					View Tutorials
 				</a>
@@ -233,14 +210,6 @@
 			border: 1px solid #e1e1e1;
 
 			&:hover {
-				// border: 1px solid #5D3561 ;
-				// outline-color: #5D3561 ;
-				// outline-width: 2px;
-				// outline-style: solid;
-				// .item-title {
-				// 	background: #5D3561 !important;
-				// 	color: #fff;
-				// }
 				img {
 					transform: scale(1.08) !important;
 				}
@@ -294,7 +263,6 @@
 					font-weight: normal !important;
 					text-align: center;
 					margin-top: 4px;
-					// display: none;
 				}
 				span {
 					margin-top: 0.5rem;

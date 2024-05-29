@@ -14,7 +14,7 @@ jobs:
         
       - name: Download file
         run: |
-          curl -o ModelDescriptors.toml https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/docs/ModelDescriptors.toml
+          curl -o src/lib/Data/ModelDescriptors.toml https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/docs/ModelDescriptors.toml
         
       - name: Commit changes
         run: |

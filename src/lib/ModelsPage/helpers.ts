@@ -1,13 +1,3 @@
-interface Model {
-    modelName: string;
-    packageName: string;
-    link: string;
-}
-
-interface ModelMap {
-    [genre: string]: Model[];
-}
-
 export function markdownToJSON(markdown: string): ModelMap {
     const lines = markdown.split('\n');
     const modelMap: ModelMap = {};
@@ -33,17 +23,3 @@ export function markdownToJSON(markdown: string): ModelMap {
 
     return modelMap;
 }
-
-interface JsonObject {
-    [key: string]: any[];
-  }
-  
-  export function flattenJSON(json: JsonObject): any[] {
-    const result: any[] = [];
-  
-    for (const key in json) {
-      result.push(...json[key]);
-    }
-  
-    return result;
-  }

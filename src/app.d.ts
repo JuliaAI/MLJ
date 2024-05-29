@@ -22,6 +22,40 @@ declare global {
 		skills: string[];
 		special: string;
 	  }
+
+	  interface Model {
+		modelName: string;
+		packageName: string;
+		link: string;
+	}
+	
+	interface ModelMap {
+		[genre: string]: Model[];
+	}
+	
+	interface JsonObject {
+		[key: string]: any[];
+	  }
+	  
+
+	type Tutorial = {
+		name: string;
+		href: string;
+	};
+
+	type Section = {
+		name: string;
+		href: string;
+		tags?: string[];
+	};
+
+	type NavigationItem = {
+		name: string;
+		href: string;
+		sections: Section[];
+		sectionItemWidth?: string;
+		id: string;
+	};
 }
 
 export {};
