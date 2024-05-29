@@ -1,0 +1,26 @@
+{
+    "footerTitle": "Machine Learning In Julia",
+    "footerCopyrightText": "Copyright © 2024 All Rights Reserved.",
+    "footerTexts": [
+        "Are you making the right use of your data? Let's find out.",
+        "From pipelines to networks all in one package",
+        "A package for elegant and generic machine learning"
+    ],
+    "footerLinks": [
+        {
+            "name": "Opportunities",
+            "link": "https://sebastian.vollmer.ms/jobs/",
+            "target": "blank"
+        },
+        {
+            "name": "About MLJ",
+            "link": "/About",
+            "target": "self"
+        },
+        {
+            "name": "Contact Us",
+            "link": "mailto:support@mlj.com",
+            "target": "self"
+        }
+    ]
+}

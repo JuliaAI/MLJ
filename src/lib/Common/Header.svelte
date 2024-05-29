@@ -1,72 +1,81 @@
 <script>
-    import { onMount } from 'svelte';
-	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
+	import { base } from '$app/paths'; // may need this for Github pages deployment
+	import headerData from '../../data/Header.json';
 
-    let navOpen = false;
-  
-    function toggleNav() {
-      navOpen = !navOpen;
-    }
-  
-    onMount(() => {
-    //   If a link has a dropdown, add sub menu toggle.
-      document.querySelectorAll('nav ul li a:not(:only-child)').forEach(item => {
-        item.addEventListener('click', (e) => {
-          const sibling =  item.nextElementSibling;
-          if (sibling && sibling.classList.contains('nav-dropdown')) {
-            sibling.style.display = sibling.style.display === 'block' ? 'none' : 'block';
-            // Close one dropdown when selecting another
-            document.querySelectorAll('.nav-dropdown').forEach(element => {
-              if (element !== sibling) {
-                element.style.display = 'none';
-              }
-            });
-            e.stopPropagation();
-          }
-        });
-      });
-  
-      // Clicking away from dropdown will remove the dropdown class
-      document.querySelector('html')?.addEventListener('click', () => {
-        document.querySelectorAll('.nav-dropdown').forEach(element => {
-          element.style.display = 'none';
-        });
-      });
-    });
-  </script>
-  
-  <section class="navigation">
-    <div class="nav-container">
-      <div class="brand">
-        <a href="./">MLJ.jl</a>
-      </div>
-      <nav>
-        <div class="nav-mobile">
-          <a id="nav-toggle" href="#!" on:click={toggleNav} class:active={navOpen}><span></span></a>
-        </div>
-        <ul class="nav-list" style="{navOpen ? 'display: block;' : 'display: none;'}">
-          <!-- Setting the links to #! will ensure that no action takes place on click. -->
-          <li><a href="{base}/">Home</a></li>
-          <li><a href="{base}/machines">Models</a></li>
-		  <li id="item-with-dropdown">
-			<a href="{base}/tutorials" >Tutorials</a>
-		</li>
-          <li><a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a></li>
-          <li><a href="{base}/mlj-cheatsheet">Cheat Sheet</a></li>
-		  <li><a href="{base}/ecosystem">Ecosystem</a></li>
-          <li><a href="{base}/contributing">Contributing</a></li>
-          <li><a href="{base}/about">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </section>
+	let navOpen = false;
+
+	function toggleNav() {
+		navOpen = !navOpen;
+	}
+
+	onMount(() => {
+		//   If a link has a dropdown, add sub menu toggle.
+		document.querySelectorAll('nav ul li a:not(:only-child)').forEach((item) => {
+			item.addEventListener('click', (e) => {
+				const sibling = item.nextElementSibling;
+				if (sibling && sibling.classList.contains('nav-dropdown')) {
+					sibling.style.display = sibling.style.display === 'block' ? 'none' : 'block';
+					// Close one dropdown when selecting another
+					document.querySelectorAll('.nav-dropdown').forEach((element) => {
+						if (element !== sibling) {
+							element.style.display = 'none';
+						}
+					});
+					e.stopPropagation();
+				}
+			});
+		});
+
+		// Clicking away from dropdown will remove the dropdown class
+		document.querySelector('html')?.addEventListener('click', () => {
+			document.querySelectorAll('.nav-dropdown').forEach((element) => {
+				element.style.display = 'none';
+			});
+		});
+	});
+</script>
+
+<section class="navigation">
+	<div class="nav-container">
+		<div class="brand">
+			<a href="./">MLJ.jl</a>
+		</div>
+		<nav>
+			<div class="nav-mobile">
+				<a id="nav-toggle" href="#!" on:click={toggleNav} class:active={navOpen}><span></span></a>
+			</div>
+			<ul class="nav-list" style={navOpen ? 'display: block;' : 'display: none;'}>
+				<!-- {#each headerData['headerLinks'] as linkItem}
+					<li>
+						<a href="{base}{linkItem.link}" target="_{linkItem.target}">
+							{linkItem.name}
+						</a>
+					</li>
+				{/each} -->
+				<li><a href="/">Home</a></li>
+				<li><a href="/machines">Models</a></li>
+				<li>
+					<a href="/tutorials">Tutorials</a>
+				</li>
+				<li>
+					<a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a>
+				</li>
+				<li><a href="/mlj-cheatsheet">Cheat Sheet</a></li>
+				<li><a href="/ecosystem">Ecosystem</a></li>
+				<li><a href="/contributing">Contributing</a></li>
+				<li><a href="/about">About</a></li>
+			</ul>
+		</nav>
+	</div>
+</section>
 
 <style lang="scss">
-    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 	section {
-        background: rgb(100,50,100);
-    }
-    nav {
+		background: rgb(100, 50, 100);
+	}
+	nav {
 		float: right;
 	}
 	nav ul {
@@ -84,9 +93,8 @@
 		line-height: 70px;
 		color: #e6e6e6;
 		text-decoration: none;
-        font-family: 'Lato';
-        font-weight: 500;
-
+		font-family: 'Lato';
+		font-weight: 500;
 	}
 
 	#item-dropdown {
@@ -140,7 +148,6 @@
 	@media only screen and (max-width: 1000px) {
 		.nav-mobile {
 			display: block;
-
 		}
 
 		nav {
@@ -149,15 +156,15 @@
 		}
 		nav ul {
 			display: none;
-            background: rgb(100,50,100);
+			background: rgb(100, 50, 100);
 		}
 		nav ul li {
 			float: none;
 		}
 		nav ul li a {
 			padding: 15px;
-            padding-top: 25px;
-            padding-bottom: 25px;
+			padding-top: 25px;
+			padding-bottom: 25px;
 			line-height: 20px;
 		}
 		nav ul li ul li a {
@@ -221,18 +228,18 @@
 
 	.brand {
 		position: absolute;
-        left: 120px;
-        margin-right: 80px;
+		left: 120px;
+		margin-right: 80px;
 		float: left;
 		line-height: 70px;
 		font-size: 1.9em;
-        font-family: 'Lato';
-        font-style: italic;
-        font-weight: 600;
-        
-        @media only screen and (max-width: 1200px) {
-            left: 20px;
-        }
+		font-family: 'Lato';
+		font-style: italic;
+		font-weight: 600;
+
+		@media only screen and (max-width: 1200px) {
+			left: 20px;
+		}
 	}
 	.brand a,
 	.brand a:visited {

@@ -4,6 +4,7 @@
 	import {
 		stageEffectBasedOnURL,
 		getTutorialsByTag,
+		getExternalTutorialsByTag,
 		removeDuplicatesByKey,
 		renameAttributes
 	} from './helpers';
@@ -11,24 +12,14 @@
 	import Title from '../Common/Title.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	//@ts-ignore
 	import Carousel from 'svelte-carousel';
+	import SvelteMarkdown from 'svelte-markdown';
+	import tutorialsData from '../../data/TutorialsPage.json';
+	import externalTutorialsData from '../../data/ExternalTutorials.json';
 
-	async function fetchJson() {
-		try {
-			const response = await fetch('/TutorialsPage.json');
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-			const json = await response.json();
-			console.log(json);
-		} catch (error) {
-			console.error('Error fetching JSON:', error);
-		}
-	}
-	console.log("check")
-
-	// Call the async function
-	fetchJson();
+	let titles = tutorialsData['titles'];
+	let randomInd = Math.floor(Math.random() * titles.length);
 
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
@@ -40,24 +31,20 @@
 	});
 
 	const tutorialsByTag = getTutorialsByTag(navItems);
+	const extraTutorialsByTag = getExternalTutorialsByTag(flattenJSON(externalTutorialsData));
+	console.log(tutorialsByTag);
+	console.log(extraTutorialsByTag);
 
-	const tags = [
-		'Data Processing',
-		'Classification',
-		'Regression',
-		'Clustering',
-		'Dimensionality Reduction',
-		'Neural Networks',
-		'Class Imbalance',
-		'Missing Value Imputation',
-		'Encoders',
-		'Feature Selection',
-		'Hyperparameter Tuning',
-		'Pipelines',
-		'Iterative Models',
-		'Ensemble Models',
-		'Bayesian Models'
-	];
+	function appendValues(obj1: any, obj2: any) {
+		for (let key in obj2) {
+			if (obj2.hasOwnProperty(key) && obj1.hasOwnProperty(key)) {
+				obj1[key] = obj1[key].concat(obj2[key]);
+			}
+		}
+	}
+	appendValues(tutorialsByTag, extraTutorialsByTag);
+
+	const tags = tutorialsData['tags'];
 
 	let flatTutorialsByTag = removeDuplicatesByKey(flattenJSON(tutorialsByTag), 'href');
 
@@ -69,22 +56,17 @@
 </script>
 
 <div class="container">
-	<Title text="Looking for a [Ph.D. in ML?] We've Got All [Needed Tutorials]" />
+	<Title text={titles[randomInd]} />
 
 	<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
 		<Search
 			tutorialsMode={true}
 			items={flatTutorialsByTag}
-			placeholder="Search over all tutorials"
+			placeholder={tutorialsData['searchText']}
 		/>
 	</div>
 	<div class="headtext">
-		<p>
-			Looking for an intuitive sequential progression of tutorials? See <a
-				style="color: darkmagenta; "
-				href="https://juliaai.github.io/DataScienceTutorials.jl/">DataScienceTutorials.jl</a
-			>
-		</p>
+		<SvelteMarkdown source={tutorialsData['hint']} />
 	</div>
 	<div class="tag-buttons-container">
 		<Carousel particlesToShow={6} particlesToScroll={3} infinite={true} initialPageIndex={0}>
@@ -106,7 +88,10 @@
 				<div class="tutorial-list">
 					{#each tutorialsByTag[tag] as tutorial}
 						<a
-							href={'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
+							href={
+								tutorial.href.startsWith('https') ? tutorial.href : 
+								'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href
+							}
 							class="tutorial-link"
 						>
 							<div class="tutorial-item">
@@ -114,6 +99,7 @@
 							</div>
 						</a>
 					{/each}
+	
 				</div>
 			</div>
 		{/each}
@@ -127,6 +113,9 @@
 		align-items: center;
 		margin-top: 1rem;
 		font-family: 'Poppins';
+		:global(a) {
+			color: darkmagenta;
+		}
 		@media screen and (max-width: 900px) {
 			text-align: center;
 			font-size: 0.9rem;

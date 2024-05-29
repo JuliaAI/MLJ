@@ -1,41 +1,39 @@
 <script>
-  export let title = "Machine Learning in Julia";
-  export let subTitles= ["Are you making the right use of your data? Let's find out.", "From pipelines to networks all in one package", "A package for elegant and generic machine learning"]
-   let randomInd = Math.floor(Math.random() * subTitles.length);
+	import footerData from '../../data/Footer.json';
 
+	export let title = footerData['footerTitle'];
+	export let subTitles = footerData['footerTexts'];
+	let randomInd = Math.floor(Math.random() * subTitles.length);
 </script>
 
 <div class="real-footer">
-    <footer>
-      <div class="footer-content">
-        <h3>{title}</h3>
-        <p>{subTitles[randomInd]}</p>
-      </div>
-      <div class="footer-bottom">
-        <p>Copyright © 2024 All Rights Reserved.</p>
+	<footer>
+		<div class="footer-content">
+			<h3>{title}</h3>
+			<p>{subTitles[randomInd]}</p>
+		</div>
+		<div class="footer-bottom">
+			<p>{footerData['footerCopyrightText']}</p>
 
-		<div style="display: flex; flex-direction: row; gap: 15px;">
-		<p >
-            <a href="https://sebastian.vollmer.ms/jobs/">Opportunities</a>
-        </p>
-        <p >
-            <a href="./about">About MLJ</a>
-        </p>
-		<p >
-            <a href="mailto:support@mlj.com">Contact Us</a>
-        </p>
-        </div>
-      </div>
-    </footer>
-  </div>
+			<div style="display: flex; flex-direction: row; gap: 15px;">
+				<!-- let's loop on (name, link) in footerData["footerLinks"] -->
+				{#each footerData["footerLinks"] as linkItem}
+					<p>
+						<a href={linkItem.link} target="_{linkItem.target}">{linkItem.name}</a>
+					</p>
+				{/each}
+			</div>
+		</div>
+	</footer>
+</div>
 
 <style lang="scss">
 	.real-footer {
 		footer {
 			background: rgb(100, 50, 100);
 			background: radial-gradient(rgb(100, 50, 100), #2b2b2b);
-        	background-size: 200% 200%; 
-        	animation: gradientAnimation 6s infinite;	
+			background-size: 200% 200%;
+			animation: gradientAnimation 6s infinite;
 
 			height: auto;
 
@@ -91,7 +89,6 @@
 		}
 	}
 
-
 	.footer-bottom {
 		background: rgb(65, 32, 65);
 		width: 100%;
@@ -118,16 +115,16 @@
 	}
 
 	@keyframes gradientAnimation {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 	.footer-menu {
 		float: right;

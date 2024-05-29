@@ -7,77 +7,22 @@
 	import Search from '../Common/Search.svelte';
 	import { onMount } from 'svelte';
 	import Title from '../Common/Title.svelte';
+	import modelsData from "../../data/ModelsPage.json";
+
+	let titles = modelsData["titles"]
+	let randomInd = Math.floor(Math.random() * titles.length);
+
 
 	const modelBrowserJson = markdownToJSON(modelBrowser);
 	const flatModelBrowser = flattenJSON(modelBrowserJson);
 
-	const learningProblems = [
-		'Classification',
-		'Regression',
-		'Clustering',
-		'Dimensionality Reduction',
-		'Outlier Detection',
-		'Class Imbalance',
-		'Missing Value Imputation',
-		'Text Analysis',
-		'Image Processing'
-	];
-	const learningDescriptions = [
-		'Predicting which category an observation belongs to',
-		'Predicting continuous outcomes',
-		'Grouping similar data points together.',
-		'Reducing dimensionality while preserving information',
-		'Identifying anomalies or outliers in the data',
-		'Handling imbalance in dataset labels with resampling',
-		'Filling in missing data points in a dataset',
-		'Extracting insights or patterns from textual data',
-		'Analyzing and manipulating visual data'
-	];
-	const learningImages = [
-		'https://i.imgur.com/pS2oOkb.png',
-		'/reg.gif',
-		'/cluster.gif',
-		'https://i.imgur.com/Cuc1dce.png',
-		'https://i.imgur.com/57vvJBK.png',
-		'/imbalance.gif',
-		'https://i.imgur.com/n6CVxmj.png',
-		'https://i.imgur.com/x5IrImv.png',
-		'https://i.imgur.com/iDgQ4QP.png'
-	];
+	const learningProblems = modelsData["learningTasks"]["problems"];
+	const learningDescriptions = modelsData["learningTasks"]["descriptions"];
+	const learningImages = modelsData["learningTasks"]["images"];
 
-	const modelGenres = Object.keys(modelBrowserJson).filter(
-		(key) => !learningProblems.includes(key)
-	);
-
-	const modelingProblems = [
-		'Iterative Models',
-		'Ensemble Models',
-		'Bayesian Models',
-		'Encoders',
-		'Distribution Fitter',
-		// 'Neural Networks',
-		'Static Models'
-	];
-
-	const modelingDescriptions = [
-		'Models that are trained iteratively to improve performance',
-		'Models that combine the predictions of multiple models',
-		'Models that are based on Bayesian statistics',
-		'Models that encode input data into a new form',
-		'Models that fit a probability distribution to the data',
-		// 'Models that use neural networks to learn complex patterns in the data',
-		'Models that do not generalize to new observations'
-	];
-
-	const modelingImages = [
-		'https://i.imgur.com/V6HWp7j.png',
-		'https://i.imgur.com/u13WwDA.png',
-		'https://i.imgur.com/4Py5yfh.png',
-		'https://i.imgur.com/BrNfbhK.png',
-		'https://i.imgur.com/SFD1ftY.png',
-		// 'https://i.imgur.com/9KPyDWa.png',
-		'/cluster.gif'
-	];
+	const modelingProblems = modelsData["modelingTasks"]["problems"];
+	const modelingDescriptions = modelsData["modelingTasks"]["descriptions"];
+	const modelingImages = modelsData["modelingTasks"]["images"];
 
 	let showModal = false;
 	let modalContent = '';
@@ -127,9 +72,9 @@
 </script>
 
 
-<Title text="Over [180 Machine Learning Models]...At your [Fingertips]" />
+<Title text={titles[randomInd]} />
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
-	<Search items={flatModelBrowser} />
+	<Search items={flatModelBrowser} placeholder={modelsData["searchText"]}/>
 </div>
 <div
 	style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; gap: 0rem; max-width: 70%; margin-left: auto; margin-right: auto;"
@@ -139,7 +84,7 @@
 		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
 			? 'white'
 			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
-		>View Models by Learning Objective</button
+		>{modelsData["buttonTexts"][0]}</button
 	>
 	<button
 		on:click={setModelingMode}
@@ -147,7 +92,7 @@
 			? 'white'
 			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
 	>
-		View Models by Modeling Approach
+		{modelsData["buttonTexts"][1]}
 	</button>
 </div>
 <div style="display: flex; justify-content: center; align-items: center; margin-top:2rem;">

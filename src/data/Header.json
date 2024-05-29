@@ -1,0 +1,44 @@
+{
+    "headerLinks": [
+        {
+            "name": "Home",
+            "link": "/",
+            "target": "self"
+        },
+        {
+            "name": "Models",
+            "link": "/machines",
+            "target": "self"
+        },
+        {
+            "name": "Tutorials",
+            "link": "/tutorials",
+            "target": "self"
+        },
+        {
+            "name": "Documentation",
+            "link": "https://juliaai.github.io/MLJ.jl/stable/",
+            "target": "blank"
+        },
+        {
+            "name": "Cheat Sheet",
+            "link": "/mlj-cheatsheet",
+            "target": "self"
+        },
+        {
+            "name": "Ecosystem",
+            "link": "/ecosystem",
+            "target": "self"
+        },
+        {
+            "name": "Contributing",
+            "link": "/contributing",
+            "target": "self"
+        },
+        {
+            "name": "About",
+            "link": "/about",
+            "target": "self"
+        }
+    ]
+}
