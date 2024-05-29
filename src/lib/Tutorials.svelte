@@ -4,27 +4,29 @@
 	import Search from './Search.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import Carousel from 'svelte-carousel'
 
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
 	const navItemsJson = match ? match[1] : '';
 	const navItems = eval(navItemsJson);
 
-	function applyStyleBasedOnHash(): void {
+	function applyStyleBasedOnHash(tag=null): void {
 		// Get the current URL hash
 		const hash: string = window.location.hash;
 
 		// Check if there is a hash in the URL
 		if (true) {
 			// Get the part after the last / in the url
-			const id: string = window.location.pathname.split('/').pop() || '';
+			const id = (tag) ? tag : window.location.pathname.split('/').pop() || '';
+
 			// replace all %20 with spaces
 			const idWithSpaces = id.replace(/%20/g, ' ');
 			// Get the element by the id
 			const element: HTMLElement | null = document.getElementById(idWithSpaces);
-
+			const elementButton:  HTMLElement | null = document.getElementById(idWithSpaces+"-button");
 			// If the element exists, apply the shadow style
-			if (element) {
+			if (element && elementButton) {
 				// Create an overlay element
 				const overlay: HTMLDivElement = document.createElement('div');
 				overlay.style.position = 'fixed';
@@ -51,8 +53,13 @@
 				// put a shadow for 3d
 				element.style.boxShadow = '2px 2px 4px 3px rgba(0, 0, 0, 0.3)';
 
+				elementButton.style.color = "white";
+				elementButton.style.backgroundColor = "#6e4582";
+
 				// Add a click event listener to the overlay to remove the styles when clicked
 				overlay.addEventListener('click', () => {
+					elementButton.style.color = "";
+					elementButton.style.backgroundColor = "";
 					element.style.position = '';
 					element.style.zIndex = '';
 					element.style.backgroundColor = '';
@@ -80,10 +87,9 @@
 	}
 
 	onMount((): void => {
-
-
 		applyStyleBasedOnHash();
 	});
+	// when href changes
 
 	type Tutorial = {
 		name: string;
@@ -172,6 +178,7 @@
 		href: 'link'
 	};
 	flatTutorialsByTag = renameAttributes(flatTutorialsByTag, attributeMapping);
+	
 </script>
 
 <div class="container">
@@ -195,7 +202,7 @@
 		/>
 	</div>
 	<div
-		style="display: flex; justify-content: center; align-items:center; margin-top:1rem; font-family: Poppins;"
+		class="headtext"
 	>
 		<p>
 			Looking for an intuitive sequential progression of tutorials? See <a
@@ -203,6 +210,24 @@
 				href="https://juliaai.github.io/DataScienceTutorials.jl/">DataScienceTutorials.jl</a
 			>
 		</p>
+	</div>
+	<div class="tag-buttons-container">
+		<Carousel
+		particlesToShow={6}
+  		particlesToScroll={3}
+		infinite={true}
+		initialPageIndex={0}
+		>
+		{#each tags.reverse() as tag}
+			<button
+			id="{tag}-button"
+			on:click={()=>{
+				goto(`/tutorials/${tag.replace('%20', ' ')}`)
+				applyStyleBasedOnHash(tag);
+				}}
+			>{tag}</button>
+		{/each}
+	</Carousel>
 	</div>
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
@@ -226,9 +251,53 @@
 </div>
 
 <style lang="scss">
-	.shadow {
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	.headtext {
+		display: flex; 
+		justify-content: center; 
+		align-items:center; 
+		margin-top:1rem; 
+		font-family: 'Poppins';
+		@media screen and (max-width: 900px) {
+			text-align: center;
+			font-size: 0.9rem;
+		}
 	}
+	:global(.sc-carousel-dots__container) {
+		display: none !important;
+	}
+	.tag-buttons-container, :global(.sc-carousel__pages-container) {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		// flex-wrap: wrap;
+		gap: 0.8rem;
+		margin: 1.5rem 3rem;
+		@media screen and (max-width: 900px) {
+			gap: 0.7rem;
+			margin: 1.5rem 2rem;
+		}
+		button {
+			background-color: #e9e9e9;
+			color: rgb(34, 34, 34);
+			border-radius: 2rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0.4rem 0.7rem;
+			font-family: 'Poppins';
+			font-size: 0.75rem;
+			@media screen and (max-width: 900px) {
+			font-size: 0.7rem;
+			text-align: center;
+		}
+
+			&:hover {
+				background-color: #6e4582;
+				color: white;
+			}
+	}
+}
 	.headline {
 		h1 {
 			@media only screen and (max-width: 900px) {
