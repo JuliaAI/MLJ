@@ -16,9 +16,9 @@ const config = {
 			edge: false,
 			split: true
 		}),
-		paths: {
-            base: process.env.NODE_ENV === 'production' ? '/mlj.netlify.app/' : '',
-        }
+		// paths: {
+        //     base: process.env.NODE_ENV === 'production' ? '/sveltekit-github-pages' : '',
+        // }
 	}
 };
 
