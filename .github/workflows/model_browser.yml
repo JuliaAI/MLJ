@@ -11,7 +11,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        
+      
+      - name: Create directory if it does not exist
+        run: mkdir -p src/lib/Data
+
       - name: Download file
         run: |
           curl -o src/lib/Data/ModelDescriptors.toml https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/docs/ModelDescriptors.toml
