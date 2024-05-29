@@ -1,0 +1,30 @@
+name: Run Julia Script
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-julia:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.7'
+
+      - name: Run Julia script
+        run: julia src/lib/Data/write.jl
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add src/lib/Data/model_browser.md
+          git commit -m 'Update model_browser.md'
+          git push

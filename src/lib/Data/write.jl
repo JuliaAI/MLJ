@@ -1,5 +1,9 @@
 # # METHODS TO WRITE A MODEL DOCSTRING TO A FILE
+using Pkg; Pkg.add("MLJBase");
+using Pkg; Pkg.add("MLJ");
+
 using MLJBase
+using MLJ
 
 const PATH_TO_MODEL_DOCS = joinpath(@__DIR__, "src", "models")
 
@@ -128,7 +132,7 @@ function write_page()
     contents = "### Categories\n"*join(entries_for_contents, "  |  ")
     body = join([doc_entry(d) for d in DESCRIPTORS], "\n\n")
     page = header*contents*"\n\n"*body
-    open(joinpath(@__DIR__, "src", "model_browser.md"), "w") do stream
+    open(joinpath(@__DIR__, "model_browser.md"), "w") do stream
         write(stream, page)
     end
     nothing

@@ -57,6 +57,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [GradientBoostingRegressor (MLJScikitLearnInterface.jl)](@ref GradientBoostingRegressor_MLJScikitLearnInterface)
 
+- [HistGradientBoostingRegressor (MLJScikitLearnInterface.jl)](@ref HistGradientBoostingRegressor_MLJScikitLearnInterface)
+
 - [HuberRegressor (MLJLinearModels.jl)](@ref HuberRegressor_MLJLinearModels)
 
 - [HuberRegressor (MLJScikitLearnInterface.jl)](@ref HuberRegressor_MLJScikitLearnInterface)
@@ -131,6 +133,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [PLSRegressor (PartialLeastSquaresRegressor.jl)](@ref PLSRegressor_PartialLeastSquaresRegressor)
 
+- [PartLS (PartitionedLS.jl)](@ref PartLS_PartitionedLS)
+
 - [PassiveAggressiveRegressor (MLJScikitLearnInterface.jl)](@ref PassiveAggressiveRegressor_MLJScikitLearnInterface)
 
 - [QuantileRegressor (MLJLinearModels.jl)](@ref QuantileRegressor_MLJLinearModels)
@@ -178,8 +182,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [BaggingClassifier (MLJScikitLearnInterface.jl)](@ref BaggingClassifier_MLJScikitLearnInterface)
 
-- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
-
 - [BayesianLDA (MLJScikitLearnInterface.jl)](@ref BayesianLDA_MLJScikitLearnInterface)
 
 - [BayesianLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianLDA_MultivariateStats)
@@ -216,21 +218,21 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [GradientBoostingClassifier (MLJScikitLearnInterface.jl)](@ref GradientBoostingClassifier_MLJScikitLearnInterface)
 
+- [HistGradientBoostingClassifier (MLJScikitLearnInterface.jl)](@ref HistGradientBoostingClassifier_MLJScikitLearnInterface)
+
 - [ImageClassifier (MLJFlux.jl)](@ref ImageClassifier_MLJFlux)
 
 - [KNNClassifier (NearestNeighborModels.jl)](@ref KNNClassifier_NearestNeighborModels)
 
 - [KNeighborsClassifier (MLJScikitLearnInterface.jl)](@ref KNeighborsClassifier_MLJScikitLearnInterface)
 
-- [KernelPerceptron (BetaML.jl)](@ref KernelPerceptron_BetaML)
+- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
 
 - [LDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref LDA_MultivariateStats)
 
 - [LGBMClassifier (LightGBM.jl)](@ref LGBMClassifier_LightGBM)
 
 - [LinearBinaryClassifier (GLM.jl/MLJGLMInterface.jl)](@ref LinearBinaryClassifier_GLM)
-
-- [LinearPerceptron (BetaML.jl)](@ref LinearPerceptron_BetaML)
 
 - [LinearSVC (LIBSVM.jl/MLJLIBSVMInterface.jl)](@ref LinearSVC_LIBSVM)
 
@@ -258,7 +260,9 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [PassiveAggressiveClassifier (MLJScikitLearnInterface.jl)](@ref PassiveAggressiveClassifier_MLJScikitLearnInterface)
 
-- [Pegasos (BetaML.jl)](@ref Pegasos_BetaML)
+- [PegasosClassifier (BetaML.jl)](@ref PegasosClassifier_BetaML)
+
+- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
 
 - [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
 
@@ -388,6 +392,10 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
 
+- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
+
+- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
+
 - [RandomForestClassifier (BetaML.jl)](@ref RandomForestClassifier_BetaML)
 
 - [RandomForestClassifier (DecisionTree.jl/MLJDecisionTreeInterface.jl)](@ref RandomForestClassifier_DecisionTree)
@@ -460,6 +468,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
 
+- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
+
 - [DBSCAN (Clustering.jl/MLJClusteringInterface.jl)](@ref DBSCAN_Clustering)
 
 - [DBSCAN (MLJScikitLearnInterface.jl)](@ref DBSCAN_MLJScikitLearnInterface)
@@ -468,9 +478,9 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
 
-- [HierarchicalClustering (Clustering.jl/MLJClusteringInterface.jl)](@ref HierarchicalClustering_Clustering)
+- [HDBSCAN (MLJScikitLearnInterface.jl)](@ref HDBSCAN_MLJScikitLearnInterface)
 
-- [KMeans (BetaML.jl)](@ref KMeans_BetaML)
+- [HierarchicalClustering (Clustering.jl/MLJClusteringInterface.jl)](@ref HierarchicalClustering_Clustering)
 
 - [KMeans (Clustering.jl/MLJClusteringInterface.jl)](@ref KMeans_Clustering)
 
@@ -478,9 +488,11 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [KMeans (ParallelKMeans.jl)](@ref KMeans_ParallelKMeans)
 
-- [KMedoids (BetaML.jl)](@ref KMedoids_BetaML)
+- [KMeansClusterer (BetaML.jl)](@ref KMeansClusterer_BetaML)
 
 - [KMedoids (Clustering.jl/MLJClusteringInterface.jl)](@ref KMedoids_Clustering)
+
+- [KMedoidsClusterer (BetaML.jl)](@ref KMedoidsClusterer_BetaML)
 
 - [MeanShift (MLJScikitLearnInterface.jl)](@ref MeanShift_MLJScikitLearnInterface)
 
@@ -493,6 +505,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [SpectralClustering (MLJScikitLearnInterface.jl)](@ref SpectralClustering_MLJScikitLearnInterface)
 
 ##  Dimension Reduction
+- [AutoEncoder (BetaML.jl)](@ref AutoEncoder_BetaML)
+
 - [BayesianLDA (MLJScikitLearnInterface.jl)](@ref BayesianLDA_MLJScikitLearnInterface)
 
 - [BayesianLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianLDA_MultivariateStats)
@@ -502,6 +516,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [BayesianSubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianSubspaceLDA_MultivariateStats)
 
 - [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
+
+- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
 
 - [FactorAnalysis (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref FactorAnalysis_MultivariateStats)
 
@@ -561,8 +577,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [MultinomialNBClassifier (NaiveBayes.jl/MLJNaiveBayesInterface.jl)](@ref MultinomialNBClassifier_NaiveBayes)
 
 ##  Class Imbalance
-- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
-
 - [BorderlineSMOTE1 (Imbalance.jl)](@ref BorderlineSMOTE1_Imbalance)
 
 - [ClusterUndersampler (Imbalance.jl)](@ref ClusterUndersampler_Imbalance)
@@ -616,6 +630,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [DBSCAN (MLJScikitLearnInterface.jl)](@ref DBSCAN_MLJScikitLearnInterface)
 
 - [FeatureAgglomeration (MLJScikitLearnInterface.jl)](@ref FeatureAgglomeration_MLJScikitLearnInterface)
+
+- [HDBSCAN (MLJScikitLearnInterface.jl)](@ref HDBSCAN_MLJScikitLearnInterface)
 
 - [InteractionTransformer (MLJModels.jl)](@ref InteractionTransformer_MLJModels)
 
