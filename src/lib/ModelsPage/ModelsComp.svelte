@@ -55,7 +55,7 @@
 		'Bayesian Models',
 		'Encoders',
 		'Distribution Fitter',
-		'Neural Networks',
+		// 'Neural Networks',
 		'Static Models'
 	];
 
@@ -65,7 +65,7 @@
 		'Models that are based on Bayesian statistics',
 		'Models that encode input data into a new form',
 		'Models that fit a probability distribution to the data',
-		'Models that use neural networks to learn complex patterns in the data',
+		// 'Models that use neural networks to learn complex patterns in the data',
 		'Models that do not generalize to new observations'
 	];
 
@@ -75,7 +75,7 @@
 		'https://i.imgur.com/4Py5yfh.png',
 		'https://i.imgur.com/BrNfbhK.png',
 		'https://i.imgur.com/SFD1ftY.png',
-		'https://i.imgur.com/9KPyDWa.png',
+		// 'https://i.imgur.com/9KPyDWa.png',
 		'/cluster.gif'
 	];
 

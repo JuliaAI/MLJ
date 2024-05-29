@@ -13,6 +13,22 @@
 	import { goto } from '$app/navigation';
 	import Carousel from 'svelte-carousel';
 
+	async function fetchJson() {
+		try {
+			const response = await fetch('/TutorialsPage.json');
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			const json = await response.json();
+			console.log(json);
+		} catch (error) {
+			console.error('Error fetching JSON:', error);
+		}
+	}
+
+	// Call the async function
+	fetchJson();
+
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
 	const navItemsJson = match ? match[1] : '';
