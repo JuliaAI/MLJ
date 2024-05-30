@@ -243,13 +243,11 @@ const navItems = [
       {
         name: "Stacking",
         href: "/advanced/stacking/",
-        tags: ["Ensemble Models", "Learning Networks", "Hyperparamter Tuning"],
+        tags: ["Ensemble Models", "Learning Networks", "Hyperparameter Tuning"],
       },
     ],
     sectionItemWidth: "medium-item",
   },
-  { name: "Contribute", href: "https://github.com/JuliaAI/DataScienceTutorials.jl?tab=readme-ov-file#-for-developers", sections: [], sectionItemWidth: "", id: "contribute" },
-
 ];
 
 // first get info on whether hosted or not
@@ -399,7 +397,6 @@ function getPreviousAndNextTutorials(currentHref) {
   let currentIndex = flatItems.findIndex(
     (item) => currentHref.includes(item.href) && item.href != "/"
   );
-  console.log(currentIndex);
   currentIndex = currentIndex === -1 ? 0 : currentIndex;
   const totalItems = flatItems.length;
 

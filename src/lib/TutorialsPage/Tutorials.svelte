@@ -69,7 +69,7 @@
 		<SvelteMarkdown source={tutorialsData['hint']} />
 	</div>
 	<div class="tag-buttons-container">
-		<Carousel particlesToShow={6} particlesToScroll={3} infinite={true} initialPageIndex={0}>
+		<!-- <Carousel particlesToShow={6} particlesToScroll={3} infinite={true} initialPageIndex={0}> -->
 			{#each tags.slice().reverse() as tag}
 				<button
 					id="{tag}-button"
@@ -79,7 +79,7 @@
 					}}>{tag}</button
 				>
 			{/each}
-		</Carousel>
+		<!-- </Carousel> -->
 	</div>
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
@@ -130,7 +130,7 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		// flex-wrap: wrap;
+		flex-wrap: wrap;
 		gap: 0.8rem;
 		margin: 1.5rem 3rem;
 		@media screen and (max-width: 900px) {
