@@ -7,8 +7,10 @@
 	import Search from '../Common/Search.svelte';
 	import { onMount } from 'svelte';
 	import Title from '../Common/Title.svelte';
-	import modelsData from "../../data/ModelsPage.json";
+	import YAML from 'yaml'
+	import modelsDataYaml from "../../data/ModelsPage.yaml?raw";
 
+	let modelsData = YAML.parse(modelsDataYaml);
 	let titles = modelsData["titles"]
 	let randomInd = Math.floor(Math.random() * titles.length);
 

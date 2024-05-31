@@ -13,11 +13,13 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	//@ts-ignore
-	import Carousel from 'svelte-carousel';
 	import SvelteMarkdown from 'svelte-markdown';
-	import tutorialsData from '../../data/TutorialsPage.json';
-	import externalTutorialsData from '../../data/ExternalTutorials.json';
+	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
+	import externalTutorialsDataYaml from '../../data/ExternalTutorials.yaml?raw';
+	import YAML from 'yaml'
 
+	let tutorialsData = YAML.parse(tutorialsDataYaml);
+	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
 	let titles = tutorialsData['titles'];
 	let randomInd = Math.floor(Math.random() * titles.length);
 

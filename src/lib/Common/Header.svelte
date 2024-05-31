@@ -1,8 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
+	import YAML from 'yaml'
 	import { base } from '$app/paths'; // may need this for Github pages deployment
-	import headerData from '../../data/Header.json';
+	import headerDataYaml from '../../data/Header.yaml?raw';
 
+	let headerData = YAML.parse(headerDataYaml);
 	let navOpen = false;
 
 	function toggleNav() {

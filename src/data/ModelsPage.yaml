@@ -1,0 +1,63 @@
+titles:
+  - Over [180 Machine Learning Models]...At Your [Fingertips]
+
+buttonTexts:
+  - View Models by Learning Objective
+  - View Models by Modeling Approach
+
+searchText: Search over all models
+
+learningTasks:
+  problems:
+    - Classification
+    - Regression
+    - Clustering
+    - Dimensionality Reduction
+    - Outlier Detection
+    - Class Imbalance
+    - Missing Value Imputation
+    - Text Analysis
+    - Image Processing
+  descriptions:
+    - Predicting which category an observation belongs to
+    - Predicting continuous outcomes
+    - Grouping similar data points together.
+    - Reducing dimensionality while preserving information
+    - Identifying anomalies or outliers in the data
+    - Handling imbalance in dataset labels with resampling
+    - Filling in missing data points in a dataset
+    - Extracting insights or patterns from textual data
+    - Analyzing and manipulating visual data
+  images:
+    - https://i.imgur.com/pS2oOkb.png
+    - /reg.gif
+    - /cluster.gif
+    - https://i.imgur.com/Cuc1dce.png
+    - https://i.imgur.com/57vvJBK.png
+    - /imbalance.gif
+    - https://i.imgur.com/n6CVxmj.png
+    - https://i.imgur.com/x5IrImv.png
+    - https://i.imgur.com/iDgQ4QP.png
+    
+modelingTasks:
+  problems:
+    - Iterative Models
+    - Ensemble Models
+    - Bayesian Models
+    - Encoders
+    - Distribution Fitter
+    - Static Models
+  descriptions:
+    - Models that are trained iteratively to improve performance
+    - Models that combine the predictions of multiple models
+    - Models that are based on Bayesian statistics
+    - Models that encode input data into a new form
+    - Models that fit a probability distribution to the data
+    - Models that do not generalize to new observations
+  images:
+    - https://i.imgur.com/V6HWp7j.png
+    - https://i.imgur.com/u13WwDA.png
+    - https://i.imgur.com/4Py5yfh.png
+    - https://i.imgur.com/BrNfbhK.png
+    - https://i.imgur.com/SFD1ftY.png
+    - /cluster.gif

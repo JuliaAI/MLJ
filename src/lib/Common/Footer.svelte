@@ -1,8 +1,10 @@
 <script>
-	import footerData from '../../data/Footer.json';
-
+	import footerDataYaml from '../../data/Footer.yaml?raw';
+	import YAML from 'yaml'
+	let footerData = YAML.parse(footerDataYaml);
 	export let title = footerData['footerTitle'];
 	export let subTitles = footerData['footerTexts'];
+
 	let randomInd = Math.floor(Math.random() * subTitles.length);
 </script>
 
