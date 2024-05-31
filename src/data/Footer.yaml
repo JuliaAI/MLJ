@@ -1,12 +1,17 @@
+# Control the title shown in the footer
 footerTitle: Machine Learning In Julia
 
+# Control the copyright text shown in the bottom left of the footer
 footerCopyrightText: Copyright © 2024 All Rights Reserved.
 
+# Control the MLJ slogan. When multiple slogans are written, one is chosen randomly:
 footerTexts:
   - Are you making the right use of your data? Let's find out.
   - From pipelines to networks all in one package
   - A package for elegant and generic machine learning
 
+# Control the footer links shown in the bottom right of the footer
+# target: self means to open in the same tab and blank means to open in a new tab
 footerLinks:
   - name: Opportunities
     link: https://sebastian.vollmer.ms/jobs/

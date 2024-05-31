@@ -1,11 +1,19 @@
+# This is the title that shows up above the search bar and what's within [] will be printed in purple
+# If multiple titles are written then one is chosen randomly in each reload of the website
 titles:
   - Looking for a [Ph.D. in ML?] We've Got All [Needed Tutorials]
-  
+
+# This is the placeholder for the search bar
 searchText: Search over all tutorials
 
+# This is the hint written below the searchbar. Any markdown string should work.
 hint: Looking for a sequential progression of tutorials? See
   [DataScienceTutorials.jl](https://juliaai.github.io/DataScienceTutorials.jl/)
 
+# These are the tutorial tags printed below the hint.
+## The navigation file in DataScienceTutorials (or external tutorials) should use only these tags
+## If they introduce new tags, then these should be added here and everything will work as expected
+# This also controls the order of the tags (and tutorial blocks)
 tags:
   - Data Processing
   - Classification

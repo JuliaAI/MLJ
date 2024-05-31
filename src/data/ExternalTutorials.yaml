@@ -1,3 +1,18 @@
+# This file helps add tutorials to the tutorials page of the MLJ website
+
+## Just add a section like so
+
+# <tutorials-source-name>:
+#  - name: <name-of-first-tutorial>
+#  - href: <https-link-of-first-tutorial>
+#  - tags: 
+#    - <A-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
+#    - <Another-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
+#    - ...
+#  - name: <name-of-second-tutorial>
+#  - ...
+## Once done, the new tutorials will show up in the MLJ tutorials page
+
 Imbalance:
   - name: BMI Classification with Decision Trees
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/walkthrough/

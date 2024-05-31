@@ -1,13 +1,20 @@
+# This is the title that shows up above the search bar and what's within [] will be printed in purple
+# If multiple titles are written then one is chosen randomly in each reload of the website
 titles:
   - Over [180 Machine Learning Models]...At Your [Fingertips]
 
+# The text two write for the two buttons under the search bar
 buttonTexts:
   - View Models by Learning Objective
   - View Models by Modeling Approach
 
+# The placeholder text for the search bar
 searchText: Search over all models
 
+# This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t learning objectives
+# When a new model category is added to the model browser, it should be added here as well (or in "modelingTasks" found below)
 learningTasks:
+  # the names:
   problems:
     - Classification
     - Regression
@@ -18,6 +25,7 @@ learningTasks:
     - Missing Value Imputation
     - Text Analysis
     - Image Processing
+  # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
     - Predicting continuous outcomes
@@ -28,6 +36,8 @@ learningTasks:
     - Filling in missing data points in a dataset
     - Extracting insights or patterns from textual data
     - Analyzing and manipulating visual data
+  # the image for each (shows up in the model block)
+  ## write the path relative to the "static" folder found at the top-level of the directory
   images:
     - /models/classification.png
     - /models/reg.gif
@@ -39,6 +49,8 @@ learningTasks:
     - /models/text.png
     - /models/segmentation.png
 
+# This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t modeling approach
+# See above to understand the subsequent fields
 modelingTasks:
   problems:
     - Iterative Models

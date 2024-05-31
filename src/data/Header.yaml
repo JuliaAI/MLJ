@@ -1,3 +1,5 @@
+# Control the navigation bar items and where they link to (e.g., add, reorder, modify or delete items)
+# target: self means to open in the same tab and blank means to open in a new tab
 headerLinks:
   - name: Home
     link: /

@@ -71,8 +71,7 @@
 		<SvelteMarkdown source={tutorialsData['hint']} />
 	</div>
 	<div class="tag-buttons-container">
-		<!-- <Carousel particlesToShow={6} particlesToScroll={3} infinite={true} initialPageIndex={0}> -->
-			{#each tags.slice().reverse() as tag}
+			{#each tags as tag}
 				<button
 					id="{tag}-button"
 					on:click={() => {
@@ -81,7 +80,6 @@
 					}}>{tag}</button
 				>
 			{/each}
-		<!-- </Carousel> -->
 	</div>
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
