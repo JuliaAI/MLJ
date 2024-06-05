@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Fitter](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Fitter](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -621,6 +621,28 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [UnivariateStandardizer (MLJModels.jl)](@ref UnivariateStandardizer_MLJModels)
 
 - [UnivariateTimeTypeToContinuous (MLJModels.jl)](@ref UnivariateTimeTypeToContinuous_MLJModels)
+
+##  Meta Algorithms
+
+
+##  Neural networks
+- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
+
+- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
+
+- [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
+
+- [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
+
+- [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
+
+- [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
+
+- [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
+
+- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
+
+- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
 
 ##  Static Models
 - [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
