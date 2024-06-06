@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Fitter](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Dimension Reduction](@ref)  |  [Clustering](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Fitter](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -461,6 +461,49 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [XGBoostRegressor (XGBoost.jl/MLJXGBoostInterface.jl)](@ref XGBoostRegressor_XGBoost)
 
+##  Dimension Reduction
+- [AutoEncoder (BetaML.jl)](@ref AutoEncoder_BetaML)
+
+- [BayesianLDA (MLJScikitLearnInterface.jl)](@ref BayesianLDA_MLJScikitLearnInterface)
+
+- [BayesianLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianLDA_MultivariateStats)
+
+- [BayesianQDA (MLJScikitLearnInterface.jl)](@ref BayesianQDA_MLJScikitLearnInterface)
+
+- [BayesianSubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianSubspaceLDA_MultivariateStats)
+
+- [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
+
+- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
+
+- [FactorAnalysis (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref FactorAnalysis_MultivariateStats)
+
+- [FeatureSelector (FeatureSelection.jl)](@ref FeatureSelector_FeatureSelection)
+
+- [KMeans (Clustering.jl/MLJClusteringInterface.jl)](@ref KMeans_Clustering)
+
+- [KMeans (MLJScikitLearnInterface.jl)](@ref KMeans_MLJScikitLearnInterface)
+
+- [KMeans (ParallelKMeans.jl)](@ref KMeans_ParallelKMeans)
+
+- [KMedoids (Clustering.jl/MLJClusteringInterface.jl)](@ref KMedoids_Clustering)
+
+- [KernelPCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref KernelPCA_MultivariateStats)
+
+- [LDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref LDA_MultivariateStats)
+
+- [MiniBatchKMeans (MLJScikitLearnInterface.jl)](@ref MiniBatchKMeans_MLJScikitLearnInterface)
+
+- [PCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PCA_MultivariateStats)
+
+- [PPCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PPCA_MultivariateStats)
+
+- [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
+
+- [SubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref SubspaceLDA_MultivariateStats)
+
+- [TSVDTransformer (TSVD.jl/MLJTSVDInterface.jl)](@ref TSVDTransformer_TSVD)
+
 ##  Clustering
 - [AffinityPropagation (MLJScikitLearnInterface.jl)](@ref AffinityPropagation_MLJScikitLearnInterface)
 
@@ -503,49 +546,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
 
 - [SpectralClustering (MLJScikitLearnInterface.jl)](@ref SpectralClustering_MLJScikitLearnInterface)
-
-##  Dimension Reduction
-- [AutoEncoder (BetaML.jl)](@ref AutoEncoder_BetaML)
-
-- [BayesianLDA (MLJScikitLearnInterface.jl)](@ref BayesianLDA_MLJScikitLearnInterface)
-
-- [BayesianLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianLDA_MultivariateStats)
-
-- [BayesianQDA (MLJScikitLearnInterface.jl)](@ref BayesianQDA_MLJScikitLearnInterface)
-
-- [BayesianSubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianSubspaceLDA_MultivariateStats)
-
-- [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
-
-- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
-
-- [FactorAnalysis (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref FactorAnalysis_MultivariateStats)
-
-- [FeatureSelector (MLJModels.jl)](@ref FeatureSelector_MLJModels)
-
-- [KMeans (Clustering.jl/MLJClusteringInterface.jl)](@ref KMeans_Clustering)
-
-- [KMeans (MLJScikitLearnInterface.jl)](@ref KMeans_MLJScikitLearnInterface)
-
-- [KMeans (ParallelKMeans.jl)](@ref KMeans_ParallelKMeans)
-
-- [KMedoids (Clustering.jl/MLJClusteringInterface.jl)](@ref KMedoids_Clustering)
-
-- [KernelPCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref KernelPCA_MultivariateStats)
-
-- [LDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref LDA_MultivariateStats)
-
-- [MiniBatchKMeans (MLJScikitLearnInterface.jl)](@ref MiniBatchKMeans_MLJScikitLearnInterface)
-
-- [PCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PCA_MultivariateStats)
-
-- [PPCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PPCA_MultivariateStats)
-
-- [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
-
-- [SubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref SubspaceLDA_MultivariateStats)
-
-- [TSVDTransformer (TSVD.jl/MLJTSVDInterface.jl)](@ref TSVDTransformer_TSVD)
 
 ##  Bayesian Models
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -682,6 +682,13 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [GaussianMixtureRegressor (BetaML.jl)](@ref GaussianMixtureRegressor_BetaML)
 
 - [MultitargetGaussianMixtureRegressor (BetaML.jl)](@ref MultitargetGaussianMixtureRegressor_BetaML)
+
+##  Feature Engineering
+- [FeatureAgglomeration (MLJScikitLearnInterface.jl)](@ref FeatureAgglomeration_MLJScikitLearnInterface)
+
+- [FeatureSelector (FeatureSelection.jl)](@ref FeatureSelector_FeatureSelection)
+
+- [InteractionTransformer (MLJModels.jl)](@ref InteractionTransformer_MLJModels)
 
 ##  Text Analysis
 - [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
