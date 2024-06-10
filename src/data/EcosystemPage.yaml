@@ -1,5 +1,5 @@
-title: It's Beyond Just an [Ecosystem]...It's the [MLJ Universe]
-
+title: The MLJ Universe
+hint: Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol
 organizations:
   - orgName: MLJ.jl
     orgLink: https://github.com/JuliaAI/MLJ.jl
@@ -129,3 +129,5 @@ organizations:
       MLJTestIntegration provides tests for the entire MLJ ecosystem. (Called when you run `ENV["MLJ_TEST_INTEGRATION"]="true";
       Pkg.test("MLJ")`).
     orthogonal: false
+
+finalHint: Looking for a more sophisticated representation that exposes dependencies between packages? See the [following figure](https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/material/MLJ_stack.svg).

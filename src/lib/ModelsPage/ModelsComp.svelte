@@ -146,6 +146,7 @@
 		gap: 20px;
 		max-width: 1200px;
 		padding: 20px;
+		margin-bottom: 3rem;
 
 		.grid-item {
 			position: relative;
