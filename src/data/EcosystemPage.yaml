@@ -65,6 +65,12 @@ organizations:
       MLJIteration.jl provides the `IteratedModel` wrapper for controlling iterative models (snapshots, early stopping criteria, etc).
     orthogonal: false
 
+  - orgName: FeatureSelection.jl
+    orgLink: https://github.com/JuliaAI/FeatureSelection.jl
+    orgMarkdownDesc: |
+      FeatureSelection.jl provides models for choosing features, and includes the `RecursiveFeatureElimination` wrapper.
+    orthogonal: false
+
   - orgName: MLJFlow.jl
     orgLink: https://github.com/JuliaAI/MLJFlow.jl
     orgMarkdownDesc: |
