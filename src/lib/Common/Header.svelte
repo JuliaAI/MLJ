@@ -48,25 +48,13 @@
 				<a id="nav-toggle" href="#!" on:click={toggleNav} class:active={navOpen}><span></span></a>
 			</div>
 			<ul class="nav-list" style={navOpen ? 'display: block;' : 'display: none;'}>
-				<!-- {#each headerData['headerLinks'] as linkItem}
+				{#each headerData['headerLinks'] as linkItem}
 					<li>
 						<a href="{base}{linkItem.link}" target="_{linkItem.target}">
 							{linkItem.name}
 						</a>
 					</li>
-				{/each} -->
-				<li><a href="/">Home</a></li>
-				<li><a href="/machines">Models</a></li>
-				<li>
-					<a href="/tutorials">Tutorials</a>
-				</li>
-				<li>
-					<a href="https://juliaai.github.io/MLJ.jl/stable/" target="_blank">Documentation</a>
-				</li>
-				<li><a href="/mlj-cheatsheet">Cheat Sheet</a></li>
-				<li><a href="/ecosystem">Ecosystem</a></li>
-				<li><a href="/contributing">Contributing</a></li>
-				<li><a href="/about">About</a></li>
+				{/each}
 			</ul>
 		</nav>
 	</div>
