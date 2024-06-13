@@ -20,6 +20,7 @@ learningTasks:
     - Regression
     - Clustering
     - Dimensionality Reduction
+    - Feature Engineering
     - Outlier Detection
     - Class Imbalance
     - Missing Value Imputation
@@ -30,7 +31,8 @@ learningTasks:
     - Predicting which category an observation belongs to
     - Predicting continuous outcomes
     - Grouping similar data points together.
-    - Reducing dimensionality while preserving information
+    - Reducing dimensionality while minimising information loss
+    - Reducing the number of features or combining them in new ways
     - Identifying anomalies or outliers in the data
     - Handling imbalance in dataset labels with resampling
     - Filling in missing data points in a dataset
@@ -43,6 +45,7 @@ learningTasks:
     - /models/reg.gif
     - /models/cluster.gif
     - /models/pca.png
+    - /models/feature_engineering.jpg
     - /models/outlier.png
     - /models/imbalance.gif
     - /models/missing.png
@@ -53,23 +56,29 @@ learningTasks:
 # See above to understand the subsequent fields
 modelingTasks:
   problems:
+    - Meta Algorithms
     - Iterative Models
     - Ensemble Models
     - Bayesian Models
     - Encoders
     - Distribution Fitter
     - Static Models
+    - Neural Networks
   descriptions:
+    - For wrapping models in extra functionality or combining them
     - Models that are trained iteratively to improve performance
     - Models that combine the predictions of multiple models
     - Models that are based on Bayesian statistics
     - Models that encode input data into a new form
     - Models that fit a probability distribution to the data
     - Models that do not generalize to new observations
+    - Artificial neural networks, a.k.a. deep learners
   images:
+    - /models/meta_algorithms.jpg
     - /models/iterative.png
     - /models/ensemble.png
     - /models/bayes.png
     - /models/encoders.png
     - /models/dist.png
     - /models/cluster.gif
+    - /models/neural_networks.jpeg
