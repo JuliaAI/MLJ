@@ -38,7 +38,6 @@
 		modalText = '';
 		modalLink = '';
 	}
-
 </script>
 
 <!-- This is still under construction. -->
@@ -59,29 +58,45 @@
 				class="grid-item {index === 0 ? 'grid-item-large' : index === 1 ? 'grid-item-wide' : ''}"
 				on:click={() => {
 					openModal(org.orgName, org.orgMarkdownDesc, org.orgLink);
+					window.open(org.orgLink, '_blank');
 				}}
 			>
-				<div
-					style="display: flex; gap: 0.5rem; align-items: center; flex-direction: row; justify-content:center;"
-				>
-					{#if org.orgName.startsWith('MLJ')}
-						<img
-							alt="logo"
-							style="width: {index === 0 ? '200px' : '80px'}"
-							class="mlj-logo"
-							src="./mlj-logo.png"
-						/>
-					{/if}
-					<div>
-						<h3
-							style="font-family: 'Lato'; font-style: italic; letter-spacing: -0.8px; font-size: 2rem;"
-						>
-							{cleanString(org.orgName)}
-						</h3>
+			<Tooltip
+			style={{
+				borderRadius: '20px',
+				backgroundColor: 'rgba(80, 30, 80,0.95)',
+				padding: '20px',
+				fontFamily: 'Lato',
+				fontSize: '0.95rem',
+				height:'100%',
+				display: 'block'
+			}}
+			maxWidth={400}
+			content={org.orgMarkdownDesc}
+		>
+					<div
+						style="display: flex; gap: 0.5rem; align-items: center; flex-direction: row; justify-content:center;"
+					>
+						{#if org.orgName.startsWith('MLJ')}
+							<img
+								alt="logo"
+								style="width: {index === 0 ? '200px' : '80px'}"
+								class="mlj-logo"
+								src="./mlj-logo.png"
+							/>
+						{/if}
+						<div>
+							<h3
+								style="font-family: 'Lato'; font-style: italic; letter-spacing: -0.8px; font-size: 2rem;"
+							>
+								{cleanString(org.orgName)}
+							</h3>
+						</div>
 					</div>
-				</div>
+					
+				</Tooltip>
 				<div>
-					<a href={org.orgLink}> {org.orgName + ((org.orthogonal) ? ' ⊥' : '')} </a>
+					<a href={org.orgLink}> {org.orgName + (org.orthogonal ? ' ⊥' : '')} </a>
 				</div>
 			</button>
 		{/each}
@@ -92,8 +107,8 @@
 		</p>
 	</div>
 </div>
-<Modal {showModal} name={modalTitle} text={modalText} link={modalLink} on:closeModal={closeModal} />
 
+<!-- <Modal {showModal} name={modalTitle} text={modalText} link={modalLink} on:closeModal={closeModal} /> -->
 
 <style lang="scss">
 	.background-wrapper {
@@ -163,9 +178,9 @@
 		width: 100px;
 	}
 	.markdown-holder {
-		display: flex; 
-		flex-direction: column; 
-		align-items: center; 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		padding: 1rem 3rem;
 		p {
 			color: #e1e1e1aa;
