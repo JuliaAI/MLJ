@@ -1,12 +1,12 @@
 # This is the title that shows up above the search bar and what's within [] will be printed in purple
 # If multiple titles are written then one is chosen randomly in each reload of the website
 titles:
-  - Over [180 Machine Learning Models]...At Your [Fingertips]
+  - Models
 
-# The text two write for the two buttons under the search bar
+# The text to write for the two buttons under the search bar
 buttonTexts:
-  - View Models by Learning Objective
-  - View Models by Modeling Approach
+  - View by Task
+  - View by Approach
 
 # The placeholder text for the search bar
 searchText: Search over all models
