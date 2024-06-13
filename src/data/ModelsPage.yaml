@@ -26,6 +26,7 @@ learningTasks:
     - Missing Value Imputation
     - Text Analysis
     - Image Processing
+    - Distribution Fitter
   # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
@@ -38,6 +39,7 @@ learningTasks:
     - Filling in missing data points in a dataset
     - Extracting insights or patterns from textual data
     - Analyzing and manipulating visual data
+    - Models that fit a probability distribution to the data
   # the image for each (shows up in the model block)
   ## write the path relative to the "static" folder found at the top-level of the directory
   images:
@@ -51,6 +53,7 @@ learningTasks:
     - /models/missing.png
     - /models/text.png
     - /models/segmentation.png
+    - /models/dist.png
 
 # This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t modeling approach
 # See above to understand the subsequent fields
@@ -61,7 +64,6 @@ modelingTasks:
     - Ensemble Models
     - Bayesian Models
     - Encoders
-    - Distribution Fitter
     - Static Models
     - Neural Networks
   descriptions:
@@ -70,7 +72,6 @@ modelingTasks:
     - Models that combine the predictions of multiple models
     - Models that are based on Bayesian statistics
     - Models that encode input data into a new form
-    - Models that fit a probability distribution to the data
     - Models that do not generalize to new observations
     - Artificial neural networks, a.k.a. deep learners
   images:
@@ -79,6 +80,5 @@ modelingTasks:
     - /models/ensemble.png
     - /models/bayes.png
     - /models/encoders.png
-    - /models/dist.png
     - /models/cluster.gif
     - /models/neural_networks.jpeg
