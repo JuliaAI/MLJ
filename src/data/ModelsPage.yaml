@@ -27,6 +27,7 @@ learningTasks:
     - Text Analysis
     - Image Processing
     - Distribution Fitter
+    - Meta Algorithms
   # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
@@ -40,6 +41,7 @@ learningTasks:
     - Extracting insights or patterns from textual data
     - Analyzing and manipulating visual data
     - Models that fit a probability distribution to the data
+    - For wrapping models in extra functionality or combining them
   # the image for each (shows up in the model block)
   ## write the path relative to the "static" folder found at the top-level of the directory
   images:
@@ -54,12 +56,12 @@ learningTasks:
     - /models/text.png
     - /models/segmentation.png
     - /models/dist.png
+    - /models/meta_algorithms.jpg
 
 # This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t modeling approach
 # See above to understand the subsequent fields
 modelingTasks:
   problems:
-    - Meta Algorithms
     - Iterative Models
     - Ensemble Models
     - Bayesian Models
@@ -67,7 +69,6 @@ modelingTasks:
     - Static Models
     - Neural Networks
   descriptions:
-    - For wrapping models in extra functionality or combining them
     - Models that are trained iteratively to improve performance
     - Models that combine the predictions of multiple models
     - Models that are based on Bayesian statistics
@@ -75,7 +76,6 @@ modelingTasks:
     - Models that do not generalize to new observations
     - Artificial neural networks, a.k.a. deep learners
   images:
-    - /models/meta_algorithms.jpg
     - /models/iterative.png
     - /models/ensemble.png
     - /models/bayes.png
