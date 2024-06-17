@@ -160,7 +160,7 @@ const navItems = [
       {
         name: "Building Polynomial Regression Models and Tuning Them",
         href: "/isl/lab-5/",
-        tags: ["Regression", "Feature Selection", "Hyperparameter Tuning"],
+        tags: ["Regression", "Feature Engineering", "Hyperparameter Tuning"],
         ilos: [
           "Understand how to build a polynomial regression model with MLJ",
           "Learn how to use feature selectors and models in an MLJ pipeline",
@@ -220,7 +220,7 @@ const navItems = [
           "Classification",
           "Data Processing",
           "Pipelines",
-          "Feature Selection",
+          "Feature Engineering",
           "Iterative Models",
           "Hyperparameter Optimization",
         ],
@@ -309,7 +309,7 @@ const navItems = [
         ]
       },
       {
-        name: "Exploring Generative Linear Models",
+        name: "Exploring Generalized Linear Models",
         href: "/end-to-end/glm/",
         tags: ["Pipelines", "Encoders", "Classification", "Regression"],
         ilos: [
