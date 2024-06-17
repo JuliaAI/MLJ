@@ -1,8 +1,20 @@
 # This is the title that shows up above the search bar and what's within [] will be printed in purple
 # If multiple titles are written then one is chosen randomly in each reload of the website
 titles:
-  - Models
-
+  - Looking for a classifier? Give [EvoTreeClassifier], [RandomForestClassifier],  or [SVC] a try.
+  - Too many features dragging you down? Try [PCA] or [RecursiveFeatureElimination].
+  - Need a model pipeline? Check out the Pipeline docs under "Meta Algorithms"
+  - Want a self-tuning model? Check out the [TunedModel] docs under "Meta Algorithms"
+  - Regressing on a lot of features and need interpretability? Try [ElasticNetRegressor] from MLJLinearModels.jl
+  - Looking for a pure Julia alternative to XGBoost? Try a model from EvoTrees.jl
+  - Can't find a model working with categorical features? Put [ContinuousEncoder] in your pipeline.
+  - Trying to predict a "count" variable? Try [EvoTreeCount].
+  - Remember self-organizing maps? Find that under [SelfOrganizingMap].
+  - Data segmentation on your mind? Try one of these clusterers: [KMeans], [DBSCAN] from Clustering.jl
+  - Want automatic correction for class imbalance? Try the [BalancedModel] wrapper under "Meta Algorithms"
+  - Want to try a deep learning model without writing a lot of boiler plate code? Try a model from MLJFlux.jl, such as [NeuralNetworkClassifier].
+  - Random forests are always worth a try. Try [RandomForestClassifier] or [RandomForestRegressor] from DecisionTree.jl.
+  
 # The text to write for the two buttons under the search bar
 buttonTexts:
   - View by Task
