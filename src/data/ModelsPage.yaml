@@ -26,7 +26,7 @@ learningTasks:
     - Missing Value Imputation
     - Text Analysis
     - Image Processing
-    - Distribution Fitter
+    - Distribution Estimation
   # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
@@ -39,7 +39,7 @@ learningTasks:
     - Filling in missing data points in a dataset
     - Extracting insights or patterns from textual data
     - Analyzing and manipulating visual data
-    - Models that fit a probability distribution to the data
+    - Models that learn a probability distribution from data
   # the image for each (shows up in the model block)
   ## write the path relative to the "static" folder found at the top-level of the directory
   images:
