@@ -1,4 +1,4 @@
-name: Run Julia Script
+name: Generate Model Browser
 
 on:
   schedule:
