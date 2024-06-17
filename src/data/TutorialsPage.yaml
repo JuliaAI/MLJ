@@ -1,7 +1,9 @@
 # This is the title that shows up above the search bar and what's within [] will be printed in purple
 # If multiple titles are written then one is chosen randomly in each reload of the website
 titles:
-  - Looking for a [Ph.D. in ML?] We've Got All [Needed Tutorials]
+  - A pro transitioning to Julia? Try [MLJ for Data Scientists in Two Hours].
+  - New to ML? Try [Vectors, Matrices and Data Loading in Julia].
+  - Looking for a gentle intro to ML basics? Start with [Loading and Accessing Data].
 
 # This is the placeholder for the search bar
 searchText: Search over all tutorials
