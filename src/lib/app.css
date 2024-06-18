@@ -35,29 +35,90 @@ html {
   }
 
   .md-container {
-    margin: 1rem 4rem 1rem 2rem;
-    :global(p) {
-    margin-bottom: 2rem;
+    margin: 3rem auto;
+    max-width: 90%;
+    div {
+    img[alt~="logo"] {
+        max-height: 300px;
+        margin: auto;
     }
-    :global(a) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    a {
+        color: #861b6d;
+    }
+    code {
+        background-color: rgb(233, 233, 233);
+        color: rgb(0, 0, 0);
+        padding: 0.1rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+    }
+    p {
+    margin-bottom: 2rem;
+    font-family: 'Open Sans';
+    max-width: 90%;
+    text-align: justify;
+    margin-left: 0.9rem;
+    line-height: 1.7rem;
+    color: #313131;
+    }
+    a {
         text-decoration: underline;
     }
-    :global(h1),  :global(h2),  :global(h3),  :global(h4) {
+    h1,  h2,  h3,  h4 {
         margin-bottom: 1rem;
         margin-top: 0.5rem;
+        color: white;
     } 
-    :global(ul) {
+    h1 {
+        margin-bottom: 2rem;
+        font-family: 'Poppins';
+        padding: 0.6rem;
+        border-radius: 15px;
+        background: linear-gradient(34deg, #6c4070, #3a2040);
+        box-shadow: 
+            3px 3px 5px rgba(0, 0, 0, 0.2),  /* light shadow */
+            6px 6px 10px rgba(0, 0, 0, 0.15), /* medium shadow */
+            9px 9px 15px rgba(0, 0, 0, 0.1);  /* dark shadow */
+    }
+    h2 {
+        font-family: 'Poppins';
+        padding: 0.5rem;
+        border-radius: 15px;
+        background: linear-gradient(34deg, #6c4070, #3a2040);
+        box-shadow: 
+            3px 3px 5px rgba(0, 0, 0, 0.2),  /* light shadow */
+            6px 6px 10px rgba(0, 0, 0, 0.15), /* medium shadow */
+            9px 9px 15px rgba(0, 0, 0, 0.1);  /* dark shadow */
+    }
+    h3 {
+        padding: 0.35rem;
+        background-color: #845588;
+        background: linear-gradient(34deg, #845588, #59395c);
+
+        border-radius: 15px;
+        display: inline-block;
+        margin: 1rem 0rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    ul {
             list-style-type: disc; /* Ensures bullets are shown */
+            margin-left: 1rem;
             padding-left: 20px; /* Adds padding to indent the list */
-            :global(li) {
+            li {
                 margin-bottom: 0.5rem;
             }
+            color: #1a1a1a;
         }
-        :global(ul) :global(ul) {
+        ul ul {
             list-style-type: circle; /* Different bullet style for nested lists */
             padding-left: 20px; /* Further indents nested lists */
         }
-        :global(ul) :global(ul) :global(ul) {
+        ul ul ul {
             list-style-type: square; /* Another bullet style for deeper nested lists */
             padding-left: 20px; /* Further indents deeper nested lists */
         }
