@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Dimension Reduction](@ref)  |  [Clustering](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural Networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Fitter](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Dimension Reduction](@ref)  |  [Clustering](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural Networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Distribution Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -674,7 +674,7 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [UnivariateFillImputer (MLJModels.jl)](@ref UnivariateFillImputer_MLJModels)
 
-##  Distribution Fitter
+##  Distribution Estimation
 - [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
 
 - [GaussianMixtureImputer (BetaML.jl)](@ref GaussianMixtureImputer_BetaML)
