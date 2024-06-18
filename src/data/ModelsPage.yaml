@@ -38,7 +38,7 @@ learningTasks:
     - Missing Value Imputation
     - Text Analysis
     - Image Processing
-    - Distribution Estimation
+    - Density Estimation
   # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
