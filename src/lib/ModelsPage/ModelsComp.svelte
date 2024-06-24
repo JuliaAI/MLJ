@@ -85,14 +85,14 @@
 		on:click={setLearningMode}
 		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
 			? 'white'
-			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
+			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
 		>{modelsData["buttonTexts"][0]}</button
 	>
 	<button
 		on:click={setModelingMode}
 		style="background-color: {!learningMode ? '#6E4582' : 'transparent'}; color: {!learningMode
 			? 'white'
-			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
+			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
 	>
 		{modelsData["buttonTexts"][1]}
 	</button>
