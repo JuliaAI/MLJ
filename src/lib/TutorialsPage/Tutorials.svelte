@@ -16,10 +16,11 @@
 	import SvelteMarkdown from 'svelte-markdown';
 	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
 	import externalTutorialsDataYaml from '../../data/ExternalTutorials.yaml?raw';
-	import YAML from 'yaml'
+	import YAML from 'yaml';
 
 	let tutorialsData = YAML.parse(tutorialsDataYaml);
 	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
+
 	let titles = tutorialsData['titles'];
 	let randomInd = Math.floor(Math.random() * titles.length);
 
@@ -34,8 +35,6 @@
 
 	const tutorialsByTag = getTutorialsByTag(navItems);
 	const extraTutorialsByTag = getExternalTutorialsByTag(flattenJSON(externalTutorialsData));
-	console.log(tutorialsByTag);
-	console.log(extraTutorialsByTag);
 
 	function appendValues(obj1: any, obj2: any) {
 		for (let key in obj2) {
@@ -71,35 +70,35 @@
 		<SvelteMarkdown source={tutorialsData['hint']} />
 	</div>
 	<div class="tag-buttons-container">
-			{#each tags as tag}
-				<button
-					id="{tag}-button"
-					on:click={() => {
-						goto(`/tutorials/${tag.replace('%20', ' ')}`);
-						stageEffectBasedOnURL(tag);
-					}}>{tag}</button
-				>
-			{/each}
+		{#each tags as tag}
+			<button
+				id="{tag}-button"
+				on:click={() => {
+					goto(`/tutorials/${tag.replace('%20', ' ')}`);
+					stageEffectBasedOnURL(tag);
+				}}>{tag}</button
+			>
+		{/each}
 	</div>
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
 			<div class="tag-container" id={tag}>
 				<h3 class="tag">{tag}</h3>
 				<div class="tutorial-list">
-					{#each tutorialsByTag[tag] as tutorial}
-						<a
-							href={
-								tutorial.href.startsWith('https') ? tutorial.href : 
-								'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href
-							}
-							class="tutorial-link"
-						>
-							<div class="tutorial-item">
-								{tutorial.name}
-							</div>
-						</a>
-					{/each}
-	
+					{#if tutorialsByTag[tag]}
+						{#each tutorialsByTag[tag] as tutorial}
+							<a
+								href={tutorial.href.startsWith('https')
+									? tutorial.href
+									: 'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
+								class="tutorial-link"
+							>
+								<div class="tutorial-item">
+									{tutorial.name}
+								</div>
+							</a>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		{/each}
