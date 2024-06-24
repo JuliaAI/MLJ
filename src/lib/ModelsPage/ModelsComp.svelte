@@ -107,9 +107,15 @@
 				<div class="item-title">
 					<b>{problem}</b>
 					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
-					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
-						>View Models</button
+					{#if modelBrowserJson[problem]}
+						<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
+							>View Models</button
+						>
+					{:else}
+					<button on:click={() => openModal(problem, [])} class="view-button"
+						>Not Found</button
 					>
+					{/if}
 					<button class="view-button">
 					<a href="/tutorials/{problem}">
 					View Tutorials
