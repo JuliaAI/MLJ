@@ -116,6 +116,7 @@
 				<div class="item-title">
 					<b>{problem}</b>
 					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
+					<div style="display: flex; flex-direction: row; gap: 1rem;">
 					{#if modelBrowserJson[problem]}
 						<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
 							>View Models</button
@@ -130,6 +131,7 @@
 					View Tutorials
 				</a>
 				</button>
+			</div>
 				</div>
 			</div>
 		{/each}
@@ -203,6 +205,14 @@
 				font-size: 1.3rem;
 				min-height: 70px;
 				text-align: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				p {
+					max-width: 90%;
+				
+				}
 
 				.view-button {
 					border-radius: 1rem;
