@@ -81,6 +81,7 @@
 
 <style lang="scss">
 	.search-bar {
+		margin-top: 3rem;
 		position: relative;
 		width: 60%;
 		@media only screen and (max-width: 1300px) {
