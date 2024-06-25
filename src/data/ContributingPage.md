@@ -50,5 +50,5 @@ MLJ code is now spread over [multiple repositories](https://github.com/JuliaAI/M
 
 
 
-### Bucket List
-...
+### Available Projects
+Developers that can demonstrate prior experience in Julia and machine learning are welcome to consider working on one of these projects.

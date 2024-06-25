@@ -4,7 +4,6 @@
 
     // about page data excluding markdown
 	let aboutData = YAML.parse(aboutPageYaml);
-    console.log(aboutData)
     const topics = aboutData["topics"]
     const email = aboutData["email"]
     console.log(topics)
