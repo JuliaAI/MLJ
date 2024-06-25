@@ -9,33 +9,41 @@
 		renameAttributes
 	} from './helpers';
 	import Search from '../Common/Search.svelte';
-	import Title from '../Common/Title.svelte';
+	import Hints from '../Common/Hints.svelte'
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	//@ts-ignore
 	import SvelteMarkdown from 'svelte-markdown';
 	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
 	import externalTutorialsDataYaml from '../../data/ExternalTutorials.yaml?raw';
-	import YAML from 'yaml'
+	import YAML from 'yaml';
 
 	let tutorialsData = YAML.parse(tutorialsDataYaml);
 	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
-	let titles = tutorialsData['titles'];
-	let randomInd = Math.floor(Math.random() * titles.length);
+
+	let hints = tutorialsData['hints'];
+	let randomInd = 0;			// give first hint more importance
+	let hint_dur = tutorialsData["hint_dur"] * 1000;
+	// every time hint_dur passes, recompute randomInd
+	let hint_timer = setInterval(function() {
+		randomInd = Math.floor(Math.random() * hints.length);
+	}, hint_dur);
+
 
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
 	const navItemsJson = match ? match[1] : '';
 	const navItems = eval(navItemsJson);
 
-	onMount((): void => {
+	onMount(()=> {
 		stageEffectBasedOnURL();
+		return () => {
+			clearInterval(hint_timer);
+		};
 	});
 
 	const tutorialsByTag = getTutorialsByTag(navItems);
 	const extraTutorialsByTag = getExternalTutorialsByTag(flattenJSON(externalTutorialsData));
-	console.log(tutorialsByTag);
-	console.log(extraTutorialsByTag);
 
 	function appendValues(obj1: any, obj2: any) {
 		for (let key in obj2) {
@@ -58,7 +66,6 @@
 </script>
 
 <div class="container">
-	<Title text={titles[randomInd]} />
 
 	<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
 		<Search
@@ -67,39 +74,40 @@
 			placeholder={tutorialsData['searchText']}
 		/>
 	</div>
-	<div class="headtext">
-		<SvelteMarkdown source={tutorialsData['hint']} />
-	</div>
+	<Hints text={hints[randomInd]} />
+
+
 	<div class="tag-buttons-container">
-			{#each tags as tag}
-				<button
-					id="{tag}-button"
-					on:click={() => {
-						goto(`/tutorials/${tag.replace('%20', ' ')}`);
-						stageEffectBasedOnURL(tag);
-					}}>{tag}</button
-				>
-			{/each}
+		{#each tags as tag}
+			<button
+				id="{tag}-button"
+				on:click={() => {
+					goto(`/tutorials/${tag.replace('%20', ' ')}`);
+					stageEffectBasedOnURL(tag);
+				}}>{tag}</button
+			>
+		{/each}
 	</div>
+
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
 			<div class="tag-container" id={tag}>
 				<h3 class="tag">{tag}</h3>
 				<div class="tutorial-list">
-					{#each tutorialsByTag[tag] as tutorial}
-						<a
-							href={
-								tutorial.href.startsWith('https') ? tutorial.href : 
-								'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href
-							}
-							class="tutorial-link"
-						>
-							<div class="tutorial-item">
-								{tutorial.name}
-							</div>
-						</a>
-					{/each}
-	
+					{#if tutorialsByTag[tag]}
+						{#each tutorialsByTag[tag] as tutorial}
+							<a
+								href={tutorial.href.startsWith('https')
+									? tutorial.href
+									: 'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
+								class="tutorial-link"
+							>
+								<div class="tutorial-item">
+									{tutorial.name}
+								</div>
+							</a>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		{/each}
@@ -111,8 +119,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 1rem;
-		font-family: 'Poppins';
+		margin-top: 2rem;
+		margin-bottom: -2rem;
+		font-family: 'Lato';
+		font-size: 1rem;
 		:global(a) {
 			color: darkmagenta;
 		}

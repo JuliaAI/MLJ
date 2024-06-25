@@ -1,14 +1,19 @@
-# This is the title that shows up above the search bar and what's within [] will be printed in purple
-# If multiple titles are written then one is chosen randomly in each reload of the website
-titles:
-  - Looking for a [Ph.D. in ML?] We've Got All [Needed Tutorials]
+# This is the hint that shows up below the search bar and any links are printed in prple
+# If multiple hints are written then one is chosen randomly in each reload of the website
+hints:
+  - Looking for a sequential progression of tutorials? See
+   [DataScienceTutorials.jl](https://juliaai.github.io/DataScienceTutorials.jl/)
+  - A pro transitioning to Julia? Try [MLJ for Data Scientists in Two Hours](https://juliaai.github.io/DataScienceTutorials.jl/end-to-end/telco/).
+  - New to ML? Try [Vectors, Matrices and Data Loading in Julia](https://juliaai.github.io/DataScienceTutorials.jl/isl/lab-2/).
+  - Looking for a gentle intro to ML basics? Start with [Loading and Accessing Data](https://juliaai.github.io/DataScienceTutorials.jl/data/loading/).
+
+# Hints rotate with refresh anyway. This specifies how many seconds to wait before switching to the next hint (without a refresh).
+hint_dur:
+  - 7  
 
 # This is the placeholder for the search bar
 searchText: Search over all tutorials
 
-# This is the hint written below the searchbar. Any markdown string should work.
-hint: Looking for a sequential progression of tutorials? See
-  [DataScienceTutorials.jl](https://juliaai.github.io/DataScienceTutorials.jl/)
 
 # These are the tutorial tags printed below the hint.
 ## The navigation file in DataScienceTutorials (or external tutorials) should use only these tags
@@ -24,7 +29,7 @@ tags:
   - Class Imbalance
   - Missing Value Imputation
   - Encoders
-  - Feature Selection
+  - Feature Engineering
   - Hyperparameter Tuning
   - Pipelines
   - Iterative Models

@@ -6,13 +6,18 @@
 	import Modal from './Modal.svelte';
 	import Search from '../Common/Search.svelte';
 	import { onMount } from 'svelte';
-	import Title from '../Common/Title.svelte';
+	import Hints from '../Common/Hints.svelte';
 	import YAML from 'yaml'
 	import modelsDataYaml from "../../data/ModelsPage.yaml?raw";
 
 	let modelsData = YAML.parse(modelsDataYaml);
-	let titles = modelsData["titles"]
-	let randomInd = Math.floor(Math.random() * titles.length);
+	let hints = modelsData["hints"]
+	let randomInd = Math.floor(Math.random() * hints.length);
+	let hint_dur = modelsData["hint_dur"] * 1000;
+	// every time hint_dur passes, recompute randomInd
+	let hint_timer = setInterval(function() {
+		randomInd = Math.floor(Math.random() * hints.length);
+	}, hint_dur);
 
 
 	const modelBrowserJson = markdownToJSON(modelBrowser);
@@ -70,29 +75,33 @@
 
 	onMount(() => {
 		loadStateFromLocalStorage();
+		return () => {
+			clearInterval(hint_timer);
+		};
 	});
 </script>
 
 
-<Title text={titles[randomInd]} />
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
 	<Search items={flatModelBrowser} placeholder={modelsData["searchText"]}/>
 </div>
+<Hints text={hints[randomInd]} />
+
 <div
-	style="display: flex; justify-content: center; align-items: center; margin-top: 2rem; gap: 0rem; max-width: 70%; margin-left: auto; margin-right: auto;"
+	style="display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; gap: 0rem; max-width: 70%; margin-left: auto; margin-right: auto;"
 >
 	<button
 		on:click={setLearningMode}
 		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
 			? 'white'
-			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
+			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
 		>{modelsData["buttonTexts"][0]}</button
 	>
 	<button
 		on:click={setModelingMode}
 		style="background-color: {!learningMode ? '#6E4582' : 'transparent'}; color: {!learningMode
 			? 'white'
-			: 'black'}; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
+			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
 	>
 		{modelsData["buttonTexts"][1]}
 	</button>
@@ -107,14 +116,22 @@
 				<div class="item-title">
 					<b>{problem}</b>
 					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
-					<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
-						>View Models</button
+					<div style="display: flex; flex-direction: row; gap: 1rem;">
+					{#if modelBrowserJson[problem]}
+						<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
+							>View Models</button
+						>
+					{:else}
+					<button on:click={() => openModal(problem, [])} class="view-button"
+						>Not Found</button
 					>
+					{/if}
 					<button class="view-button">
 					<a href="/tutorials/{problem}">
 					View Tutorials
 				</a>
 				</button>
+			</div>
 				</div>
 			</div>
 		{/each}
@@ -188,6 +205,14 @@
 				font-size: 1.3rem;
 				min-height: 70px;
 				text-align: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				p {
+					max-width: 90%;
+				
+				}
 
 				.view-button {
 					border-radius: 1rem;

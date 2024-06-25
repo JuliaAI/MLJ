@@ -1,12 +1,28 @@
-# This is the title that shows up above the search bar and what's within [] will be printed in purple
-# If multiple titles are written then one is chosen randomly in each reload of the website
-titles:
-  - Over [180 Machine Learning Models]...At Your [Fingertips]
+# This is the hint that shows up below the search bar and any links are printed in prple
+# If multiple hints are written then one is chosen randomly in each reload of the website
+hints:
+  - Looking for a classifier? Give [EvoTreeClassifier](https://juliaai.github.io/MLJ.jl/dev/models/EvoTreeClassifier_EvoTrees/), [RandomForestClassifier](https://juliaai.github.io/MLJ.jl/dev/models/RandomForestClassifier_DecisionTree/),  or [SVC](https://juliaai.github.io/MLJ.jl/dev/models/SVC_LIBSVM/) a try.
+  - Too many features dragging you down? Try [PCA](https://juliaai.github.io/MLJ.jl/dev/models/PCA_MultivariateStats/) or [RecursiveFeatureElimination](https://juliaai.github.io/MLJ.jl/dev/models/RecursiveFeatureElimination_FeatureSelection/).
+  - Need a model pipeline? Check out the [Pipeline](https://juliaai.github.io/MLJ.jl/dev/models/Pipeline_MLJBase/#Pipeline_MLJBase) docs under "Meta Algorithms"
+  - Want a self-tuning model? Check out the [TunedModel](https://juliaai.github.io/MLJ.jl/dev/models/TunedModel_MLJTuning/#TunedModel_MLJTuning) docs under "Meta Algorithms"
+  - Regressing on a lot of features and need interpretability? Try [ElasticNetRegressor](https://juliaai.github.io/MLJ.jl/dev/models/ElasticNetRegressor_MLJLinearModels/) from [MLJLinearModels.jl](https://juliaai.github.io/MLJLinearModels.jl/stable/)
+  - Looking for a pure Julia alternative to XGBoost? Try a model from [EvoTrees.jl](https://github.com/Evovest/EvoTrees.jl)
+  - Can't find a model working with categorical features? Put [ContinuousEncoder](https://juliaai.github.io/MLJ.jl/dev/models/ContinuousEncoder_MLJModels/#ContinuousEncoder_MLJModels) in your pipeline.
+  - Trying to predict a "count" variable? Try [EvoTreeCount](https://juliaai.github.io/MLJ.jl/dev/models/EvoTreeCount_EvoTrees/).
+  - Remember self-organizing maps? Find that under [SelfOrganizingMap](https://juliaai.github.io/MLJ.jl/dev/models/SelfOrganizingMap_SelfOrganizingMaps/).
+  - "Data segmentation on your mind? Try one of these clusterers: [KMeans](https://juliaai.github.io/MLJ.jl/dev/models/KMeans_Clustering/), [DBSCAN](https://juliaai.github.io/MLJ.jl/dev/models/DBSCAN_Clustering/) from Clustering.jl"
+  - Want automatic correction for class imbalance? Try the [BalancedModel](https://juliaai.github.io/MLJ.jl/dev/models/BalancedModel_MLJBalancing/#BalancedModel_MLJBalancing) wrapper under "Meta Algorithms"
+  - Want to try a deep learning model without writing a lot of boiler plate code? Try a model from [MLJFlux.jl](https://fluxml.ai/MLJFlux.jl/dev/), such as [NeuralNetworkClassifier](https://juliaai.github.io/MLJ.jl/dev/models/NeuralNetworkClassifier_MLJFlux/).
+  - Random forests are always worth a try. Try [RandomForestClassifier](https://juliaai.github.io/MLJ.jl/dev/models/RandomForestClassifier_DecisionTree/) or [RandomForestRegressor](https://juliaai.github.io/MLJ.jl/dev/models/RandomForestRegressor_BetaML/) from [DecisionTree.jl](https://github.com/JuliaAI/DecisionTree.jl?tab=readme-ov-file).
 
-# The text two write for the two buttons under the search bar
+# Hints rotate with refresh anyway. This specifies how many seconds to wait before switching to the next hint (without a refresh).
+hint_dur:
+  - 7  
+
+# The text to write for the two buttons under the search bar
 buttonTexts:
-  - View Models by Learning Objective
-  - View Models by Modeling Approach
+  - View by Task
+  - View by Approach
 
 # The placeholder text for the search bar
 searchText: Search over all models
@@ -19,23 +35,27 @@ learningTasks:
     - Classification
     - Regression
     - Clustering
-    - Dimensionality Reduction
+    - Dimension Reduction
+    - Feature Engineering
     - Outlier Detection
     - Class Imbalance
     - Missing Value Imputation
     - Text Analysis
     - Image Processing
+    - Density Estimation
   # the descriptions for each (shows up below the name in the model block)
   descriptions:
     - Predicting which category an observation belongs to
     - Predicting continuous outcomes
     - Grouping similar data points together.
-    - Reducing dimensionality while preserving information
+    - Reducing dimensionality while minimising information loss
+    - Reducing the number of features or combining them in new ways
     - Identifying anomalies or outliers in the data
     - Handling imbalance in dataset labels with resampling
     - Filling in missing data points in a dataset
     - Extracting insights or patterns from textual data
     - Analyzing and manipulating visual data
+    - Models that learn a probability distribution from data
   # the image for each (shows up in the model block)
   ## write the path relative to the "static" folder found at the top-level of the directory
   images:
@@ -43,11 +63,13 @@ learningTasks:
     - /models/reg.gif
     - /models/cluster.gif
     - /models/pca.png
+    - /models/feature_engineering.jpg
     - /models/outlier.png
     - /models/imbalance.gif
     - /models/missing.png
     - /models/text.png
     - /models/segmentation.png
+    - /models/dist.png
 
 # This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t modeling approach
 # See above to understand the subsequent fields
@@ -57,19 +79,22 @@ modelingTasks:
     - Ensemble Models
     - Bayesian Models
     - Encoders
-    - Distribution Fitter
     - Static Models
+    - Neural Networks
+    - Meta Algorithms
   descriptions:
     - Models that are trained iteratively to improve performance
     - Models that combine the predictions of multiple models
     - Models that are based on Bayesian statistics
     - Models that encode input data into a new form
-    - Models that fit a probability distribution to the data
     - Models that do not generalize to new observations
+    - Artificial neural networks, a.k.a. deep learners
+    - For wrapping models in extra functionality or combining them
   images:
     - /models/iterative.png
     - /models/ensemble.png
     - /models/bayes.png
     - /models/encoders.png
-    - /models/dist.png
     - /models/cluster.gif
+    - /models/neural.jpg
+    - /models/meta_algorithms.jpg
