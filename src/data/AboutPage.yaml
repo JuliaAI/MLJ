@@ -1,0 +1,9 @@
+# email to send feedback to
+email: mlj@mlj.com
+# possible types of feedback for the feedback form
+topics:
+  - General Feedback
+  - Feature Request
+  - Bug Report
+  - Other
+
