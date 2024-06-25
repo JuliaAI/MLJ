@@ -10,6 +10,7 @@
 	function toggleNav() {
 		navOpen = !navOpen;
 	}
+	let currentPath = "";
 
 	onMount(() => {
 		//   If a link has a dropdown, add sub menu toggle.
@@ -35,7 +36,12 @@
 				element.style.display = 'none';
 			});
 		});
+
+	// Get the current path
+	currentPath = window.location.pathname;
 	});
+
+
 </script>
 
 <section class="navigation">
@@ -50,7 +56,7 @@
 			<ul class="nav-list" style={navOpen ? 'display: block;' : 'display: none;'}>
 				{#each headerData['headerLinks'] as linkItem}
 					<li>
-						<a href="{base}{linkItem.link}" target="_{linkItem.target}">
+						<a href="{base}{linkItem.link}" target="_{linkItem.target}" class:active-link={currentPath === `${base}${linkItem.link}`}>
 							{linkItem.name}
 						</a>
 					</li>
@@ -62,6 +68,10 @@
 
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+	.active-link {
+		color: rgb(255, 255, 255); 
+		font-weight: bold;
+	}
 	section {
 		background: rgb(100, 50, 100);
 	}

@@ -1,0 +1,121 @@
+projects:
+  - projectName: Machine Learning in Predictive Survival Analysis
+    projectMD: |
+      Implement survival analysis models for use in the MLJ machine learning
+      platform.
+
+      **Difficulty.** Moderate - hard. **Duration.** 350 hours
+
+      ### Description
+
+      Survival/time-to-event analysis is an important field of Statistics
+      concerned with understanding the distribution of events over time.
+      Survival analysis presents a unique challenge as we are also interested
+      in events that do not take place, which we refer to as 'censoring'.
+      Survival analysis methods are important in many real-world settings,
+      such as health care (disease prognosis), finance and economics (risk of
+      default), commercial ventures (customer churn), engineering (component
+      lifetime), and many more. This project aims to implement models for
+      performing survivor analysis with the MLJ machine learning framework.
+
+      **[mlr3proba](https://mlr3proba.mlr-org.com) is currently the most complete survival
+      analysis interface, let's get SurvivalAnalysisA.jl to the same standard - but learning from mistakes
+      along the way.**
+
+
+      **Mentors.** [Sebastian Vollmer](https://sebastian.vollmer.ms), [Anthony Blaom](https://ablaom.github.io/),
+
+      ### Prerequisites
+
+      -   Julia language fluency is essential.
+
+      -   Git-workflow familiarity is strongly preferred.
+
+      -   Some experience with survival analysis.
+
+      -   Familiarity with MLJ's API a plus.
+
+      -   A passing familiarity with machine learning goals and workflow is
+        preferred.
+
+      ### Your contribution
+
+      You will work towards creating a survival analysis package with a range of metrics,
+      capable of making distribution predictions for classical and ML models. You will bake in
+      competing risks in early, as well as prediction transformations, and include both left and
+      interval censoring.  You will code up basic models (Cox PH and AFT), as well as one ML
+      model as a proof of concept (probably decision tree is simplest or Coxnet).
+
+      Specifically, you will:
+
+      -   Familiarize yourself with the training and evaluation machine
+        learning models in MLJ.
+
+      -  For SurvivalAnalysis.jl, implement the [MLJ model interface](https://alan-turing-institute.github.io/MLJ.jl/dev/adding_models_for_general_use/).
+
+      -   Consider Explainability of SurvivalAnalysis through SurvSHAP(t)
+
+      -   Develop a proof of concept for newer advanced survival analysis
+        models not currently implemented in Julia.
+
+      ### References
+
+      - Mateusz Krzyziński et al., [SurvSHAP(t): Time-Dependent Explanations of Machine Learning Survival Models](https://doi.org/10.1016/j.knosys.2022.110234), Knowledge-Based Systems 262 (February 2023): 110234
+
+      - Kvamme, H., Borgan, Ø., & Scheel, I. (2019). [Time-to-event prediction with neural networks and Cox regression](https://arxiv.org/abs/1907.00825). Journal of Machine Learning Research, 20(129), 1--30.
+
+      - Lee, C., Zame, W. R., Yoon, J., & van der Schaar, M. (2018). [Deephit: A deep learning approach to survival analysis with	competing risks.](https://ojs.aaai.org/index.php/AAAI/article/view/11842/11701) In Thirty-Second AAAI Conference on Artificial	Intelligence.
+
+      - Katzman, J. L., Shaham, U., Cloninger, A., Bates, J., Jiang, T., & Kluger, Y. (2018). [DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1). BMC Medical Research Methodology, 18(1), 24.
+
+      - Gensheimer, M. F., & Narasimhan, B. (2019). A scalable discrete-time survival model for neural networks.](https://peerj.com/articles/6257/) PeerJ, 7, e6257.
+
+      - [SurvivalAnalysis.jl](https://github.com/RaphaelS1/SurvivalAnalysis.jl)
+
+  - projectName: Deeper Bayesian Integration
+    projectMD: |
+      Bayesian methods and probabilistic supervised learning provide uncertainty quantification. This project aims increasing integration to combine Bayesian and non-Bayesian methods using Turing.
+
+      **Difficulty.** Difficult. **Duration.** 350 hours.
+
+      ### Description
+      As an initial step reproduce [SOSSMLJ](https://github.com/cscherrer/SossMLJ.jl) in Turing. The bulk of the project is to implement methods that combine multiple predictive distributions.
+
+      ### Your contributions
+      - Interface between Turing and MLJ
+      - Comparisons of ensembling, stacking of predictive distribution
+      - reproducible benchmarks across various settings.
+
+      ### References
+      [Bayesian Stacking](http://www.stat.columbia.edu/~gelman/research/published/stacking_paper_discussion_rejoinder.pdf)
+      [SKpro](https://github.com/alan-turing-institute/skpro/blob/master/README.md)
+      ### Difficulty: Medium to Hard
+
+      **Mentors**: [Hong Ge](https://github.com/yebai) [Sebastian Vollmer](https://sebastian.vollmer.ms)
+
+  - projectName: Tracking and sharing MLJ workflows using MLflow
+    projectMD: |
+      Help data scientists using MLJ track and share their machine learning experiments using
+      [MLflow](https://mlflow.org). The emphasis iin this phase of the project is:
+
+      - support *asynchronous* workflows, as appear in parallelized model tuning
+      - support live logging while training *iterative* models, such as neural networks
+
+      **Difficulty.** Moderate. **Duration.** 350 hours.
+
+      ### Description
+
+      MLflow is an open source platform for the machine learning life cycle. It allows the data
+      scientist to upload experiment metadata and outputs to the platform for reproducing and
+      sharing purposes. MLJ [already allows](https://github.com/JuliaAI/MLJFlow.jl) users to
+      report basic model performance evaluation to an MLflow service and this project seeks to
+      greatly enhance this integration.
+
+      ### Prerequisites
+      - Julia language fluency essential
+      - Understanding of asynchronous programming principles
+      - Git-workflow familiarity strongly preferred.
+      - General familiarity with data science workflows
+
+      ### Your contribution
+      * You will familiarize yourself with MLJ, MLflow and ML
