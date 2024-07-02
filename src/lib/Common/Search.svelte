@@ -23,8 +23,12 @@
 			isOpen = false;
 		} else {
 			results = items
-				.filter((item) => item.modelName.toLowerCase().includes(searchString.toLowerCase()))
-				.slice(0, 4);
+				.filter(
+					(item) =>
+						item.modelName.toLowerCase().includes(searchString.toLowerCase()) ||
+						(item.link && item.link.toLowerCase().includes(searchString.toLowerCase()))
+				)
+				.slice(0, 12);
 			isOpen = true;
 		}
 	}
