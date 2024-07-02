@@ -13,17 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Download file
-        run: |
-          curl -o src/lib/Data/model_docstring_tools.jl https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/docs/model_docstring_tools.jl
-
       - name: Set up Julia
         uses: julia-actions/setup-julia@v1
         with:
           version: '1'
-          
-      - name: Run and Install dependencies
-        run: julia --project=src/lib/Data/ -e 'using Pkg; Pkg.add("MLJBase"); Pkg; Pkg.add("MLJ"); using MLJBase; using MLJ; include("src/lib/Data/model_docstring_tools.jl"); write_page()'
+
+      - name: Run Julia script
+        run: julia src/lib/Data/write.jl
 
       - name: Commit and push changes
         run: |
