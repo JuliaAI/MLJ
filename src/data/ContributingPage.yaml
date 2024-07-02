@@ -1,3 +1,6 @@
+# issues chunk from the link. E.g., link below if for https://github.com/JuliaAI/MLJ.jl/labels/bucket%20list
+issuesLink: issues?labels=bucket%20list
+# additional projects
 projects:
   - projectName: Machine Learning in Predictive Survival Analysis
     projectMD: |
