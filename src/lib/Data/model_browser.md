@@ -182,6 +182,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [BaggingClassifier (MLJScikitLearnInterface.jl)](@ref BaggingClassifier_MLJScikitLearnInterface)
 
+- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
+
 - [BayesianLDA (MLJScikitLearnInterface.jl)](@ref BayesianLDA_MLJScikitLearnInterface)
 
 - [BayesianLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianLDA_MultivariateStats)
@@ -191,6 +193,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [BayesianSubspaceLDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref BayesianSubspaceLDA_MultivariateStats)
 
 - [BernoulliNBClassifier (MLJScikitLearnInterface.jl)](@ref BernoulliNBClassifier_MLJScikitLearnInterface)
+
+- [BinaryThresholdPredictor (MLJModels.jl)](@ref BinaryThresholdPredictor_MLJModels)
 
 - [CatBoostClassifier (CatBoost.jl)](@ref CatBoostClassifier_CatBoost)
 
@@ -359,6 +363,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [SOSDetector (OutlierDetectionPython.jl)](@ref SOSDetector_OutlierDetectionPython)
 
+- [TransformedTargetModel (MLJBase.jl)](@ref TransformedTargetModel_MLJBase)
+
 ##  Iterative Models
 - [CatBoostClassifier (CatBoost.jl)](@ref CatBoostClassifier_CatBoost)
 
@@ -381,6 +387,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [ExtraTreesRegressor (MLJScikitLearnInterface.jl)](@ref ExtraTreesRegressor_MLJScikitLearnInterface)
 
 - [ImageClassifier (MLJFlux.jl)](@ref ImageClassifier_MLJFlux)
+
+- [IteratedModel (MLJIteration.jl)](@ref IteratedModel_MLJIteration)
 
 - [LGBMClassifier (LightGBM.jl)](@ref LGBMClassifier_LightGBM)
 
@@ -425,6 +433,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [CatBoostRegressor (CatBoost.jl)](@ref CatBoostRegressor_CatBoost)
 
+- [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
+
 - [EvoSplineRegressor (EvoLinear.jl)](@ref EvoSplineRegressor_EvoLinear)
 
 - [EvoTreeClassifier (EvoTrees.jl)](@ref EvoTreeClassifier_EvoTrees)
@@ -454,6 +464,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [RandomForestRegressor (DecisionTree.jl/MLJDecisionTreeInterface.jl)](@ref RandomForestRegressor_DecisionTree)
 
 - [RandomForestRegressor (MLJScikitLearnInterface.jl)](@ref RandomForestRegressor_MLJScikitLearnInterface)
+
+- [Stack (MLJBase.jl)](@ref Stack_MLJBase)
 
 - [XGBoostClassifier (XGBoost.jl/MLJXGBoostInterface.jl)](@ref XGBoostClassifier_XGBoost)
 
@@ -497,6 +509,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [PCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PCA_MultivariateStats)
 
 - [PPCA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref PPCA_MultivariateStats)
+
+- [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
 
 - [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
 
@@ -577,6 +591,10 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [MultinomialNBClassifier (NaiveBayes.jl/MLJNaiveBayesInterface.jl)](@ref MultinomialNBClassifier_NaiveBayes)
 
 ##  Class Imbalance
+- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
+
+- [BalancedModel (MLJBalancing.jl)](@ref BalancedModel_MLJBalancing)
+
 - [BorderlineSMOTE1 (Imbalance.jl)](@ref BorderlineSMOTE1_Imbalance)
 
 - [ClusterUndersampler (Imbalance.jl)](@ref ClusterUndersampler_Imbalance)
@@ -623,7 +641,27 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [UnivariateTimeTypeToContinuous (MLJModels.jl)](@ref UnivariateTimeTypeToContinuous_MLJModels)
 
 ##  Meta Algorithms
+- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
 
+- [BalancedModel (MLJBalancing.jl)](@ref BalancedModel_MLJBalancing)
+
+- [BinaryThresholdPredictor (MLJModels.jl)](@ref BinaryThresholdPredictor_MLJModels)
+
+- [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
+
+- [IteratedModel (MLJIteration.jl)](@ref IteratedModel_MLJIteration)
+
+- [Pipeline (MLJBase.jl)](@ref Pipeline_MLJBase)
+
+- [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
+
+- [Resampler (MLJBase.jl)](@ref Resampler_MLJBase)
+
+- [Stack (MLJBase.jl)](@ref Stack_MLJBase)
+
+- [TransformedTargetModel (MLJBase.jl)](@ref TransformedTargetModel_MLJBase)
+
+- [TunedModel (MLJTuning.jl)](@ref TunedModel_MLJTuning)
 
 ##  Neural Networks
 - [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
@@ -689,6 +727,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [FeatureSelector (FeatureSelection.jl)](@ref FeatureSelector_FeatureSelection)
 
 - [InteractionTransformer (MLJModels.jl)](@ref InteractionTransformer_MLJModels)
+
+- [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
 
 ##  Text Analysis
 - [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
