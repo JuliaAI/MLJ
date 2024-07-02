@@ -61,6 +61,8 @@ const DESCRIPTORS_GIVEN_HANDLE =
 # determined the list of all descriptors, ranked by frequency:
 const descriptors = vcat(values(DESCRIPTORS_GIVEN_HANDLE)...)
 const ranking = MLJBase.countmap(descriptors)
+ranking["meta algorithms"] = 1e10
+
 const DESCRIPTORS = sort(unique(descriptors), by=d -> ranking[d], rev=true)
 const HANDLES = keys(DESCRIPTORS_GIVEN_HANDLE)
 
@@ -72,7 +74,7 @@ handle as key in /docs/src/ModelDescriptors.toml.
 
 """
 function models_missing_descriptors()
-    handles = handle.(models())
+    handles = handle.(models(wrappers=true))
     filter(handles) do h
         !(h in HANDLES)
     end
@@ -87,7 +89,7 @@ Return the list of  models with a given `descriptor`, such as "regressor", as
 these appear in /src/docs/ModelDescriptors.toml.
 
 """
-modelswith(descriptor) = filter(models()) do model
+modelswith(descriptor) = filter(models(wrappers=true)) do model
     descriptor in DESCRIPTORS_GIVEN_HANDLE[handle(model)]
 end
 
