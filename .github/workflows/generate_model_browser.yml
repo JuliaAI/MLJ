@@ -23,7 +23,7 @@ jobs:
           version: '1'
           
       - name: Run and Install dependencies
-        run: julia --project=src/lib/Data/ -e 'using Pkg; Pkg.add("MLJBase"); Pkg; Pkg.add("MLJ"); using MLJBase; using MLJ; include("src/lib/Data/model_docstring_tools.jl")'
+        run: julia --project=src/lib/Data/ -e 'using Pkg; Pkg.add("MLJBase"); Pkg; Pkg.add("MLJ"); using MLJBase; using MLJ; include("src/lib/Data/model_docstring_tools.jl"); write_page()'
 
       - name: Commit and push changes
         run: |
