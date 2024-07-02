@@ -12,7 +12,7 @@ headerLinks:
     target: self
   - name: Documentation
     link: https://juliaai.github.io/MLJ.jl/stable/
-    target: blank
+    target: self
   - name: Cheat Sheet
     link: /mlj-cheatsheet
     target: self

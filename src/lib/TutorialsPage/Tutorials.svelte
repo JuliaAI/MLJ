@@ -9,7 +9,7 @@
 		renameAttributes
 	} from './helpers';
 	import Search from '../Common/Search.svelte';
-	import Hints from '../Common/Hints.svelte'
+	import Hints from '../Common/Hints.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	//@ts-ignore
@@ -22,20 +22,19 @@
 	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
 
 	let hints = tutorialsData['hints'];
-	let randomInd = 0;			// give first hint more importance
-	let hint_dur = tutorialsData["hint_dur"] * 1000;
+	let randomInd = 0; // give first hint more importance
+	let hint_dur = tutorialsData['hint_dur'] * 1000;
 	// every time hint_dur passes, recompute randomInd
-	let hint_timer = setInterval(function() {
+	let hint_timer = setInterval(function () {
 		randomInd = Math.floor(Math.random() * hints.length);
 	}, hint_dur);
-
 
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
 	const navItemsJson = match ? match[1] : '';
 	const navItems = eval(navItemsJson);
 
-	onMount(()=> {
+	onMount(() => {
 		stageEffectBasedOnURL();
 		return () => {
 			clearInterval(hint_timer);
@@ -66,7 +65,6 @@
 </script>
 
 <div class="container">
-
 	<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
 		<Search
 			tutorialsMode={true}
@@ -75,7 +73,6 @@
 		/>
 	</div>
 	<Hints text={hints[randomInd]} />
-
 
 	<div class="tag-buttons-container">
 		{#each tags as tag}
@@ -96,16 +93,35 @@
 				<div class="tutorial-list">
 					{#if tutorialsByTag[tag]}
 						{#each tutorialsByTag[tag] as tutorial}
-							<a
-								href={tutorial.href.startsWith('https')
-									? tutorial.href
-									: 'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
-								class="tutorial-link"
-							>
-								<div class="tutorial-item">
-									{tutorial.name}
+							<div class="tutorial-container">
+								<a
+									href={tutorial.href.startsWith('https')
+										? tutorial.href
+										: 'https://juliaai.github.io/DataScienceTutorials.jl/' + tutorial.href}
+									class="tutorial-link"
+								>
+									<div class="tutorial-item">
+										{tutorial.name}
+									</div>
+								</a>
+								<div class="intended-learning-outcomes">
+									<p style="font-weight: bold; margin-left: 0.5rem; margin-bottom: 0.5rem">
+										Intended Learning Outcomes:
+									</p>
+									{#if tutorial.ilos.length > 0}
+										<ul style="margin-left: 2rem; margin-right: 1.5rem;">
+											{#each tutorial.ilos as ilo}
+												<li style="text-align: justify; margin-bottom: 0.5rem">{ilo}</li>
+											{/each}
+										</ul>
+										<!-- else -->
+									{:else}
+										<p style="margin-left: 0.5rem; margin-right: 1.5rem;">
+											No intended learning outcomes available for this tutorial.
+										</p>
+									{/if}
 								</div>
-							</a>
+							</div>
 						{/each}
 					{/if}
 				</div>
@@ -234,5 +250,30 @@
 				}
 			}
 		}
+	}
+
+	.intended-learning-outcomes {
+		display: none; /* Hide outcomes by default */
+		padding: 0.5rem;
+		background-color: #532f66;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		position: fixed;
+		bottom: 20px;
+		left: 0;
+		right: 0;
+		width: 80%;
+		margin: auto;
+		color: white;
+		border-radius: 1rem;
+		padding: 1rem;
+		// for small screen disable this feature due to lack of space
+		@media screen and (max-width: 600px) {
+			display: none !important;
+		}
+	}
+
+	.tutorial-container:hover .intended-learning-outcomes {
+		display: block; /* Show outcomes on hover */
 	}
 </style>

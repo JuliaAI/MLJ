@@ -20,44 +20,76 @@ Imbalance:
       - Class Imbalance
       - Iterative Models
       - Classification
+    ilos:
+      - Learn how to load tabular data, set up its scientific types and study any existing imbalance
+      - Observe how basic random oversampling can significantly improve decision tree performance on imbalanced data
+      - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
   - name: Effect of Ratios Oversampling Hyperparameter
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_ratios/effect_of_ratios/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Learn how to study the imbalance of an existing dataset
+      - Get a stronger grasp on how the ratios hyperparameter which reflects the amount of oversampling can affect the classification decision boundaries
   - name: From RandomOversampling to ROSE
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_s/effect_of_s/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Understand the relationship between pure random oversampling and the ROSE algorithm
+      - Understand the effect of increasing the `s` hyperparameter for ROSE
   - name: SMOTE on Customer Churn Data
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smote_churn_dataset/smote_churn_dataset/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Observe how SMOTE can be used to address class imbalances on a real dataset with logistic regression as the classifier
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
   - name: SMOTEN on Mushroom Data
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smoten_mushroom/smoten_mushroom/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Use SMOTEN to address class imbalances on a real dataset with over 20 categorical columns
+      - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
   - name: SMOTENC on Customer Churn Data
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smotenc_churn_dataset/smotenc_churn_dataset/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Observe how SMOTENC can be used to address class imbalances on a real dataset with categorical and continuous columns
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
   - name: Effect of ENN Hyperparameters
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_k_enn/effect_of_k_enn/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Explore the effects of various hyperparameter(s) of the ENN algorithm and how it can be useful for data cleaning
   - name: SMOTE-Tomek for Ethereum Fraud Detection
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/fraud_detection/fraud_detection/
     tags:
       - Class Imbalance
       - Classification
       - Pipelines
+    ilos:
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Understand how hybrid resampling algorithms such as SMOTE-Tomek can be defined with the `BalancedModel` construct
   - name: Balanced Bagging for Cerebral Stroke Prediction
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/cerebral_ensemble/cerebral_ensemble/
     tags:
       - Class Imbalance
       - Classification
+    ilos:
+      - Familiarize yourself with common MLJ workflows related to loading and processing data
+      - Understand how balanced bagging can singifically improve classification performance on imbalanced data
+

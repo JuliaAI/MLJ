@@ -21,32 +21,34 @@ declare global {
 		categories: string;
 		skills: string[];
 		special: string;
-	  }
+	}
 
-	  interface Model {
+	interface Model {
 		modelName: string;
 		packageName: string;
 		link: string;
 	}
-	
+
 	interface ModelMap {
 		[genre: string]: Model[];
 	}
-	
+
 	interface JsonObject {
 		[key: string]: any[];
-	  }
-	  
+	}
+
 
 	type Tutorial = {
 		name: string;
 		href: string;
+		ilos: string[];
 	};
 
 	type Section = {
 		name: string;
 		href: string;
 		tags?: string[];
+		ilos?: string[];
 	};
 
 	type NavigationItem = {
@@ -58,4 +60,4 @@ declare global {
 	};
 }
 
-export {};
+export { };

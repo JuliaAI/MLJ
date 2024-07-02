@@ -1,3 +1,9 @@
+# issues chunk from the link. E.g., link below if for https://github.com/JuliaAI/MLJ.jl/labels/bucket%20list
+listName: Bucket List
+issuesLink: issues?labels=bucket%20list
+introText: Developers that can demonstrate prior experience in Julia and machine learning are welcome to consider working on one of these projects.
+
+# additional projects
 projects:
   - projectName: Machine Learning in Predictive Survival Analysis
     projectMD: |
