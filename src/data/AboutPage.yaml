@@ -1,5 +1,7 @@
 # email to send feedback to
 email: mlj@mlj.com
+# reach out text (e.g. "We'd love to hear from you!")
+reachOutText: "Get in Touch!"
 # possible types of feedback for the feedback form
 topics:
   - General Feedback

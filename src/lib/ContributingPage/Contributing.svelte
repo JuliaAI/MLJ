@@ -6,6 +6,7 @@
 	import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 	import { onMount } from 'svelte';
+	import snarkdown from 'snarkdown';
 
 	let contributingData = YAML.parse(contributingPageYaml);
 	let issuesLink = contributingData['issuesLink'];
@@ -30,7 +31,9 @@
 </script>
 
 <div class="md-container">
-	<SvelteMarkdown source={ContributingPageMD} />
+	<!-- <SvelteMarkdown source={ContributingPageMD} /> -->
+	{@html snarkdown(ContributingPageMD)}
+
 	<!-- 
 	{#each contributingData.projects as project, index}
 		<div class="headline" on:click={() => toggleExpand(index)}>
@@ -73,6 +76,11 @@
 		</button>
 		{#if expandedIndex === index}
 			<SvelteMarkdown source={issue.body || 'No detailed description provided.'} />
+			<button class="contribute-button"
+				><a style="color: white; text-decoration: none; font-family: Poppins" href={issue.html_url}
+					>Contribute to Project ►
+				</a></button
+			>
 		{/if}
 	{/each}
 </div>
@@ -91,5 +99,16 @@
 
 	.md-container h1 {
 		margin-top: 0;
+	}
+
+	.contribute-button {
+		margin-left: 0rem;
+		background: linear-gradient(34deg, #845588, #59395c);
+		padding: 0.5rem 1rem;
+		border-radius: 1rem;
+	}
+	.contribute-button:hover {
+		transform: scale(1.05);
+		transition: 0.4s;
 	}
 </style>

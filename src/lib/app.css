@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -13,12 +14,15 @@
 
 body {
     background-color: #FAF9F6;
-    font-family: 'Open Sans', sans-serif; /* Set Libre Franklin as default font */
+    font-family: 'Open Sans', sans-serif;
+    /* Set Libre Franklin as default font */
 }
 
 a {
-    text-decoration: none; /* Remove default anchor styles */
-    color: inherit; /* Inherit text color from parent */
+    text-decoration: none;
+    /* Remove default anchor styles */
+    color: inherit;
+    /* Inherit text color from parent */
 }
 
 button {
@@ -31,24 +35,19 @@ button {
 }
 
 html {
-    font-size: 17px !important; /* You can set it to any size you want */
-  }
+    font-size: 17px !important;
+    /* You can set it to any size you want */
+}
 
-  .md-container {
+.md-container {
     margin: 3rem auto;
     max-width: 90%;
-    div {
-    img[alt~="logo"] {
-        max-height: 300px;
-        margin: auto;
-    }
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+
+
     a {
         color: #861b6d;
     }
+
     code {
         background-color: rgb(233, 233, 233);
         color: rgb(0, 0, 0);
@@ -56,70 +55,137 @@ html {
         border-radius: 5px;
         font-size: 0.9rem;
     }
-    p {
-    margin-bottom: 2rem;
-    font-family: 'Open Sans';
-    max-width: 90%;
-    text-align: justify;
-    margin-left: 0.9rem;
-    line-height: 1.7rem;
-    color: #313131;
+
+    p,
+    #text {
+        margin-bottom: 1rem;
+        font-family: 'Open Sans';
+        max-width: 95%;
+        text-align: justify;
+        margin-left: 0.9rem;
+        line-height: 1.7rem;
+        color: #313131;
     }
+
     a {
         text-decoration: underline;
     }
-    h1,  h2,  h3,  h4 {
+
+    h1,
+    h2,
+    h3,
+    h4 {
         margin-bottom: 1rem;
         margin-top: 0.5rem;
         color: white;
-    } 
+    }
+
     h1 {
         margin-bottom: 2rem;
         font-family: 'Poppins';
-        padding: 0.6rem;
-        border-radius: 15px;
-        background: linear-gradient(34deg, #6c4070, #3a2040);
-        box-shadow: 
-            3px 3px 5px rgba(0, 0, 0, 0.2),  /* light shadow */
-            6px 6px 10px rgba(0, 0, 0, 0.15), /* medium shadow */
-            9px 9px 15px rgba(0, 0, 0, 0.1);  /* dark shadow */
+        max-width: fit-content;
+        padding: 0.6rem 1.5rem;
+        border-radius: 35px 35px 0 0;
+        background: #6c4070;
     }
+
     h2 {
         font-family: 'Poppins';
         padding: 0.5rem;
         border-radius: 15px;
         background: linear-gradient(34deg, #6c4070, #3a2040);
-        box-shadow: 
-            3px 3px 5px rgba(0, 0, 0, 0.2),  /* light shadow */
-            6px 6px 10px rgba(0, 0, 0, 0.15), /* medium shadow */
-            9px 9px 15px rgba(0, 0, 0, 0.1);  /* dark shadow */
+        box-shadow:
+            3px 3px 5px rgba(0, 0, 0, 0.2),
+            /* light shadow */
+            6px 6px 10px rgba(0, 0, 0, 0.15),
+            /* medium shadow */
+            9px 9px 15px rgba(0, 0, 0, 0.1);
+        /* dark shadow */
     }
+
     h3 {
         padding: 0.35rem;
         background-color: #845588;
         background: linear-gradient(34deg, #845588, #59395c);
 
-        border-radius: 15px;
+        border-radius: 15px 15px 15px 15px;
+        display: inline-block;
+        margin: 1rem 0rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+
+    h4 {
+        padding: 0.35rem;
+        background-color: #845588;
+        background: linear-gradient(34deg, #845588, #59395c);
+        font-size: 1.2rem;
+        border-radius: 15px 15px 0 0;
         display: inline-block;
         margin: 1rem 0rem;
         padding: 0.4rem 0.7rem;
     }
 
     ul {
-            list-style-type: disc; /* Ensures bullets are shown */
-            margin-left: 1rem;
-            padding-left: 20px; /* Adds padding to indent the list */
-            li {
-                margin-bottom: 0.5rem;
-            }
-            color: #1a1a1a;
+        list-style-type: disc;
+        /* Ensures bullets are shown */
+        margin-left: 1rem;
+        padding-left: 20px;
+
+        /* Adds padding to indent the list */
+        li {
+            margin-bottom: 0.5rem;
         }
-        ul ul {
-            list-style-type: circle; /* Different bullet style for nested lists */
-            padding-left: 20px; /* Further indents nested lists */
-        }
-        ul ul ul {
-            list-style-type: square; /* Another bullet style for deeper nested lists */
-            padding-left: 20px; /* Further indents deeper nested lists */
-        }
+
+        color: #1a1a1a;
+    }
+
+    ul ul {
+        list-style-type: circle;
+        /* Different bullet style for nested lists */
+        padding-left: 20px;
+        /* Further indents nested lists */
+    }
+
+    ul ul ul {
+        list-style-type: square;
+        /* Another bullet style for deeper nested lists */
+        padding-left: 20px;
+        /* Further indents deeper nested lists */
+    }
+}
+
+.md-block-cont,
+.md-block-cont-big,
+.md-block-cont-float {
+    background-color: rgb(230, 230, 230);
+    border-radius: 0 2rem 2rem 2rem;
+    padding: 1rem 0.5rem;
+    margin-top: -1rem;
+    width: 99%;
+    margin-bottom: 2rem;
+    font-family: 'Open Sans';
+    text-align: justify;
+    padding: 1rem 4rem 2rem 1.2rem;
+    color: #313131;
+    line-height: 1.6rem;
+
+    p {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.md-block-cont-big {
+    margin-top: -2rem;
+    padding: 1rem 3rem 1rem 0.4rem;
+}
+
+.md-block-cont-float {
+    margin-top: 0rem;
+    border-radius: 2rem 2rem 2rem 2rem;
+    padding: 1rem 3rem 1rem 0.4rem;
+
+    p {
+        margin-bottom: 0.0rem;
+    }
 }
