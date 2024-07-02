@@ -79,7 +79,12 @@ export function getTutorialsByTag(navItems: NavigationItem[]): Record<string, Tu
                     if (!tutorialsByTag[tag]) {
                         tutorialsByTag[tag] = [];
                     }
-                    tutorialsByTag[tag].push({ name: section.name, href: section.href });
+                    if (section.ilos) {
+                        tutorialsByTag[tag].push({ name: section.name, href: section.href, ilos: section.ilos });
+                    }
+                    else {
+                        tutorialsByTag[tag].push({ name: section.name, href: section.href, ilos: [] });
+                    }
                 });
             }
         });
@@ -88,19 +93,24 @@ export function getTutorialsByTag(navItems: NavigationItem[]): Record<string, Tu
     return tutorialsByTag;
 }
 
-export function getExternalTutorialsByTag(externalTutorialsFlat: any){
+export function getExternalTutorialsByTag(externalTutorialsFlat: any) {
     const tutorialsByTag: any = {};
 
-        externalTutorialsFlat.forEach((section:any) => {
-            if (section.tags) {
-                section.tags.forEach((tag:any) => {
-                    if (!tutorialsByTag[tag]) {
-                        tutorialsByTag[tag] = [];
-                    }
-                    tutorialsByTag[tag].push({ name: section.name, href: section.href });
-                });
-            }
-        });
+    externalTutorialsFlat.forEach((section: any) => {
+        if (section.tags) {
+            section.tags.forEach((tag: any) => {
+                if (!tutorialsByTag[tag]) {
+                    tutorialsByTag[tag] = [];
+                }
+                if (section.ilos) {
+                    tutorialsByTag[tag].push({ name: section.name, href: section.href, ilos: section.ilos });
+                }
+                else {
+                    tutorialsByTag[tag].push({ name: section.name, href: section.href, ilos: [] });
+                }
+            });
+        }
+    });
 
     return tutorialsByTag;
 }
