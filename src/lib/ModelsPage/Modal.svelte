@@ -30,7 +30,9 @@
 					<button class="list-button">
 						<a href={`https://juliaai.github.io/MLJ.jl/dev/models/${model.link}`}>
 							<div style="padding-left:1rem; display: flex; flex-direction: row; gap: 8rem;">
-								<div style="width:100px">{model.modelName}</div>
+								<div style="width:100px">
+									{model.modelName.substring(0, 25) + (model.modelName.length > 25 ? '...' : '')}
+								</div>
 								<div style="width:100px">({model.packageName})</div>
 							</div>
 						</a>
