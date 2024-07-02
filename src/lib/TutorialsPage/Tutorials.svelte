@@ -108,11 +108,18 @@
 									<p style="font-weight: bold; margin-left: 0.5rem; margin-bottom: 0.5rem">
 										Intended Learning Outcomes:
 									</p>
-									<ul style="margin-left: 2rem; margin-right: 1.5rem;">
-										{#each tutorial.ilos as ilo}
-											<li style="text-align: justify; margin-bottom: 0.5rem">{ilo}</li>
-										{/each}
-									</ul>
+									{#if tutorial.ilos.length > 0}
+										<ul style="margin-left: 2rem; margin-right: 1.5rem;">
+											{#each tutorial.ilos as ilo}
+												<li style="text-align: justify; margin-bottom: 0.5rem">{ilo}</li>
+											{/each}
+										</ul>
+										<!-- else -->
+									{:else}
+										<p style="margin-left: 0.5rem; margin-right: 1.5rem;">
+											No intended learning outcomes available for this tutorial.
+										</p>
+									{/if}
 								</div>
 							</div>
 						{/each}
