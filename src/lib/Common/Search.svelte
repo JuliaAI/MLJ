@@ -6,6 +6,8 @@
 	export let items: { modelName: string; link: string }[] = [];
 	export let placeholder: string = 'Search over all models';
 	export let tutorialsMode: boolean = false;
+	export let extraSearchResult = '';
+
 	let searchString = '';
 	let results: { modelName: string; link: string }[] = [];
 	let isOpen = false;
@@ -63,22 +65,46 @@
 		<FaSearch />
 	</svg>
 
-	{#if isOpen && results.length > 0}
+	{#if isOpen}
 		<div class="search-results">
-			{#each results as result}
-				<a
-					href={tutorialsMode
-						? result.link.startsWith('https')
-							? result.link
-							: 'https://juliaai.github.io/DataScienceTutorials.jl/' + result.link
-						: `https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}
-				>
-					<div class="search-result-item" on:click={() => handleSelect(result)}>
-						{result.modelName}
-						{result.packageName ? '(' + result.packageName + ')' : ''}
+			{#if results.length > 0}
+				{#each results as result}
+					<a
+						href={tutorialsMode
+							? result.link.startsWith('https')
+								? result.link
+								: 'https://juliaai.github.io/DataScienceTutorials.jl/' + result.link
+							: `https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}
+					>
+						<div class="search-result-item" on:click={() => handleSelect(result)}>
+							{result.modelName}
+							{result.packageName ? '(' + result.packageName + ')' : ''}
+						</div>
+					</a>
+				{/each}
+			{/if}
+			{#if !tutorialsMode}
+				<a href={'https://juliaai.github.io/MLJ.jl/stable/'}>
+					<div
+						class="search-result-item search-result-item-last"
+						on:click={() => handleSelect(result)}
+					>
+						<span style="font-weight: 600">{extraSearchResult}</span>
 					</div>
 				</a>
-			{/each}
+			{:else}
+				<a
+					href={'https://juliaai.github.io/DataScienceTutorials.jl/search/index.html?q=' +
+						searchString}
+				>
+					<div
+						class="search-result-item search-result-item-last"
+						on:click={() => handleSelect(result)}
+					>
+						<span style="font-weight: 600">{extraSearchResult}</span>
+					</div>
+				</a>
+			{/if}
 		</div>
 	{/if}
 </div>
@@ -131,5 +157,11 @@
 	.search-result-item:hover {
 		background-color: #5d3561;
 		color: white;
+	}
+	.search-result-item-last {
+		color: #7d4782;
+	}
+	.search-result-item-last:hover {
+		border-radius: 0 0 20px 20px;
 	}
 </style>

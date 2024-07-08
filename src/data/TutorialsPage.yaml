@@ -13,6 +13,7 @@ hint_dur:
 
 # This is the placeholder for the search bar
 searchText: Search over all tutorials
+extraSearchText: Search in DataScienceTutorials.jl
 
 
 # These are the tutorial tags printed below the hint.

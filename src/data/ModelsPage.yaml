@@ -26,6 +26,8 @@ buttonTexts:
 
 # The placeholder text for the search bar
 searchText: Search over all models
+extraSearchText: Visit Documentation for More Advanced Search
+
 
 # This controls the names, descriptions and images (and their ordering) for the display grid of models w.r.t learning objectives
 # When a new model category is added to the model browser, it should be added here as well (or in "modelingTasks" found below)

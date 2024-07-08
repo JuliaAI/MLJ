@@ -63,13 +63,17 @@
 </script>
 
 <div class="container">
-	<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
-		<Search
-			tutorialsMode={true}
-			items={flatTutorialsByTag}
-			placeholder={tutorialsData['searchText']}
-		/>
+	<div>
+		<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
+			<Search
+				tutorialsMode={true}
+				items={flatTutorialsByTag}
+				placeholder={tutorialsData['searchText']}
+				extraSearchResult={tutorialsData['extraSearchText']}
+			/>
+		</div>
 	</div>
+
 	<Hints text={hints[randomInd]} />
 
 	<div class="tag-buttons-container">

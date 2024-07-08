@@ -85,7 +85,11 @@
 </script>
 
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
-	<Search items={flatModelBrowser} placeholder={modelsData['searchText']} />
+	<Search
+		items={flatModelBrowser}
+		placeholder={modelsData['searchText']}
+		extraSearchResult={modelsData['extraSearchText']}
+	/>
 </div>
 <Hints text={hints[randomInd]} />
 
