@@ -64,7 +64,7 @@
 
 <div class="container">
 	<div>
-		<div style="padding-top: 1rem; display:flex; justify-content: center; align-items: center;">
+		<div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
 			<Search
 				tutorialsMode={true}
 				items={flatTutorialsByTag}

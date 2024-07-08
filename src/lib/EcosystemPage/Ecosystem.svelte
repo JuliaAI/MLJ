@@ -61,19 +61,19 @@
 					window.open(org.orgLink, '_blank');
 				}}
 			>
-			<Tooltip
-			style={{
-				borderRadius: '20px',
-				backgroundColor: 'rgba(80, 30, 80,0.95)',
-				padding: '20px',
-				fontFamily: 'Lato',
-				fontSize: '0.95rem',
-				height:'100%',
-				display: 'block'
-			}}
-			maxWidth={400}
-			content={org.orgMarkdownDesc}
-		>
+				<Tooltip
+					style={{
+						borderRadius: '20px',
+						backgroundColor: 'rgba(80, 30, 80,0.95)',
+						padding: '20px',
+						fontFamily: 'Lato',
+						fontSize: '0.95rem',
+						height: '100%',
+						display: 'block'
+					}}
+					maxWidth={400}
+					content={org.orgMarkdownDesc}
+				>
 					<div
 						style="display: flex; gap: 0.5rem; align-items: center; flex-direction: row; justify-content:center;"
 					>
@@ -93,7 +93,6 @@
 							</h3>
 						</div>
 					</div>
-					
 				</Tooltip>
 				<div>
 					<a href={org.orgLink}> {org.orgName + (org.orthogonal ? ' ⊥' : '')} </a>
@@ -102,7 +101,7 @@
 		{/each}
 	</div>
 	<div class="markdown-holder">
-		<p style="text-align:'center';">
+		<p style="text-align:'center'; margin-bottom: 2rem;">
 			<SvelteMarkdown source={ecosystemData['finalHint']} />
 		</p>
 	</div>

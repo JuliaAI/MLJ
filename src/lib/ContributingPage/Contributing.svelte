@@ -59,28 +59,32 @@
 
 	{#each issues as issue, index}
 		<button class="headline" on:click={() => toggleExpand(index)}>
-			<h2 style="width: 100%">
-				{issue.title}
+			<h2 class="project-headline">
+				<div>{issue.title}</div>
+				<div>
+					{#if expandedIndex === index}
+						<div style="width:30px; color: white; transform: translateY(6px)  ">
+							<FaAngleDown />
+						</div>
+					{:else}
+						<div style="width:26px; color: white; transform: translateY(6px) ">
+							<FaAngleRight />
+						</div>
+					{/if}
+				</div>
 			</h2>
-			<div>
-				{#if expandedIndex === index}
-					<div style="width:30px; color: white; transform: translateX(-50px) translateY(14px); ">
-						<FaAngleDown />
-					</div>
-				{:else}
-					<div style="width:26px; color: white; transform: translateX(-50px) translateY(9px); ">
-						<FaAngleRight />
-					</div>
-				{/if}
-			</div>
 		</button>
 		{#if expandedIndex === index}
-			<SvelteMarkdown source={issue.body || 'No detailed description provided.'} />
-			<button class="contribute-button"
-				><a style="color: white; text-decoration: none; font-family: Poppins" href={issue.html_url}
-					>Contribute to Project ►
-				</a></button
-			>
+			<div style="width: 95%; margin: auto;">
+				<SvelteMarkdown source={issue.body || 'No detailed description provided.'} />
+				<button class="contribute-button"
+					><a
+						style="color: white; text-decoration: none; font-family: Poppins; font-weight: 600;"
+						href={issue.html_url}
+						>Contribute to Project ►
+					</a></button
+				>
+			</div>
 		{/if}
 	{/each}
 </div>
@@ -92,9 +96,23 @@
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: flex-start;
+		// flex-wrap: wrap;
 		width: 100%;
 		text-align: left;
 		font-size: 1.05rem;
+	}
+	.project-headline {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0.1rem 1.5rem;
+		align-items: center;
+		gap: 1rem;
+		// for small screen: more padding
+		@media screen and (max-width: 600px) {
+			padding: 0.3rem 1rem;
+		}
 	}
 
 	.md-container h1 {
@@ -106,6 +124,7 @@
 		background: linear-gradient(34deg, #845588, #59395c);
 		padding: 0.5rem 1rem;
 		border-radius: 1rem;
+		box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
 	}
 	.contribute-button:hover {
 		transform: scale(1.05);

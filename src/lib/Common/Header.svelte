@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import YAML from 'yaml'
+	import YAML from 'yaml';
 	import { base } from '$app/paths'; // may need this for Github pages deployment
 	import headerDataYaml from '../../data/Header.yaml?raw';
 
@@ -10,7 +10,7 @@
 	function toggleNav() {
 		navOpen = !navOpen;
 	}
-	let currentPath = "";
+	let currentPath = '';
 
 	onMount(() => {
 		//   If a link has a dropdown, add sub menu toggle.
@@ -37,11 +37,9 @@
 			});
 		});
 
-	// Get the current path
-	currentPath = window.location.pathname;
+		// Get the current path
+		currentPath = window.location.pathname;
 	});
-
-
 </script>
 
 <section class="navigation">
@@ -56,7 +54,11 @@
 			<ul class="nav-list" style={navOpen ? 'display: block;' : 'display: none;'}>
 				{#each headerData['headerLinks'] as linkItem}
 					<li>
-						<a href="{base}{linkItem.link}" target="_{linkItem.target}" class:active-link={currentPath === `${base}${linkItem.link}`}>
+						<a
+							href="{base}{linkItem.link}"
+							target="_{linkItem.target}"
+							class:active-link={currentPath === `${base}${linkItem.link}`}
+						>
 							{linkItem.name}
 						</a>
 					</li>
@@ -69,11 +71,12 @@
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 	.active-link {
-		color: rgb(255, 255, 255); 
+		color: rgb(255, 255, 255);
 		font-weight: bold;
 	}
 	section {
 		background: rgb(100, 50, 100);
+		// small screen take full height
 	}
 	nav {
 		float: right;
@@ -82,6 +85,12 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		@media screen and (max-width: 900px) {
+			position: fixed;
+			width: 100%;
+			height: 100vh;
+			z-index: 999 !important;
+		}
 	}
 	nav ul li {
 		float: left;
@@ -224,6 +233,10 @@
 	.nav-container {
 		max-width: 1000px;
 		margin: 0 auto;
+		// for mobile take max width and max height
+		@media screen and (max-width: 600px) {
+			height: 1000px;
+		}
 	}
 
 	.brand {

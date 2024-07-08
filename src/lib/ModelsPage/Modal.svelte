@@ -21,9 +21,9 @@
 {#if showModal}
 	<button class="modal" on:click={handleClick}>
 		<div class="modal-content">
-			<div style="padding-left:1.8rem; display: flex; flex-direction: row; gap: 5rem;">
-				<h4 style="min-width:100px; text-decoration:underline;">{content} Models</h4>
-				<h4 style="min-width:100px; text-decoration:underline;">Package</h4>
+			<div style="padding-left:0rem; display: flex; flex-direction: row; gap: 3rem;">
+				<h4 style="width:200px; text-decoration:underline;">{content} Models</h4>
+				<h4 style="width:100px; text-decoration:underline;">Package</h4>
 			</div>
 			<div class="list-container">
 				{#each models as model, i}

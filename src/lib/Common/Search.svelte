@@ -113,6 +113,7 @@
 	.search-bar {
 		margin-top: 3rem;
 		position: relative;
+		z-index: 0;
 		width: 60%;
 		@media only screen and (max-width: 1300px) {
 			width: 90%;
