@@ -1,35 +1,38 @@
 <script lang="ts">
 	import MarkdownIt from 'markdown-it';
 	import modelBrowser from '$lib/Data/model_browser.md?raw';
-	import {flattenJSON } from '../Common/helpers';
-	import { markdownToJSON, } from "./helpers";
+	import { flattenJSON } from '../Common/helpers';
+	import { markdownToJSON } from './helpers';
 	import Modal from './Modal.svelte';
 	import Search from '../Common/Search.svelte';
 	import { onMount } from 'svelte';
 	import Hints from '../Common/Hints.svelte';
-	import YAML from 'yaml'
-	import modelsDataYaml from "../../data/ModelsPage.yaml?raw";
+	import YAML from 'yaml';
+	import modelsDataYaml from '../../data/ModelsPage.yaml?raw';
+	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
+
+	let tutorialsData = YAML.parse(tutorialsDataYaml);
+	const tags = tutorialsData['tags'];
 
 	let modelsData = YAML.parse(modelsDataYaml);
-	let hints = modelsData["hints"]
+	let hints = modelsData['hints'];
 	let randomInd = Math.floor(Math.random() * hints.length);
-	let hint_dur = modelsData["hint_dur"] * 1000;
+	let hint_dur = modelsData['hint_dur'] * 1000;
 	// every time hint_dur passes, recompute randomInd
-	let hint_timer = setInterval(function() {
+	let hint_timer = setInterval(function () {
 		randomInd = Math.floor(Math.random() * hints.length);
 	}, hint_dur);
-
 
 	const modelBrowserJson = markdownToJSON(modelBrowser);
 	const flatModelBrowser = flattenJSON(modelBrowserJson);
 
-	const learningProblems = modelsData["learningTasks"]["problems"];
-	const learningDescriptions = modelsData["learningTasks"]["descriptions"];
-	const learningImages = modelsData["learningTasks"]["images"];
+	const learningProblems = modelsData['learningTasks']['problems'];
+	const learningDescriptions = modelsData['learningTasks']['descriptions'];
+	const learningImages = modelsData['learningTasks']['images'];
 
-	const modelingProblems = modelsData["modelingTasks"]["problems"];
-	const modelingDescriptions = modelsData["modelingTasks"]["descriptions"];
-	const modelingImages = modelsData["modelingTasks"]["images"];
+	const modelingProblems = modelsData['modelingTasks']['problems'];
+	const modelingDescriptions = modelsData['modelingTasks']['descriptions'];
+	const modelingImages = modelsData['modelingTasks']['images'];
 
 	let showModal = false;
 	let modalContent = '';
@@ -81,9 +84,8 @@
 	});
 </script>
 
-
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
-	<Search items={flatModelBrowser} placeholder={modelsData["searchText"]}/>
+	<Search items={flatModelBrowser} placeholder={modelsData['searchText']} />
 </div>
 <Hints text={hints[randomInd]} />
 
@@ -95,7 +97,7 @@
 		style="background-color: {learningMode ? '#6E4582' : 'transparent'}; color: {learningMode
 			? 'white'
 			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; border-top-left-radius: 3rem; border-bottom-left-radius: 3rem; font-family: 'Lato'"
-		>{modelsData["buttonTexts"][0]}</button
+		>{modelsData['buttonTexts'][0]}</button
 	>
 	<button
 		on:click={setModelingMode}
@@ -103,7 +105,7 @@
 			? 'white'
 			: 'black'}; width: 150px; font-size: 0.9rem; border: 1px solid #00000033; padding: 0.7rem; font-family: 'Lato'; border-top-right-radius: 3rem; border-bottom-right-radius: 3rem;"
 	>
-		{modelsData["buttonTexts"][1]}
+		{modelsData['buttonTexts'][1]}
 	</button>
 </div>
 <div style="display: flex; justify-content: center; align-items: center; margin-top:2rem;">
@@ -117,21 +119,20 @@
 					<b>{problem}</b>
 					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
 					<div style="display: flex; flex-direction: row; gap: 1rem;">
-					{#if modelBrowserJson[problem]}
-						<button on:click={() => openModal(problem, modelBrowserJson[problem])} class="view-button"
-							>View Models</button
-						>
-					{:else}
-					<button on:click={() => openModal(problem, [])} class="view-button"
-						>Not Found</button
-					>
-					{/if}
-					<button class="view-button">
-					<a href="/tutorials/{problem}">
-					View Tutorials
-				</a>
-				</button>
-			</div>
+						{#if modelBrowserJson[problem]}
+							<button
+								on:click={() => openModal(problem, modelBrowserJson[problem])}
+								class="view-button">View Models</button
+							>
+						{:else}
+							<button on:click={() => openModal(problem, [])} class="view-button">Not Found</button>
+						{/if}
+						{#if tags.includes(problem)}
+							<button class="view-button">
+								<a href="/tutorials/{problem}"> View Tutorials </a>
+							</button>
+						{/if}
+					</div>
 				</div>
 			</div>
 		{/each}
@@ -211,7 +212,6 @@
 				align-items: center;
 				p {
 					max-width: 90%;
-				
 				}
 
 				.view-button {

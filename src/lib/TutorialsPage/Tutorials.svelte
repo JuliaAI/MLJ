@@ -12,8 +12,6 @@
 	import Hints from '../Common/Hints.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	//@ts-ignore
-	import SvelteMarkdown from 'svelte-markdown';
 	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
 	import externalTutorialsDataYaml from '../../data/ExternalTutorials.yaml?raw';
 	import YAML from 'yaml';
