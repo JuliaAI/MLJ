@@ -7,10 +7,15 @@ export function stageEffectBasedOnURL(tag = null): void {
     // Get the element by the id
     const element: HTMLElement | null = document.getElementById(idWithSpaces);
     const elementButton: HTMLElement | null = document.getElementById(idWithSpaces + "-button");
-    // If the element exists, apply the shadow style
-    if (element && elementButton) {
+
+    // Check if the overlay already exists
+    const existingOverlay: HTMLElement | null = document.getElementById('custom-overlay');
+
+    // If the element and button exist and the overlay does not exist, proceed
+    if (element && elementButton && !existingOverlay) {
         // Create an overlay element
         const overlay: HTMLDivElement = document.createElement('div');
+        overlay.id = 'custom-overlay'; // Assign an ID to the overlay
         overlay.style.position = 'fixed';
         overlay.style.top = '0';
         overlay.style.left = '0';
@@ -28,11 +33,11 @@ export function stageEffectBasedOnURL(tag = null): void {
         element.style.backgroundColor = 'white'; // Optional: set background to avoid transparency issues
         element.style.borderRadius = '20px';
 
-        // scale the element as well
+        // Scale the element as well
         element.style.transform = 'scale(1.05)';
         element.style.transition = 'transform 0.3s ease-in-out';
 
-        // put a shadow for 3d
+        // Put a shadow for 3D effect
         element.style.boxShadow = '2px 2px 4px 3px rgba(0, 0, 0, 0.3)';
 
         elementButton.style.color = "white";
@@ -52,7 +57,8 @@ export function stageEffectBasedOnURL(tag = null): void {
             // Remove the overlay
             document.body.removeChild(overlay);
         });
-        // // Calculate the offset position to scroll just before the element
+
+        // Calculate the offset position to scroll just before the element
         const offset = 100; // Adjust this value as needed
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - offset;
@@ -63,11 +69,10 @@ export function stageEffectBasedOnURL(tag = null): void {
                 top: offsetPosition,
                 behavior: 'smooth'
             });
-        }
-        )
-
+        }, 100); // Delay before scrolling
     }
 }
+
 
 export function getTutorialsByTag(navItems: NavigationItem[]): Record<string, Tutorial[]> {
     const tutorialsByTag: Record<string, Tutorial[]> = {};
