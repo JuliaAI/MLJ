@@ -1,9 +1,12 @@
 <script lang="ts">
+	// Components
 	import MarkdownIt from 'markdown-it';
-	import cheatSheet from '$lib/Data/mlj_cheatsheet.md?raw';
+	// Helpers
 	import { fromHighlighter } from '@shikijs/markdown-it/core';
 	import { getHighlighterCore } from 'shiki/core';
 	import { onMount } from 'svelte';
+	// Data
+	import cheatSheet from '$lib/Data/mlj_cheatsheet.md?raw';
 
 	let md;
 	let highlighter;
@@ -11,7 +14,7 @@
 	let cheatsheetHTML: string | undefined;
 	let cheatsheetHTMLArr: string[];
 
-	// Upon load modify the cheatsheet markdown to HTML after introducing syntax highlighting
+	// 1. Upon load modify the cheatsheet markdown to HTML after introducing syntax highlighting
 	onMount(async () => {
 		highlighter = await getHighlighterCore({
 			themes: [import('shiki/themes/min-light.mjs')],
@@ -31,9 +34,12 @@
 		isLoading = false;
 	});
 
+	// 2. Upon download, print the cheatsheet
 	function downloadAsPDF() {
 		window.print();
 	}
+
+	// 3. Fractions defining the cheatsheet cells are distributed into columns
 	let fractions = [
 		[0, 1.3 / 6],
 		[1.3 / 6, 3.8 / 6],

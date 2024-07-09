@@ -133,16 +133,10 @@ export function removeDuplicatesByKey(arr, key) {
     });
 }
 
-export function renameAttributes(list: any, mapping: any) {
-    return list.map((obj: any) => {
-        const newObj = {};
-        Object.keys(obj).forEach((key) => {
-            if (mapping[key]) {
-                newObj[mapping[key]] = obj[key];
-            } else {
-                newObj[key] = obj[key];
-            }
-        });
-        return newObj;
-    });
+export function appendValues(obj1: any, obj2: any) {
+    for (let key in obj2) {
+        if (obj2.hasOwnProperty(key) && obj1.hasOwnProperty(key)) {
+            obj1[key] = obj1[key].concat(obj2[key]);
+        }
+    }
 }

@@ -1,24 +1,26 @@
 <script lang="ts">
-	import headString from '$lib/Data/head.js?raw';
-	import { flattenJSON } from '../Common/helpers';
+	// Helpers and builtins
+	import { flattenJSON, renameAttributes } from '../Common/helpers';
 	import {
 		stageEffectBasedOnURL,
 		getTutorialsByTag,
 		getExternalTutorialsByTag,
 		removeDuplicatesByKey,
-		renameAttributes
+		appendValues
 	} from './helpers';
-	import Search from '../Common/Search.svelte';
-	import Hints from '../Common/Hints.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	// Components
+	import Search from '../Common/Search.svelte';
+	import Hints from '../Common/Hints.svelte';
+	// Data
+	import YAML from 'yaml';
+	import headString from '$lib/Data/head.js?raw';
 	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
 	import externalTutorialsDataYaml from '../../data/ExternalTutorials.yaml?raw';
-	import YAML from 'yaml';
 
+	// 1. Get tutorials data and extract hints and apply their logic
 	let tutorialsData = YAML.parse(tutorialsDataYaml);
-	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
-
 	let hints = tutorialsData['hints'];
 	let randomInd = 0; // give first hint more importance
 	let hint_dur = tutorialsData['hint_dur'] * 1000;
@@ -27,42 +29,40 @@
 		randomInd = Math.floor(Math.random() * hints.length);
 	}, hint_dur);
 
+	// 2. Parse the navItems JSON from the string
 	const pattern = /const navItems = (\[.*?\]);/s;
 	const match = headString.match(pattern);
 	const navItemsJson = match ? match[1] : '';
 	const navItems = eval(navItemsJson);
 
+	// 3. Read external tutorials data
+	let externalTutorialsData = YAML.parse(externalTutorialsDataYaml);
+
+	// 4. Pivot the tutorials by tag and merge them together so they can be looped on later
+	const tags = tutorialsData['tags'];
+	const tutorialsByTag = getTutorialsByTag(navItems);
+	const extraTutorialsByTag = getExternalTutorialsByTag(flattenJSON(externalTutorialsData));
+	appendValues(tutorialsByTag, extraTutorialsByTag);
+
+	// 5. Flatten and rename attributes to enable search
+	let flatTutorialsByTag = removeDuplicatesByKey(flattenJSON(tutorialsByTag), 'href');
+	const attributeMapping = {
+		name: 'itemName',
+		href: 'itemLink'
+	};
+	flatTutorialsByTag = renameAttributes(flatTutorialsByTag, attributeMapping);
+
+	// Logic for the stage effect when page is open after tutorial is clicked
 	onMount(() => {
 		stageEffectBasedOnURL();
 		return () => {
 			clearInterval(hint_timer);
 		};
 	});
-
-	const tutorialsByTag = getTutorialsByTag(navItems);
-	const extraTutorialsByTag = getExternalTutorialsByTag(flattenJSON(externalTutorialsData));
-
-	function appendValues(obj1: any, obj2: any) {
-		for (let key in obj2) {
-			if (obj2.hasOwnProperty(key) && obj1.hasOwnProperty(key)) {
-				obj1[key] = obj1[key].concat(obj2[key]);
-			}
-		}
-	}
-	appendValues(tutorialsByTag, extraTutorialsByTag);
-
-	const tags = tutorialsData['tags'];
-
-	let flatTutorialsByTag = removeDuplicatesByKey(flattenJSON(tutorialsByTag), 'href');
-
-	const attributeMapping = {
-		name: 'modelName',
-		href: 'link'
-	};
-	flatTutorialsByTag = renameAttributes(flatTutorialsByTag, attributeMapping);
 </script>
 
 <div class="container">
+	<!-- Search Bar -->
 	<div>
 		<div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
 			<Search
@@ -74,8 +74,10 @@
 		</div>
 	</div>
 
+	<!-- Hints appearing below the search bar -->
 	<Hints text={hints[randomInd]} />
 
+	<!-- Tags appearing below hints -->
 	<div class="tag-buttons-container">
 		{#each tags as tag}
 			<button
@@ -88,12 +90,14 @@
 		{/each}
 	</div>
 
+	<!-- Tutorials grid by tag -->
 	<div class="tag-containers-wrapper">
 		{#each tags as tag}
 			<div class="tag-container" id={tag}>
 				<h3 class="tag">{tag}</h3>
 				<div class="tutorial-list">
 					{#if tutorialsByTag[tag]}
+						<!-- Tutorial list for each grid item -->
 						{#each tutorialsByTag[tag] as tutorial}
 							<div class="tutorial-container">
 								<a

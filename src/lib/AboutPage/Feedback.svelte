@@ -1,20 +1,20 @@
 <script>
-	import aboutPageYaml from '../../data/AboutPage.yaml?raw';
+	// Data
 	import YAML from 'yaml';
+	import aboutPageYaml from '../../data/AboutPage.yaml?raw';
 
-	// about page data excluding markdown
+	// 1. Read the form data
 	let aboutData = YAML.parse(aboutPageYaml);
 	const topics = aboutData['topics'];
 	const email = aboutData['email'];
-	console.log(topics);
-	console.log(email);
 
-	// state variables for email composition
+	// 2. Define state variables for email composition
 	let name = '';
 	let topic = topics[0];
 	let subject = '';
 	let feedback = '';
 
+	// 3. Define function to submit the form
 	function submitForm(event) {
 		event.preventDefault(); // Prevent the default form submission
 
@@ -32,6 +32,7 @@
 
 <h2 style="margin-top: 2rem">{aboutData['reachOutText']}</h2>
 <form on:submit|preventDefault={submitForm}>
+	<!-- Name, Topic, Subject -->
 	<div class="left">
 		<label for="name">Name:</label>
 		<input type="text" id="name" bind:value={name} required />
@@ -46,6 +47,7 @@
 		<label for="subject">Subject:</label>
 		<input type="text" id="subject" bind:value={subject} required />
 	</div>
+	<!-- Feedback text area and submit button -->
 	<div class="right">
 		<label for="feedback">Feedback:</label>
 		<textarea rows="5" id="feedback" bind:value={feedback} required></textarea>

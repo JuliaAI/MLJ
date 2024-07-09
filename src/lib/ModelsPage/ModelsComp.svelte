@@ -1,39 +1,73 @@
 <script lang="ts">
-	import MarkdownIt from 'markdown-it';
-	import modelBrowser from '$lib/Data/model_browser.md?raw';
-	import { flattenJSON } from '../Common/helpers';
+	// Helpers and builtins
+	import { onMount } from 'svelte';
+	import { flattenJSON, renameAttributes } from '../Common/helpers';
 	import { markdownToJSON } from './helpers';
+	// Components
 	import Modal from './Modal.svelte';
 	import Search from '../Common/Search.svelte';
-	import { onMount } from 'svelte';
 	import Hints from '../Common/Hints.svelte';
+	// Data
 	import YAML from 'yaml';
+	import modelBrowser from '$lib/Data/model_browser.md?raw';
 	import modelsDataYaml from '../../data/ModelsPage.yaml?raw';
 	import tutorialsDataYaml from '../../data/TutorialsPage.yaml?raw';
 
+	// 1. Get tutorials data to hide Tutorials button when needed
 	let tutorialsData = YAML.parse(tutorialsDataYaml);
 	const tags = tutorialsData['tags'];
 
+	// 2. Get models data
 	let modelsData = YAML.parse(modelsDataYaml);
+
+	// 3. Extract hints and duration from models data and apply its logic
 	let hints = modelsData['hints'];
 	let randomInd = Math.floor(Math.random() * hints.length);
 	let hint_dur = modelsData['hint_dur'] * 1000;
+
 	// every time hint_dur passes, recompute randomInd
 	let hint_timer = setInterval(function () {
 		randomInd = Math.floor(Math.random() * hints.length);
 	}, hint_dur);
 
+	// 4. Load model browser JSON and flatten/rename to allow search
 	const modelBrowserJson = markdownToJSON(modelBrowser);
-	const flatModelBrowser = flattenJSON(modelBrowserJson);
+	let flatModelBrowser = flattenJSON(modelBrowserJson);
+	const attributeMapping = {
+		modelName: 'itemName',
+		link: 'itemLink'
+	};
+	flatModelBrowser = renameAttributes(flatModelBrowser, attributeMapping);
 
-	const learningProblems = modelsData['learningTasks']['problems'];
-	const learningDescriptions = modelsData['learningTasks']['descriptions'];
-	const learningImages = modelsData['learningTasks']['images'];
+	// 5. Define functions to switch between the view for two types of model genres (and save/load state)
+	let learningMode: boolean = true;
+	const setLearningMode = (): void => {
+		learningMode = true;
+		// After setting the mode, save it to local storage
+		localStorage.setItem('learningMode', 'true');
+	};
+	const setModelingMode = (): void => {
+		learningMode = false;
+		// After setting the mode, save it to local storage
+		localStorage.setItem('learningMode', 'false');
+	};
+	const loadStateFromLocalStorage = (): void => {
+		const savedLearningMode: string | null = localStorage.getItem('learningMode');
+		// If there's a saved learning mode in local storage
+		if (savedLearningMode !== null) {
+			// Parse the string to boolean and set the learning mode
+			learningMode = savedLearningMode === 'true';
+		}
+	};
 
-	const modelingProblems = modelsData['modelingTasks']['problems'];
-	const modelingDescriptions = modelsData['modelingTasks']['descriptions'];
-	const modelingImages = modelsData['modelingTasks']['images'];
+	onMount(() => {
+		loadStateFromLocalStorage();
+		return () => {
+			clearInterval(hint_timer);
+		};
+	});
 
+	// 6. Define logic for showing and hiding the models list modal
 	let showModal = false;
 	let modalContent = '';
 	let models: any[] = [];
@@ -50,40 +84,17 @@
 		models = [];
 	}
 
-	let learningMode: boolean = true;
+	// 7. Shortcut variable names to access genre names, descriptions, and images
+	const learningProblems = modelsData['learningTasks']['problems'];
+	const learningDescriptions = modelsData['learningTasks']['descriptions'];
+	const learningImages = modelsData['learningTasks']['images'];
 
-	// Function to set learning mode
-	const setLearningMode = (): void => {
-		learningMode = true;
-		// After setting the mode, save it to local storage
-		localStorage.setItem('learningMode', 'true');
-	};
-
-	// Function to set modeling mode
-	const setModelingMode = (): void => {
-		learningMode = false;
-		// After setting the mode, save it to local storage
-		localStorage.setItem('learningMode', 'false');
-	};
-
-	// Function to load state from local storage
-	const loadStateFromLocalStorage = (): void => {
-		const savedLearningMode: string | null = localStorage.getItem('learningMode');
-		// If there's a saved learning mode in local storage
-		if (savedLearningMode !== null) {
-			// Parse the string to boolean and set the learning mode
-			learningMode = savedLearningMode === 'true';
-		}
-	};
-
-	onMount(() => {
-		loadStateFromLocalStorage();
-		return () => {
-			clearInterval(hint_timer);
-		};
-	});
+	const modelingProblems = modelsData['modelingTasks']['problems'];
+	const modelingDescriptions = modelsData['modelingTasks']['descriptions'];
+	const modelingImages = modelsData['modelingTasks']['images'];
 </script>
 
+<!-- Search Bar -->
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem;">
 	<Search
 		items={flatModelBrowser}
@@ -91,8 +102,11 @@
 		extraSearchResult={modelsData['extraSearchText']}
 	/>
 </div>
+
+<!-- Hints appearing below the search bar -->
 <Hints text={hints[randomInd]} />
 
+<!-- Switch between the two model genres -->
 <div
 	style="display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; gap: 0rem; max-width: 70%; margin-left: auto; margin-right: auto;"
 >
@@ -112,6 +126,8 @@
 		{modelsData['buttonTexts'][1]}
 	</button>
 </div>
+
+<!-- Models Grid -->
 <div style="display: flex; justify-content: center; align-items: center; margin-top:2rem;">
 	<div class="modern-grid">
 		{#each learningMode ? learningProblems : modelingProblems as problem, i}
@@ -143,7 +159,9 @@
 	</div>
 </div>
 
+<!-- Models List Modal -->
 <Modal {showModal} content={modalContent} {models} on:closeModal={closeModal} />
+<!-- Note from author: it was not possible to call this file Models.svelte for unexpected reasons (Svelte bug?) -->
 
 <style lang="scss">
 	.headline {

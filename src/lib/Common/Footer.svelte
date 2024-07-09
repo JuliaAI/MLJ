@@ -1,6 +1,7 @@
 <script>
 	import footerDataYaml from '../../data/Footer.yaml?raw';
 	import YAML from 'yaml'
+	
 	let footerData = YAML.parse(footerDataYaml);
 	export let title = footerData['footerTitle'];
 	export let subTitles = footerData['footerTexts'];

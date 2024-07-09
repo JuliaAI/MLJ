@@ -3,13 +3,13 @@
 	import { onMount } from 'svelte';
 	import FaSearch from 'svelte-icons/fa/FaSearch.svelte';
 
-	export let items: { modelName: string; link: string }[] = [];
-	export let placeholder: string = 'Search over all models';
+	export let items: { itemName: string; itemLink: string }[] = [];
+	export let placeholder: string = '';
 	export let tutorialsMode: boolean = false;
 	export let extraSearchResult = '';
 
 	let searchString = '';
-	let results: { modelName: string; link: string }[] = [];
+	let results: { itemName: string; itemLink: string }[] = [];
 	let isOpen = false;
 
 	const dispatch = createEventDispatcher();
@@ -27,8 +27,8 @@
 			results = items
 				.filter(
 					(item) =>
-						item.modelName.toLowerCase().includes(searchString.toLowerCase()) ||
-						(item.link && item.link.toLowerCase().includes(searchString.toLowerCase()))
+						item.itemName.toLowerCase().includes(searchString.toLowerCase()) ||
+						(item.itemLink && item.itemLink.toLowerCase().includes(searchString.toLowerCase()))
 				)
 				.slice(0, 12);
 			isOpen = true;
@@ -40,7 +40,7 @@
 		if (isOutside) isOpen = false;
 	}
 
-	function handleSelect(item: { modelName: string; link: string }) {
+	function handleSelect(item: { itemName: string; itemLink: string }) {
 		dispatch('select', item);
 		isOpen = false;
 	}
@@ -71,13 +71,13 @@
 				{#each results as result}
 					<a
 						href={tutorialsMode
-							? result.link.startsWith('https')
-								? result.link
-								: 'https://juliaai.github.io/DataScienceTutorials.jl/' + result.link
-							: `https://juliaai.github.io/MLJ.jl/dev/models/${result.link}`}
+							? result.itemLink.startsWith('https')
+								? result.itemLink
+								: 'https://juliaai.github.io/DataScienceTutorials.jl/' + result.itemLink
+							: `https://juliaai.github.io/MLJ.jl/dev/models/${result.itemLink}`}
 					>
 						<div class="search-result-item" on:click={() => handleSelect(result)}>
-							{result.modelName}
+							{result.itemName}
 							{result.packageName ? '(' + result.packageName + ')' : ''}
 						</div>
 					</a>
@@ -113,7 +113,6 @@
 	.search-bar {
 		margin-top: 3rem;
 		position: relative;
-		z-index: 0;
 		width: 60%;
 		@media only screen and (max-width: 1300px) {
 			width: 90%;

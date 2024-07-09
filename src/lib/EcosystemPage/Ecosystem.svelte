@@ -1,63 +1,38 @@
 <script lang="ts">
-	import Title from '$lib/Common/Title.svelte';
-	import ecosystemDataYaml from '../../data/EcosystemPage.yaml?raw';
-	import YAML from 'yaml';
+	// Components
 	import SvelteMarkdown from 'svelte-markdown';
-	import { goto } from '$app/navigation';
 	import { Tooltip } from '@svelte-plugins/tooltips';
-	import Modal from '$lib/EcosystemPage/Modal.svelte';
+	// Helpers
+	import { cleanString } from './helpers';
+	// Data
+	import YAML from 'yaml';
+	import ecosystemDataYaml from '../../data/EcosystemPage.yaml?raw';
 
+	// Read the data
 	let ecosystemData = YAML.parse(ecosystemDataYaml);
-
-	function cleanString(str: string) {
-		if (str.endsWith('.jl')) {
-			str = str.slice(0, -3);
-		}
-
-		if (str.startsWith('MLJ')) {
-			str = str.slice(3);
-		}
-
-		return str;
-	}
-
-	let showModal = false;
-	let modalTitle = '';
-	let modalText = '';
-	let modalLink = '';
-	function openModal(title: string, text: string, link: string) {
-		showModal = true;
-		modalTitle = title;
-		modalText = text;
-		modalLink = link;
-	}
-
-	function closeModal() {
-		showModal = false;
-		modalTitle = '';
-		modalText = '';
-		modalLink = '';
-	}
 </script>
 
-<!-- This is still under construction. -->
 <div class="background-wrapper">
+	<!-- Title -->
 	<h1
 		style="color: white; font-size: 2.5rem; text-align:center; padding-top: 2rem; letter-spacing: 5px; font-family: 'Exo 2'"
 	>
 		Enter the MLJ Universe
 	</h1>
+
+	<!-- Hint below title -->
 	<div class="markdown-holder">
 		<p style="text-align:'center'; color: #e1e1e1aa">
 			<SvelteMarkdown source={ecosystemData['hint']} />
 		</p>
 	</div>
+
+	<!-- Ecoysystem grid -->
 	<div class="grid-container">
 		{#each ecosystemData['organizations'] as org, index}
 			<button
 				class="grid-item {index === 0 ? 'grid-item-large' : index === 1 ? 'grid-item-wide' : ''}"
 				on:click={() => {
-					openModal(org.orgName, org.orgMarkdownDesc, org.orgLink);
 					window.open(org.orgLink, '_blank');
 				}}
 			>
@@ -100,14 +75,14 @@
 			</button>
 		{/each}
 	</div>
+
+	<!-- Bottom hint -->
 	<div class="markdown-holder">
 		<p style="text-align:'center'; margin-bottom: 2rem;">
 			<SvelteMarkdown source={ecosystemData['finalHint']} />
 		</p>
 	</div>
 </div>
-
-<!-- <Modal {showModal} name={modalTitle} text={modalText} link={modalLink} on:closeModal={closeModal} /> -->
 
 <style lang="scss">
 	.background-wrapper {

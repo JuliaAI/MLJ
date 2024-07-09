@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
-
+	// Props
 	export let showModal: boolean = false;
 	export let content: string = '';
-	export let models: string[] = [];
+	export let models: any[] = [];
 
+	// Modal control logic
+	const dispatch = createEventDispatcher();
 	function closeModal() {
 		dispatch('closeModal');
 	}
@@ -21,10 +22,12 @@
 {#if showModal}
 	<button class="modal" on:click={handleClick}>
 		<div class="modal-content">
+			<!-- Table header -->
 			<div style="padding-left:0rem; display: flex; flex-direction: row; gap: 3rem;">
 				<h4 style="width:200px; text-decoration:underline;">{content} Models</h4>
 				<h4 style="width:100px; text-decoration:underline;">Package</h4>
 			</div>
+			<!-- Table rows -->
 			<div class="list-container">
 				{#each models as model, i}
 					<button class="list-button">
@@ -39,6 +42,7 @@
 					</button>
 				{/each}
 			</div>
+			<!-- Back button -->
 			<div class="go-back">
 				<button on:click={closeModal}>Go Back</button>
 			</div>
