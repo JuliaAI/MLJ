@@ -83,8 +83,8 @@
 			<button
 				id="{tag}-button"
 				on:click={() => {
-					goto(`/tutorials/${tag.replace('%20', ' ')}`);
 					stageEffectBasedOnURL(tag);
+					goto(`/tutorials/${tag.replace('%20', ' ')}`);
 				}}>{tag}</button
 			>
 		{/each}

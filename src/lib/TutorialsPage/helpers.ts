@@ -10,10 +10,14 @@ export function stageEffectBasedOnURL(tag = null): void {
 
     // Check if the overlay already exists
     const existingOverlay: HTMLElement | null = document.getElementById('custom-overlay');
+    console.log(existingOverlay);
 
     // If the element and button exist and the overlay does not exist, proceed
-    if (element && elementButton && !existingOverlay) {
+    if (element && elementButton) {
         // Create an overlay element
+        if (existingOverlay) {
+            existingOverlay.remove();
+        }
         const overlay: HTMLDivElement = document.createElement('div');
         overlay.id = 'custom-overlay'; // Assign an ID to the overlay
         overlay.style.position = 'fixed';
