@@ -1,0 +1,36 @@
+installation: |
+  ```julia
+
+  # Create a new environment (optional)
+  using Pkg; 
+  Pkg.activate("mlj-env", shared=true)
+
+  # Install MLJ
+  Pkg.add("MLJ")
+
+  # Test Installation (optional)
+  Pkg.test("MLJ")
+
+
+  ```
+
+getStarted: |
+  ```julia
+
+  # 1. Load the Model
+  Tree = @iload DecisionTreeClassifier
+
+  # 2. Create an instance of the model
+  tree = Tree()
+
+  # 3. Wrap the model and data in a machine
+  mach = machine(tree, X, y)
+
+  # 4. Fit the machine
+  fit!(mach)
+
+  # 5. Make predictions
+  yhat = predict(mach, X)
+
+  
+  ```
