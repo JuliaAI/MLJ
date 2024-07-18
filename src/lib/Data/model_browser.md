@@ -254,6 +254,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [MultitargetKNNClassifier (NearestNeighborModels.jl)](@ref MultitargetKNNClassifier_NearestNeighborModels)
 
+- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
+
 - [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
 
 - [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
@@ -669,6 +671,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
 
 - [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
+
+- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
 
 - [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
 
