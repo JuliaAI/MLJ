@@ -5,6 +5,9 @@
 	import FaFile from 'svelte-icons/fa/FaFile.svelte';
 	import FaPlay from 'svelte-icons/fa/FaPlay.svelte';
 	import FaBolt from 'svelte-icons/fa/FaBolt.svelte';
+	import CardSlider from './CardSlider.svelte';
+	import Features from './Features.svelte';
+
 	// Components
 	import MarkdownIt from 'markdown-it';
 	// Helpers
@@ -15,24 +18,30 @@
 	import { goto } from '$app/navigation';
 
 	let homeData = YAML.parse(homeDataYaml);
-	let installHTML: string | undefined;
-	let getStartedHTML: string | undefined;
+	let codeHTMLs: string[] = [];
 	let highlighter;
 	let md;
 	let isLoading = true;
 
+	function wrapInJuliaCodeBlock(str: string) {
+		return `\`\`\`julia\n${str}\n\`\`\``;
+	}
+
 	onMount(async () => {
 		highlighter = await getHighlighterCore({
-			themes: [import('shiki/themes/synthwave-84.mjs')],
+			themes: [import('shiki/themes/catppuccin-latte.mjs')],
 			langs: [import('shiki/langs/julia.mjs')],
 			loadWasm: import('shiki/wasm')
 		});
 		md = new MarkdownIt();
-		md.use(fromHighlighter(highlighter, { themes: { light: 'synthwave-84' } }));
-		installHTML = md.render(homeData['installation']);
-		getStartedHTML = md.render(homeData['getStarted']);
+		md.use(fromHighlighter(highlighter, { themes: { light: 'catppuccin-latte' } }));
+		for (let tour of homeData['tours']) {
+			codeHTMLs.push(md.render(wrapInJuliaCodeBlock(tour['code'])));
+		}
 		isLoading = false;
 	});
+
+	let hoveredIndex = 0;
 </script>
 
 <!-- HTML Goes Here -->
@@ -69,25 +78,69 @@
 		</div>
 	</div>
 
-	<div class="white-bg-wrapper">
-		<div class="started-section" id="get-started">
-			<div>
-				{#if isLoading}
-					<div>Loading...</div>
-				{:else}
-					<div class="code-container">
-						<div>
-							<h1>INSTALLATION</h1>
-							{@html installHTML}
+	<div
+		style="background: rgb(110, 60, 110); border-top-left-radius: 4rem; border-top-right-radius: 4rem;"
+	>
+		<div class="white-bg-wrapper">
+			<div class="started-section" id="get-started">
+				<div
+					style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 0rem;"
+				>
+					<h1 style="text-align: left; margin-bottom: 1rem;">Get Started with MLJ</h1>
+					<p>The past is a tapestry of what lies ahead.</p>
+				</div>
+				<div>
+					{#if isLoading}
+						<div>Loading...</div>
+					{:else}
+						<div class="code-container">
+							<div>
+								<ul class="tour-list">
+									{#each homeData['tours'] as tour, ind}
+										<li
+											on:mouseenter={() => (hoveredIndex = ind)}
+											class:hovered={ind === hoveredIndex}
+										>
+											{tour['name']}
+										</li>
+									{/each}
+								</ul>
+								<!-- loop on homeData['tours'] -->
+							</div>
+							<div>
+								{#each homeData['tours'] as tour, ind}
+									{#if ind == 0}
+										{@html codeHTMLs[hoveredIndex]}
+									{/if}
+								{/each}
+							</div>
 						</div>
-						<div>
-							<h1>GET STARTED</h1>
-							{@html getStartedHTML}
-						</div>
-					</div>
-				{/if}
+					{/if}
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="white-bg-wrapper" style="background: rgb(110, 60, 110); border-radius: 0rem;">
+	<div class="started-section" id="get-started">
+		<div
+			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
+		>
+			<h1 style="text-align: left; margin-bottom: 1rem;">MLJ Features</h1>
+			<p>Who... let the dogs... out. Woof. Woof, woof</p>
+		</div>
+		<Features />
+	</div>
+</div>
+<div class="white-bg-wrapper" style=" border-radius: 0rem;">
+	<div class="started-section" id="get-started">
+		<div
+			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
+		>
+			<h1 style="text-align: left; margin-bottom: 1rem;">MLJ Partners</h1>
+			<p>There is a glimmer of light in the sky.</p>
+		</div>
+		<CardSlider images={homeData['users']} />
 	</div>
 </div>
 
@@ -110,6 +163,27 @@
 			img {
 				max-width: 56% !important;
 			}
+		}
+	}
+
+	.tour-list {
+		list-style: none;
+		padding-left: 0;
+		margin-left: -7rem;
+		li {
+			padding: 1rem 0rem;
+			margin-left: 1rem;
+			font-size: 1.3rem;
+			font-family: 'Montserrat', sans-serif; /* Added a fallback font */
+			font-weight: 500;
+			position: relative;
+			padding-left: 50px;
+			color: white;
+			background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/LACMTA_Circle_Purple_Line.svg/512px-LACMTA_Circle_Purple_Line.svg.png');
+			background-repeat: no-repeat;
+			background-position: 5px 18px; /* Adjusts the position of the bullet */
+			background-size: 30px 30px;
+			cursor: pointer;
 		}
 	}
 
@@ -154,7 +228,7 @@
 		gap: 1.4rem;
 		margin-top: 1.5rem;
 		button {
-			font-family: 'Lato';
+			font-family: 'Montserrat';
 			color: white;
 			border: 1px solid white;
 			padding: 0.5rem 1.5rem;
@@ -179,41 +253,44 @@
 		margin-left: 0.4rem;
 	}
 	.white-bg-wrapper {
-		background: #eee; //rgba(150, 100, 150, 0.4);
+		background: rgba(100, 50, 100, 1); //rgba(150, 100, 150, 0.4);
 		border-top-left-radius: 4rem;
 		border-top-right-radius: 4rem;
-		margin-bottom: 4rem;
+		padding-bottom: 4rem;
 		.started-section {
 			padding-top: 3rem;
-			h1 {
-				color: rgba(100, 50, 100, 1);
-				padding: 0.5rem 1rem;
+			h1,
+			p {
+				color: #eee;
+				margin-left: -3rem;
 				border-radius: 2rem;
-				margin: 0 auto;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				align-self: flex-start;
-				font-size: 2rem;
 				font-family: 'Montserrat';
-				// text-shadow: 2px 2px 4px rgba(178, 178, 178, 0.762);
+			}
+			h1 {
+				font-size: 2.4rem;
 				font-weight: 600;
 			}
+			p {
+				padding-left: 0.3rem;
+				color: #c4c4c4;
+			}
 			.code-container {
-				margin-top: 2rem;
 				display: flex;
 				flex-direction: row;
-				gap: 3rem;
+				gap: 13rem;
 				justify-content: center;
 				// change to column when screen is small
 				@media only screen and (max-width: 900px) {
 					flex-direction: column;
 				}
-				:global(pre) {
-					padding: 1rem 2rem;
-					border-radius: 1rem;
-					height: 100%;
+				height: 400px;
 
+				:global(pre) {
+					margin-top: 3rem !important;
+					margin-bottom: 2rem;
+					padding: 2rem 5rem 2rem 2rem;
+					border-radius: 1rem;
+					max-width: 600px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -221,6 +298,7 @@
 						width: 90%;
 						font-size: 0.8rem;
 					}
+					opacity: 0.95;
 				}
 				div {
 					display: flex;
@@ -229,12 +307,17 @@
 					align-items: center;
 					justify-content: center;
 					p {
-						color: rgb(100, 50, 100);
+						color: #eee;
 						font-size: 1.3rem;
 						font-family: 'Lato';
 					}
 				}
 			}
 		}
+	}
+
+	.hovered {
+		font-weight: bold !important;
+		color: white !important;
 	}
 </style>

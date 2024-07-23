@@ -1,36 +1,46 @@
-installation: |
-  ```julia
+tours:
+  - name: Install the MLJ Pacakge
+    code: |
+      # Create a new environment (optional)
+      using Pkg; 
+      Pkg.activate("mlj-env", shared=true)
 
-  # Create a new environment (optional)
-  using Pkg; 
-  Pkg.activate("mlj-env", shared=true)
+      # Install MLJ
+      Pkg.add("MLJ")
 
-  # Install MLJ
-  Pkg.add("MLJ")
+      # Test Installation (optional)
+      Pkg.test("MLJ")
 
-  # Test Installation (optional)
-  Pkg.test("MLJ")
+  - name: Train Your First Model
+    code: |
+      # 1. Load the Model
+      Tree = @iload DecisionTreeClassifier
+
+      # 2. Create an instance of the model
+      tree = Tree()
+
+      # 3. Wrap the model and data in a machine
+      mach = machine(tree, X, y)
+
+      # 4. Fit the machine
+      fit!(mach)
+
+      # 5. Make predictions
+      yhat = predict(mach, X)
+
+  - name: Learn how to Evaluate Your Model
+    code: |
+      # Cross-validation code would go here
+
+  - name: Hyperparameter Tuning
+    code: |
+      # Hyperparameter tuning code would go here
 
 
-  ```
-
-getStarted: |
-  ```julia
-
-  # 1. Load the Model
-  Tree = @iload DecisionTreeClassifier
-
-  # 2. Create an instance of the model
-  tree = Tree()
-
-  # 3. Wrap the model and data in a machine
-  mach = machine(tree, X, y)
-
-  # 4. Fit the machine
-  fit!(mach)
-
-  # 5. Make predictions
-  yhat = predict(mach, X)
-
-  
-  ```
+users:
+  - /users/1.png
+  - /users/2.png
+  - /users/3.png
+  - /users/4.png
+  - /users/5.png
+  - /users/6.png
