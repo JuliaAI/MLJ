@@ -5,9 +5,7 @@ MLJ (Machine Learning in Julia) is a toolbox written in Julia providing a common
 and meta-algorithms for selecting, tuning, evaluating, composing and comparing over 200
 machine learning models. The toolbox integrates model algorithms written in both Julia and
 other languages, spread across dozens of individual Julia packages. 
-
 <br>
-
 MLJ is an open source
 project, copyrighted under the MIT "Expat" License.
 
@@ -37,9 +35,7 @@ is Julia-based, these goals are readily achieved without compromising performanc
 A core MLJ design principle is to facilitate **flexible composition** of models and
 meta-algorithms, such as tuning, beyond the relatively constrained model pipelines of
 existing toolboxes.
-
 <br>
-
 Project priorities are somewhat fluid. As an open software project, we rely considerably
 on the contribution of volunteers, and the project tends to support the priorities of such
 contributors.  On the other hand, significant offers of financial support will influence
