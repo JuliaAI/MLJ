@@ -23,8 +23,8 @@ The MLJ project aims to create high quality software that is **fast**, **scalabl
 Project. 
 <br><br>
 A core MLJ design principle is to facilitate **flexible composition** of models and
-meta-algorithms, such as tuning, beyond the relatively constrained model pipelines of
-existing toolboxes.
+meta-algorithms, such as tuning, beyond the relatively constrained pipelines of
+other popular toolboxes.
 <br><br>
 Project priorities are somewhat fluid. As an open software project, we rely considerably
 on the contribution of volunteers, and the project tends to support the priorities of such
