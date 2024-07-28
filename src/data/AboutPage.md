@@ -38,7 +38,6 @@ contributors. Signficant infusions of financial support also shape MLJ prioritie
 Significant contributors in the Project's genesis were:
 <br>
 - **Core design:** Anthony Blaom, Franz Király, Sebastian Vollmer
-<br>
 - **Development:** Anthony Blaom, Thibaut Lienart, Yiannis Simillides, Diego Arenas 
 
 ## Governance and Code of Conduct
