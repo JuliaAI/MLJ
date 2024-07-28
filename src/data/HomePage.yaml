@@ -1,3 +1,18 @@
+packageName: Machine Learning in Julia
+packageDescription: A Julia package for general, composable and elegant machine learning at scale.
+
+extraButton: 
+  name: Tutorials
+  link: /tutorials
+
+sections:
+  - name: Get Started with MLJ
+    subtitle: The past is a tapestry of what lies ahead
+  - name: Why MLJ?
+    subtitle: Who... let the dogs... out. Woof. Woof, woof
+  - name: MLJ Partners
+    subtitle: There is a glimmer of light in the sky
+
 tours:
   - name: Install the MLJ Pacakge
     code: |
@@ -28,13 +43,51 @@ tours:
       # 5. Make predictions
       yhat = predict(mach, X)
 
-  - name: Learn how to Evaluate Your Model
+  - name: Evaluate Your Model
     code: |
       # Cross-validation code would go here
 
   - name: Hyperparameter Tuning
     code: |
       # Hyperparameter tuning code would go here
+
+
+features:
+  - title: High-level Design
+    content: Some discussion about the feature and maybe a code block
+    code:
+
+  - title: Nested Hyperparameters
+    content: Some discussion of the feature
+    code: |
+      # 1. Load the Model
+      Tree = @iload DecisionTreeClassifier
+
+      # 2. Create an instance of the model
+      tree = Tree()
+
+      # 3. Wrap the model and data in a machine
+      mach = machine(tree, X, y)
+
+      # 4. Fit the machine
+      fit!(mach)
+
+      # 5. Make predictions
+      yhat = predict(mach, X)
+
+  - title: Neural Networks
+    content: Ding ding.
+    code: 
+
+  - title: Language Models
+    content: Cool
+    code:
+
+
+  - title: Massive Arts
+    content: Cool
+    code:
+
 
 
 users:

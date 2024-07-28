@@ -51,9 +51,9 @@
 	<div class="hero-wrapper">
 		<img src="./mlj-logo.png" style="max-width: 400px;" alt="logo" />
 		<div class="mlj-text">
-			<h2>Machine Learning in Julia</h2>
+			<h2>{homeData['packageName']}</h2>
 			<p style="color: #ddd; margin-top: 1rem; margin-bottom: 1rem; text-align: left; width: 90%;">
-				A Julia package for general, composable and elegant machine learning at scale.
+				{homeData['packageDescription']}
 			</p>
 			<div class="button-container">
 				<button on:click={() => goto('/#get-started')}>
@@ -62,14 +62,14 @@
 						<FaDownload />
 					</div>
 				</button>
-				<button on:click={() => goto('https://juliaai.github.io/MLJ.jl/stable/')}>
-					Manual
+				<button on:click={() => window.open('https://juliaai.github.io/MLJ.jl/stable/')}>
+					Docs
 					<div class="icon-2">
 						<FaFile />
 					</div>
 				</button>
-				<button on:click={() => goto('/tutorials')}>
-					Tutorials
+				<button on:click={() => goto(homeData['extraButton']['link'])}>
+					{homeData['extraButton']['name']}
 					<div class="icon-2">
 						<FaPlay />
 					</div>
@@ -86,8 +86,8 @@
 				<div
 					style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 0rem;"
 				>
-					<h1 style="text-align: left; margin-bottom: 1rem;">Get Started with MLJ</h1>
-					<p>The past is a tapestry of what lies ahead.</p>
+					<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][0]['name']}</h1>
+					<p>{homeData['sections'][0]['subtitle']}</p>
 				</div>
 				<div>
 					{#if isLoading}
@@ -95,7 +95,7 @@
 					{:else}
 						<div class="code-container">
 							<div>
-								<ul class="tour-list">
+								<ol class="tour-list">
 									{#each homeData['tours'] as tour, ind}
 										<li
 											on:mouseenter={() => (hoveredIndex = ind)}
@@ -104,7 +104,7 @@
 											{tour['name']}
 										</li>
 									{/each}
-								</ul>
+								</ol>
 								<!-- loop on homeData['tours'] -->
 							</div>
 							<div>
@@ -126,8 +126,8 @@
 		<div
 			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
 		>
-			<h1 style="text-align: left; margin-bottom: 1rem;">MLJ Features</h1>
-			<p>Who... let the dogs... out. Woof. Woof, woof</p>
+			<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][1]['name']}</h1>
+			<p>{homeData['sections'][1]['subtitle']}</p>
 		</div>
 		<Features />
 	</div>
@@ -137,8 +137,8 @@
 		<div
 			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
 		>
-			<h1 style="text-align: left; margin-bottom: 1rem;">MLJ Partners</h1>
-			<p>There is a glimmer of light in the sky.</p>
+			<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][2]['name']}</h1>
+			<p>{homeData['sections'][0]['subtitle']}</p>
 		</div>
 		<CardSlider images={homeData['users']} />
 	</div>
@@ -284,13 +284,12 @@
 					flex-direction: column;
 				}
 				height: 400px;
-
 				:global(pre) {
 					margin-top: 3rem !important;
 					margin-bottom: 2rem;
-					padding: 2rem 5rem 2rem 2rem;
+					padding: 2rem 5rem 2rem 0rem;
 					border-radius: 1rem;
-					max-width: 600px;
+					width: 600px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
