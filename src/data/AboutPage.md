@@ -39,6 +39,7 @@ Significant contributors in the Project's genesis were:
 <br>
 - **Core design:** Anthony Blaom, Franz Király, Sebastian Vollmer
 - **Development:** Anthony Blaom, Thibaut Lienart, Yiannis Simillides, Diego Arenas 
+<\div>
 
 ## Governance and Code of Conduct
 <div class="md-block-cont-float">
