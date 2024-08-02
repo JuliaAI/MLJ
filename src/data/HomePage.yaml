@@ -53,27 +53,36 @@ tours:
 
 
 features:
-  - title: High-level Design
-    content: Some discussion about the feature and maybe a code block
-    code:
-
-  - title: Nested Hyperparameters
-    content: Some discussion of the feature
+  - title: Matching models to tasks
+    content: A Model Registry stores detailed metadata for [over 200 models](google.com) and documentation can be searched without loading model code.
     code: |
-      # 1. Load the Model
-      Tree = @iload DecisionTreeClassifier
+      julia> X, y = @load_iris
+      julia> models(matching(X, y))
+      54-element Vector
+       (name = AdaBoostClassifier, package_name = MLJScikitLearnInterface, ... )
+       (name = AdaBoostStumpClassifier, package_name = DecisionTree, ... )
+       (name = BaggingClassifier, package_name = MLJScikitLearnInterface, ... )
+       ⋮
 
-      # 2. Create an instance of the model
-      tree = Tree()
+      julia> models("pca")
+      (name = PCA, package_name = MultivariateStats, ... )
+      (name = PCADetector, package_name = OutlierDetectionPython, ... )
 
-      # 3. Wrap the model and data in a machine
-      mach = machine(tree, X, y)
-
-      # 4. Fit the machine
-      fit!(mach)
-
-      # 5. Make predictions
-      yhat = predict(mach, X)
+  - title: Tuning as wrapper
+    content: >
+      "For improved composability, and to mitigate data hygiene issues, an extensive number of
+      **meta-algorithms** are implemented as **model wrappers**:
+      - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
+      - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
+      - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
+      - [Target transforms](https://juliaai.github.io/MLJ.jl/dev/target_transformations/) / inverse transforms
+      - [Thresholding](https://juliaai.github.io/MLJ.jl/dev/thresholding_probabilistic_predictors/) probabilistic predictors
+      - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
+      - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
+      - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
+      In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
+      model, with all data resampling (e.g., cross-validation) managed under the hood."
+    code: |
 
   - title: Neural Networks
     content: Ding ding.
