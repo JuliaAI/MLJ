@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import MarkdownIt from 'markdown-it';
 	import FaPlay from 'svelte-icons/fa/FaPlay.svelte';
+	import SvelteMarkdown from 'svelte-markdown';
 
 	// Reactive state to track the selected tab index
 	let selectedTabIndex = 0;
@@ -56,7 +57,9 @@
 		{#each tabs as tab, index}
 			<section class:selectedContent={selectedTabIndex === index}>
 				<div style="display: flex; justify-content: space-around; gap: 0rem;">
-					<p style="color: white; margin: 2rem 0rem;">{tab.content}</p>
+					<div style="color: white">
+						<SvelteMarkdown source={tab.content} />
+					</div>
 					{#if tab.code && !isLoading}
 						<div class="code-container">
 							{@html codeHTMLs[index]}

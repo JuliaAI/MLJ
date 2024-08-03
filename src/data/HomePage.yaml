@@ -54,11 +54,15 @@ tours:
 
 features:
   - title: High-level Design
-    content: Some discussion about the feature and maybe a code block
+    content: |
+      ## Yes
+      Some discussion about the feature and maybe a code block
     code:
 
   - title: Nested Hyperparameters
-    content: Some discussion of the feature
+    content: |
+      ## Some discussion of the feature
+      Bla Bla
     code: |
       # 1. Load the Model
       Tree = @iload DecisionTreeClassifier
