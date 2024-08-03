@@ -56,8 +56,8 @@
 	<div class="content">
 		{#each tabs as tab, index}
 			<section class:selectedContent={selectedTabIndex === index}>
-				<div style="display: flex; justify-content: space-around; gap: 0rem;">
-					<div style="color: white">
+				<div style="display: flex; justify-content: space-around; gap: 2rem; align-items: center">
+					<div class="markdown-container">
 						<SvelteMarkdown source={tab.content} />
 					</div>
 					{#if tab.code && !isLoading}
@@ -90,6 +90,35 @@
 		border-radius: 5px;
 	}
 
+	.markdown-container {
+		color: white;
+		line-height: 150%;
+
+		:global(ul) {
+			padding-left: 2rem;
+		}
+		:global(a) {
+			background-color: #6e4582;
+			padding: 0.2rem 0.3rem;
+			border-radius: 0.5rem;
+		}
+		:global(strong) {
+			:global(a) {
+				display: block;
+				padding: 0.4rem 0.6rem;
+				background-color: #6e4582;
+				border-radius: 0.7rem;
+				margin-right: 0.5rem;
+				margin-top: 0.5rem;
+				width: max-content;
+			}
+		}
+		:global(li) {
+			margin-top: 0.4rem;
+			margin-bottom: 0.4rem;
+		}
+	}
+
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -113,11 +142,11 @@
 	.content section {
 		margin-top: 3rem !important;
 		display: none;
-		padding: 10px 0 10px 0;
-		border: 1px solid rgba(255, 255, 255, 0.3);
 		border-radius: 2rem;
 		width: 100%;
 		font-family: 'Montserrat';
+		background-color: rgb(100, 50, 100);
+		padding: 3rem 4rem;
 	}
 
 	.selectedTab {
@@ -142,7 +171,7 @@
 		height: 400px;
 		:global(pre) {
 			margin-top: 2rem !important;
-
+			font-size: 0.95rem;
 			margin-bottom: 2rem;
 			padding: 2rem 2rem 2rem 2rem;
 			border-radius: 1rem;

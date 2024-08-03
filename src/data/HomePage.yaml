@@ -54,7 +54,7 @@ tours:
 
 features:
   - title: Matching models to tasks
-    content: A Model Registry stores detailed metadata for [over 200 models](google.com) and documentation can be searched without loading model code.
+    content: A Model Registry stores detailed metadata for [over 200 models](google.com) and documentation can be searched without loading model code. **[See Models](/machines)**
     code: |
       julia> X, y = @load_iris
       julia> models(matching(X, y))
@@ -70,16 +70,16 @@ features:
 
   - title: Tuning as wrapper
     content: >
-      "For improved composability, and to mitigate data hygiene issues, an extensive number of
+      For improved composability, and to mitigate data hygiene issues, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
-      - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
-      - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
-      - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
-      - [Target transforms](https://juliaai.github.io/MLJ.jl/dev/target_transformations/) / inverse transforms
-      - [Thresholding](https://juliaai.github.io/MLJ.jl/dev/thresholding_probabilistic_predictors/) probabilistic predictors
-      - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
-      - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
-      - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
+        - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
+        - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
+        - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
+        - [Target transforms](https://juliaai.github.io/MLJ.jl/dev/target_transformations/) / inverse transforms
+        - [Thresholding](https://juliaai.github.io/MLJ.jl/dev/thresholding_probabilistic_predictors/) probabilistic predictors
+        - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
+        - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
+        - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
       In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
       model, with all data resampling (e.g., cross-validation) managed under the hood."
     code: |
