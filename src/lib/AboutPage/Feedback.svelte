@@ -93,7 +93,8 @@
 		width: 100%;
 		padding: 0.5rem;
 		margin-top: 0.5rem;
-		font-family: 'Lato';
+		font-family: 'Montserrat';
+		font-size: 1.1rem;
 		border: 1px solid #ccc;
 		border-radius: 5px;
 	}
