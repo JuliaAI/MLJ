@@ -72,6 +72,7 @@ features:
     content: >
       For improved composability, and to mitigate data hygiene issues, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
+      <br><br>  
         - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
         - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
         - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
@@ -80,9 +81,20 @@ features:
         - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
         - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
         - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
+      <br><br>
       In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
       model, with all data resampling (e.g., cross-validation) managed under the hood."
     code: |
+      model = XGBoostRegressor()
+      r1 = range(model, :max_depth, lower=3, upper=10)
+      r2 = range(model, :gamma, lower=0, upper=10, scale=:log)
+      tuned_model = TunedModel(model, range=[r1, r2], resampling=CV(), measure=l2)
+
+      # optimise and retrain on all data:
+      mach = machine(tuned_model, data) |> fit!
+
+      predict(mach, Xnew) # prediction w/ optim. params
+      report(mach).best_model # inspect optim. results
 
   - title: Neural Networks
     content: Ding ding.
