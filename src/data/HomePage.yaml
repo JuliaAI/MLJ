@@ -1,15 +1,15 @@
 packageName: Machine Learning in Julia
 packageDescription: A Julia package for general, composable and elegant machine learning at scale.
 
-extraButton: 
+extraButton:
   name: Tutorials
   link: /tutorials
 
 sections:
   - name: Get Started with MLJ
-    subtitle: The past is a tapestry of what lies ahead
-  - name: Why MLJ?
-    subtitle: Who... let the dogs... out. Woof. Woof, woof
+    subtitle: Evaluate the performance of a model and make predictions
+  - name: Features
+    subtitle: Headline features of MLJ with code snippets
   - name: MLJ Partners
     subtitle: There is a glimmer of light in the sky
 
@@ -17,7 +17,7 @@ tours:
   - name: Install the MLJ Pacakge
     code: |
       # Create a new environment (optional)
-      using Pkg; 
+      using Pkg;
       Pkg.activate("mlj-env", shared=true)
 
       # Install MLJ
@@ -54,7 +54,10 @@ tours:
 
 features:
   - title: Matching models to tasks
-    content: A Model Registry stores detailed metadata for [over 200 models](google.com) and documentation can be searched without loading model code. **[See Models](/machines)**
+    content: >-
+      A Model Registry stores detailed metadata for [over 200 models](google.com) and
+      documentation can be searched without loading model code. **[Browse
+      Models](/machines)**
     code: |
       julia> X, y = @load_iris
       julia> models(matching(X, y))
@@ -68,11 +71,13 @@ features:
       (name = PCA, package_name = MultivariateStats, ... )
       (name = PCADetector, package_name = OutlierDetectionPython, ... )
 
+      julia> doc("PCA", pkg="MultivariateStats")
+
   - title: Tuning as wrapper
-    content: >
+    content: >-
       For improved composability, and to mitigate data hygiene issues, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
-      <br><br>  
+      <br><br>
         - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
         - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
         - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
@@ -93,23 +98,103 @@ features:
       # optimise and retrain on all data:
       mach = machine(tuned_model, data) |> fit!
 
-      predict(mach, Xnew) # prediction w/ optim. params
+      # predict using optimised params:
+      predict(mach, Xnew)
+
+      # inspect optimisation outcomes
       report(mach).best_model # inspect optim. results
+      plot(mach)
 
-  - title: Neural Networks
-    content: Ding ding.
-    code: 
+  - title: Nested parameter handling
+    content: >-
+      Creating pipelines, or wrapping models in meta-algorithms, such as iteration control,
+      creates **nested** hyper-parameters. Such parameters can be optimized like any other.
+    code: |
+      julia> pipe = ContinuousEncoder() |> RidgeRegressor()
+        DeterministicPipeline(
+            continuous_encoder = ContinuousEncoder(
+                drop_last = false,
+                one_hot_ordered_factors = false),
+            ridge_regressor = RidgeRegressor(
+                lambda = 1.0,
+                fit_intercept = true,
+                penalize_intercept = false,
+                scale_penalty_with_samples = true,
+                solver = nothing),
+            cache = true)
 
-  - title: Language Models
-    content: Cool
-    code:
+      julia> r = range(pipe, :(ridge_regressor.lambda), lower=0.001, upper=10.0)
+      julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
 
+  - title: Smart pipelines
+    content: >-
+      Conventional model
+      [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/) are available
+      out-of-the box. Hyper-parameters of different model components can be simultaneously
+      tuned, but only necessary components are retrained in each pipeline
+      evaluation. Training reports expose reports for individual components, and the same
+      holds for learned parameters.
+    code: |
+      pipe = OneHotEncoder() |> PCA(maxout=3) |> DecisionTreeClassifier()
+      mach = machine(pipe, X, y) |> fit!
 
-  - title: Massive Arts
-    content: Cool
-    code:
+      # get actual PCA reduction dimension:
+      report(mach).pca.outdim
 
+      # get the tree:
+      fitted_params(mach).decision_tree_classifier.tree
 
+  - title: Iteration control
+    content: >-
+      MLJ provides a rich supply of iterative model "controls", such as early stopping
+      criteria, snapshots, and callbacks for visualization. Any model with an iteration
+      parameter can be wrapped in such controls, the iteration parameter becoming an
+      additional *learned* parameter.
+    code: |
+      model = EvoTreeRegressor()
+      controls = [Step(1), Patience(5), TimeLimit(1/60), InvalidValue()]
+
+      iterated_model = IteratedModel(
+          model;
+          controls,
+          measure=l2,
+          resampling=Holdout(),
+          retrain=true,
+      )
+
+      # train on holdout to find `nrounds` and retrain on all data:
+      mach = machine(iterated_mode, X, y) |> fit!
+
+      # predict on new data:
+      predict(mach, Xnew)
+
+  - title: Composition beyond pipelines
+    content: >-
+      In principle, any MLJ workflow is readily transformed into a lazily executed
+      [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
+      <br><br>
+      For example, in the code block opposite, `fit!` triggers training of both models in
+      parallel. Mutate a hyper-parameter of `model1`, call `fit!` again, and only
+      `model1`'s learned parameters are updated.
+      <br><br>
+      Learning networks can be exported as new stand-alone model types. MLJ's pipelines
+      and stacks are actually implemented using learning networks.
+    code: |
+      # wrap data in "source nodes":
+      X, y = source.(X, y) 
+
+      # a normal MLJ workflow, without training:
+      mach1 = machine(model1, X, y)
+      mach2 = machine(model2, X, y)
+      y1 = predict(mach1, X) # a callable "node"
+      y2 = predict(mach2, X)
+      y = 0.5*(y1 + y2)
+
+      # train all models with one call:
+      fit!(y, acceleration=CPUThreads())
+      
+      # blended prediction for new data:
+      y(Xnew) 
 
 users:
   - /users/1.png
