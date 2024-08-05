@@ -55,7 +55,7 @@ tours:
 features:
   - title: Matching models to tasks
     content: >-
-      A Model Registry stores detailed metadata for [over 200 models](google.com) and
+      A Model Registry stores detailed metadata for [over 200 models](/machines) and
       documentation can be searched without loading model code. **[Browse
       Models](/machines)**
     code: |
@@ -75,7 +75,7 @@ features:
 
   - title: Tuning as wrapper
     content: >-
-      For improved composability, and to mitigate data hygiene issues, an extensive number of
+      For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
       <br><br>
         - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
@@ -107,8 +107,10 @@ features:
 
   - title: Nested parameter handling
     content: >-
-      Creating pipelines, or wrapping models in meta-algorithms, such as iteration control,
-      creates **nested** hyper-parameters. Such parameters can be optimized like any other.
+      Creating pipelines, or wrapping models in meta-algorithms, such as iteration
+      control, creates **nested** hyper-parameters. Such parameters [can be
+      optimized](https://juliaai.github.io/MLJ.jl/dev/tuning_models/#Tuning-multiple-nested-hyperparameters)
+      like any other.
     code: |
       julia> pipe = ContinuousEncoder() |> RidgeRegressor()
         DeterministicPipeline(
@@ -144,6 +146,34 @@ features:
       # get the tree:
       fitted_params(mach).decision_tree_classifier.tree
 
+  - title: Composition beyond pipelines
+    content: >-
+      In principle, any MLJ workflow is readily transformed into a lazily executed
+      [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
+      <br><br>
+      For example, in the code block opposite, `fit!` triggers training of both models in
+      parallel, and the last line returns the average prediction.  Mutate a
+      hyper-parameter of `model1`, call `fit!` again, and only `model1` is retrained.
+      <br><br>
+      Learning networks can be exported as new stand-alone model types. MLJ's pipelines
+      and stacks are actually implemented using learning networks.
+    code: |
+      # wrap data in "source nodes":
+      X, y = source.(X, y) 
+
+      # a normal MLJ workflow, without training:
+      mach1 = machine(model1, X, y)
+      mach2 = machine(model2, X, y)
+      y1 = predict(mach1, X) # a callable "node"
+      y2 = predict(mach2, X)
+      y = 0.5*(y1 + y2)
+
+      # train all models with one call:
+      fit!(y, acceleration=CPUThreads())
+      
+      # blended prediction for new data:
+      y(Xnew) 
+
   - title: Iteration control
     content: >-
       MLJ provides a rich supply of iterative model "controls", such as early stopping
@@ -167,34 +197,6 @@ features:
 
       # predict on new data:
       predict(mach, Xnew)
-
-  - title: Composition beyond pipelines
-    content: >-
-      In principle, any MLJ workflow is readily transformed into a lazily executed
-      [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
-      <br><br>
-      For example, in the code block opposite, `fit!` triggers training of both models in
-      parallel. Mutate a hyper-parameter of `model1`, call `fit!` again, and only
-      `model1`'s learned parameters are updated.
-      <br><br>
-      Learning networks can be exported as new stand-alone model types. MLJ's pipelines
-      and stacks are actually implemented using learning networks.
-    code: |
-      # wrap data in "source nodes":
-      X, y = source.(X, y) 
-
-      # a normal MLJ workflow, without training:
-      mach1 = machine(model1, X, y)
-      mach2 = machine(model2, X, y)
-      y1 = predict(mach1, X) # a callable "node"
-      y2 = predict(mach2, X)
-      y = 0.5*(y1 + y2)
-
-      # train all models with one call:
-      fit!(y, acceleration=CPUThreads())
-      
-      # blended prediction for new data:
-      y(Xnew) 
 
 users:
   - /users/1.png
