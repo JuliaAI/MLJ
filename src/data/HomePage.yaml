@@ -7,7 +7,7 @@ extraButton:
 
 sections:
   - name: Get Started with MLJ
-    subtitle: Evaluate the performance of a model and make predictions
+    subtitle: Evaluate the performance of a model and tune its hyper-parameters
   - name: Features
     subtitle: Headline features of MLJ with code snippets
   - name: MLJ Partners
@@ -155,8 +155,10 @@ features:
       parallel, and the last line returns the average prediction.  Mutate a
       hyper-parameter of `model1`, call `fit!` again, and only `model1` is retrained.
       <br><br>
-      Learning networks can be exported as new stand-alone model types. MLJ's pipelines
-      and stacks are actually implemented using learning networks.
+      Learning networks can be exported as new stand-alone model types.
+      Internally, MLJ's [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/)
+      and [stacks](https://juliaai.github.io/MLJ.jl/dev/model_stacking/) are
+      implemented using learning networks, which demonstrates their flexibility.
     code: |
       # wrap data in "source nodes":
       X, y = source.(X, y) 
