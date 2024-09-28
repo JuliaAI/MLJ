@@ -1,7 +1,7 @@
 <script>
 	import footerDataYaml from '../../data/Footer.yaml?raw';
-	import YAML from 'yaml'
-	
+	import YAML from 'yaml';
+
 	let footerData = YAML.parse(footerDataYaml);
 	export let title = footerData['footerTitle'];
 	export let subTitles = footerData['footerTexts'];
@@ -20,7 +20,7 @@
 
 			<div style="display: flex; flex-direction: row; gap: 15px;">
 				<!-- let's loop on (name, link) in footerData["footerLinks"] -->
-				{#each footerData["footerLinks"] as linkItem}
+				{#each footerData['footerLinks'] as linkItem}
 					<p>
 						<a href={linkItem.link} target="_{linkItem.target}">{linkItem.name}</a>
 					</p>
@@ -34,7 +34,7 @@
 	.real-footer {
 		footer {
 			background: rgb(100, 50, 100);
-			background: radial-gradient(rgb(100, 50, 100), #2b2b2b);
+			background: linear-gradient(to top, rgb(69, 34, 69), rgb(99, 48, 99));
 			background-size: 200% 200%;
 			animation: gradientAnimation 6s infinite;
 

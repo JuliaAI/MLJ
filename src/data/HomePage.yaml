@@ -2,8 +2,8 @@ packageName: Machine Learning in Julia
 packageDescription: A Julia package for general, composable and elegant machine learning at scale.
 
 extraButton:
-  name: Tutorials
-  link: /tutorials
+  name: Star
+  link: https://github.com/JuliaAI/MLJ.jl
 
 sections:
   - name: Get Started with MLJ
@@ -53,11 +53,10 @@ tours:
 
 
 features:
-  - title: Matching models to tasks
+  - title: Matching Models
     content: >-
       A Model Registry stores detailed metadata for [over 200 models](/machines) and
-      documentation can be searched without loading model code. **[Browse
-      Models](/machines)**
+      documentation can be searched without loading model code. 
     code: |
       julia> X, y = @load_iris
       julia> models(matching(X, y))
@@ -73,7 +72,7 @@ features:
 
       julia> doc("PCA", pkg="MultivariateStats")
 
-  - title: Tuning as wrapper
+  - title: Tuning Wrappers
     content: >-
       For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
@@ -86,7 +85,8 @@ features:
         - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
         - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
         - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
-      <br><br>
+
+      <br>
       In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
       model, with all data resampling (e.g., cross-validation) managed under the hood."
     code: |
@@ -105,7 +105,7 @@ features:
       report(mach).best_model # inspect optim. results
       plot(mach)
 
-  - title: Nested parameter handling
+  - title: Nested Tuning
     content: >-
       Creating pipelines, or wrapping models in meta-algorithms, such as iteration
       control, creates **nested** hyper-parameters. Such parameters [can be
@@ -128,7 +128,7 @@ features:
       julia> r = range(pipe, :(ridge_regressor.lambda), lower=0.001, upper=10.0)
       julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
 
-  - title: Smart pipelines
+  - title: Smart Pipelines
     content: >-
       Conventional model
       [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/) are available
@@ -146,7 +146,7 @@ features:
       # get the tree:
       fitted_params(mach).decision_tree_classifier.tree
 
-  - title: Composition beyond pipelines
+  - title: More Composition
     content: >-
       In principle, any MLJ workflow is readily transformed into a lazily executed
       [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
