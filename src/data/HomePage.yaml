@@ -53,11 +53,12 @@ tours:
 
 
 features:
-  - title: Matching Models
+  - title: Choosing Models
     content: >-
       A Model Registry stores detailed metadata for [over 200 models](/machines) and
       documentation can be searched without loading model code. 
     code: |
+      # match models to data:
       julia> X, y = @load_iris
       julia> models(matching(X, y))
       54-element Vector
@@ -65,14 +66,15 @@ features:
        (name = AdaBoostStumpClassifier, package_name = DecisionTree, ... )
        (name = BaggingClassifier, package_name = MLJScikitLearnInterface, ... )
        ⋮
-
+      # filter by docstring content:
       julia> models("pca")
       (name = PCA, package_name = MultivariateStats, ... )
       (name = PCADetector, package_name = OutlierDetectionPython, ... )
 
+      # retrieve docs without code import:
       julia> doc("PCA", pkg="MultivariateStats")
 
-  - title: Tuning Wrappers
+  - title: Meta-algorithms 
     content: >-
       For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
@@ -112,6 +114,7 @@ features:
       optimized](https://juliaai.github.io/MLJ.jl/dev/tuning_models/#Tuning-multiple-nested-hyperparameters)
       like any other.
     code: |
+      # create pipeline:
       julia> pipe = ContinuousEncoder() |> RidgeRegressor()
         DeterministicPipeline(
             continuous_encoder = ContinuousEncoder(
@@ -125,7 +128,10 @@ features:
                 solver = nothing),
             cache = true)
 
+      # define one or more hyperparameter ranges:
       julia> r = range(pipe, :(ridge_regressor.lambda), lower=0.001, upper=10.0)
+
+      # create self-tuning version of pipeline:
       julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
 
   - title: Smart Pipelines
@@ -137,6 +143,7 @@ features:
       evaluation. Training reports expose reports for individual components, and the same
       holds for learned parameters.
     code: |
+      # create and train a pipeline model:
       pipe = OneHotEncoder() |> PCA(maxout=3) |> DecisionTreeClassifier()
       mach = machine(pipe, X, y) |> fit!
 
@@ -163,7 +170,7 @@ features:
       # wrap data in "source nodes":
       X, y = source.(X, y) 
 
-      # a normal MLJ workflow, without training:
+      # a normal MLJ workflow, with `fit` calls omitted:
       mach1 = machine(model1, X, y)
       mach2 = machine(model2, X, y)
       y1 = predict(mach1, X) # a callable "node"
@@ -183,8 +190,12 @@ features:
       parameter can be wrapped in such controls, the iteration parameter becoming an
       additional *learned* parameter.
     code: |
-      model = EvoTreeRegressor()
-      controls = [Step(1), Patience(5), TimeLimit(1/60), InvalidValue()]
+      # choose an iterative model:
+      model = EvoTreeRegressor() # with iteration parameter `nrounds`
+
+      # choose iteration controls:
+      losses = []
+      controls = [Step(1), Patience(5), WithLossDo(x->push!(losses,x))]
 
       iterated_model = IteratedModel(
           model;
@@ -194,7 +205,7 @@ features:
           retrain=true,
       )
 
-      # train on holdout to find `nrounds` and retrain on all data:
+      # train on internal holdout to find `nrounds` and retrain on all data:
       mach = machine(iterated_mode, X, y) |> fit!
 
       # predict on new data:
