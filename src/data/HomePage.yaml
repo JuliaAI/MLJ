@@ -92,12 +92,15 @@ features:
       In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
       model, with all data resampling (e.g., cross-validation) managed under the hood."
     code: |
+      # choose a model and define hyperparameter ranges for tuning:
       model = XGBoostRegressor()
       r1 = range(model, :max_depth, lower=3, upper=10)
       r2 = range(model, :gamma, lower=0, upper=10, scale=:log)
+
+      # wrap model to create self-tuning version:
       tuned_model = TunedModel(model, range=[r1, r2], resampling=CV(), measure=l2)
 
-      # optimise and retrain on all data:
+      # this both optimises and retrains on all data:
       mach = machine(tuned_model, data) |> fit!
 
       # predict using optimised params:
