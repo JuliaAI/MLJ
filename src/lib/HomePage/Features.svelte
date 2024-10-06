@@ -177,7 +177,7 @@
 		@media only screen and (max-width: 900px) {
 			flex-direction: column;
 		}
-		height: 400px;
+		// min-height: 400px;
 		@media only screen and (max-width: 900px) {
 			display: none;
 		}
