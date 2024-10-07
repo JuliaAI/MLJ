@@ -110,6 +110,25 @@ features:
       report(mach).best_model # inspect optim. results
       plot(mach)
 
+  - title: Smart Pipelines
+    content: >-
+      Conventional model
+      [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/) are available
+      out-of-the box. Hyper-parameters of different model components can be simultaneously
+      tuned, but only necessary components are retrained in each pipeline
+      evaluation. Training reports expose reports for individual components, and the same
+      holds for learned parameters.
+    code: |
+      # create and train a pipeline model:
+      pipe = OneHotEncoder() |> PCA(maxout=3) |> DecisionTreeClassifier()
+      mach = machine(pipe, X, y) |> fit!
+
+      # get actual PCA reduction dimension:
+      report(mach).pca.outdim
+
+      # get the tree:
+      fitted_params(mach).decision_tree_classifier.tree
+
   - title: Nested Tuning
     content: >-
       Creating pipelines, or wrapping models in meta-algorithms, such as iteration
@@ -136,25 +155,6 @@ features:
 
       # create self-tuning version of pipeline:
       julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
-
-  - title: Smart Pipelines
-    content: >-
-      Conventional model
-      [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/) are available
-      out-of-the box. Hyper-parameters of different model components can be simultaneously
-      tuned, but only necessary components are retrained in each pipeline
-      evaluation. Training reports expose reports for individual components, and the same
-      holds for learned parameters.
-    code: |
-      # create and train a pipeline model:
-      pipe = OneHotEncoder() |> PCA(maxout=3) |> DecisionTreeClassifier()
-      mach = machine(pipe, X, y) |> fit!
-
-      # get actual PCA reduction dimension:
-      report(mach).pca.outdim
-
-      # get the tree:
-      fitted_params(mach).decision_tree_classifier.tree
 
   - title: More Composition
     content: >-
