@@ -79,7 +79,7 @@ features:
       For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
       <br><br>
-        - [Tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
+        - [Hyperparameter tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
         - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
         - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
         - [Target transforms](https://juliaai.github.io/MLJ.jl/dev/target_transformations/) / inverse transforms
