@@ -90,7 +90,7 @@ features:
 
       <br>
       In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
-      model, with all data resampling (e.g., cross-validation) managed under the hood."
+      model, with all data resampling (e.g., cross-validation) managed under the hood.
     code: |
       # choose a model and define hyperparameter ranges for tuning:
       model = XGBoostRegressor()
