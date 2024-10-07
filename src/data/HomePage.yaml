@@ -58,7 +58,7 @@ features:
       A Model Registry stores detailed metadata for [over 200 models](/machines) and
       documentation can be searched without loading model code. 
     code: |
-      # match models to data:
+      # identify models suitable for your data
       julia> X, y = @load_iris
       julia> models(matching(X, y))
       54-element Vector
