@@ -156,7 +156,7 @@ features:
       # create self-tuning version of pipeline:
       julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
 
-  - title: More Composition
+  - title: Learning Networks
     content: >-
       In principle, any MLJ workflow is readily transformed into a lazily executed
       [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
