@@ -8,8 +8,8 @@ extraButton:
 sections:
   - name: Get Started with MLJ
     subtitle: Evaluate the performance of a model and tune its hyper-parameters
-  - name: Features
-    subtitle: Headline features of MLJ with code snippets
+  - name: MLJ Features
+    subtitle: ''
   - name: MLJ Partners
     subtitle: There is a glimmer of light in the sky
 
