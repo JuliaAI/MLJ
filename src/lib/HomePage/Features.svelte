@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import MarkdownIt from 'markdown-it';
 	import FaPlay from 'svelte-icons/fa/FaPlay.svelte';
+	import IoIosAt from 'svelte-icons/io/IoIosAt.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 
 	// Reactive state to track the selected tab index
@@ -43,7 +44,7 @@
 </script>
 
 <div class="tabs">
-	<ul>
+	<ul style="display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap;">
 		{#each tabs as tab, index}
 			<li
 				on:click={() => (selectedTabIndex = index)}
@@ -56,15 +57,18 @@
 	<div class="content">
 		{#each tabs as tab, index}
 			<section class:selectedContent={selectedTabIndex === index}>
-				<div style="display: flex; justify-content: space-around; gap: 0rem;">
-					<div style="color: white">
-						<SvelteMarkdown source={tab.content} />
-					</div>
+				<div
+					style="padding: 0; display: flex; flex-direction: column; justify-content: space-around; gap: 0rem; align-items: center"
+				>
+					<h1 style="color: white; font-weight: 600;">{tab.title}</h1>
 					{#if tab.code && !isLoading}
 						<div class="code-container">
 							{@html codeHTMLs[index]}
 						</div>
 					{/if}
+					<div class="markdown-container">
+						<SvelteMarkdown source={tab.content} />
+					</div>
 				</div>
 			</section>
 		{/each}
@@ -90,6 +94,37 @@
 		border-radius: 5px;
 	}
 
+	.markdown-container {
+		color: white;
+		line-height: 150%;
+		:global(p) {
+			text-align: justify;
+		}
+		:global(ul) {
+			padding-left: 2rem;
+		}
+		:global(a) {
+			background-color: #6e4582;
+			padding: 0.2rem 0.3rem;
+			border-radius: 0.5rem;
+		}
+		:global(strong) {
+			:global(a) {
+				display: block;
+				padding: 0.4rem 0.6rem;
+				background-color: #6e4582;
+				border-radius: 0.7rem;
+				margin-right: 0.5rem;
+				margin-top: 0.5rem;
+				width: max-content;
+			}
+		}
+		:global(li) {
+			margin-top: 0.4rem;
+			margin-bottom: 0.4rem;
+		}
+	}
+
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -102,22 +137,25 @@
 	li {
 		flex: 1;
 		text-align: center;
+		border: rgba(255, 255, 255, 0.591) 1px solid;
 		cursor: pointer;
 		color: white;
 		margin: auto;
 		border-radius: 1rem;
 		font-family: 'Montserrat';
-		padding: 0.8rem 0rem;
+		padding: 0.8rem 0.3rem;
+		font-size: 0.9rem;
 	}
 
 	.content section {
-		margin-top: 3rem !important;
+		margin-top: 2rem !important;
 		display: none;
-		padding: 10px 0 10px 0;
-		border: 1px solid rgba(255, 255, 255, 0.3);
 		border-radius: 2rem;
 		width: 100%;
 		font-family: 'Montserrat';
+		background-color: rgb(100, 50, 100);
+		padding: 3rem 4rem;
+		padding-top: 0 !important;
 	}
 
 	.selectedTab {
@@ -139,14 +177,17 @@
 		@media only screen and (max-width: 900px) {
 			flex-direction: column;
 		}
-		height: 400px;
+		// min-height: 400px;
+		@media only screen and (max-width: 900px) {
+			display: none;
+		}
 		:global(pre) {
-			margin-top: 2rem !important;
-
+			margin-top: 0rem !important;
+			font-size: 0.95rem;
 			margin-bottom: 2rem;
 			padding: 2rem 2rem 2rem 2rem;
 			border-radius: 1rem;
-			width: 100%;
+			min-width: 800px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -154,6 +195,7 @@
 				width: 90%;
 				font-size: 0.8rem;
 			}
+
 			opacity: 0.95;
 		}
 	}

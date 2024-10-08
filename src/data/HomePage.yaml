@@ -1,15 +1,15 @@
 packageName: Machine Learning in Julia
 packageDescription: A Julia package for general, composable and elegant machine learning at scale.
 
-extraButton: 
-  name: Tutorials
-  link: /tutorials
+extraButton:
+  name: Star
+  link: https://github.com/JuliaAI/MLJ.jl
 
 sections:
   - name: Get Started with MLJ
-    subtitle: The past is a tapestry of what lies ahead
-  - name: Why MLJ?
-    subtitle: Who... let the dogs... out. Woof. Woof, woof
+    subtitle: Evaluate the performance of a model and tune its hyper-parameters
+  - name: MLJ Features
+    subtitle: ''
   - name: MLJ Partners
     subtitle: There is a glimmer of light in the sky
 
@@ -17,7 +17,7 @@ tours:
   - name: Install the MLJ Pacakge
     code: |
       # Create a new environment (optional)
-      using Pkg; 
+      using Pkg;
       Pkg.activate("mlj-env", shared=true)
 
       # Install MLJ
@@ -53,46 +53,166 @@ tours:
 
 
 features:
-  - title: High-level Design
-    content: |
-      ## Yes
-      Some discussion about the feature and maybe a code block
-    code:
-
-  - title: Nested Hyperparameters
-    content: |
-      ## Some discussion of the feature
-      Bla Bla
+  - title: Choosing Models
+    content: >-
+      A Model Registry stores detailed metadata for [over 200 models](/machines) and
+      documentation can be searched without loading model code. 
     code: |
-      # 1. Load the Model
-      Tree = @iload DecisionTreeClassifier
+      # identify models suitable for your data
+      julia> X, y = @load_iris
+      julia> models(matching(X, y))
+      54-element Vector
+       (name = AdaBoostClassifier, package_name = MLJScikitLearnInterface, ... )
+       (name = AdaBoostStumpClassifier, package_name = DecisionTree, ... )
+       (name = BaggingClassifier, package_name = MLJScikitLearnInterface, ... )
+       ⋮
+      # filter by docstring content:
+      julia> models("pca")
+      (name = PCA, package_name = MultivariateStats, ... )
+      (name = PCADetector, package_name = OutlierDetectionPython, ... )
 
-      # 2. Create an instance of the model
-      tree = Tree()
+      # retrieve docs without code import:
+      julia> doc("PCA", pkg="MultivariateStats")
 
-      # 3. Wrap the model and data in a machine
-      mach = machine(tree, X, y)
+  - title: Meta-algorithms 
+    content: >-
+      For improved composability, and better data hygiene, an extensive number of
+      **meta-algorithms** are implemented as **model wrappers**:
+      <br><br>
+        - [Hyperparameter tuning](https://juliaai.github.io/MLJ.jl/dev/tuning_models/)
+        - Control of [iterative](https://juliaai.github.io/MLJ.jl/dev/controlling_iterative_models/) models
+        - Correction for [class imbalance](https://juliaai.github.io/MLJ.jl/dev/correcting_class_imbalance/)
+        - Homogeneous model [ensembling](https://juliaai.github.io/MLJ.jl/dev/homogeneous_ensembles/)
+        - Wolpert model [stacking](https://juliaai.github.io/MLJ.jl/dev/model_stacking/)
+        - [Recursive feature elimination](https://juliaai.github.io/FeatureSelection.jl/dev/)
+        - [Target transforms](https://juliaai.github.io/MLJ.jl/dev/target_transformations/) / inverse transforms
+        - [Thresholding](https://juliaai.github.io/MLJ.jl/dev/thresholding_probabilistic_predictors/) probabilistic predictors
 
-      # 4. Fit the machine
-      fit!(mach)
+      <br>
+      In this way, a model wrapped in a tuning strategy, for example, becomes a "self-tuning"
+      model, with all data resampling (e.g., cross-validation) managed under the hood.
+    code: |
+      # choose a model and define hyperparameter ranges for tuning:
+      model = XGBoostRegressor()
+      r1 = range(model, :max_depth, lower=3, upper=10)
+      r2 = range(model, :gamma, lower=0, upper=10, scale=:log)
 
-      # 5. Make predictions
-      yhat = predict(mach, X)
+      # wrap model to create self-tuning version:
+      tuned_model = TunedModel(model, range=[r1, r2], resampling=CV(), measure=l2)
 
-  - title: Neural Networks
-    content: Ding ding.
-    code: 
+      # this both optimises and retrains on all data:
+      mach = machine(tuned_model, data) |> fit!
 
-  - title: Language Models
-    content: Cool
-    code:
+      # predict using optimised params:
+      predict(mach, Xnew)
 
+      # inspect optimisation outcomes
+      report(mach).best_model # inspect optim. results
+      plot(mach)
 
-  - title: Massive Arts
-    content: Cool
-    code:
+  - title: Smart Pipelines
+    content: >-
+      Conventional model
+      [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/) are available
+      out-of-the box. Hyper-parameters of different model components can be simultaneously
+      tuned, but only necessary components are retrained in each pipeline
+      evaluation. Training reports expose reports for individual components, and the same
+      holds for learned parameters.
+    code: |
+      # create and train a pipeline model:
+      pipe = OneHotEncoder() |> PCA(maxout=3) |> DecisionTreeClassifier()
+      mach = machine(pipe, X, y) |> fit!
 
+      # get actual PCA reduction dimension:
+      report(mach).pca.outdim
 
+      # get the tree:
+      fitted_params(mach).decision_tree_classifier.tree
+
+  - title: Nested Tuning
+    content: >-
+      Creating pipelines, or wrapping models in meta-algorithms, such as iteration
+      control, creates **nested** hyper-parameters. Such parameters [can be
+      optimized](https://juliaai.github.io/MLJ.jl/dev/tuning_models/#Tuning-multiple-nested-hyperparameters)
+      like any other.
+    code: |
+      # create pipeline:
+      julia> pipe = ContinuousEncoder() |> RidgeRegressor()
+        DeterministicPipeline(
+            continuous_encoder = ContinuousEncoder(
+                drop_last = false,
+                one_hot_ordered_factors = false),
+            ridge_regressor = RidgeRegressor(
+                lambda = 1.0,
+                fit_intercept = true,
+                penalize_intercept = false,
+                scale_penalty_with_samples = true,
+                solver = nothing),
+            cache = true)
+
+      # define one or more hyperparameter ranges:
+      julia> r = range(pipe, :(ridge_regressor.lambda), lower=0.001, upper=10.0)
+
+      # create self-tuning version of pipeline:
+      julia> tuned_model = TunedModel(pipe, range=r, resampling=CV(), measure=l2)
+
+  - title: Learning Networks
+    content: >-
+      In principle, any MLJ workflow is readily transformed into a lazily executed
+      [learning network](https://juliaai.github.io/MLJ.jl/dev/learning_networks/).
+      <br><br>
+      For example, in the code block opposite, `fit!` triggers training of both models in
+      parallel, and the last line returns the average prediction.  Mutate a
+      hyper-parameter of `model1`, call `fit!` again, and only `model1` is retrained.
+      <br><br>
+      Learning networks can be exported as new stand-alone model types.
+      Internally, MLJ's [pipelines](https://juliaai.github.io/MLJ.jl/dev/linear_pipelines/)
+      and [stacks](https://juliaai.github.io/MLJ.jl/dev/model_stacking/) are
+      implemented using learning networks, which demonstrates their flexibility.
+    code: |
+      # wrap data in "source nodes":
+      X, y = source.(X, y) 
+
+      # a normal MLJ workflow, with `fit` calls omitted:
+      mach1 = machine(model1, X, y)
+      mach2 = machine(model2, X, y)
+      y1 = predict(mach1, X) # a callable "node"
+      y2 = predict(mach2, X)
+      y = 0.5*(y1 + y2)
+
+      # train all models with one call:
+      fit!(y, acceleration=CPUThreads())
+      
+      # blended prediction for new data:
+      y(Xnew) 
+
+  - title: Iteration control
+    content: >-
+      MLJ provides a rich supply of iterative model "controls", such as early stopping
+      criteria, snapshots, and callbacks for visualization. Any model with an iteration
+      parameter can be wrapped in such controls, the iteration parameter becoming an
+      additional *learned* parameter.
+    code: |
+      # choose an iterative model:
+      model = EvoTreeRegressor() # with iteration parameter `nrounds`
+
+      # choose iteration controls:
+      losses = []
+      controls = [Step(1), Patience(5), WithLossDo(x->push!(losses,x))]
+
+      iterated_model = IteratedModel(
+          model;
+          controls,
+          measure=l2,
+          resampling=Holdout(),
+          retrain=true,
+      )
+
+      # train on internal holdout to find `nrounds` and retrain on all data:
+      mach = machine(iterated_mode, X, y) |> fit!
+
+      # predict on new data:
+      predict(mach, Xnew)
 
 users:
   - /users/1.png

@@ -7,6 +7,7 @@
 	import FaBolt from 'svelte-icons/fa/FaBolt.svelte';
 	import CardSlider from './CardSlider.svelte';
 	import Features from './Features.svelte';
+	import FaStar from 'svelte-icons/fa/FaStar.svelte';
 
 	// Components
 	import MarkdownIt from 'markdown-it';
@@ -68,10 +69,10 @@
 						<FaFile />
 					</div>
 				</button>
-				<button on:click={() => goto(homeData['extraButton']['link'])}>
+				<button on:click={() => window.open(homeData['extraButton']['link'])}>
 					{homeData['extraButton']['name']}
-					<div class="icon-2">
-						<FaPlay />
+					<div class="icon-3">
+						<FaStar />
 					</div>
 				</button>
 			</div>
@@ -126,7 +127,7 @@
 		<div
 			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
 		>
-			<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][1]['name']}</h1>
+			<h1 style="text-align: left; margin-bottom: 0rem;">{homeData['sections'][1]['name']}</h1>
 			<p>{homeData['sections'][1]['subtitle']}</p>
 		</div>
 		<Features />
@@ -252,6 +253,11 @@
 		display: inline-block;
 		margin-left: 0.4rem;
 	}
+	.icon-3 {
+		width: 1.4rem;
+		display: inline-block;
+		margin-left: 0.4rem;
+	}
 	.white-bg-wrapper {
 		background: rgba(100, 50, 100, 1); //rgba(150, 100, 150, 0.4);
 		border-top-left-radius: 4rem;
@@ -259,6 +265,10 @@
 		padding-bottom: 4rem;
 		.started-section {
 			padding-top: 3rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 			h1,
 			p {
 				color: #eee;
@@ -269,22 +279,50 @@
 			h1 {
 				font-size: 2.4rem;
 				font-weight: 600;
+				@media only screen and (max-width: 900px) {
+					font-size: 1.8rem;
+					text-align: center;
+				}
+				@media only screen and (max-width: 600px) {
+					font-size: 1.6rem;
+					margin: auto;
+				}
 			}
 			p {
 				padding-left: 0.3rem;
 				color: #c4c4c4;
+				@media only screen and (max-width: 900px) {
+					font-size: 0.9rem;
+					text-align: center;
+					margin: auto;
+				}
+				@media only screen and (max-width: 600px) {
+					font-size: 0.8rem;
+					text-align: center;
+					margin: auto;
+				}
 			}
 			.code-container {
 				display: flex;
 				flex-direction: row;
 				gap: 13rem;
+
 				justify-content: center;
+				height: 400px;
 				// change to column when screen is small
 				@media only screen and (max-width: 900px) {
 					flex-direction: column;
+					gap: 1rem;
+					height: auto;
 				}
-				height: 400px;
+
+				.tour-list {
+					margin: auto;
+					padding-right: 2rem;
+				}
+
 				:global(pre) {
+					word-wrap: break-word;
 					margin-top: 3rem !important;
 					margin-bottom: 2rem;
 					padding: 2rem 5rem 2rem 0rem;
@@ -293,10 +331,15 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					@media only screen and (max-width: 900px) {
-						width: 90%;
+					@media only screen and (max-width: 1000px) {
+						width: '' !important;
 						font-size: 0.8rem;
 					}
+					@media only screen and (max-width: 600px) {
+						width: '' !important;
+						font-size: 0.7rem;
+					}
+
 					opacity: 0.95;
 				}
 				div {
