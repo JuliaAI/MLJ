@@ -93,3 +93,66 @@ Imbalance:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Understand how balanced bagging can singifically improve classification performance on imbalanced data
 
+
+MLJFlux:
+  - name: Incremental Training of Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/incremental_training/notebook/
+    tags:
+      - Neural Networks
+      - Classification
+    ilos:
+      - Explore incremental training with MLJ
+  - name: Hyperparameter Tuning of Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/hyperparameter_tuning/notebook/
+    tags:
+      - Neural Networks
+      - Classification
+    ilos:
+      - Learn how to tune different hyperparameters of MLJFlux models with emphasis on training hyperparameters.
+  - name: Model Composition of Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/composition/notebook/
+    tags:
+      - Neural Networks
+      - Pipelines
+    ilos:
+      - Learn how to compose neural networks with other MLJ components
+  - name: Comparing Neural Networks and Other Models
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/comparison/notebook/
+    tags:
+      - Neural Networks
+      - Hyperparameter Tuning
+    ilos:
+      - Learn how to compare neural networks with other models
+  - name: Early Stopping of Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/early_stopping/notebook/
+    tags:
+      - Neural Networks
+    ilos:
+      - Learn how early stopping can be applied to neural networks
+  - name: Live Training of Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/live_training/notebook/
+    tags:
+      - Neural Networks
+    ilos:
+      - Train neural networks and see learning plots in realtime
+  - name: Basic Neural Architectural Search
+    href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/architecture_search/notebook/
+    tags:
+      - Neural Networks
+      - Hyperparameter Tuning
+    ilos:
+      - Learn how to naively search and compare different neural network architecture
+  - name: MNIST Classification with Neural Networks
+    href: https://fluxml.ai/MLJFlux.jl/dev/extended_examples/MNIST/notebook/
+    tags:
+      - Neural Networks
+      - Classification
+    ilos:
+      - Learn how to build and training neural networks for image classification
+  - name: Spam Detection with RNNs
+    href: https://fluxml.ai/MLJFlux.jl/dev/extended_examples/spam_detection/notebook/
+    tags:
+      - Neural Networks
+      - Classification
+    ilos:
+      - Learn how to train a neural network for spam classification over SMS messages
