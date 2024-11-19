@@ -16,47 +16,63 @@ sections:
 tours:
   - name: Install the MLJ Pacakge
     code: |
-      # Create a new environment (optional)
+      # Create a new environment (optional):
       using Pkg;
       Pkg.activate("mlj-env", shared=true)
 
-      # Install MLJ
+      # Install MLJ:
       Pkg.add("MLJ")
 
-      # Test Installation (optional)
+      # Test Installation (optional):
       Pkg.test("MLJ")
 
   - name: Train Your First Model
     code: |
-      # 1. Load the Model
-      Tree = @iload DecisionTreeClassifier
+      # Load the MLJ module:
+      using MLJ
 
-      # 2. Create an instance of the model
-      tree = Tree()
+      # Synthesize some data:
+      X = MLJ.table(rand(100, 3))
+      y = X.x1 - 0.05*rand(100)
 
-      # 3. Wrap the model and data in a machine
-      mach = machine(tree, X, y)
+      # Load the Model:
+      KNN = @iload KNNRegressor
 
-      # 4. Fit the machine
+      # Create an instance with default hyperparameters:
+      knn = KNN()
+
+      # Wrap the model and data in a machine:
+      mach = machine(knn, X, y)
+
+      # Fit the machine:
       fit!(mach)
 
-      # 5. Make predictions
+      # Make prediction:
       yhat = predict(mach, X)
 
   - name: Evaluate Your Model
     code: |
-      # Cross-validation code would go here
+      evaluate!(mach, resampling=CV(nfolds=5), measures=[l2, l1])
 
   - name: Hyperparameter Tuning
     code: |
-      # Hyperparameter tuning code would go here
+      # define a hyperparameter range:
+      r = range(knn, :K, lower=3, upper=10)
 
+      # create self-tuning version of model:
+      tuned_knn = TunedModel(knn, range=r, tuning=Grid(goal=8), measure=l1)
+
+      # train the wrapped model:
+      mach = machine(tuned_knn, X, y) |> fit!
+
+      # get the best model:
+      knn_best = fitted_params(mach).best_model
 
 features:
   - title: Choosing Models
     content: >-
       A Model Registry stores detailed metadata for [over 200 models](/machines) and
-      documentation can be searched without loading model code. 
+      documentation can be searched without loading model code.
     code: |
       # identify models suitable for your data
       julia> X, y = @load_iris
@@ -74,7 +90,7 @@ features:
       # retrieve docs without code import:
       julia> doc("PCA", pkg="MultivariateStats")
 
-  - title: Meta-algorithms 
+  - title: Meta-algorithms
     content: >-
       For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
@@ -171,7 +187,7 @@ features:
       implemented using learning networks, which demonstrates their flexibility.
     code: |
       # wrap data in "source nodes":
-      X, y = source.(X, y) 
+      X, y = source.(X, y)
 
       # a normal MLJ workflow, with `fit` calls omitted:
       mach1 = machine(model1, X, y)
@@ -182,9 +198,9 @@ features:
 
       # train all models with one call:
       fit!(y, acceleration=CPUThreads())
-      
+
       # blended prediction for new data:
-      y(Xnew) 
+      y(Xnew)
 
   - title: Iteration control
     content: >-
