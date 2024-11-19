@@ -35,7 +35,7 @@ tours:
       X = MLJ.table(rand(100, 3))
       y = X.x1 - 0.05*rand(100)
 
-      # Load the Model:
+      # Load the model:
       KNN = @iload KNNRegressor
 
       # Create an instance with default hyperparameters:
@@ -56,16 +56,19 @@ tours:
 
   - name: Hyperparameter Tuning
     code: |
-      # define a hyperparameter range:
+      # Define a hyperparameter range:
       r = range(knn, :K, lower=3, upper=10)
 
-      # create self-tuning version of model:
+      # Create self-tuning version of model:
       tuned_knn = TunedModel(knn, range=r, tuning=Grid(goal=8), measure=l1)
 
-      # train the wrapped model:
+      # Train the wrapped model:
       mach = machine(tuned_knn, X, y) |> fit!
 
-      # get the best model:
+      # Predict using optimal model:
+      predict(mach, X)
+
+      # Inspect the best model:
       knn_best = fitted_params(mach).best_model
 
 features:
