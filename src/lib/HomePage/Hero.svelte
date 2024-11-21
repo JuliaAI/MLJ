@@ -8,6 +8,7 @@
 	import CardSlider from './CardSlider.svelte';
 	import Features from './Features.svelte';
 	import FaStar from 'svelte-icons/fa/FaStar.svelte';
+	import IoIosCopy from 'svelte-icons/io/IoIosCopy.svelte';
 
 	// Components
 	import MarkdownIt from 'markdown-it';
@@ -111,7 +112,12 @@
 							<div>
 								{#each homeData['tours'] as tour, ind}
 									{#if ind == 0}
-										{@html codeHTMLs[hoveredIndex]}
+										<div class="code-container">
+											<button class="copy-icon">
+												<IoIosCopy />
+											</button>
+											{@html codeHTMLs[hoveredIndex]}
+										</div>
 									{/if}
 								{/each}
 							</div>
@@ -306,9 +312,10 @@
 				display: flex;
 				flex-direction: row;
 				gap: 13rem;
+				position: relative;
 
-				justify-content: center;
-				height: 400px;
+				justify-content: flex-start;
+				height: 450px;
 				// change to column when screen is small
 				@media only screen and (max-width: 900px) {
 					flex-direction: column;
@@ -322,21 +329,29 @@
 				}
 
 				:global(pre) {
+					display: block;
 					word-wrap: break-word;
+					height: 100%;
 					margin-top: 3rem !important;
 					margin-bottom: 2rem;
-					padding: 2rem 5rem 2rem 0rem;
+					text-align: left;
+					padding: 3rem 5rem 3rem 2rem;
 					border-radius: 1rem;
-					width: 600px;
+					width: 700px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					overflow: auto;
+					white-space: pre;
+					overflow-x: auto;
+					overflow-y: hidden;
+
 					@media only screen and (max-width: 1000px) {
 						width: '' !important;
 						font-size: 0.8rem;
 					}
 					@media only screen and (max-width: 600px) {
-						width: '' !important;
+						width: auto !important;
 						font-size: 0.7rem;
 					}
 
@@ -355,11 +370,61 @@
 					}
 				}
 			}
+			// .code-container {
+			// 	display: flex;
+			// 	flex-direction: row;
+			// 	justify-content: center;
+			// 	// change to column when screen is small
+			// 	@media only screen and (max-width: 900px) {
+			// 		flex-direction: column;
+			// 	}
+			// 	// min-height: 400px;
+			// 	@media only screen and (max-width: 900px) {
+			// 		display: none;
+			// 	}
+			// 	:global(pre) {
+			// 		margin-top: 0rem !important;
+			// 		font-size: 0.95rem;
+			// 		margin-bottom: 2rem;
+			// 		padding: 2rem 2rem 2rem 2rem;
+			// 		border-radius: 1rem;
+			// 		min-width: 400px;
+			// 		display: flex;
+			// 		align-items: center;
+			// 		justify-content: center;
+			// 		@media only screen and (max-width: 900px) {
+			// 			width: 90%;
+			// 			font-size: 0.8rem;
+			// 		}
+
+			// 		opacity: 0.95;
+			// 	}
+			// }
 		}
 	}
 
 	.hovered {
 		font-weight: bold !important;
 		color: white !important;
+	}
+
+	.copy-icon {
+		position: absolute;
+		top: 4.5rem;
+		right: 0.5rem;
+		color: rgb(122, 61, 126);
+		cursor: pointer;
+		font-size: 0.7rem;
+		transition: color 0.3s;
+		width: 1.3rem;
+		z-index: 999;
+		// hide for small screen
+		@media only screen and (max-width: 900px) {
+			display: none;
+		}
+	}
+
+	.copy-icon:hover {
+		color: rgb(122, 61, 126, 0.5);
 	}
 </style>

@@ -26,15 +26,15 @@ tours:
       # Test Installation (optional):
       Pkg.test("MLJ")
 
-  - name: Train Your First Model
-    code: |
-      # Load the MLJ module:
+      # Use it:
       using MLJ
-
+  - name: Load Some Data
+    code: |
       # Synthesize some data:
       X = MLJ.table(rand(100, 3))
       y = X.x1 - 0.05*rand(100)
-
+  - name: Train Your First Model
+    code: |
       # Load the model:
       KNN = @iload KNNRegressor
 
@@ -52,7 +52,9 @@ tours:
 
   - name: Evaluate Your Model
     code: |
-      evaluate!(mach, resampling=CV(nfolds=5), measures=[l2, l1])
+      # Evaluate with cross validation:
+      evaluate!(mach, 
+                resampling=CV(nfolds=5), measures=[l2, l1])
 
   - name: Hyperparameter Tuning
     code: |
@@ -60,7 +62,8 @@ tours:
       r = range(knn, :K, lower=3, upper=10)
 
       # Create self-tuning version of model:
-      tuned_knn = TunedModel(knn, range=r, tuning=Grid(goal=8), measure=l1)
+      tuned_knn = TunedModel(knn, range=r, 
+                              tuning=Grid(goal=8), measure=l1)
 
       # Train the wrapped model:
       mach = machine(tuned_knn, X, y) |> fit!
