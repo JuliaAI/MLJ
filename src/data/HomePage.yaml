@@ -11,7 +11,7 @@ sections:
   - name: MLJ Features
     subtitle: ''
   - name: MLJ Partners
-    subtitle: There is a glimmer of light in the sky
+    subtitle: ''
 
 tours:
   - name: Install the MLJ Pacakge
