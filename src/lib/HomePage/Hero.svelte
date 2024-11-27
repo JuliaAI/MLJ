@@ -145,7 +145,7 @@
 			style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 1rem;"
 		>
 			<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][2]['name']}</h1>
-			<p>{homeData['sections'][0]['subtitle']}</p>
+			<p>{homeData['sections'][2]['subtitle']}</p>
 		</div>
 		<CardSlider images={homeData['users']} />
 	</div>
