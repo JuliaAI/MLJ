@@ -1,5 +1,5 @@
 packageName: Machine Learning in Julia
-packageDescription: A Julia package for general, composable and elegant machine learning at scale.
+packageDescription: A Julia package for general, composable machine learning at scale.
 
 extraButton:
   name: Star
