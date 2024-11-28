@@ -16,27 +16,42 @@ sections:
 tours:
   - name: Install the MLJ Pacakge
     code: |
+      using Pkg
+
       # Create a new environment (optional):
-      using Pkg;
       Pkg.activate("mlj-env", shared=true)
 
-      # Install MLJ:
+      # Install MLJ
       Pkg.add("MLJ")
 
-      # Test Installation (optional):
+      # Install DataFrames (needed for demo):
+      Pkg.add("DataFrames")
+
+      # Test installation (optional):
       Pkg.test("MLJ")
 
-      # Use it:
+      # Use these packages:
       using MLJ
+      import DataFrames # names must be qualified
+
   - name: Load Some Data
     code: |
-      # Synthesize some data:
-      X = MLJ.table(rand(100, 3))
-      y = X.x1 - 0.05*rand(100)
+      # Grab iris dataset from the openml.org repository:
+      data = OpenML.load(61)
+
+      # Convert to a data frame:
+      df = DataFrames.DataFrame(data)
+
+      # Inspect column names and types:
+      schema(df)
+
+      # Split data into target (vector, y) and features (dataframe, X):
+      y, X = unpack(df, ==(:class))
+
   - name: Train Your First Model
     code: |
-      # Load the model:
-      KNN = @iload KNNRegressor
+      # Load the model type:
+      KNN = @iload KNNClassifier
 
       # Create an instance with default hyperparameters:
       knn = KNN()
@@ -47,14 +62,17 @@ tours:
       # Fit the machine:
       fit!(mach)
 
-      # Make prediction:
+      # Get training predictions:
       yhat = predict(mach, X)
 
   - name: Evaluate Your Model
     code: |
       # Evaluate with cross validation:
-      evaluate!(mach, 
-                resampling=CV(nfolds=5), measures=[l2, l1])
+      evaluate!(
+          mach,
+          resampling=CV(nfolds=5),
+          measures=[log_loss, accuracy],
+      )
 
   - name: Hyperparameter Tuning
     code: |
@@ -62,8 +80,12 @@ tours:
       r = range(knn, :K, lower=3, upper=10)
 
       # Create self-tuning version of model:
-      tuned_knn = TunedModel(knn, range=r, 
-                              tuning=Grid(goal=8), measure=l1)
+      tuned_knn = TunedModel(
+          knn,
+          range=r,
+          tuning=Grid(goal=8),
+          measure=log_loss,
+      )
 
       # Train the wrapped model:
       mach = machine(tuned_knn, X, y) |> fit!
