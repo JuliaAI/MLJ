@@ -45,7 +45,8 @@ tours:
       # Inspect column names and types:
       schema(df)
 
-      # Split data into target (vector, y) and features (dataframe, X):
+      # Split data into target (vector, y)
+      # and features (dataframe, X):
       y, X = unpack(df, ==(:class))
 
   - name: Train Your First Model
@@ -81,11 +82,7 @@ tours:
 
       # Create self-tuning version of model:
       tuned_knn = TunedModel(
-          knn,
-          range=r,
-          tuning=Grid(goal=8),
-          measure=log_loss,
-      )
+          knn, range=r, tuning=Grid(goal=8), measure=log_loss)
 
       # Train the wrapped model:
       mach = machine(tuned_knn, X, y) |> fit!
