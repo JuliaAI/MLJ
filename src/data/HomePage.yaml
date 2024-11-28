@@ -14,7 +14,7 @@ sections:
     subtitle: ''
 
 tours:
-  - name: Install the MLJ Pacakge
+  - name: Install the MLJ Package
     code: |
       using Pkg
 
