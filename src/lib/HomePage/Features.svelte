@@ -7,6 +7,7 @@
 	import FaPlay from 'svelte-icons/fa/FaPlay.svelte';
 	import IoIosAt from 'svelte-icons/io/IoIosAt.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
+	import IoIosCopy from 'svelte-icons/io/IoIosCopy.svelte';
 
 	// Reactive state to track the selected tab index
 	let selectedTabIndex = 0;
@@ -63,6 +64,9 @@
 					<h1 style="color: white; font-weight: 600;">{tab.title}</h1>
 					{#if tab.code && !isLoading}
 						<div class="code-container">
+							<button on:click={() => navigator.clipboard.writeText(tab.code)} class="copy-icon">
+								<IoIosCopy />
+							</button>
 							{@html codeHTMLs[index]}
 						</div>
 					{/if}
@@ -173,6 +177,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+		position: relative;
 		// change to column when screen is small
 		@media only screen and (max-width: 900px) {
 			flex-direction: column;
@@ -198,5 +203,21 @@
 
 			opacity: 0.95;
 		}
+	}
+
+	.copy-icon {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		color: rgb(122, 61, 126);
+		cursor: pointer;
+		font-size: 0.7rem;
+		transition: color 0.3s;
+		width: 1.3rem;
+		z-index: 99;
+	}
+
+	.copy-icon:hover {
+		color: rgb(122, 61, 126, 0.5);
 	}
 </style>
