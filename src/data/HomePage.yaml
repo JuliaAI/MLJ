@@ -45,9 +45,9 @@ tours:
       # Inspect column names and types:
       schema(df)
 
-      # Split data into target (vector, y)
-      # and features (dataframe, X):
-      y, X = unpack(df, ==(:class))
+      # Split data into target (vector, y) and
+      # features (dataframe, X) & randomize obervations
+      y, X = unpack(df, ==(:class); rng=123)
 
   - name: Train Your First Model
     code: |
@@ -72,6 +72,15 @@ tours:
       evaluate!(
           mach,
           resampling=CV(nfolds=5),
+          measures=[log_loss, accuracy],
+      )
+
+    # Evaluate with Monte Carlo,
+    # target-stratified cross validation:
+      evaluate!(
+          mach,
+          resampling=StratifiedCV(nfolds=5, rng=456),
+          repeats=2,
           measures=[log_loss, accuracy],
       )
 
