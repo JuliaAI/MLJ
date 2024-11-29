@@ -75,8 +75,8 @@ tours:
           measures=[log_loss, accuracy],
       )
 
-    # Evaluate with Monte Carlo,
-    # target-stratified cross validation:
+      # Evaluate with Monte Carlo,
+      # target-stratified cross validation:
       evaluate!(
           mach,
           resampling=StratifiedCV(nfolds=5, rng=456),
