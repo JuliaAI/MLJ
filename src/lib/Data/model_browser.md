@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Dimension Reduction](@ref)  |  [Clustering](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Neural Networks](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Neural Networks](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -72,6 +72,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [LADRegressor (MLJLinearModels.jl)](@ref LADRegressor_MLJLinearModels)
 
 - [LGBMRegressor (LightGBM.jl)](@ref LGBMRegressor_LightGBM)
+
+- [LaplaceRegressor (LaplaceRedux.jl)](@ref LaplaceRegressor_LaplaceRedux)
 
 - [LarsCVRegressor (MLJScikitLearnInterface.jl)](@ref LarsCVRegressor_MLJScikitLearnInterface)
 
@@ -235,6 +237,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [LDA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref LDA_MultivariateStats)
 
 - [LGBMClassifier (LightGBM.jl)](@ref LGBMClassifier_LightGBM)
+
+- [LaplaceClassifier (LaplaceRedux.jl)](@ref LaplaceClassifier_LaplaceRedux)
 
 - [LinearBinaryClassifier (GLM.jl/MLJGLMInterface.jl)](@ref LinearBinaryClassifier_GLM)
 
@@ -475,6 +479,51 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [XGBoostRegressor (XGBoost.jl/MLJXGBoostInterface.jl)](@ref XGBoostRegressor_XGBoost)
 
+##  Clustering
+- [AffinityPropagation (Clustering.jl/MLJClusteringInterface.jl)](@ref AffinityPropagation_Clustering)
+
+- [AffinityPropagation (MLJScikitLearnInterface.jl)](@ref AffinityPropagation_MLJScikitLearnInterface)
+
+- [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
+
+- [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
+
+- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
+
+- [DBSCAN (Clustering.jl/MLJClusteringInterface.jl)](@ref DBSCAN_Clustering)
+
+- [DBSCAN (MLJScikitLearnInterface.jl)](@ref DBSCAN_MLJScikitLearnInterface)
+
+- [FeatureAgglomeration (MLJScikitLearnInterface.jl)](@ref FeatureAgglomeration_MLJScikitLearnInterface)
+
+- [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
+
+- [HDBSCAN (MLJScikitLearnInterface.jl)](@ref HDBSCAN_MLJScikitLearnInterface)
+
+- [HierarchicalClustering (Clustering.jl/MLJClusteringInterface.jl)](@ref HierarchicalClustering_Clustering)
+
+- [KMeans (Clustering.jl/MLJClusteringInterface.jl)](@ref KMeans_Clustering)
+
+- [KMeans (MLJScikitLearnInterface.jl)](@ref KMeans_MLJScikitLearnInterface)
+
+- [KMeans (ParallelKMeans.jl)](@ref KMeans_ParallelKMeans)
+
+- [KMeansClusterer (BetaML.jl)](@ref KMeansClusterer_BetaML)
+
+- [KMedoids (Clustering.jl/MLJClusteringInterface.jl)](@ref KMedoids_Clustering)
+
+- [KMedoidsClusterer (BetaML.jl)](@ref KMedoidsClusterer_BetaML)
+
+- [MeanShift (MLJScikitLearnInterface.jl)](@ref MeanShift_MLJScikitLearnInterface)
+
+- [MiniBatchKMeans (MLJScikitLearnInterface.jl)](@ref MiniBatchKMeans_MLJScikitLearnInterface)
+
+- [OPTICS (MLJScikitLearnInterface.jl)](@ref OPTICS_MLJScikitLearnInterface)
+
+- [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
+
+- [SpectralClustering (MLJScikitLearnInterface.jl)](@ref SpectralClustering_MLJScikitLearnInterface)
+
 ##  Dimension Reduction
 - [AutoEncoder (BetaML.jl)](@ref AutoEncoder_BetaML)
 
@@ -520,49 +569,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [TSVDTransformer (TSVD.jl/MLJTSVDInterface.jl)](@ref TSVDTransformer_TSVD)
 
-##  Clustering
-- [AffinityPropagation (MLJScikitLearnInterface.jl)](@ref AffinityPropagation_MLJScikitLearnInterface)
-
-- [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
-
-- [Birch (MLJScikitLearnInterface.jl)](@ref Birch_MLJScikitLearnInterface)
-
-- [BisectingKMeans (MLJScikitLearnInterface.jl)](@ref BisectingKMeans_MLJScikitLearnInterface)
-
-- [DBSCAN (Clustering.jl/MLJClusteringInterface.jl)](@ref DBSCAN_Clustering)
-
-- [DBSCAN (MLJScikitLearnInterface.jl)](@ref DBSCAN_MLJScikitLearnInterface)
-
-- [FeatureAgglomeration (MLJScikitLearnInterface.jl)](@ref FeatureAgglomeration_MLJScikitLearnInterface)
-
-- [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
-
-- [HDBSCAN (MLJScikitLearnInterface.jl)](@ref HDBSCAN_MLJScikitLearnInterface)
-
-- [HierarchicalClustering (Clustering.jl/MLJClusteringInterface.jl)](@ref HierarchicalClustering_Clustering)
-
-- [KMeans (Clustering.jl/MLJClusteringInterface.jl)](@ref KMeans_Clustering)
-
-- [KMeans (MLJScikitLearnInterface.jl)](@ref KMeans_MLJScikitLearnInterface)
-
-- [KMeans (ParallelKMeans.jl)](@ref KMeans_ParallelKMeans)
-
-- [KMeansClusterer (BetaML.jl)](@ref KMeansClusterer_BetaML)
-
-- [KMedoids (Clustering.jl/MLJClusteringInterface.jl)](@ref KMedoids_Clustering)
-
-- [KMedoidsClusterer (BetaML.jl)](@ref KMedoidsClusterer_BetaML)
-
-- [MeanShift (MLJScikitLearnInterface.jl)](@ref MeanShift_MLJScikitLearnInterface)
-
-- [MiniBatchKMeans (MLJScikitLearnInterface.jl)](@ref MiniBatchKMeans_MLJScikitLearnInterface)
-
-- [OPTICS (MLJScikitLearnInterface.jl)](@ref OPTICS_MLJScikitLearnInterface)
-
-- [SelfOrganizingMap (SelfOrganizingMaps.jl)](@ref SelfOrganizingMap_SelfOrganizingMaps)
-
-- [SpectralClustering (MLJScikitLearnInterface.jl)](@ref SpectralClustering_MLJScikitLearnInterface)
-
 ##  Bayesian Models
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
 
@@ -587,6 +593,10 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [GaussianProcessClassifier (MLJScikitLearnInterface.jl)](@ref GaussianProcessClassifier_MLJScikitLearnInterface)
 
 - [GaussianProcessRegressor (MLJScikitLearnInterface.jl)](@ref GaussianProcessRegressor_MLJScikitLearnInterface)
+
+- [LaplaceClassifier (LaplaceRedux.jl)](@ref LaplaceClassifier_LaplaceRedux)
+
+- [LaplaceRegressor (LaplaceRedux.jl)](@ref LaplaceRegressor_LaplaceRedux)
 
 - [MultinomialNBClassifier (MLJScikitLearnInterface.jl)](@ref MultinomialNBClassifier_MLJScikitLearnInterface)
 
@@ -618,6 +628,31 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [SMOTENC (Imbalance.jl)](@ref SMOTENC_Imbalance)
 
 - [TomekUndersampler (Imbalance.jl)](@ref TomekUndersampler_Imbalance)
+
+##  Neural Networks
+- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
+
+- [LaplaceClassifier (LaplaceRedux.jl)](@ref LaplaceClassifier_LaplaceRedux)
+
+- [LaplaceRegressor (LaplaceRedux.jl)](@ref LaplaceRegressor_LaplaceRedux)
+
+- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
+
+- [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
+
+- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
+
+- [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
+
+- [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
+
+- [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
+
+- [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
+
+- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
+
+- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
 
 ##  Encoders
 - [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
@@ -664,27 +699,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [TransformedTargetModel (MLJBase.jl)](@ref TransformedTargetModel_MLJBase)
 
 - [TunedModel (MLJTuning.jl)](@ref TunedModel_MLJTuning)
-
-##  Neural Networks
-- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
-
-- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
-
-- [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
-
-- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
-
-- [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
-
-- [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
-
-- [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
-
-- [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
-
-- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
-
-- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
 
 ##  Static Models
 - [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
