@@ -1,5 +1,5 @@
 title: The MLJ Universe
-hint: Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol
+hint: Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol. For a condenseds summary of information presented here, do `using MLJ; @doc MLJ`. 
 organizations:
   - orgName: MLJ.jl
     orgLink: https://github.com/JuliaAI/MLJ.jl
@@ -7,7 +7,7 @@ organizations:
       MLJ.jl is the general user's point-of-entry for choosing, loading,
       composing, evaluating and tuning machine learning models.
       It pulls in most code from other repositories described below.
-      MLJ also hosts the [MLJ manual](src/docs) which documents functionality across the repositories,
+      MLJ also hosts the MLJ manual which documents functionality across the repositories,
       although some pages point to documentation hosted locally by a particular package.
     orthogonal: false
 
@@ -17,7 +17,7 @@ organizations:
       MLJModelInterface.jl is a lightweight package imported by packages
       implementing MLJ's interface for their machine learning models.
       It's only dependencies are ScientificTypesBase.jl (which depends only on the standard library module `Random`) and
-      [StatisticalTraits.jl](https://github.com/JuliaAI/StatisticalTraits.jl) (which depends only on ScientificTypesBase.jl).
+      StatisticalTraits.jl (which depends only on ScientificTypesBase.jl).
     orthogonal: false
 
   - orgName: MLJBase.jl
@@ -25,10 +25,10 @@ organizations:
     orgMarkdownDesc: |
       MLJBase.jl is a large repository with two main purposes:
       (i) to give "dummy" methods defined in MLJModelInterface their intended functionality (which depends on third party packages,
-      such as [Tables.jl](https://github.com/JuliaData/Tables.jl), [Distributions.jl](https://github.com/JuliaStats/Distributions.jl)
-      and [CategoricalArrays.jl](https://github.com/JuliaData/CategoricalArrays.jl)); and
-      (ii) provide functionality essential to the MLJ user that has not been relegated to its own "satellite" repository for some reason.
-      See the [MLJBase.jl readme](https://github.com/JuliaAI/MLJBase.jl) for a detailed description of MLJBase's contents.
+      such as Tables.jl, Distributions.jl and CategoricalArrays.jl; and
+      (ii) provide functionality essential to the MLJ user that has not been relegated to its own
+      "satellite" repository for some reason.
+      See the MLJBase.jl README.md for a detailed description of MLJBase's contents.
     orthogonal: true
 
   - orgName: StatisticalMeasures.jl
@@ -40,47 +40,47 @@ organizations:
   - orgName: MLJModels.jl
     orgLink: https://github.com/JuliaAI/MLJModels.jl
     orgMarkdownDesc: |
-      MLJModels.jl hosts the *MLJ model registry*,
+      MLJModels.jl hosts the MLJ model registry,
       which contains metadata on all the models the MLJ user can search and load from MLJ. Moreover,
-      it provides the functionality for **loading model code** from MLJ on demand. Finally, it furnishes some
-      commonly used transformers for data pre-processing, such as `ContinuousEncoder` and `Standardizer`.
+      it provides the functionality for loading model code from MLJ on demand. Finally, it furnishes some
+      commonly used transformers for data pre-processing, such as ContinuousEncoder and Standardizer.
     orthogonal: false
 
   - orgName: MLJTuning.jl
     orgLink: https://github.com/JuliaAI/MLJTuning.jl
     orgMarkdownDesc: |
-      MLJTuning.jl provides MLJ's `TunedModel` wrapper for hyper-parameter optimization,
-      including the extendable API for tuning strategies, and selected in-house implementations, such as `Grid` and `RandomSearch`.
+      MLJTuning.jl provides MLJ's TunedModel wrapper for hyper-parameter optimization,
+      including the extendable API for tuning strategies, and selected in-house implementations, such as Grid and RandomSearch.
     orthogonal: false
 
   - orgName: MLJEnsembles.jl
     orgLink: https://github.com/JuliaAI/MLJEnsembles.jl
     orgMarkdownDesc: |
-      MLJEnsembles.jl provides MLJ's `EnsembleModel` wrapper, for creating homogeneous model ensembles.
+      MLJEnsembles.jl provides MLJ's EnsembleModel wrapper, for creating homogeneous model ensembles.
     orthogonal: false
 
   - orgName: MLJIteration.jl
     orgLink: https://github.com/JuliaAI/MLJIteration.jl
     orgMarkdownDesc: |
-      MLJIteration.jl provides the `IteratedModel` wrapper for controlling iterative models (snapshots, early stopping criteria, etc).
+      MLJIteration.jl provides the IteratedModel wrapper for controlling iterative models (snapshots, early stopping criteria, etc).
     orthogonal: false
 
   - orgName: FeatureSelection.jl
     orgLink: https://github.com/JuliaAI/FeatureSelection.jl
     orgMarkdownDesc: |
-      FeatureSelection.jl provides models for choosing features, and includes the `RecursiveFeatureElimination` wrapper.
+      FeatureSelection.jl provides models for choosing features, and includes the RecursiveFeatureElimination wrapper.
     orthogonal: false
 
   - orgName: MLJFlow.jl
     orgLink: https://github.com/JuliaAI/MLJFlow.jl
     orgMarkdownDesc: |
-      MLJFlow.jl provides integration with the platform-agnostic machine learning tracking tool [MLflow](https://mlflow.org).
+      MLJFlow.jl provides integration with the platform-agnostic machine learning tracking tool MLflow (mlflow.org).
     orthogonal: false
 
   - orgName: OpenML.jl
     orgLink: https://github.com/JuliaAI/OpenML.jl
     orgMarkdownDesc: |
-      OpenML.jl provides integration with the [OpenML](https://www.openml.org) data science exchange platform.
+      OpenML.jl provides integration with the OpenML (www.openml.org) data science exchange platform.
     orthogonal: true
 
   - orgName: MLJLinearModels.jl
@@ -92,16 +92,16 @@ organizations:
   - orgName: MLJFlux.jl
     orgLink: https://github.com/FluxML/MLJFlux.jl
     orgMarkdownDesc: |
-      MLJFlux.jl an experimental package for gradient-descent models, such as traditional neural-networks,
-      built with [Flux.jl](https://github.com/FluxML/Flux.jl), in MLJ.
+      MLJFlux.jl provides support for some neural network models,
+      built with Flux.jl.
     orthogonal: false
 
   - orgName: ScientificTypesBase.jl
     orgLink: https://github.com/JuliaAI/ScientificTypesBase.jl
     orgMarkdownDesc: |
       ScientificTypesBase.jl is an ultra lightweight package providing "scientific" types, such as
-      `Continuous`, `OrderedFactor`, `Image` and `Table`. It's purpose is to formalize conventions around the
-      scientific interpretation of ordinary machine types, such as `Float32` and `DataFrame`.
+      Continuous, OrderedFactor, Image and Table. It's purpose is to formalize conventions around the
+      scientific interpretation of ordinary machine types, such as Float32 and DataFrame.
     orthogonal: true
 
   - orgName: ScientificTypes.jl
@@ -120,7 +120,7 @@ organizations:
   - orgName: DataScienceTutorials
     orgLink: https://github.com/JuliaAI/DataScienceTutorials.jl
     orgMarkdownDesc: |
-      DataScienceTutorials collects tutorials on how to use MLJ, which are deployed [here](https://JuliaAI.github.io/DataScienceTutorials.jl/).
+      DataScienceTutorials collects tutorials on how to use MLJ, which are deployed at JuliaAI.github.io/DataScienceTutorials.jl/.
     orthogonal: true
 
   - orgName: MLJTestInterface
@@ -136,4 +136,4 @@ organizations:
       Pkg.test("MLJ")`).
     orthogonal: false
 
-finalHint: Looking for a more sophisticated representation that exposes dependencies between packages? See the [following figure](https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/material/MLJ_stack.svg).
+finalHint: For a package dependency graph, see the [this figure](https://raw.githubusercontent.com/JuliaAI/MLJ.jl/dev/material/MLJ_stack.svg).
