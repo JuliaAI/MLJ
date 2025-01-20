@@ -1,5 +1,6 @@
 title: The MLJ Universe
-hint: Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol. For a condenseds summary of information presented here, do `using MLJ; @doc MLJ`. 
+hint: For a condensed summary of information presented here, do `using MLJ; @doc MLJ`. Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol. 
+
 organizations:
   - orgName: MLJ.jl
     orgLink: https://github.com/JuliaAI/MLJ.jl
@@ -16,7 +17,7 @@ organizations:
     orgMarkdownDesc: |
       MLJModelInterface.jl is a lightweight package imported by packages
       implementing MLJ's interface for their machine learning models.
-      It's only dependencies are ScientificTypesBase.jl (which depends only on the standard library module `Random`) and
+      It depends on ScientificTypesBase.jl and
       StatisticalTraits.jl (which depends only on ScientificTypesBase.jl).
     orthogonal: false
 
