@@ -30,13 +30,13 @@ organizations:
       (ii) provide functionality essential to the MLJ user that has not been relegated to its own
       "satellite" repository for some reason.
       See the MLJBase.jl README.md for a detailed description of MLJBase's contents.
-    orthogonal: true
+    orthogonal: false
 
   - orgName: StatisticalMeasures.jl
     orgLink: https://github.com/JuliaAI/StatisticalMeasures.jl
     orgMarkdownDesc: |
       StatisticalMeasures.jl provides performance measures (metrics) such as losses and scores.
-    orthogonal: false
+    orthogonal: true
 
   - orgName: MLJModels.jl
     orgLink: https://github.com/JuliaAI/MLJModels.jl
@@ -116,7 +116,7 @@ organizations:
     orgMarkdownDesc: |
       StatisticalTraits.jl An ultra lightweight package defining fall-back implementations for
       a collection of traits possessed by statistical objects, principally models and measures (metrics).
-    orthogonal: true
+    orthogonal: false
 
   - orgName: DataScienceTutorials
     orgLink: https://github.com/JuliaAI/DataScienceTutorials.jl
