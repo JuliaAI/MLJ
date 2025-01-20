@@ -24,30 +24,26 @@ tours:
       # Install MLJ
       Pkg.add("MLJ")
 
-      # Install DataFrames (needed for demo):
-      Pkg.add("DataFrames")
+      # Install RDatasets (needed for demo):
+      Pkg.add("RDatasets")
 
       # Test installation (optional):
       Pkg.test("MLJ")
 
       # Use these packages:
-      using MLJ
-      import DataFrames # names must be qualified
+      using MLJ, RDatasets
 
   - name: Load Some Data
     code: |
       # Grab iris dataset from the openml.org repository:
-      data = OpenML.load(61)
-
-      # Convert to a data frame:
-      df = DataFrames.DataFrame(data)
+      data = RDatasets.dataset("datasets", "iris");
 
       # Inspect column names and types:
-      schema(df)
+      schema(data)
 
       # Split data into target (vector, y) and
       # features (dataframe, X) & randomize obervations
-      y, X = unpack(df, ==(:class); rng=123)
+      y, X = unpack(data, ==(:Species); rng=123);
 
   - name: Train Your First Model
     code: |
