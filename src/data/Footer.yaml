@@ -18,5 +18,5 @@ footerLinks:
     link: /about
     target: self
   - name: Contact Us
-    link: mailto:support@mlj.com
+    link: /about#feedback
     target: self

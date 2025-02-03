@@ -33,6 +33,13 @@ html {
     /* You can set it to any size you want */
 }
 
+h1,
+h2,
+h3,
+h4 {
+    cursor: default !important;
+}
+
 .md-container {
     margin: 3rem auto;
     max-width: 90%;
@@ -72,6 +79,7 @@ html {
         margin-bottom: 1rem;
         margin-top: 0.5rem;
         color: white;
+        cursor: default !important;
     }
 
     h1 {

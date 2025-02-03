@@ -49,7 +49,7 @@
 	<div
 		style="width: 100%; height: 50vh; display: flex; justify-content: center; align-items: center"
 	>
-		<RingLoader size="60" color="#6e4582" unit="px" duration="1s" />
+		<RingLoader size="60" color="#ffffff" unit="px" duration="1s" />
 	</div>
 {:else}
 	<div class="tabs">

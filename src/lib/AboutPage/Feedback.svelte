@@ -48,7 +48,7 @@
 		<input type="text" id="subject" bind:value={subject} required />
 	</div>
 	<!-- Feedback text area and submit button -->
-	<div class="right">
+	<div class="right" id="feedback">
 		<label for="feedback">Feedback:</label>
 		<textarea rows="5" id="feedback" bind:value={feedback} required></textarea>
 		<button type="submit">Submit</button>

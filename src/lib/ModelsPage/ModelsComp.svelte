@@ -136,7 +136,7 @@
 					<img src={learningMode ? learningImages[i] : modelingImages[i]} alt="" />
 				</div>
 				<div class="item-title">
-					<b>{problem}</b>
+					<b style="cursor: default">{problem}</b>
 					<p>{learningMode ? learningDescriptions[i] : modelingDescriptions[i]}</p>
 					<div style="display: flex; flex-direction: row; gap: 1rem;">
 						{#if modelBrowserJson[problem]}
@@ -161,6 +161,7 @@
 
 <!-- Models List Modal -->
 <Modal {showModal} content={modalContent} {models} on:closeModal={closeModal} />
+
 <!-- Note from author: it was not possible to call this file Models.svelte for unexpected reasons (Svelte bug?) -->
 
 <style lang="scss">

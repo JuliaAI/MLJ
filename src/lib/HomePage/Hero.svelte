@@ -99,7 +99,7 @@
 						<div
 							style="width: 100%; height: 50vh; display: flex; justify-content: center; align-items: center"
 						>
-							<RingLoader size="60" color="#7f569f" unit="px" duration="1s" />
+							<RingLoader size="60" color="#ffffff" unit="px" duration="1s" />
 						</div>
 					{:else}
 						<div class="code-container">
@@ -327,7 +327,7 @@
 				justify-content: flex-start;
 				height: 450px;
 				// change to column when screen is small
-				@media only screen and (max-width: 900px) {
+				@media only screen and (max-width: 1200px) {
 					flex-direction: column;
 					gap: 1rem;
 					height: auto;
