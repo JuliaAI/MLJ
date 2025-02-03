@@ -39,4 +39,6 @@ For experienced frontend developers willing to contribute to the site itself, ch
 
 To test your changes you will need to have [Node.js](https://nodejs.org/en) installed then run `npm run dev`. Alternatively, making a PR to `main` should automatically deploy your changes to a temporary view of the website.
 
+## Credits
+This website was designed by [EssamWisam](https://github.com/EssamWisam) and [Anthony Blaom, PhD](https://github.com/ablaom) and implemented by [EssamWisam](https://github.com/EssamWisam) with support from [DFKI](https://www.dfki.de/en/web).
 
