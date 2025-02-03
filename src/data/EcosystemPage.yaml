@@ -1,6 +1,10 @@
+# Title of the page
 title: The MLJ Universe
+
+# Subtitle below the title
 hint: For a condensed summary of information presented here, do `using MLJ; @doc MLJ`. Repositories of some possible interest outside of MLJ, or beyond its conventional use, are marked with a ⟂ symbol. 
 
+# List of organizations
 organizations:
   - orgName: MLJ.jl
     orgLink: https://github.com/JuliaAI/MLJ.jl

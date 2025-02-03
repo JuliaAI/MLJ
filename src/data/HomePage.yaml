@@ -1,10 +1,13 @@
+# Title and its subtitle in the homepage
 packageName: Machine Learning in Julia
 packageDescription: A Julia package for general, composable machine learning at scale.
 
+# Only the third button can be changed
 extraButton:
   name: Star
   link: https://github.com/JuliaAI/MLJ.jl
 
+# Name and subtitle for each section
 sections:
   - name: Get Started with MLJ
     subtitle: Evaluate the performance of a model and tune its hyper-parameters
@@ -13,6 +16,7 @@ sections:
   - name: MLJ Partners
     subtitle: ''
 
+# Tours under the `Get Started with MLJ` section each tour has a name and a code block
 tours:
   - name: Install the MLJ Package
     code: |
@@ -95,6 +99,7 @@ tours:
       # Inspect the best model:
       knn_best = fitted_params(mach).best_model
 
+# Features under the `MLJ Features` section. Each has a title, content and a code block
 features:
   - title: Choosing Models
     content: >-
@@ -257,6 +262,7 @@ features:
       # predict on new data:
       predict(mach, Xnew)
 
+# For MLJ Partners
 users:
   - image: /users/1.png
     link: https://www.dfki.de/
