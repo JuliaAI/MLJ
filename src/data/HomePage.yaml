@@ -27,8 +27,6 @@ tours:
       # Install RDatasets (needed for demo):
       Pkg.add("RDatasets")
 
-      # Test installation (optional):
-
       # Use these packages:
       using MLJ, RDatasets
 
