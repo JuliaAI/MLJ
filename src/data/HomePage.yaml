@@ -28,7 +28,6 @@ tours:
       Pkg.add("RDatasets")
 
       # Test installation (optional):
-      Pkg.test("MLJ")
 
       # Use these packages:
       using MLJ, RDatasets
