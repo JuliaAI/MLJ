@@ -8,6 +8,7 @@
 	import IoIosAt from 'svelte-icons/io/IoIosAt.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import IoIosCopy from 'svelte-icons/io/IoIosCopy.svelte';
+	import { RingLoader } from 'svelte-loading-spinners';
 
 	// Reactive state to track the selected tab index
 	let selectedTabIndex = 0;
@@ -44,40 +45,48 @@
 	console.log(codeHTMLs);
 </script>
 
-<div class="tabs">
-	<ul style="display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap;">
-		{#each tabs as tab, index}
-			<li
-				on:click={() => (selectedTabIndex = index)}
-				class:selectedTab={selectedTabIndex === index}
-			>
-				{tab.title}
-			</li>
-		{/each}
-	</ul>
-	<div class="content">
-		{#each tabs as tab, index}
-			<section class:selectedContent={selectedTabIndex === index}>
-				<div
-					style="padding: 0; display: flex; flex-direction: column; justify-content: space-around; gap: 0rem; align-items: center"
-				>
-					<h1 style="color: white; font-weight: 600;">{tab.title}</h1>
-					{#if tab.code && !isLoading}
-						<div class="code-container">
-							<button on:click={() => navigator.clipboard.writeText(tab.code)} class="copy-icon">
-								<IoIosCopy />
-							</button>
-							{@html codeHTMLs[index]}
-						</div>
-					{/if}
-					<div class="markdown-container">
-						<SvelteMarkdown source={tab.content} />
-					</div>
-				</div>
-			</section>
-		{/each}
+{#if isLoading}
+	<div
+		style="width: 100%; height: 50vh; display: flex; justify-content: center; align-items: center"
+	>
+		<RingLoader size="60" color="#6e4582" unit="px" duration="1s" />
 	</div>
-</div>
+{:else}
+	<div class="tabs">
+		<ul style="display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap;">
+			{#each tabs as tab, index}
+				<li
+					on:click={() => (selectedTabIndex = index)}
+					class:selectedTab={selectedTabIndex === index}
+				>
+					{tab.title}
+				</li>
+			{/each}
+		</ul>
+		<div class="content">
+			{#each tabs as tab, index}
+				<section class:selectedContent={selectedTabIndex === index}>
+					<div
+						style="padding: 0; display: flex; flex-direction: column; justify-content: space-around; gap: 0rem; align-items: center"
+					>
+						<h1 style="color: white; font-weight: 600;">{tab.title}</h1>
+						{#if tab.code && !isLoading}
+							<div class="code-container">
+								<button on:click={() => navigator.clipboard.writeText(tab.code)} class="copy-icon">
+									<IoIosCopy />
+								</button>
+								{@html codeHTMLs[index]}
+							</div>
+						{/if}
+						<div class="markdown-container">
+							<SvelteMarkdown source={tab.content} />
+						</div>
+					</div>
+				</section>
+			{/each}
+		</div>
+	</div>
+{/if}
 
 <style lang="scss">
 	h1 {

@@ -1,6 +1,8 @@
 <script lang="ts">
 	// Components
 	import MarkdownIt from 'markdown-it';
+	import { RingLoader } from 'svelte-loading-spinners';
+
 	// Helpers
 	import { fromHighlighter } from '@shikijs/markdown-it/core';
 	import { getHighlighterCore } from 'shiki/core';
@@ -49,7 +51,11 @@
 </script>
 
 {#if isLoading}
-	<div>Loading...</div>
+	<div
+		style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center"
+	>
+		<RingLoader size="60" color="#6e4582" unit="px" duration="1s" />
+	</div>
 {:else}
 	<div style="display: flex; flex-direction: column; gap: 0rem; width: 100%">
 		<button class="download" on:click={downloadAsPDF}>Download the Cheat Sheet</button>
