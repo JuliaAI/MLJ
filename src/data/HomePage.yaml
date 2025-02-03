@@ -258,9 +258,15 @@ features:
       predict(mach, Xnew)
 
 users:
-  - /users/1.png
-  - /users/2.png
-  - /users/3.png
-  - /users/4.png
-  - /users/5.png
-  - /users/6.png
+  - image: /users/1.png
+    link: https://www.dfki.de/
+  - image: /users/2.png
+    link: https://www.turing.ac.uk/
+  - image: /users/3.png
+    link: https://www.auckland.ac.nz/
+  - image: /users/4.png
+    link: https://www.iqvia.com/
+  - image: /users/5.png
+    link: https://warwick.ac.uk/
+  - image: /users/6.png
+    link: https://juliacomputing.com/

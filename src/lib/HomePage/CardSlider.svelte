@@ -1,16 +1,16 @@
 <script lang="ts">
-	export let images: string[] = [];
+	export let orgs: any[] = [];
 
-	// repeat images twice
-	images = [...images, ...images, ...images];
+	// repeat orgs twice
+	orgs = [...orgs, ...orgs, ...orgs];
 </script>
 
 <div class="slider">
 	<div class="slide-track">
-		{#each images as image}
-			<div class="slide">
-				<img src={image} height="100" width="250" alt={'logo'} />
-			</div>
+		{#each orgs as org}
+			<button class="slide" on:click={() => window.open(org['link'], '_blank')}>
+				<img src={org['image']} height="100" width="250" alt={'logo'} />
+			</button>
 		{/each}
 	</div>
 </div>

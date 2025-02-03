@@ -152,7 +152,7 @@
 			<h1 style="text-align: left; margin-bottom: 1rem;">{homeData['sections'][2]['name']}</h1>
 			<p>{homeData['sections'][2]['subtitle']}</p>
 		</div>
-		<CardSlider images={homeData['users']} />
+		<CardSlider orgs={homeData['users']} />
 	</div>
 </div>
 
