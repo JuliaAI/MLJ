@@ -21,6 +21,7 @@
 
 	let homeData = YAML.parse(homeDataYaml);
 	let codeHTMLs: string[] = [];
+	let codes: string[] = [];
 	let highlighter;
 	let md;
 	let isLoading = true;
@@ -38,6 +39,7 @@
 		md = new MarkdownIt();
 		md.use(fromHighlighter(highlighter, { themes: { light: 'catppuccin-latte' } }));
 		for (let tour of homeData['tours']) {
+			codes.push(tour['code']);
 			codeHTMLs.push(md.render(wrapInJuliaCodeBlock(tour['code'])));
 		}
 		isLoading = false;
@@ -113,7 +115,10 @@
 								{#each homeData['tours'] as tour, ind}
 									{#if ind == 0}
 										<div class="code-container">
-											<button class="copy-icon">
+											<button
+												class="copy-icon"
+												on:click={() => navigator.clipboard.writeText(codes[hoveredIndex])}
+											>
 												<IoIosCopy />
 											</button>
 											{@html codeHTMLs[hoveredIndex]}
@@ -410,7 +415,7 @@
 
 	.copy-icon {
 		position: absolute;
-		top: 4.5rem;
+		top: 3.5rem;
 		right: 0.5rem;
 		color: rgb(122, 61, 126);
 		cursor: pointer;
