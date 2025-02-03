@@ -44,6 +44,6 @@ Significant contributors in the Project's genesis were:
 ## Governance and Code of Conduct
 <div class="md-block-cont-float">
 <p>
-See [Governance in MLJ](google.com) and [Community code of conduct](https://github.com/JuliaAI/MLJ.jl/blob/dev/CODE_OF_CONDUCT.md).
+See [Governance in MLJ](https://github.com/JuliaAI/MLJ.jl/blob/dev/GOVERNANCE.md) and [Community code of conduct](https://github.com/JuliaAI/MLJ.jl/blob/dev/CODE_OF_CONDUCT.md).
 </p>
 </div>

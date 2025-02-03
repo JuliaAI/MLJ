@@ -1,5 +1,5 @@
 packageName: Machine Learning in Julia
-packageDescription: A Julia package for general, composable and elegant machine learning at scale.
+packageDescription: A Julia package for general, composable machine learning at scale.
 
 extraButton:
   name: Star
@@ -11,52 +11,95 @@ sections:
   - name: MLJ Features
     subtitle: ''
   - name: MLJ Partners
-    subtitle: There is a glimmer of light in the sky
+    subtitle: ''
 
 tours:
-  - name: Install the MLJ Pacakge
+  - name: Install the MLJ Package
     code: |
-      # Create a new environment (optional)
-      using Pkg;
+      using Pkg
+
+      # Create a new environment (optional):
       Pkg.activate("mlj-env", shared=true)
 
       # Install MLJ
       Pkg.add("MLJ")
 
-      # Test Installation (optional)
-      Pkg.test("MLJ")
+      # Install RDatasets (needed for demo):
+      Pkg.add("RDatasets")
+
+      # Use these packages:
+      using MLJ, RDatasets
+
+  - name: Load Some Data
+    code: |
+      # Grab iris dataset from the openml.org repository:
+      data = RDatasets.dataset("datasets", "iris");
+
+      # Inspect column names and types:
+      schema(data)
+
+      # Split data into target (vector, y) and
+      # features (dataframe, X) & randomize obervations
+      y, X = unpack(data, ==(:Species); rng=123);
 
   - name: Train Your First Model
     code: |
-      # 1. Load the Model
-      Tree = @iload DecisionTreeClassifier
+      # Load the model type:
+      KNN = @iload KNNClassifier
 
-      # 2. Create an instance of the model
-      tree = Tree()
+      # Create an instance with default hyperparameters:
+      knn = KNN()
 
-      # 3. Wrap the model and data in a machine
-      mach = machine(tree, X, y)
+      # Wrap the model and data in a machine:
+      mach = machine(knn, X, y)
 
-      # 4. Fit the machine
+      # Fit the machine:
       fit!(mach)
 
-      # 5. Make predictions
+      # Get training predictions:
       yhat = predict(mach, X)
 
   - name: Evaluate Your Model
     code: |
-      # Cross-validation code would go here
+      # Evaluate with cross validation:
+      evaluate!(
+          mach,
+          resampling=CV(nfolds=5),
+          measures=[log_loss, accuracy],
+      )
+
+      # Evaluate with Monte Carlo,
+      # target-stratified cross validation:
+      evaluate!(
+          mach,
+          resampling=StratifiedCV(nfolds=5, rng=456),
+          repeats=2,
+          measures=[log_loss, accuracy],
+      )
 
   - name: Hyperparameter Tuning
     code: |
-      # Hyperparameter tuning code would go here
+      # Define a hyperparameter range:
+      r = range(knn, :K, lower=3, upper=10)
 
+      # Create self-tuning version of model:
+      tuned_knn = TunedModel(
+          knn, range=r, tuning=Grid(goal=8), measure=log_loss)
+
+      # Train the wrapped model:
+      mach = machine(tuned_knn, X, y) |> fit!
+
+      # Predict using optimal model:
+      predict(mach, X)
+
+      # Inspect the best model:
+      knn_best = fitted_params(mach).best_model
 
 features:
   - title: Choosing Models
     content: >-
       A Model Registry stores detailed metadata for [over 200 models](/machines) and
-      documentation can be searched without loading model code. 
+      documentation can be searched without loading model code.
     code: |
       # identify models suitable for your data
       julia> X, y = @load_iris
@@ -74,7 +117,7 @@ features:
       # retrieve docs without code import:
       julia> doc("PCA", pkg="MultivariateStats")
 
-  - title: Meta-algorithms 
+  - title: Meta-algorithms
     content: >-
       For improved composability, and better data hygiene, an extensive number of
       **meta-algorithms** are implemented as **model wrappers**:
@@ -171,7 +214,7 @@ features:
       implemented using learning networks, which demonstrates their flexibility.
     code: |
       # wrap data in "source nodes":
-      X, y = source.(X, y) 
+      X, y = source.(X, y)
 
       # a normal MLJ workflow, with `fit` calls omitted:
       mach1 = machine(model1, X, y)
@@ -182,9 +225,9 @@ features:
 
       # train all models with one call:
       fit!(y, acceleration=CPUThreads())
-      
+
       # blended prediction for new data:
-      y(Xnew) 
+      y(Xnew)
 
   - title: Iteration control
     content: >-
