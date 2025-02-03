@@ -18,6 +18,7 @@
 	import { onMount } from 'svelte';
 	import homeDataYaml from '../../data/HomePage.yaml?raw';
 	import { goto } from '$app/navigation';
+	import { RingLoader } from 'svelte-loading-spinners';
 
 	let homeData = YAML.parse(homeDataYaml);
 	let codeHTMLs: string[] = [];
@@ -95,7 +96,11 @@
 				</div>
 				<div>
 					{#if isLoading}
-						<div>Loading...</div>
+						<div
+							style="width: 100%; height: 50vh; display: flex; justify-content: center; align-items: center"
+						>
+							<RingLoader size="60" color="#7f569f" unit="px" duration="1s" />
+						</div>
 					{:else}
 						<div class="code-container">
 							<div>

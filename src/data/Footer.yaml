@@ -15,7 +15,7 @@ footerLinks:
     link: https://sebastian.vollmer.ms/jobs/
     target: blank
   - name: About MLJ
-    link: /About
+    link: /about
     target: self
   - name: Contact Us
     link: mailto:support@mlj.com
