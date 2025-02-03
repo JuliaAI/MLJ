@@ -22,7 +22,7 @@
 
 	<!-- Hint below title -->
 	<div class="markdown-holder">
-		<p style="text-align:'center';">{ecosystemData['hint']}</p>
+		<p style="text-align: center;">{ecosystemData['hint']}</p>
 	</div>
 
 	<!-- Ecoysystem grid -->
