@@ -24,6 +24,7 @@
 		md = new MarkdownIt();
 		md.use(fromHighlighter(highlighter, { themes: { light: 'min-light' } }));
 		cheatsheetHTML = md.render(cheatSheet.replace('@repl', 'julia'));
+		console.log(cheatsheetHTML);
 		let pattern = /<h2>(.*?)<\/h2>([\s\S]*?)(?=<h2>|$)/g;
 		cheatsheetHTML = cheatsheetHTML.replace(pattern, '<div>$&</div>');
 		cheatsheetHTML = cheatsheetHTML.replace(/<pre/g, '<p class="pre"').replace(/<\/pre>/g, '</p>');
@@ -178,6 +179,8 @@
 				background-color: transparent !important;
 				padding: 0rem !important;
 				margin: 0rem !important;
+				display: flex;
+				flex-direction: column;
 			}
 		}
 
