@@ -7,7 +7,7 @@ This is the official repo for the [MLJ website](https://mlj.netlify.app/). The w
 
 ## ⭐️ Contributing with Tutorials
 Would you like your tutorials to be visible on the website for broader reach? Follow these steps:
-- Clone the repo or press dot 
+- Clone the repo or press the dot (period) key
 - Go to [src/data/ExternalTutorials.yaml](https://github.com/JuliaAI/MLJ/blob/main/src/data/ExternalTutorials.yaml)
 - Specify the tutorial source name, tutorial links, titles and tags and intended learning outcomes
 - Voila!
@@ -40,5 +40,5 @@ For experienced frontend developers willing to contribute to the site itself, ch
 To test your changes you will need to have [Node.js](https://nodejs.org/en) installed then run `npm run dev`. Alternatively, making a PR to `main` should automatically deploy your changes to a temporary view of the website.
 
 ## Credits
-This website was designed by [EssamWisam](https://github.com/EssamWisam) and [Anthony Blaom, PhD](https://github.com/ablaom) and implemented by [EssamWisam](https://github.com/EssamWisam) with support from [DFKI](https://www.dfki.de/en/web).
+This website was designed by [EssamWisam](https://github.com/EssamWisam) and [Anthony Blaom, PhD](https://github.com/ablaom) and implemented by [EssamWisam](https://github.com/EssamWisam). Design and implementation efforts received some finanacial support from [DFKI](https://www.dfki.de/en/web).
 
