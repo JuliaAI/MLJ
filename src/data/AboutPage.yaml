@@ -1,11 +1,12 @@
 # email to send feedback to
-email: mlj@mlj.com
+email: blaom.consulting@gmail.com
 # reach out text (e.g. "We'd love to hear from you!")
-reachOutText: "Get in Touch!"
+reachOutText: "Providing feedback"
 # possible types of feedback for the feedback form
 topics:
   - General Feedback
   - Feature Request
   - Bug Report
+  - Testimonial
   - Other
 

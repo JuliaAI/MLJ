@@ -12,7 +12,7 @@ sections:
   - name: Get Started with MLJ
     subtitle: Evaluate the performance of a model and tune its hyper-parameters
   - name: MLJ Features
-    subtitle: ''
+    subtitle: '(codes snippets not all self-contained)'
   - name: MLJ Partners
     subtitle: ''
 
