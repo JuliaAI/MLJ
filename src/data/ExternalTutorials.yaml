@@ -182,19 +182,19 @@ JuliaForem:
     ilos:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
-# RolandSchätzle:
-#   - name: The Glass Dataset Part I: Exploratory Data Analysis
-#     href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
-#     tags:
-#       - Exploratory Data Analysis
-#     ilos:
-#       - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia.
-#   - name: The Glass Dataset Part II: Training a Decision Tree
-#     href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
-#     tags:
-#       - Classification
-#     ilos:
-#       - Learn how to choose a classification model, and train it for predicting and evaluating.
+RolandSchätzle:
+  - name: The Glass Dataset Part I: Exploratory Data Analysis
+    href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
+    tags:
+      - Exploratory Data Analysis
+    ilos:
+      - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia.
+  - name: The Glass Dataset Part II: Training a Decision Tree
+    href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
+    tags:
+      - Classification
+    ilos:
+      - Learn how to choose a classification model, and train it for predicting and evaluating.
 
 # MLJTutorial:
 #   - name: MLJTutorial Part 1:  Data Representation
