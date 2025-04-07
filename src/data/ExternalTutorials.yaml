@@ -15,7 +15,7 @@
 
 MLJ:
   - name: Lightning Tour of MLJ Meta-algorithms
-    href: https://juliaai.github.io/Imbalance.jl/dev/examples/walkthrough/
+    href: https://github.com/JuliaAI/MLJ.jl/tree/dev/examples/lightning_tour
     tags:
       - Pipelines
       - Iterative Models
@@ -26,7 +26,7 @@ MLJ:
   - name: Learning Networks
     href: https://juliaai.github.io/MLJ.jl/dev/learning_networks/#Learning-Networks
     tags:
-      - Model composition
+      - Model Composition
     ilos:
       - Learn about advanced model composition, beyond simple pipelines
 
