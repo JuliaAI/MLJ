@@ -174,13 +174,13 @@ MLJFlux:
     ilos:
       - Learn how to train a neural network for spam classification over SMS messages
 
-# JuliaForem:
-#   - name: Julia Boards the Titanic
-#     href: https://forem.julialang.org/mlj/julia-boards-the-titanic-1ne8
-#     tags:
-#       - Classification
-#     ilos:
-#       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
+JuliaForem:
+  - name: Julia Boards the Titanic
+    href: https://forem.julialang.org/mlj/julia-boards-the-titanic-1ne8
+    tags:
+      - Classification
+    ilos:
+      - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
 # RolandSchätzle:
 #   - name: The Glass Dataset Part I: Exploratory Data Analysis
