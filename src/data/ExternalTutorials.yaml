@@ -119,7 +119,7 @@ MLJFlux:
       - Classification
     ilos:
       - Explore incremental training with MLJ
-  - name: "Hyperparameter Tuning of Neural Networks
+  - name: "Hyperparameter Tuning of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/hyperparameter_tuning/notebook/
     tags:
       - Neural Networks
