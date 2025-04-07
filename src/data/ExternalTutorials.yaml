@@ -3,18 +3,18 @@
 ## Just add a section like so
 
 # <tutorials-source-name>:
-#  - name: <name-of-first-tutorial>
+#  - name: "<name-of-first-tutorial>
 #  - href: <https-link-of-first-tutorial>
 #  - tags:
 #    - <A-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
 #    - <Another-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
 #    - ...
-#  - name: <name-of-second-tutorial>
+#  - name: "<name-of-second-tutorial>
 #  - ...
 ## Once done, the new tutorials will show up in the MLJ tutorials page
 
 MLJ:
-  - name: Lightning Tour of MLJ Meta-algorithms
+  - name: "Lightning Tour of MLJ Meta-algorithms"
     href: https://github.com/JuliaAI/MLJ.jl/tree/dev/examples/lightning_tour
     tags:
       - Pipelines
@@ -23,7 +23,7 @@ MLJ:
       - Hyperparameter Tuning
     ilos:
       - Get a rapid overview of pipelines and model wrappers for preprocessing, iteration control, and hyperparameter tuning
-  - name: Learning Networks
+  - name: "Learning Networks"
     href: https://juliaai.github.io/MLJ.jl/dev/learning_networks/#Learning-Networks
     tags:
       - Model Composition
@@ -31,7 +31,7 @@ MLJ:
       - Learn about advanced model composition, beyond simple pipelines
 
 Imbalance:
-  - name: BMI Classification with Decision Trees
+  - name: "BMI Classification with Decision Trees"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/walkthrough/
     tags:
       - Class Imbalance
@@ -41,7 +41,7 @@ Imbalance:
       - Learn how to load tabular data, set up its scientific types and study any existing imbalance
       - Observe how basic random oversampling can significantly improve decision tree performance on imbalanced data
       - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
-  - name: Effect of Ratios Oversampling Hyperparameter
+  - name: "Effect of Ratios Oversampling Hyperparameter"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_ratios/effect_of_ratios/
     tags:
       - Class Imbalance
@@ -49,7 +49,7 @@ Imbalance:
     ilos:
       - Learn how to study the imbalance of an existing dataset
       - Get a stronger grasp on how the ratios hyperparameter which reflects the amount of oversampling can affect the classification decision boundaries
-  - name: From RandomOversampling to ROSE
+  - name: "From RandomOversampling to ROSE"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_s/effect_of_s/
     tags:
       - Class Imbalance
@@ -57,7 +57,7 @@ Imbalance:
     ilos:
       - Understand the relationship between pure random oversampling and the ROSE algorithm
       - Understand the effect of increasing the `s` hyperparameter for ROSE
-  - name: SMOTE on Customer Churn Data
+  - name: "SMOTE on Customer Churn Data"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smote_churn_dataset/smote_churn_dataset/
     tags:
       - Class Imbalance
@@ -66,7 +66,7 @@ Imbalance:
       - Observe how SMOTE can be used to address class imbalances on a real dataset with logistic regression as the classifier
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
-  - name: SMOTEN on Mushroom Data
+  - name: "SMOTEN on Mushroom Data"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smoten_mushroom/smoten_mushroom/
     tags:
       - Class Imbalance
@@ -75,7 +75,7 @@ Imbalance:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Use SMOTEN to address class imbalances on a real dataset with over 20 categorical columns
       - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
-  - name: SMOTENC on Customer Churn Data
+  - name: "SMOTENC on Customer Churn Data"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/smotenc_churn_dataset/smotenc_churn_dataset/
     tags:
       - Class Imbalance
@@ -84,7 +84,7 @@ Imbalance:
       - Observe how SMOTENC can be used to address class imbalances on a real dataset with categorical and continuous columns
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Practice MLJ workflows related to evaluation such as cross-validation and new metrics
-  - name: Effect of ENN Hyperparameters
+  - name: "Effect of ENN Hyperparameters"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/effect_of_k_enn/effect_of_k_enn/
     tags:
       - Class Imbalance
@@ -92,7 +92,7 @@ Imbalance:
     ilos:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Explore the effects of various hyperparameter(s) of the ENN algorithm and how it can be useful for data cleaning
-  - name: SMOTE-Tomek for Ethereum Fraud Detection
+  - name: "SMOTE-Tomek for Ethereum Fraud Detection"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/fraud_detection/fraud_detection/
     tags:
       - Class Imbalance
@@ -101,7 +101,7 @@ Imbalance:
     ilos:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Understand how hybrid resampling algorithms such as SMOTE-Tomek can be defined with the `BalancedModel` construct
-  - name: Balanced Bagging for Cerebral Stroke Prediction
+  - name: "Balanced Bagging for Cerebral Stroke Prediction"
     href: https://juliaai.github.io/Imbalance.jl/dev/examples/cerebral_ensemble/cerebral_ensemble/
     tags:
       - Class Imbalance
@@ -112,61 +112,61 @@ Imbalance:
 
 
 MLJFlux:
-  - name: Incremental Training of Neural Networks
+  - name: "Incremental Training of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/incremental_training/notebook/
     tags:
       - Neural Networks
       - Classification
     ilos:
       - Explore incremental training with MLJ
-  - name: Hyperparameter Tuning of Neural Networks
+  - name: "Hyperparameter Tuning of Neural Networks
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/hyperparameter_tuning/notebook/
     tags:
       - Neural Networks
       - Classification
     ilos:
       - Learn how to tune different hyperparameters of MLJFlux models with emphasis on training hyperparameters.
-  - name: Model Composition of Neural Networks
+  - name: "Model Composition of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/composition/notebook/
     tags:
       - Neural Networks
       - Pipelines
     ilos:
       - Learn how to compose neural networks with other MLJ components
-  - name: Comparing Neural Networks and Other Models
+  - name: "Comparing Neural Networks and Other Models"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/comparison/notebook/
     tags:
       - Neural Networks
       - Hyperparameter Tuning
     ilos:
       - Learn how to compare neural networks with other models
-  - name: Early Stopping of Neural Networks
+  - name: "Early Stopping of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/early_stopping/notebook/
     tags:
       - Neural Networks
     ilos:
       - Learn how early stopping can be applied to neural networks
-  - name: Live Training of Neural Networks
+  - name: "Live Training of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/live_training/notebook/
     tags:
       - Neural Networks
     ilos:
       - Train neural networks and see learning plots in real time
-  - name: Basic Neural Architectural Search
+  - name: "Basic Neural Architectural Search"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/architecture_search/notebook/
     tags:
       - Neural Networks
       - Hyperparameter Tuning
     ilos:
       - Learn how to naively search and compare different neural network architecture
-  - name: MNIST Classification with Neural Networks
+  - name: "MNIST Classification with Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/extended_examples/MNIST/notebook/
     tags:
       - Neural Networks
       - Classification
     ilos:
       - Learn how to build and training neural networks for image classification
-  - name: Spam Detection with RNNs
+  - name: "Spam Detection with RNNs"
     href: https://fluxml.ai/MLJFlux.jl/dev/extended_examples/spam_detection/notebook/
     tags:
       - Neural Networks
@@ -175,7 +175,7 @@ MLJFlux:
       - Learn how to train a neural network for spam classification over SMS messages
 
 JuliaForem:
-  - name: Julia Boards the Titanic
+  - name: "Julia Boards the Titanic"
     href: https://forem.julialang.org/mlj/julia-boards-the-titanic-1ne8
     tags:
       - Classification
@@ -183,42 +183,42 @@ JuliaForem:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
 MLJTutorial:
-  - name: "MLJTutorial Part 1 -  Data Representation"
+  - name: "MLJTutorial Part 1:  Data Representation"
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
     tags:
       - Data Processing
     ilos:
       - Learn about "scientific types" and how to ensure MLJ interprets your data correctly
-  # - name: MLJTutorial Part 2: Selecting, Training and Evaluating Models
-  #   href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
-  #   tags:
-  #     - Classification
-  #   ilos:
-  #     - Learn how to match models to data and do basic training and model evaluation
-  # - name: MLJTutorial Part 3: Transformers and Pipelines
-  #   href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
-  #   tags:
-  #     - Pipelines
-  #     - Data Preprocessing
-  #   ilos:
-  #     - Learn how to combine data pre-processing and supervised learning into a single pipeline
-  #     - Learn how to use a model wrapper to perform target transformations
-  # - name: MLJTutorial Part 4: Tuning Hyper-parameters
-  #   href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
-  #   tags:
-  #     - Hyperparameter Tuning
-  #   ilos:
-  #     - Learn how to use learning curves to tune a single hyper-parameter
-  #     - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
+  - name: "MLJTutorial Part 2: Selecting, Training and Evaluating Models"
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
+    tags:
+      - Classification
+    ilos:
+      - Learn how to match models to data and do basic training and model evaluation
+  - name: "MLJTutorial Part 3: Transformers and Pipelines"
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
+    tags:
+      - Pipelines
+      - Data Preprocessing
+    ilos:
+      - Learn how to combine data pre-processing and supervised learning into a single pipeline
+      - Learn how to use a model wrapper to perform target transformations
+  - name: "MLJTutorial Part 4: Tuning Hyper-parameters"
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
+    tags:
+      - Hyperparameter Tuning
+    ilos:
+      - Learn how to use learning curves to tune a single hyper-parameter
+      - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
 
 # RolandSchatzle:
-#   - name: The Glass Dataset Part I: Exploratory Data Analysis
+#   - name: "The Glass Dataset Part I: Exploratory Data Analysis"
 #     href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
 #     tags:
 #       - Exploratory Data Analysis
 #     ilos:
 #       - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia
-#   - name: The Glass Dataset Part II: Training a Decision Tree
+#   - name: "The Glass Dataset Part II: Training a Decision Tree"
 #     href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
 #     tags:
 #       - Classification
@@ -226,14 +226,14 @@ MLJTutorial:
 #       - Learn how to choose a classification model, and train it for predicting and evaluating
 #
 # DeanMarkwick:
-#   - name: Machine Learning Property Loans for Fun and Profit
+#   - name: "Machine Learning Property Loans for Fun and Profit"
 #     href: https://dm13450.github.io/2022/07/08/Machine-Learning-Property-Loans.html
 #     tags:
 #       - Classification
 #       - Hyperparameter Tuning
 #     ilos:
 #       - Use data in the public domain to train, tune, and compare multiple models to predict the probability of a loan default
-#   - name: Predicting a Successful Mt Everest Climb
+#   - name: "Predicting a Successful Mt Everest Climb"
 #     href: https://dm13450.github.io/2023/04/27/Predicting-a-Successful-Mt-Everest-Climb.html
 #     tags:
 #       - Exploratory Data Analysis
