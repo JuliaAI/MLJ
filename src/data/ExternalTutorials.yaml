@@ -5,13 +5,30 @@
 # <tutorials-source-name>:
 #  - name: <name-of-first-tutorial>
 #  - href: <https-link-of-first-tutorial>
-#  - tags: 
+#  - tags:
 #    - <A-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
 #    - <Another-tag-of-the-tutorial-chosen-from-those-appearing-in-the-MLJ-tutorials-page>
 #    - ...
 #  - name: <name-of-second-tutorial>
 #  - ...
 ## Once done, the new tutorials will show up in the MLJ tutorials page
+
+MLJ:
+  - name: Lightning Tour of MLJ Meta-algorithms
+    href: https://juliaai.github.io/Imbalance.jl/dev/examples/walkthrough/
+    tags:
+      - Pipelines
+      - Iterative Models
+      - Regression
+      - Hyperparameter Tuning
+    ilos:
+      - Get a rapid overview of pipelines and model wrappers for preprocessing, iteration control, and hyperparameter tuning
+  - name: Learning Networks
+    href: https://juliaai.github.io/MLJ.jl/dev/learning_networks/#Learning-Networks
+    tags:
+      - Model composition
+    ilos:
+      - Learn about advanced model composition, beyond simple pipelines
 
 Imbalance:
   - name: BMI Classification with Decision Trees
@@ -91,7 +108,7 @@ Imbalance:
       - Classification
     ilos:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
-      - Understand how balanced bagging can singifically improve classification performance on imbalanced data
+      - Understand how balanced bagging can significantly improve classification performance on imbalanced data
 
 
 MLJFlux:
@@ -134,7 +151,7 @@ MLJFlux:
     tags:
       - Neural Networks
     ilos:
-      - Train neural networks and see learning plots in realtime
+      - Train neural networks and see learning plots in real time
   - name: Basic Neural Architectural Search
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/architecture_search/notebook/
     tags:
@@ -156,3 +173,70 @@ MLJFlux:
       - Classification
     ilos:
       - Learn how to train a neural network for spam classification over SMS messages
+
+JuliaForem:
+  - name: Julia Boards the Titanic
+    href: https://forem.julialang.org/mlj/julia-boards-the-titanic-1ne8
+    tags:
+      - Classification
+    ilos:
+      - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
+
+RolandSchätzle:
+  - name: The Glass Dataset Part I: Exploratory Data Analysis
+    href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
+    tags:
+      - Exploratory Data Analysis
+    ilos:
+      - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia.
+  - name: The Glass Dataset Part II: Training a Decision Tree
+    href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
+    tags:
+      - Classification
+    ilos:
+      - Learn how to choose a classification model, and train it for predicting and evaluating.
+
+MLJTutorial:
+  - name: MLJTutorial Part 1:  Data Representation
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
+    tags:
+      - Data Processing
+    ilos:
+      - Learn about "scientific types" and how to ensure MLJ interprets your data correctly
+  - name: MLJTutorial Part 2: Selecting, Training and Evaluating Models
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
+    tags:
+      - Classification
+    ilos:
+      - Learn how to match models to data and do basic training and model evaluation
+  - name: MLJTutorial Part 3: Transformers and Pipelines
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
+    tags:
+      - Pipelines
+      - Data Preprocessing
+    ilos:
+      - Learn how to combine data pre-processing and supervised learning into a single pipeline
+      - Learn how to use a model wrapper to perform target transformations
+  - name: MLJTutorial Part 4: Tuning Hyper-parameters
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
+    tags:
+      - Hyperparameter Tuning
+    ilos:
+      - Learn how to use learning curves to tune a single hyper-parameter
+      - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
+
+DeanMarkwick:
+  - name: Machine Learning Property Loans for Fun and Profit
+    href: https://dm13450.github.io/2022/07/08/Machine-Learning-Property-Loans.html
+    tags:
+      - Classification
+      - Hyperparameter Tuning
+    ilos:
+      - Use data in the public domain to train, tune, and compare multiple models to predict the probability of a loan default
+  - name: Predicting a Successful Mt Everest Climb
+    href: https://dm13450.github.io/2023/04/27/Predicting-a-Successful-Mt-Everest-Climb.html
+    tags:
+      - Exploratory Data Analysis
+      - Classification
+    ilos:
+      - Dive into a dataset on Himalayan climbing expeditions to learn how to train, evaluate and compare several supervised classifiers
