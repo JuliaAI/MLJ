@@ -199,7 +199,7 @@ MLJTutorial:
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
     tags:
       - Pipelines
-      - Data Preprocessing
+      - Data Processing
     ilos:
       - Learn how to combine data pre-processing and supervised learning into a single pipeline
       - Learn how to use a model wrapper to perform target transformations
@@ -224,19 +224,19 @@ RolandSchatzle:
       - Classification
     ilos:
       - Learn how to choose a classification model, and train it for predicting and evaluating
-#
-# DeanMarkwick:
-#   - name: "Machine Learning Property Loans for Fun and Profit"
-#     href: https://dm13450.github.io/2022/07/08/Machine-Learning-Property-Loans.html
-#     tags:
-#       - Classification
-#       - Hyperparameter Tuning
-#     ilos:
-#       - Use data in the public domain to train, tune, and compare multiple models to predict the probability of a loan default
-#   - name: "Predicting a Successful Mt Everest Climb"
-#     href: https://dm13450.github.io/2023/04/27/Predicting-a-Successful-Mt-Everest-Climb.html
-#     tags:
-#       - Exploratory Data Analysis
-#       - Classification
-#     ilos:
-#       - Dive into a dataset on Himalayan climbing expeditions to learn how to train, evaluate and compare several supervised classifiers
+
+DeanMarkwick:
+  - name: "Machine Learning Property Loans for Fun and Profit"
+    href: https://dm13450.github.io/2022/07/08/Machine-Learning-Property-Loans.html
+    tags:
+      - Classification
+      - Hyperparameter Tuning
+    ilos:
+      - Use data in the public domain to train, tune, and compare multiple models to predict the probability of a loan default
+  - name: "Predicting a Successful Mt Everest Climb"
+    href: https://dm13450.github.io/2023/04/27/Predicting-a-Successful-Mt-Everest-Climb.html
+    tags:
+      - Exploratory Data Analysis
+      - Classification
+    ilos:
+      - Dive into a dataset on Himalayan climbing expeditions to learn how to train, evaluate and compare several supervised classifiers
