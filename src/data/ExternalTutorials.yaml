@@ -183,12 +183,12 @@ JuliaForem:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
 MLJTutorial:
-  - name: "MLJTutorial Part 1:  Data Representation"
+  - name: "MLJTutorial Part 1: Data Representation"
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
     tags:
       - Data Processing
     ilos:
-      - Learn about "scientific types" and how to ensure MLJ interprets your data correctly
+      - Learn about \"scientific types\" and how to ensure MLJ interprets your data correctly
   - name: "MLJTutorial Part 2: Selecting, Training and Evaluating Models"
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
     tags:
@@ -203,13 +203,13 @@ MLJTutorial:
     ilos:
       - Learn how to combine data pre-processing and supervised learning into a single pipeline
       - Learn how to use a model wrapper to perform target transformations
-  - name: "MLJTutorial Part 4: Tuning Hyper-parameters"
+  - name: "MLJTutorial Part 4: Tuning Hyperparameters"
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
     tags:
       - Hyperparameter Tuning
     ilos:
-      - Learn how to use learning curves to tune a single hyper-parameter
-      - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
+      - Learn how to use learning curves to tune a single hyperparameter
+      - Learn how to use a model wrapper to tune one or more hyperparameters using a random search
 
 # RolandSchatzle:
 #   - name: "The Glass Dataset Part I: Exploratory Data Analysis"
