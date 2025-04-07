@@ -183,7 +183,7 @@ JuliaForem:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
 MLJTutorial:
-  - name: MLJTutorial Part 1 -  Data Representation
+  - name: "MLJTutorial Part 1 -  Data Representation"
     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
     tags:
       - Data Processing
