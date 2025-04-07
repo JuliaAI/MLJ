@@ -182,48 +182,48 @@ JuliaForem:
     ilos:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
-RolandSchatzle:
-  - name: The Glass Dataset Part I: Exploratory Data Analysis
-    href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
-    tags:
-      - Exploratory Data Analysis
-    ilos:
-      - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia
-  - name: The Glass Dataset Part II: Training a Decision Tree
-    href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
-    tags:
-      - Classification
-    ilos:
-      - Learn how to choose a classification model, and train it for predicting and evaluating
-#
-# MLJTutorial:
-#   - name: MLJTutorial Part 1:  Data Representation
-#     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
+# RolandSchatzle:
+#   - name: The Glass Dataset Part I: Exploratory Data Analysis
+#     href: https://towardsdatascience.com/part-i-analyzing-the-glass-dataset-c556788a496f/
 #     tags:
-#       - Data Processing
+#       - Exploratory Data Analysis
 #     ilos:
-#       - Learn about "scientific types" and how to ensure MLJ interprets your data correctly
-#   - name: MLJTutorial Part 2: Selecting, Training and Evaluating Models
-#     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
+#       - Learn to use ScientificTypes.jl, DataFrames.jl, StatsBase.jl, and  StatsPlots.jl to carry out an exploratory data analysis in Julia
+#   - name: The Glass Dataset Part II: Training a Decision Tree
+#     href: https://towardsdatascience.com/part-ii-using-a-decision-tree-ddffa4004e47/
 #     tags:
 #       - Classification
 #     ilos:
-#       - Learn how to match models to data and do basic training and model evaluation
-#   - name: MLJTutorial Part 3: Transformers and Pipelines
-#     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
-#     tags:
-#       - Pipelines
-#       - Data Preprocessing
-#     ilos:
-#       - Learn how to combine data pre-processing and supervised learning into a single pipeline
-#       - Learn how to use a model wrapper to perform target transformations
-#   - name: MLJTutorial Part 4: Tuning Hyper-parameters
-#     href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
-#     tags:
-#       - Hyperparameter Tuning
-#     ilos:
-#       - Learn how to use learning curves to tune a single hyper-parameter
-#       - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
+#       - Learn how to choose a classification model, and train it for predicting and evaluating
+#
+MLJTutorial:
+  - name: MLJTutorial Part 1:  Data Representation
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
+    tags:
+      - Data Processing
+    ilos:
+      - Learn about "scientific types" and how to ensure MLJ interprets your data correctly
+  - name: MLJTutorial Part 2: Selecting, Training and Evaluating Models
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
+    tags:
+      - Classification
+    ilos:
+      - Learn how to match models to data and do basic training and model evaluation
+  - name: MLJTutorial Part 3: Transformers and Pipelines
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
+    tags:
+      - Pipelines
+      - Data Preprocessing
+    ilos:
+      - Learn how to combine data pre-processing and supervised learning into a single pipeline
+      - Learn how to use a model wrapper to perform target transformations
+  - name: MLJTutorial Part 4: Tuning Hyper-parameters
+    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
+    tags:
+      - Hyperparameter Tuning
+    ilos:
+      - Learn how to use learning curves to tune a single hyper-parameter
+      - Learn how to use a model wrapper to tune one or more hyper-parameters using a random search
 
 # DeanMarkwick:
 #   - name: Machine Learning Property Loans for Fun and Profit
