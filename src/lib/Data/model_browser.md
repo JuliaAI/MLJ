@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Class Imbalance](@ref)  |  [Neural Networks](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Neural Networks](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -67,8 +67,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [KNeighborsRegressor (MLJScikitLearnInterface.jl)](@ref KNeighborsRegressor_MLJScikitLearnInterface)
 
-- [KPLSRegressor (PartialLeastSquaresRegressor.jl)](@ref KPLSRegressor_PartialLeastSquaresRegressor)
-
 - [LADRegressor (MLJLinearModels.jl)](@ref LADRegressor_MLJLinearModels)
 
 - [LGBMRegressor (LightGBM.jl)](@ref LGBMRegressor_LightGBM)
@@ -123,6 +121,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [MultitargetSRRegressor (SymbolicRegression.jl)](@ref MultitargetSRRegressor_SymbolicRegression)
 
+- [MultitargetSRTestRegressor (SymbolicRegression.jl)](@ref MultitargetSRTestRegressor_SymbolicRegression)
+
 - [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
 
 - [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
@@ -132,8 +132,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [OrthogonalMatchingPursuitCVRegressor (MLJScikitLearnInterface.jl)](@ref OrthogonalMatchingPursuitCVRegressor_MLJScikitLearnInterface)
 
 - [OrthogonalMatchingPursuitRegressor (MLJScikitLearnInterface.jl)](@ref OrthogonalMatchingPursuitRegressor_MLJScikitLearnInterface)
-
-- [PLSRegressor (PartialLeastSquaresRegressor.jl)](@ref PLSRegressor_PartialLeastSquaresRegressor)
 
 - [PartLS (PartitionedLS.jl)](@ref PartLS_PartitionedLS)
 
@@ -160,6 +158,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [SGDRegressor (MLJScikitLearnInterface.jl)](@ref SGDRegressor_MLJScikitLearnInterface)
 
 - [SRRegressor (SymbolicRegression.jl)](@ref SRRegressor_SymbolicRegression)
+
+- [SRTestRegressor (SymbolicRegression.jl)](@ref SRTestRegressor_SymbolicRegression)
 
 - [SVMLinearRegressor (MLJScikitLearnInterface.jl)](@ref SVMLinearRegressor_MLJScikitLearnInterface)
 
@@ -249,6 +249,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [LogisticClassifier (MLJLinearModels.jl)](@ref LogisticClassifier_MLJLinearModels)
 
 - [LogisticClassifier (MLJScikitLearnInterface.jl)](@ref LogisticClassifier_MLJScikitLearnInterface)
+
+- [MaxnetBinaryClassifier (Maxnet.jl)](@ref MaxnetBinaryClassifier_Maxnet)
 
 - [MultinomialClassifier (MLJLinearModels.jl)](@ref MultinomialClassifier_MLJLinearModels)
 
@@ -602,6 +604,35 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [MultinomialNBClassifier (NaiveBayes.jl/MLJNaiveBayesInterface.jl)](@ref MultinomialNBClassifier_NaiveBayes)
 
+##  Neural Networks
+- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
+
+- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
+
+- [LaplaceClassifier (LaplaceRedux.jl)](@ref LaplaceClassifier_LaplaceRedux)
+
+- [LaplaceRegressor (LaplaceRedux.jl)](@ref LaplaceRegressor_LaplaceRedux)
+
+- [MaxnetBinaryClassifier (Maxnet.jl)](@ref MaxnetBinaryClassifier_Maxnet)
+
+- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
+
+- [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
+
+- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
+
+- [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
+
+- [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
+
+- [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
+
+- [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
+
+- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
+
+- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
+
 ##  Class Imbalance
 - [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
 
@@ -629,37 +660,14 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [TomekUndersampler (Imbalance.jl)](@ref TomekUndersampler_Imbalance)
 
-##  Neural Networks
-- [KernelPerceptronClassifier (BetaML.jl)](@ref KernelPerceptronClassifier_BetaML)
-
-- [LaplaceClassifier (LaplaceRedux.jl)](@ref LaplaceClassifier_LaplaceRedux)
-
-- [LaplaceRegressor (LaplaceRedux.jl)](@ref LaplaceRegressor_LaplaceRedux)
-
-- [MultitargetNeuralNetworkRegressor (BetaML.jl)](@ref MultitargetNeuralNetworkRegressor_BetaML)
-
-- [MultitargetNeuralNetworkRegressor (MLJFlux.jl)](@ref MultitargetNeuralNetworkRegressor_MLJFlux)
-
-- [NeuralNetworkBinaryClassifier (MLJFlux.jl)](@ref NeuralNetworkBinaryClassifier_MLJFlux)
-
-- [NeuralNetworkClassifier (BetaML.jl)](@ref NeuralNetworkClassifier_BetaML)
-
-- [NeuralNetworkClassifier (MLJFlux.jl)](@ref NeuralNetworkClassifier_MLJFlux)
-
-- [NeuralNetworkRegressor (BetaML.jl)](@ref NeuralNetworkRegressor_BetaML)
-
-- [NeuralNetworkRegressor (MLJFlux.jl)](@ref NeuralNetworkRegressor_MLJFlux)
-
-- [PerceptronClassifier (BetaML.jl)](@ref PerceptronClassifier_BetaML)
-
-- [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
-
 ##  Encoders
 - [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
 
 - [ContinuousEncoder (MLJModels.jl)](@ref ContinuousEncoder_MLJModels)
 
 - [CountTransformer (MLJText.jl)](@ref CountTransformer_MLJText)
+
+- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
 
 - [ICA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref ICA_MultivariateStats)
 
@@ -685,6 +693,8 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [BinaryThresholdPredictor (MLJModels.jl)](@ref BinaryThresholdPredictor_MLJModels)
 
 - [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
+
+- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
 
 - [IteratedModel (MLJIteration.jl)](@ref IteratedModel_MLJIteration)
 
