@@ -136,11 +136,14 @@ export function removeDuplicatesByKey(arr, key) {
         return true;
     });
 }
-
 export function appendValues(obj1: any, obj2: any) {
     for (let key in obj2) {
-        if (obj2.hasOwnProperty(key) && obj1.hasOwnProperty(key)) {
-            obj1[key] = obj1[key].concat(obj2[key]);
+        if (obj2.hasOwnProperty(key)) {
+            if (obj1.hasOwnProperty(key)) {
+                obj1[key] = obj1[key].concat(obj2[key]);
+            } else {
+                obj1[key] = obj2[key];
+            }
         }
     }
 }
