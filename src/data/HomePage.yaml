@@ -36,7 +36,7 @@ tours:
 
   - name: Load Some Data
     code: |
-      # Grab iris dataset from the openml.org repository:
+      # Grab iris dataset from R collection:
       data = RDatasets.dataset("datasets", "iris");
 
       # Inspect column names and types:
