@@ -45,10 +45,26 @@ organizations:
   - orgName: MLJModels.jl
     orgLink: https://github.com/JuliaAI/MLJModels.jl
     orgMarkdownDesc: |
-      MLJModels.jl hosts the MLJ model registry,
-      which contains metadata on all the models the MLJ user can search and load from MLJ. Moreover,
-      it provides the functionality for loading model code from MLJ on demand. Finally, it furnishes some
+      MLJModels.jl hosts the MLJ model registry, which contains metadata on all the models
+      the MLJ user can search and load from MLJ. Moreover, it provides the functionality
+      for loading model code from MLJ on demand. For historical reasons, it also provides
+      the dummy classifiers and regressors (e.g., `ConstantClassifier`) and the
+      `BinaryThresholdPredictor` wrapper for probabilistic binary classifiers. 
+    orthogonal: false
+
+  - orgName: MLJTransforms.jl
+    orgLink: https://github.com/JuliaAI/MLJTransforms.jl
+    orgMarkdownDesc: |
+      MLJTransforms.jl furnishes some
       commonly used transformers for data pre-processing, such as ContinuousEncoder and Standardizer.
+    orthogonal: false
+
+  - orgName: MLJWrappers.jl
+    orgLink: https://github.com/JuliaAI/MLJTransforms.jl
+    orgMarkdownDesc: |
+      MLJWrappers.jl is a newer package designed to furnish model wrappers. It provides
+      `Transformer`, but other wrappers, such as `Stack` (MLJBase) and
+      `BinaryThresholdPredictor` (MLJTransforms) might be hosted here in the future.
     orthogonal: false
 
   - orgName: MLJTuning.jl
