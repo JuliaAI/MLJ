@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Bayesian Models](@ref)  |  [Neural Networks](@ref)  |  [Class Imbalance](@ref)  |  [Encoders](@ref)  |  [Meta Algorithms](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Encoders](@ref)  |  [Bayesian Models](@ref)  |  [Neural Networks](@ref)  |  [Meta Algorithms](@ref)  |  [Class Imbalance](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -38,8 +38,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [EpsilonSVR (LIBSVM.jl/MLJLIBSVMInterface.jl)](@ref EpsilonSVR_LIBSVM)
 
 - [EvoLinearRegressor (EvoLinear.jl)](@ref EvoLinearRegressor_EvoLinear)
-
-- [EvoSplineRegressor (EvoLinear.jl)](@ref EvoSplineRegressor_EvoLinear)
 
 - [EvoTreeCount (EvoTrees.jl)](@ref EvoTreeCount_EvoTrees)
 
@@ -378,8 +376,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [CatBoostRegressor (CatBoost.jl)](@ref CatBoostRegressor_CatBoost)
 
-- [EvoSplineRegressor (EvoLinear.jl)](@ref EvoSplineRegressor_EvoLinear)
-
 - [EvoTreeClassifier (EvoTrees.jl)](@ref EvoTreeClassifier_EvoTrees)
 
 - [EvoTreeCount (EvoTrees.jl)](@ref EvoTreeCount_EvoTrees)
@@ -442,8 +438,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [CatBoostRegressor (CatBoost.jl)](@ref CatBoostRegressor_CatBoost)
 
 - [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
-
-- [EvoSplineRegressor (EvoLinear.jl)](@ref EvoSplineRegressor_EvoLinear)
 
 - [EvoTreeClassifier (EvoTrees.jl)](@ref EvoTreeClassifier_EvoTrees)
 
@@ -571,6 +565,43 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [TSVDTransformer (TSVD.jl/MLJTSVDInterface.jl)](@ref TSVDTransformer_TSVD)
 
+##  Encoders
+- [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
+
+- [CardinalityReducer (MLJTransforms.jl)](@ref CardinalityReducer_MLJTransforms)
+
+- [ContinuousEncoder (MLJTransforms.jl)](@ref ContinuousEncoder_MLJTransforms)
+
+- [ContrastEncoder (MLJTransforms.jl)](@ref ContrastEncoder_MLJTransforms)
+
+- [CountTransformer (MLJText.jl)](@ref CountTransformer_MLJText)
+
+- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
+
+- [FrequencyEncoder (MLJTransforms.jl)](@ref FrequencyEncoder_MLJTransforms)
+
+- [ICA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref ICA_MultivariateStats)
+
+- [MissingnessEncoder (MLJTransforms.jl)](@ref MissingnessEncoder_MLJTransforms)
+
+- [OneHotEncoder (MLJTransforms.jl)](@ref OneHotEncoder_MLJTransforms)
+
+- [OrdinalEncoder (MLJTransforms.jl)](@ref OrdinalEncoder_MLJTransforms)
+
+- [Standardizer (MLJTransforms.jl)](@ref Standardizer_MLJTransforms)
+
+- [TargetEncoder (MLJTransforms.jl)](@ref TargetEncoder_MLJTransforms)
+
+- [TfidfTransformer (MLJText.jl)](@ref TfidfTransformer_MLJText)
+
+- [UnivariateBoxCoxTransformer (MLJTransforms.jl)](@ref UnivariateBoxCoxTransformer_MLJTransforms)
+
+- [UnivariateDiscretizer (MLJTransforms.jl)](@ref UnivariateDiscretizer_MLJTransforms)
+
+- [UnivariateStandardizer (MLJTransforms.jl)](@ref UnivariateStandardizer_MLJTransforms)
+
+- [UnivariateTimeTypeToContinuous (MLJTransforms.jl)](@ref UnivariateTimeTypeToContinuous_MLJTransforms)
+
 ##  Bayesian Models
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
 
@@ -633,6 +664,35 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [PerceptronClassifier (MLJScikitLearnInterface.jl)](@ref PerceptronClassifier_MLJScikitLearnInterface)
 
+##  Meta Algorithms
+- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
+
+- [BalancedModel (MLJBalancing.jl)](@ref BalancedModel_MLJBalancing)
+
+- [BinaryThresholdPredictor (MLJModels.jl)](@ref BinaryThresholdPredictor_MLJModels)
+
+- [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
+
+- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
+
+- [Freezable (MLJBase.jl)](@ref Freezable_MLJBase)
+
+- [IteratedModel (MLJIteration.jl)](@ref IteratedModel_MLJIteration)
+
+- [Pipeline (MLJBase.jl)](@ref Pipeline_MLJBase)
+
+- [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
+
+- [Resampler (MLJBase.jl)](@ref Resampler_MLJBase)
+
+- [Stack (MLJBase.jl)](@ref Stack_MLJBase)
+
+- [TransformedTargetModel (MLJBase.jl)](@ref TransformedTargetModel_MLJBase)
+
+- [Transformer (MLJWrappers.jl)](@ref Transformer_MLJWrappers)
+
+- [TunedModel (MLJTuning.jl)](@ref TunedModel_MLJTuning)
+
 ##  Class Imbalance
 - [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
 
@@ -660,56 +720,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [TomekUndersampler (Imbalance.jl)](@ref TomekUndersampler_Imbalance)
 
-##  Encoders
-- [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
-
-- [ContinuousEncoder (MLJModels.jl)](@ref ContinuousEncoder_MLJModels)
-
-- [CountTransformer (MLJText.jl)](@ref CountTransformer_MLJText)
-
-- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
-
-- [ICA (MultivariateStats.jl/MLJMultivariateStatsInterface.jl)](@ref ICA_MultivariateStats)
-
-- [OneHotEncoder (MLJModels.jl)](@ref OneHotEncoder_MLJModels)
-
-- [Standardizer (MLJModels.jl)](@ref Standardizer_MLJModels)
-
-- [TfidfTransformer (MLJText.jl)](@ref TfidfTransformer_MLJText)
-
-- [UnivariateBoxCoxTransformer (MLJModels.jl)](@ref UnivariateBoxCoxTransformer_MLJModels)
-
-- [UnivariateDiscretizer (MLJModels.jl)](@ref UnivariateDiscretizer_MLJModels)
-
-- [UnivariateStandardizer (MLJModels.jl)](@ref UnivariateStandardizer_MLJModels)
-
-- [UnivariateTimeTypeToContinuous (MLJModels.jl)](@ref UnivariateTimeTypeToContinuous_MLJModels)
-
-##  Meta Algorithms
-- [BalancedBaggingClassifier (MLJBalancing.jl)](@ref BalancedBaggingClassifier_MLJBalancing)
-
-- [BalancedModel (MLJBalancing.jl)](@ref BalancedModel_MLJBalancing)
-
-- [BinaryThresholdPredictor (MLJModels.jl)](@ref BinaryThresholdPredictor_MLJModels)
-
-- [EnsembleModel (MLJEnsembles.jl)](@ref EnsembleModel_MLJEnsembles)
-
-- [EntityEmbedder (MLJFlux.jl)](@ref EntityEmbedder_MLJFlux)
-
-- [IteratedModel (MLJIteration.jl)](@ref IteratedModel_MLJIteration)
-
-- [Pipeline (MLJBase.jl)](@ref Pipeline_MLJBase)
-
-- [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
-
-- [Resampler (MLJBase.jl)](@ref Resampler_MLJBase)
-
-- [Stack (MLJBase.jl)](@ref Stack_MLJBase)
-
-- [TransformedTargetModel (MLJBase.jl)](@ref TransformedTargetModel_MLJBase)
-
-- [TunedModel (MLJTuning.jl)](@ref TunedModel_MLJTuning)
-
 ##  Static Models
 - [AgglomerativeClustering (MLJScikitLearnInterface.jl)](@ref AgglomerativeClustering_MLJScikitLearnInterface)
 
@@ -721,14 +731,14 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [HDBSCAN (MLJScikitLearnInterface.jl)](@ref HDBSCAN_MLJScikitLearnInterface)
 
-- [InteractionTransformer (MLJModels.jl)](@ref InteractionTransformer_MLJModels)
+- [InteractionTransformer (MLJTransforms.jl)](@ref InteractionTransformer_MLJTransforms)
 
 - [OPTICS (MLJScikitLearnInterface.jl)](@ref OPTICS_MLJScikitLearnInterface)
 
 - [SpectralClustering (MLJScikitLearnInterface.jl)](@ref SpectralClustering_MLJScikitLearnInterface)
 
 ##  Missing Value Imputation
-- [FillImputer (MLJModels.jl)](@ref FillImputer_MLJModels)
+- [FillImputer (MLJTransforms.jl)](@ref FillImputer_MLJTransforms)
 
 - [GaussianMixtureImputer (BetaML.jl)](@ref GaussianMixtureImputer_BetaML)
 
@@ -738,7 +748,7 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [SimpleImputer (BetaML.jl)](@ref SimpleImputer_BetaML)
 
-- [UnivariateFillImputer (MLJModels.jl)](@ref UnivariateFillImputer_MLJModels)
+- [UnivariateFillImputer (MLJTransforms.jl)](@ref UnivariateFillImputer_MLJTransforms)
 
 ##  Density Estimation
 - [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
@@ -754,7 +764,7 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [FeatureSelector (FeatureSelection.jl)](@ref FeatureSelector_FeatureSelection)
 
-- [InteractionTransformer (MLJModels.jl)](@ref InteractionTransformer_MLJModels)
+- [InteractionTransformer (MLJTransforms.jl)](@ref InteractionTransformer_MLJTransforms)
 
 - [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
 
