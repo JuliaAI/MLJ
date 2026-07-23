@@ -63,8 +63,8 @@ organizations:
     orgLink: https://github.com/JuliaAI/MLJTransforms.jl
     orgMarkdownDesc: |
       MLJWrappers.jl is a newer package designed to furnish model wrappers. It provides
-      `Transformer`, but other wrappers, such as `Stack` (MLJBase) and
-      `BinaryThresholdPredictor` (MLJTransforms) might be hosted here in the future.
+      Transformer, but other wrappers, such as Stack (MLJBase) and
+      BinaryThresholdPredictor (MLJTransforms) might be hosted here in the future.
     orthogonal: false
 
   - orgName: MLJTuning.jl
