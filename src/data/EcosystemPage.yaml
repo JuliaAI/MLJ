@@ -60,7 +60,7 @@ organizations:
     orthogonal: false
 
   - orgName: MLJWrappers.jl
-    orgLink: https://github.com/JuliaAI/MLJTransforms.jl
+    orgLink: https://github.com/JuliaAI/MLJWrappers.jl
     orgMarkdownDesc: |
       MLJWrappers.jl is a newer package designed to furnish model wrappers. It provides
       Transformer, but other wrappers, such as Stack (MLJBase) and
@@ -101,7 +101,7 @@ organizations:
   - orgName: OpenML.jl
     orgLink: https://github.com/JuliaAI/OpenML.jl
     orgMarkdownDesc: |
-      OpenML.jl provides integration with the OpenML (www.openml.org) data science exchange platform.
+      OpenML.jl provides integration with the OpenML (www.openml.org) data science exchange platform. Formerly a dependency of MLJ.
     orthogonal: true
 
   - orgName: MLJLinearModels.jl
