@@ -107,7 +107,7 @@ organizations:
   - orgName: MLJLinearModels.jl
     orgLink: https://github.com/JuliaAI/MLJLinearModels.jl
     orgMarkdownDesc: |
-      MLJLinearModels.jl provides a wide range of julia-native penalized linear models such as Lasso, Elastic-Net, Robust regression, LAD regression, etc.
+      MLJLinearModels.jl provides a wide range of julia-native penalized linear models such as lasso, elastic-net, robust regression, LAD regression, etc.
     orthogonal: true
 
   - orgName: MLJFlux.jl
