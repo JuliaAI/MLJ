@@ -45,10 +45,26 @@ organizations:
   - orgName: MLJModels.jl
     orgLink: https://github.com/JuliaAI/MLJModels.jl
     orgMarkdownDesc: |
-      MLJModels.jl hosts the MLJ model registry,
-      which contains metadata on all the models the MLJ user can search and load from MLJ. Moreover,
-      it provides the functionality for loading model code from MLJ on demand. Finally, it furnishes some
+      MLJModels.jl hosts the MLJ model registry, which contains metadata on all the models
+      the MLJ user can search and load from MLJ. Moreover, it provides the functionality
+      for loading model code from MLJ on demand. For historical reasons, it also provides
+      the dummy classifiers and regressors (e.g., `ConstantClassifier`) and the
+      `BinaryThresholdPredictor` wrapper for probabilistic binary classifiers. 
+    orthogonal: false
+
+  - orgName: MLJTransforms.jl
+    orgLink: https://github.com/JuliaAI/MLJTransforms.jl
+    orgMarkdownDesc: |
+      MLJTransforms.jl furnishes some
       commonly used transformers for data pre-processing, such as ContinuousEncoder and Standardizer.
+    orthogonal: false
+
+  - orgName: MLJWrappers.jl
+    orgLink: https://github.com/JuliaAI/MLJWrappers.jl
+    orgMarkdownDesc: |
+      MLJWrappers.jl is a newer package designed to furnish model wrappers. It provides
+      Transformer, but other wrappers, such as Stack (MLJBase) and
+      BinaryThresholdPredictor (MLJTransforms) might be hosted here in the future.
     orthogonal: false
 
   - orgName: MLJTuning.jl
@@ -85,13 +101,13 @@ organizations:
   - orgName: OpenML.jl
     orgLink: https://github.com/JuliaAI/OpenML.jl
     orgMarkdownDesc: |
-      OpenML.jl provides integration with the OpenML (www.openml.org) data science exchange platform.
+      OpenML.jl provides integration with the OpenML (www.openml.org) data science exchange platform. Formerly a dependency of MLJ.
     orthogonal: true
 
   - orgName: MLJLinearModels.jl
     orgLink: https://github.com/JuliaAI/MLJLinearModels.jl
     orgMarkdownDesc: |
-      MLJLinearModels.jl provides a wide range of julia-native penalized linear models such as Lasso, Elastic-Net, Robust regression, LAD regression, etc.
+      MLJLinearModels.jl provides a wide range of julia-native penalized linear models such as lasso, elastic-net, robust regression, LAD regression, etc.
     orthogonal: true
 
   - orgName: MLJFlux.jl
