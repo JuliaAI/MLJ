@@ -183,33 +183,39 @@ JuliaForem:
       - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
 
 MLJTutorial:
-  - name: "MLJTutorial Part 1: Data Representation"
-    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/01_data_representation
+  - name: "MLJTutorial 1: Data Representation"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/01_data_representation/notebook/
     tags:
       - Data Processing
     ilos:
       - Learn about \"scientific types\" and how to ensure MLJ interprets your data correctly
-  - name: "MLJTutorial Part 2: Selecting, Training and Evaluating Models"
-    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/02_models
+  - name: "MLJTutorial 2: Selecting, Training and Evaluating Models"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/02_models/notebook/
     tags:
       - Classification
     ilos:
       - Learn how to match models to data and do basic training and model evaluation
-  - name: "MLJTutorial Part 3: Transformers and Pipelines"
-    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/03_pipelines
+  - name: "MLJTutorial 3: Transformers and Pipelines"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/03_pipelines/notebook/
     tags:
       - Pipelines
       - Data Processing
     ilos:
       - Learn how to combine data pre-processing and supervised learning into a single pipeline
       - Learn how to use a model wrapper to perform target transformations
-  - name: "MLJTutorial Part 4: Tuning Hyperparameters"
-    href: https://github.com/ablaom/MLJTutorial.jl/tree/dev/notebooks/04_tuning
+  - name: "MLJTutorial 4: Tuning Hyperparameters"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/04_tuning/notebook/
     tags:
       - Hyperparameter Tuning
     ilos:
       - Learn how to use learning curves to tune a single hyperparameter
       - Learn how to use a model wrapper to tune one or more hyperparameters using a random search
+  - name: "MLJTutorial 5: Advanced Model Composition"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/05_composition/notebook/
+    tags:
+      - Model Composition
+    ilos:
+      - Learn how to wrap complicated MLJ workflows as new standalone model types
 
 RolandSchatzle:
   - name: "The Glass Dataset Part I: Exploratory Data Analysis"
