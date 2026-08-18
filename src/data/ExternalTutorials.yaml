@@ -210,6 +210,12 @@ MLJTutorial:
     ilos:
       - Learn how to use learning curves to tune a single hyperparameter
       - Learn how to use a model wrapper to tune one or more hyperparameters using a random search
+  - name: "MLJTutorial 5: Advanced Model Composition"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/05_composition/
+    tags:
+      - Model Composition
+    ilos:
+      - Learn how to wrap complicated MLJ workflows as new standalone model types
 
 RolandSchatzle:
   - name: "The Glass Dataset Part I: Exploratory Data Analysis"
