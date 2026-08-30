@@ -110,7 +110,6 @@ Imbalance:
       - Familiarize yourself with common MLJ workflows related to loading and processing data
       - Understand how balanced bagging can significantly improve classification performance on imbalanced data
 
-
 MLJFlux:
   - name: "Incremental Training of Neural Networks"
     href: https://fluxml.ai/MLJFlux.jl/dev/common_workflows/incremental_training/notebook/
@@ -180,7 +179,7 @@ JuliaForem:
     tags:
       - Classification
     ilos:
-      - Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users
+      - "Learn how to train a Decision Tree to predict survival for passengers on the Titanic. Aimed at new Julia users"
 
 UsingMLJ:
   - name: "Using MLJ (videos) Lesson 1: Basics"
@@ -189,31 +188,31 @@ UsingMLJ:
       - Classification
       - Regression
     ilos:
-      - Get to know the basic MLJ objects: models, machines
-      - Understand the basic fit/predict workflow
-      - Know how to estimate model performance by hand, and with advanced tools
-      - Understand scientific types and their role in data preparation
+      - "Get to know the basic MLJ objects: models, machines"
+      - "Understand the basic fit/predict workflow"
+      - "Know how to estimate model performance by hand, and with advanced tools"
+      - "Understand scientific types and their role in data preparation"
   - name: "Using MLJ (videos) Lesson 2: Model Composition"
     href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/02_model_composition/notebook
     tags:
       - Pipelines
       - Model Composition
     ilos:
-      - What's a composite model?
-      - How to construct model pipelines
-      - How composite models help us avoid data leakage
-      - A model wrapper for target transformations
-      - Other model wrappers
-      - Other kinds of model composition
+      - "What's a composite model?"
+      - "How to construct model pipelines"
+      - "How composite models help us avoid data leakage"
+      - "A model wrapper for target transformations"
+      - "Other model wrappers"
+      - "Other kinds of model composition"
   - name: "Using MLJ (videos) Lesson 3: Model Tuning"
     tags:
       - Hyperparameter Tuning
     ilos:
-      - How to generate a learning curve
-      - How to conceptualize model tuning as a model wrapper
-      - How to use the TunedModel wrapper in practice, to tune multiple parameters while guarding against data leakage.
-      - How to use TunedModel to choose the best model type among many
-      - Why tuning-as-wrapper can lead to nested resampling
+      - "How to generate a learning curve"
+      - "How to conceptualize model tuning as a model wrapper"
+      - "How to use the TunedModel wrapper in practice, to tune multiple parameters while guarding against data leakage"
+      - "How to use TunedModel to choose the best model type among many"
+      - "Why tuning-as-wrapper can lead to nested resampling"
 
 MLJTutorial:
   - name: "MLJTutorial 1: Data Representation"
