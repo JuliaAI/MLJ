@@ -192,18 +192,18 @@ UsingMLJ:
       - "Understand the basic fit/predict workflow"
       - "Know how to estimate model performance by hand, and with advanced tools"
       - "Understand scientific types and their role in data preparation"
-#   - name: "Using MLJ (videos) Lesson 2: Model Composition"
-#     href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/02_model_composition/notebook
-#     tags:
-#       - Pipelines
-#       - Model Composition
-#     ilos:
-#       - "What's a composite model?"
-#       - "How to construct model pipelines"
-#       - "How composite models help us avoid data leakage"
-#       - "A model wrapper for target transformations"
-#       - "Other model wrappers"
-#       - "Other kinds of model composition"
+  - name: "Using MLJ (videos) Lesson 2: Model Composition"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/02_model_composition/notebook
+    tags:
+      - Pipelines
+      - Model Composition
+    ilos:
+      - "What's a composite model?"
+      - "How to construct model pipelines"
+      - "How composite models help us avoid data leakage"
+      - "A model wrapper for target transformations"
+      - "Other model wrappers"
+      - "Other kinds of model composition"
 #   - name: "Using MLJ (videos) Lesson 3: Model Tuning"
 #     tags:
 #       - Hyperparameter Tuning
