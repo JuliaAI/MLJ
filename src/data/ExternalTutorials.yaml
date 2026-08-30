@@ -205,14 +205,15 @@ UsingMLJ:
       - "Other model wrappers"
       - "Other kinds of model composition"
   - name: "Using MLJ (videos) Lesson 3: Model Tuning"
+    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/03_model_tuning/notebook
     tags:
       - Hyperparameter Tuning
-#     ilos:
-#       - "How to generate a learning curve"
-#       - "How to conceptualize model tuning as a model wrapper"
-#       - "How to use the TunedModel wrapper in practice, to tune multiple parameters while guarding against data leakage"
-#       - "How to use TunedModel to choose the best model type among many"
-#       - "Why tuning-as-wrapper can lead to nested resampling"
+    ilos:
+      - "How to generate a learning curve"
+      - "How to conceptualize model tuning as a model wrapper"
+      - "How to use the TunedModel wrapper in practice, to tune multiple parameters while guarding against data leakage"
+      - "How to use TunedModel to choose the best model type among many"
+      - "Why tuning-as-wrapper can lead to nested resampling"
 
 MLJTutorial:
   - name: "MLJTutorial 1: Data Representation"
