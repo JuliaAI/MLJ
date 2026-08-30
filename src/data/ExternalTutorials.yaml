@@ -204,9 +204,9 @@ UsingMLJ:
       - "A model wrapper for target transformations"
       - "Other model wrappers"
       - "Other kinds of model composition"
-#   - name: "Using MLJ (videos) Lesson 3: Model Tuning"
-#     tags:
-#       - Hyperparameter Tuning
+  - name: "Using MLJ (videos) Lesson 3: Model Tuning"
+    tags:
+      - Hyperparameter Tuning
 #     ilos:
 #       - "How to generate a learning curve"
 #       - "How to conceptualize model tuning as a model wrapper"
