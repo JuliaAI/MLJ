@@ -183,7 +183,7 @@ JuliaForem:
 
 UsingMLJ:
   - name: "Using MLJ (videos) Lesson 1: Basics"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/01_basics/notebook
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/01_basics/notebook
     tags:
       - Classification
       - Regression
@@ -193,7 +193,7 @@ UsingMLJ:
       - "Know how to estimate model performance by hand, and with advanced tools"
       - "Understand scientific types and their role in data preparation"
   - name: "Using MLJ (videos) Lesson 2: Model Composition"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/02_model_composition/notebook
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/02_model_composition/notebook
     tags:
       - Pipelines
       - Model Composition
@@ -205,7 +205,7 @@ UsingMLJ:
       - "Other model wrappers"
       - "Other kinds of model composition"
   - name: "Using MLJ (videos) Lesson 3: Model Tuning"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/03_model_tuning/notebook
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/UsingMLJ/03_model_tuning/notebook
     tags:
       - Hyperparameter Tuning
     ilos:
@@ -217,19 +217,19 @@ UsingMLJ:
 
 MLJTutorial:
   - name: "MLJTutorial 1: Data Representation"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/01_data_representation/notebook/
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/01_data_representation/notebook/
     tags:
       - Data Processing
     ilos:
       - Learn about \"scientific types\" and how to ensure MLJ interprets your data correctly
   - name: "MLJTutorial 2: Selecting, Training and Evaluating Models"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/02_models/notebook/
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/02_models/notebook/
     tags:
       - Classification
     ilos:
       - Learn how to match models to data and do basic training and model evaluation
   - name: "MLJTutorial 3: Transformers and Pipelines"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/03_pipelines/notebook/
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/03_pipelines/notebook/
     tags:
       - Pipelines
       - Data Processing
@@ -237,14 +237,14 @@ MLJTutorial:
       - Learn how to combine data pre-processing and supervised learning into a single pipeline
       - Learn how to use a model wrapper to perform target transformations
   - name: "MLJTutorial 4: Tuning Hyperparameters"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/04_tuning/notebook/
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/04_tuning/notebook/
     tags:
       - Hyperparameter Tuning
     ilos:
       - Learn how to use learning curves to tune a single hyperparameter
       - Learn how to use a model wrapper to tune one or more hyperparameters using a random search
   - name: "MLJTutorial 5: Advanced Model Composition"
-    href: https://ablaom.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/05_composition/notebook/
+    href: https://JuliaAI.github.io/MLJTutorial.jl/dev/notebooks/MLJTutorial/05_composition/notebook/
     tags:
       - Model Composition
     ilos:
