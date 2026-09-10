@@ -6,7 +6,7 @@ Below an *encoder* is any transformer that does not fall under
 another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 ### Categories
-[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Encoders](@ref)  |  [Bayesian Models](@ref)  |  [Neural Networks](@ref)  |  [Meta Algorithms](@ref)  |  [Class Imbalance](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Density Estimation](@ref)  |  [Feature Engineering](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
+[Regression](@ref)  |  [Classification](@ref)  |  [Outlier Detection](@ref)  |  [Iterative Models](@ref)  |  [Ensemble Models](@ref)  |  [Clustering](@ref)  |  [Dimension Reduction](@ref)  |  [Encoders](@ref)  |  [Bayesian Models](@ref)  |  [Neural Networks](@ref)  |  [Meta Algorithms](@ref)  |  [Class Imbalance](@ref)  |  [Static Models](@ref)  |  [Missing Value Imputation](@ref)  |  [Feature Engineering](@ref)  |  [Density Estimation](@ref)  |  [Text Analysis](@ref)  |  [Image Processing](@ref)
 
 ##  Regression
 - [ARDRegressor (MLJScikitLearnInterface.jl)](@ref ARDRegressor_MLJScikitLearnInterface)
@@ -750,15 +750,6 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 
 - [UnivariateFillImputer (MLJTransforms.jl)](@ref UnivariateFillImputer_MLJTransforms)
 
-##  Density Estimation
-- [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
-
-- [GaussianMixtureImputer (BetaML.jl)](@ref GaussianMixtureImputer_BetaML)
-
-- [GaussianMixtureRegressor (BetaML.jl)](@ref GaussianMixtureRegressor_BetaML)
-
-- [MultitargetGaussianMixtureRegressor (BetaML.jl)](@ref MultitargetGaussianMixtureRegressor_BetaML)
-
 ##  Feature Engineering
 - [FeatureAgglomeration (MLJScikitLearnInterface.jl)](@ref FeatureAgglomeration_MLJScikitLearnInterface)
 
@@ -767,6 +758,15 @@ another category, such as "Missing Value Imputation" or "Dimension Reduction".
 - [InteractionTransformer (MLJTransforms.jl)](@ref InteractionTransformer_MLJTransforms)
 
 - [RecursiveFeatureElimination (FeatureSelection.jl)](@ref RecursiveFeatureElimination_FeatureSelection)
+
+##  Density Estimation
+- [GaussianMixtureClusterer (BetaML.jl)](@ref GaussianMixtureClusterer_BetaML)
+
+- [GaussianMixtureImputer (BetaML.jl)](@ref GaussianMixtureImputer_BetaML)
+
+- [GaussianMixtureRegressor (BetaML.jl)](@ref GaussianMixtureRegressor_BetaML)
+
+- [MultitargetGaussianMixtureRegressor (BetaML.jl)](@ref MultitargetGaussianMixtureRegressor_BetaML)
 
 ##  Text Analysis
 - [BM25Transformer (MLJText.jl)](@ref BM25Transformer_MLJText)
